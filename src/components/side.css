@@ -13,13 +13,15 @@
 }
 
 #sidebar-wrapper .sidebar-heading {
-  padding: 5px 1.25rem;
-  /* padding: 0.875rem 1.25rem; */
+  /* padding: 15px 1.25rem; */
+  padding: 0.875rem 1.25rem;
   font-size: 1.2rem;
 }
 
 #sidebar-wrapper .list-group {
   width: 50px;
+  display: flex;
+  flex-direction: column;
 }
 
 #page-content-wrapper {

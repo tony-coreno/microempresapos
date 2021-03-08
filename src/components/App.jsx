@@ -9,14 +9,10 @@ import Clientes from './Clientes';
 import Ayuda from './Ayuda';
 import styled from 'styled-components';
 import Sidebar from './Sidebar';
-
-
 const App = () => {
     return ( 
     <>
-        {/* <BarraSuperior /> */}
         <Sidebar />
-        
         <BrowserRouter>
         <ContenedorPrincipal>
                 <Header />
@@ -25,7 +21,6 @@ const App = () => {
                 <Route path="/empleados" component={Empleados} />
                 <Route path="/almacen" component={Almacen} />
                 <Route path="/ventas" component={Ventas} />
-                {/* <Route path="/categorias" component={Categorias} /> */}
                 <Route path="/clientes" component={Clientes} />
                 <Route path="/ayuda" component={Ayuda} />
             </Main>

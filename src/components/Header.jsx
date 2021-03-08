@@ -31,14 +31,14 @@ const Titulo = styled.h1`
     margin-bottom: 10px;
     font-size: 26px;
     text-transform: uppercase;
-    // color: #FFFFFF;
+     
 `;
 
 const MenuNav = styled.nav`
     a {
         text-decoration: none;
         color: #165168;
-        // color: #FFFFFF;
+        //color: #FFFFFF;
         margin: 0 10px;
     }
     a:hover {
@@ -51,6 +51,8 @@ const MenuNav = styled.nav`
         padding-bottom: 3px;
     }
 `;
+
+
 
 
 
