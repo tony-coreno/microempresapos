@@ -1,7 +1,7 @@
-const Productos = () => {
+const Almacen = () => {
     return ( 
         <div>
-            <h2>Productos</h2>
+            <h2>Almacen</h2>
             <ul>
  
             </ul>
@@ -9,4 +9,4 @@ const Productos = () => {
      );
 }
  
-export default Productos;
+export default Almacen;

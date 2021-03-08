@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import Header from './Header';
 import Inicio from './Inicio';
-import Productos from './Productos';
+import Almacen from './Almacen';
 import Ventas from './Ventas';
 // import Categorias from './Categorias';
 import Empleados from './Empleados';
@@ -25,7 +25,7 @@ const App = () => {
             <Main>
                 <Route path="/" exact={true} component={Inicio} />
                 <Route path="/empleados" component={Empleados} />
-                <Route path="/productos" component={Productos} />
+                <Route path="/almacen" component={Almacen} />
                 <Route path="/ventas" component={Ventas} />
                 {/* <Route path="/categorias" component={Categorias} /> */}
                 <Route path="/clientes" component={Clientes} />
