@@ -4,6 +4,7 @@ const Header = () => {
     return ( 
         <ContenedorHeader>
         <Route>
+            
             <Titulo>Sistema POS</Titulo>
             <MenuNav>
                 <NavLink to="/" exact={true}>Inicio</NavLink>

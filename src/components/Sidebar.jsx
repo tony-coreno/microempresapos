@@ -1,7 +1,7 @@
 import "./side.css";
 import 'bootstrap/dist/css/bootstrap.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserAlt, faCog, faPowerOff } from '@fortawesome/free-solid-svg-icons'
+import { faUserAlt, faCog, faPowerOff, faShoppingCart, faSearch } from '@fortawesome/free-solid-svg-icons'
 
 const Sidebar = () => {
   return (
@@ -18,11 +18,18 @@ const Sidebar = () => {
               <FontAwesomeIcon icon={faUserAlt}/>
             </a>
             <a href="#" className="list-group-item list-group-item-action bg-light">
+              <FontAwesomeIcon icon={faSearch} />
+            </a>
+            <a href="#" className="list-group-item list-group-item-action bg-light">
+              <FontAwesomeIcon icon={faShoppingCart} />
+            </a>
+            <a href="#" className="list-group-item list-group-item-action bg-light">
               <FontAwesomeIcon icon={faCog} />
             </a>
             <a href="#" className="list-group-item list-group-item-action bg-light">
               <FontAwesomeIcon icon={faPowerOff} />
             </a>
+            
           </div>
         </div>
       </div>

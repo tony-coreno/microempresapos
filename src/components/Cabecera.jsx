@@ -1,41 +1,39 @@
-import React from "react";
-function Cabecera() {
+// import './style.css';
+
+const Cabecera = () => {
   return (
     <div>
-      <header className="main-header">
-        <a href="#" className="logo">
-          <span>
-            <img src="" alt="" />
-          </span>
-          <span>
-            <img src="" alt="" />
-          </span>
-        </a>
-        <nav className="navbar navbar-static-top">
-          <a href="">
-            <span>Toogle navigation</span>
-          </a>
-          <div>
-            <ul>
-              <li>
-                <a href="">
-                  <img src="" alt="" />
-                  <span></span>
-                </a>
-                <ul>
-                  <li>
-                    <div>
-                      <a href="">Salir</a>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
+      <nav class="sociales">
+        <ul>
+          <li>
+            <a href="http://facebook.com">
+              <span> Facebook</span>
+            </a>
+          </li>
+          <li>
+            <a href="http://twitter.com">
+              <span> Twitter</span>
+            </a>
+          </li>
+          <li>
+            <a href="http://youtube.com">
+              <span> YouTube</span>
+            </a>
+          </li>
+          <li>
+            <a href="http://instagram.com">
+              <span> Instagram</span>
+            </a>
+          </li>
+          <li>
+            <a href="http://pinterest.com">
+              <span> Pinterest</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
-}
+};
 
 export default Cabecera;
