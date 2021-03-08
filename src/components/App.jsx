@@ -10,13 +10,14 @@ import Clientes from './Clientes';
 import Ayuda from './Ayuda';
 import styled from 'styled-components';
 import BarraSuperior from './BarraSuperior';
-
+import Sidebar from './Sidebar';
 
 
 const App = () => {
     return ( 
     <>
-        <BarraSuperior />
+        {/* <BarraSuperior /> */}
+        <Sidebar />
         <BrowserRouter>
         <ContenedorPrincipal>
                 <Header />
