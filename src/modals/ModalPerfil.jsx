@@ -9,6 +9,7 @@ import {
     Input,
     Label,
   } from "reactstrap";
+  import 'bootstrap/dist/css/bootstrap.css';
 const ModalPerfil = ({modal, setModal}) => {
     return (
       <Modal isOpen={modal}>
@@ -17,7 +18,7 @@ const ModalPerfil = ({modal, setModal}) => {
       </ModalHeader>
       <ModalBody>
         <FormGroup>
-          <Label for="usuario">Usuario</Label>
+          <Label for="usuario" className="form-control">Usuario</Label>
           <Input type="text" name="usuario"/>
         </FormGroup>
         <FormGroup>
