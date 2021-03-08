@@ -4,12 +4,10 @@ import Header from './Header';
 import Inicio from './Inicio';
 import Almacen from './Almacen';
 import Ventas from './Ventas';
-// import Categorias from './Categorias';
 import Empleados from './Empleados';
 import Clientes from './Clientes';
 import Ayuda from './Ayuda';
 import styled from 'styled-components';
-
 import Sidebar from './Sidebar';
 
 

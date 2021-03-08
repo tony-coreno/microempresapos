@@ -9,7 +9,6 @@ const Header = () => {
             <MenuNav>
                 <NavLink to="/" exact={true}>Inicio</NavLink>
                 <NavLink to="/empleados">Empleados</NavLink>
-                {/* <NavLink to="/categorias">Categorias</NavLink> */}
                 <NavLink to="/almacen">Almacén</NavLink>
                 <NavLink to="/clientes">Clientes</NavLink>
                 <NavLink to="/ventas">Ventas</NavLink>
