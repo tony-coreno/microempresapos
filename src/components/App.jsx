@@ -37,7 +37,7 @@ const App = () => {
 }
 
 const ContenedorPrincipal = styled.div`
-    padding: 40px;
+    padding: 10px;
     width: 90%;
     max-width: 1200px;
 
