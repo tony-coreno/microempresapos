@@ -1,9 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.css';
+import {Button} from 'reactstrap';
 
 const Empleados = () => {
     return ( 
         <div>
-            <h2>
+            <Button color="primary">Agregar Empleado</Button>
+
+            {/* <h2>
                 Agregar Empleado
             </h2>
             <form className="form-group">
@@ -50,7 +53,7 @@ const Empleados = () => {
                     className="btn btn-success"
                 >Enviar</button>
 
-            </form>
+            </form> */}
         </div>
      );
 }
