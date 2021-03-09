@@ -4,7 +4,6 @@ const Header = () => {
     return ( 
         <ContenedorHeader>
         <Route>
-            
             <Titulo>Sistema POS</Titulo>
             <MenuNav>
                 <NavLink to="/" exact={true}>Inicio</NavLink>
@@ -20,15 +19,15 @@ const Header = () => {
 }
 const ContenedorHeader = styled.header`
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 0px;
     background-color: FFFFFF;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
-    gap: 20px;
+    gap: 10px;
     margin: 20px 0 0 0;
 `;
 const Titulo = styled.h1`
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     font-size: 26px;
     text-transform: uppercase;
      
@@ -50,6 +49,7 @@ const MenuNav = styled.nav`
         border-bottom: 2px solid #165168;
         padding-bottom: 3px;
     }
+    
 `;
 
 

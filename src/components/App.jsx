@@ -11,6 +11,8 @@ import styled from 'styled-components';
 import Sidebar from './Sidebar';
 import Post from './Post';
 import Error from './Error';
+// import Carrito from './../Carrito/Carrito';
+
 import 'bootstrap/dist/css/bootstrap.css';
 const App = () => {
     return ( 
@@ -28,6 +30,7 @@ const App = () => {
                 <Route path="/post/:id" component={Post} />
                 <Route path="/clientes" component={Clientes} />
                 <Route path="/ayuda" component={Ayuda} />
+                {/* <Route path="/carrito" component={Carrito} /> */}
                 <Route component={Error} />
                 </Switch>
             </Main>
@@ -40,12 +43,12 @@ const App = () => {
 const ContenedorPrincipal = styled.div`
     padding: 10px;
     width: 90%;
-    max-width: 1200px;
+    max-width: 1400px;
 `;
  
 const Main = styled.main`
 	background: #fff;
-	padding: 40px;
+	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.7);
 `;

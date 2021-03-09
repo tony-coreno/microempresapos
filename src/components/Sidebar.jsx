@@ -4,6 +4,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ModalPerfil from '../modals/ModalPerfil';
 import {Button} from "reactstrap";
+import {Route, NavLink, BrowserRouter} from 'react-router-dom';
+import Carrito from './../Carrito/Carrito';
 import {
   faUserAlt,
   faCog,
@@ -15,6 +17,7 @@ const Sidebar = () => {
   const [modal, setModal] = useState(false);
   return(
     <>
+    <BrowserRouter>
       <a className="navbar-brand" href="#"></a>
       <div className="d-flex" id="wrapper">
         <div className="bg-light border-right" id="sidebar-wrapper">
@@ -23,7 +26,7 @@ const Sidebar = () => {
             <Button color="light" onClick={() => setModal(true)}>
               <FontAwesomeIcon icon={faUserAlt} />
             </Button>
-            <a
+         <a
               href="#"
               className="list-group-item list-group-item-action bg-light"
             >
@@ -35,7 +38,6 @@ const Sidebar = () => {
             >
               <FontAwesomeIcon icon={faSearch} />
             </a>
-
             <a
               href="#"
               className="list-group-item list-group-item-action bg-light"
@@ -48,18 +50,19 @@ const Sidebar = () => {
             >
               <FontAwesomeIcon icon={faCog} />
             </a>
-            <a
+
+          <a
               href="#"
               className="list-group-item list-group-item-action bg-light"
             >
               <FontAwesomeIcon icon={faPowerOff} />
-            </a>
+            </a> 
           </div>
         </div>
       </div>
 
     <ModalPerfil modal={modal} setModal={setModal}/>
-
+    </BrowserRouter>
     </>
   );
 };

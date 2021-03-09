@@ -1,6 +1,14 @@
 import React from 'react';
 import posts from './../data/posts';     
 import {Link} from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faUserAlt,
+    faCog,
+    faPowerOff,
+    faShoppingCart,
+    faSearch,
+  } from "@fortawesome/free-solid-svg-icons";
 const Ventas = () => {
     return ( 
         <div>
@@ -14,6 +22,9 @@ const Ventas = () => {
                     )
                 })}
             </ul>
+            <div>
+                <a href="#"><FontAwesomeIcon icon={faShoppingCart} /></a>
+            </div>
         </div>
      );
 }
