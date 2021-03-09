@@ -10,7 +10,17 @@ const tablaEmpleados =[
     {id:3, nombre:"Edgar", apellido: "Perez", perfil: "Vendedor"},
     {id:4, nombre:"Juan", apellido: "Sanchez", perfil: "Vendedor"},
     {id:5, nombre:"Pedro", apellido: "Torres", perfil: "Vendedor"},
-
+    {id:5, nombre:"Pedro", apellido: "Torres", perfil: "Vendedor"},
+    {id:5, nombre:"Pedro", apellido: "Torres", perfil: "Vendedor"},
+    {id:5, nombre:"Pedro", apellido: "Torres", perfil: "Vendedor"},
+    {id:5, nombre:"Pedro", apellido: "Torres", perfil: "Vendedor"},
+    {id:5, nombre:"Pedro", apellido: "Torres", perfil: "Vendedor"},
+    {id:5, nombre:"Pedro", apellido: "Torres", perfil: "Vendedor"},
+    {id:5, nombre:"Pedro", apellido: "Torres", perfil: "Vendedor"},
+    {id:5, nombre:"Pedro", apellido: "Torres", perfil: "Vendedor"},
+    {id:5, nombre:"Pedro", apellido: "Torres", perfil: "Vendedor"},
+    {id:5, nombre:"Pedro", apellido: "Torres", perfil: "Vendedor"},
+    
 ];
 
 const columnas = [
@@ -104,7 +114,7 @@ const Empleados = () => {
                 pagination
                 paginationComponentOptions={paginacionOpcion}
                 fixedHeader
-                fixedHeaderScrollHeight="300px"
+                fixedHeaderScrollHeight="100px"
             />
         </div>
      );

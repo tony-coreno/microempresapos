@@ -4,8 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ModalPerfil from '../modals/ModalPerfil';
 import {Button} from "reactstrap";
-import {Route, NavLink, BrowserRouter} from 'react-router-dom';
-import Carrito from './../Carrito/Carrito';
+import {BrowserRouter} from 'react-router-dom';
 import {
   faUserAlt,
   faCog,
@@ -62,6 +61,7 @@ const Sidebar = () => {
       </div>
 
     <ModalPerfil modal={modal} setModal={setModal}/>
+    
     </BrowserRouter>
     </>
   );
