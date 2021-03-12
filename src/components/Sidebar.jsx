@@ -3,9 +3,10 @@ import "./side.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ModalPerfil from '../modals/ModalPerfil';
+import ModalSesion from '../modals/ModalSesion';
 import {Button} from "reactstrap";
-import {Route, NavLink, BrowserRouter} from 'react-router-dom';
-import Carrito from './../Carrito/Carrito';
+import { Link, BrowserRouter, Route} from 'react-router-dom';
+import Ventas from './Ventas';
 import {
   faUserAlt,
   faCog,
@@ -15,24 +16,30 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 const Sidebar = () => {
   const [modal, setModal] = useState(false);
+  const [modalSesion, setModalSesion] = useState(false);
   return(
     <>
-    <BrowserRouter>
+
       <a className="navbar-brand" href="#"></a>
       <div className="d-flex" id="wrapper">
         <div className="bg-light border-right" id="sidebar-wrapper">
           <div className="sidebar-heading"></div>
           <div className="list-group list-group-flush">
-            <Button color="light" onClick={() => setModal(true)}>
+             <Button color="light" onClick={() => setModal(true)}>
               <FontAwesomeIcon icon={faUserAlt} />
-            </Button>
-         <a
+            </Button> 
+         {/* <a
               href="#"
               className="list-group-item list-group-item-action bg-light"
             >
               <FontAwesomeIcon icon={faUserAlt} />
-            </a>
-            <a
+            </a> */}
+            {/* <Route>
+            <Link to="/carrito">
+              <FontAwesomeIcon icon={faSearch} />
+              </Link>
+              </Route> */}
+              <a
               href="#"
               className="list-group-item list-group-item-action bg-light"
             >
@@ -51,18 +58,22 @@ const Sidebar = () => {
               <FontAwesomeIcon icon={faCog} />
             </a>
 
-          <a
+          {/* <a
               href="#"
               className="list-group-item list-group-item-action bg-light"
             >
               <FontAwesomeIcon icon={faPowerOff} />
-            </a> 
+            </a> */}
+            <Button color="light" onClick={() => setModalSesion(true)}>
+              <FontAwesomeIcon icon={faPowerOff} />
+            </Button> 
           </div>
         </div>
       </div>
 
     <ModalPerfil modal={modal} setModal={setModal}/>
-    </BrowserRouter>
+    <ModalSesion modalSesion={modalSesion} setModalSesion={setModalSesion}/>
+   
     </>
   );
 };

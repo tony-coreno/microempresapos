@@ -1,18 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
-import {NavLink, Switch} from 'react-router-dom';
 
 const Carrito = () => {
     return ( 
+        <Contenedor>
+        <Menu>
+            <h3></h3>
+        </Menu>
+        <main>
+            <h2></h2>
+        </main>
         <aside>
-            <h3>Sidebar</h3>
+            z<h2></h2>
         </aside>
+    </Contenedor>
+ 
      );
 }
 
-
 const Contenedor = styled.div`
-    max-width: 1000px;
+    max-width: 1200px;
     padding: 40px;
     width: 90%;
     display: grid;
@@ -30,7 +37,6 @@ const Menu = styled.nav`
     background: #092c4c;
     grid-column: span 2;
     border-radius: 3px;
- 
     a {
         color: #fff;
         display: inline-block;

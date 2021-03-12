@@ -10,7 +10,8 @@ import {
     faSearch,
   } from "@fortawesome/free-solid-svg-icons";
 const Ventas = () => {
-    return ( 
+    return (
+         
         <div>
             <h2>Ventas</h2>
             <ul>
@@ -26,6 +27,7 @@ const Ventas = () => {
                 <a href="#"><FontAwesomeIcon icon={faShoppingCart} /></a>
             </div>
         </div>
+        
      );
 }
  

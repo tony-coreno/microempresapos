@@ -52,8 +52,4 @@ const MenuNav = styled.nav`
     
 `;
 
-
-
-
-
 export default Header;

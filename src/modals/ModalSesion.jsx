@@ -10,9 +10,9 @@ import {
     Label,
   } from "reactstrap";
   import 'bootstrap/dist/css/bootstrap.css';
-const ModalPerfil = ({modal, setModal}) => {
+const ModalSesion = ({modalSesion, setModalSesion}) => {
     return (
-      <Modal isOpen={modal}>
+      <Modal isOpen={modalSesion}>
       <ModalHeader>
         Perfil
       </ModalHeader>
@@ -27,10 +27,10 @@ const ModalPerfil = ({modal, setModal}) => {
         </FormGroup>
         </ModalBody>
       <ModalFooter>
-        <Button color="dark" onClick={() => setModal(false)}>Cerrar</Button>
+        <Button color="dark" onClick={() => setModalSesion(false)}>Cerrar</Button>
       </ModalFooter>
       </Modal>    
      );
 }
  
-export default ModalPerfil;
+export default ModalSesion;

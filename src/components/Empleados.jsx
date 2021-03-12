@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {Button} from 'reactstrap';
 import DataTable from 'react-data-table-component';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faUserPlus} from "@fortawesome/free-solid-svg-icons";
+import {faSearch, faUserPlus} from "@fortawesome/free-solid-svg-icons";
 
 const tablaEmpleados =[
     {id:1, nombre:"Antonio", apellido: "Coreño", perfil: "Administrador"},
@@ -10,11 +10,10 @@ const tablaEmpleados =[
     {id:3, nombre:"Edgar", apellido: "Perez", perfil: "Vendedor"},
     {id:4, nombre:"Juan", apellido: "Sanchez", perfil: "Vendedor"},
     {id:5, nombre:"Pedro", apellido: "Torres", perfil: "Vendedor"},
-
 ];
 
 const columnas = [
-    {
+{
     name: "ID",
     selector: "id",
     sortable: true,
@@ -48,7 +47,7 @@ const Empleados = () => {
     return ( 
         <div className="table-responsive">
             <Button className="btn btn-success pull-right"><FontAwesomeIcon icon={faUserPlus} /></Button>
-
+            {/* <Button className="btn btn-success pull-right"><FontAwesomeIcon icon={faSearch} /></Button> */}
             {/* <h2>
                 Agregar Empleado
             </h2>

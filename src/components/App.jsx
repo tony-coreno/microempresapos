@@ -11,7 +11,7 @@ import styled from 'styled-components';
 import Sidebar from './Sidebar';
 import Post from './Post';
 import Error from './Error';
-// import Carrito from './../Carrito/Carrito';
+
 
 import 'bootstrap/dist/css/bootstrap.css';
 const App = () => {
