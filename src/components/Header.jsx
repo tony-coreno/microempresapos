@@ -6,7 +6,7 @@ const Header = () => {
         <Route>
             <Titulo>Sistema POS</Titulo>
             <MenuNav>
-                <NavLink to="/" exact={true}>Inicio</NavLink>
+                <NavLink to="/" exact={true}>Dashboard</NavLink>
                 <NavLink to="/empleados">Empleados</NavLink>
                 <NavLink to="/almacen">Almacén</NavLink>
                 <NavLink to="/clientes">Clientes</NavLink>
