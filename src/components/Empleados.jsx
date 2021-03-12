@@ -46,7 +46,7 @@ const paginacionOpcion = {
 const Empleados = () => {
     return ( 
         <div className="table-responsive">
-            <Button className="btn btn-success pull-right"><FontAwesomeIcon icon={faUserPlus} /></Button>
+            <Button className="btn btn-success d-flex d-flex justify-content-between align-items-center"><FontAwesomeIcon icon={faUserPlus} /></Button>
             {/* <Button className="btn btn-success pull-right"><FontAwesomeIcon icon={faSearch} /></Button> */}
             {/* <h2>
                 Agregar Empleado
