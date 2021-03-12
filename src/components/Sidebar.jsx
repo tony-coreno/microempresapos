@@ -13,6 +13,7 @@ import {
   faPowerOff,
   faShoppingCart,
   faSearch,
+  faBell,
 } from "@fortawesome/free-solid-svg-icons";
 const Sidebar = () => {
   const [modal, setModal] = useState(false);
@@ -25,7 +26,11 @@ const Sidebar = () => {
         <div className="bg-light border-right" id="sidebar-wrapper">
           <div className="sidebar-heading"></div>
           <div className="list-group list-group-flush">
-             <Button color="light" onClick={() => setModal(true)}>
+             
+            <Button color="blue" className="list-group-item list-group-item-action bg-light" data-toggle="tooltip" data-placement="right" title="Notificaciones">
+              <FontAwesomeIcon icon={faBell} /><span class="badge badge-primary">4</span>
+            </Button>
+             <Button color="light" className="list-group-item list-group-item-action bg-light" onClick={() => setModal(true)} data-toggle="tooltip" data-placement="right" title="Perfil">
               <FontAwesomeIcon icon={faUserAlt} />
             </Button> 
          {/* <a
@@ -41,19 +46,19 @@ const Sidebar = () => {
               </Route> */}
               <a
               href="#"
-              className="list-group-item list-group-item-action bg-light"
+              className="list-group-item list-group-item-action bg-light" data-toggle="tooltip" data-placement="right" title="Buscar"
             >
               <FontAwesomeIcon icon={faSearch} />
             </a>
             <a
               href="#"
-              className="list-group-item list-group-item-action bg-light"
+              className="list-group-item list-group-item-action bg-light" data-toggle="tooltip" data-placement="right" title="Compras"
             >
-              <FontAwesomeIcon icon={faShoppingCart} />
+              <FontAwesomeIcon icon={faShoppingCart} /><span className="badge badge-primary">0</span>
             </a>
             <a
               href="#"
-              className="list-group-item list-group-item-action bg-light"
+              className="list-group-item list-group-item-action bg-light" data-toggle="tooltip" data-placement="right" title="Ajustes"
             >
               <FontAwesomeIcon icon={faCog} />
             </a>
@@ -64,7 +69,7 @@ const Sidebar = () => {
             >
               <FontAwesomeIcon icon={faPowerOff} />
             </a> */}
-            <Button color="light" onClick={() => setModalSesion(true)}>
+            <Button color="light" className="list-group-item list-group-item-action bg-light" onClick={() => setModalSesion(true)} ata-toggle="tooltip" data-placement="right" title="Cerrar Sesión">
               <FontAwesomeIcon icon={faPowerOff} />
             </Button> 
           </div>

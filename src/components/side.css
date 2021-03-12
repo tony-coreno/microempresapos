@@ -21,7 +21,7 @@
 }
 
 #sidebar-wrapper .list-group {
-  width: 50px;
+  width: 75px;
   display: flex;
   flex-direction: column;
 }
