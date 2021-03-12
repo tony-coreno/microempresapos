@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import {Button} from 'reactstrap';
+import {Button, Navbar} from 'reactstrap';
 import DataTable from 'react-data-table-component';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faSearch, faUserPlus} from "@fortawesome/free-solid-svg-icons";
@@ -46,7 +46,9 @@ const paginacionOpcion = {
 const Empleados = () => {
     return ( 
         <div className="table-responsive">
+            <Navbar>
             <Button className="btn btn-success d-flex d-flex justify-content-between align-items-center"><FontAwesomeIcon icon={faUserPlus} /></Button>
+            </Navbar>
             {/* <Button className="btn btn-success pull-right"><FontAwesomeIcon icon={faSearch} /></Button> */}
             {/* <h2>
                 Agregar Empleado
