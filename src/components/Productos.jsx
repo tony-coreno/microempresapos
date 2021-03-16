@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Switch, NavLink, Route} from 'react-router-dom';
-import Productos from './Productos';
 import Categorias from './Categorias';
-const Almacen = () => {
+
+const Productos = () => {
     return ( 
         <div>
             <Contenedorapp>
@@ -13,10 +13,12 @@ const Almacen = () => {
 			</Menu>
 			<main>
 				<Switch>
-					<Route path="/productos"  component={Productos}/>
 					<Route path="/categorias" component={Categorias}/>
 				</Switch>
 			</main>
+			<p>
+				<h3>Productos te encuentras</h3>
+			</p>
 		</Contenedorapp>
 
         </div>
@@ -44,6 +46,14 @@ const Menu = styled.nav`
 `;
  
 
+{/* 
+Estilos otra app
+
+
+
+
+*/}
+
 
 const Contenedorapp = styled.div`
     max-width: 1400px;
@@ -54,9 +64,8 @@ const Contenedorapp = styled.div`
     //grid-template-columns: 2fr 1fr;
     background: #fff;
     margin: 5px 0;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
 `;
- 
 
-export default Almacen;
+export default Productos;

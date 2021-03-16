@@ -1,22 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Switch, NavLink, Route} from 'react-router-dom';
-import Productos from './Productos';
-import Categorias from './Categorias';
+import Reportes from './Reportes';
+import CrearVenta from './CrearVenta';
 const Almacen = () => {
     return ( 
         <div>
             <Contenedorapp>
 			<Menu>
-				<NavLink to="/productos">Productos</NavLink>
-				<NavLink to="/categorias">Categorias</NavLink>
+                <NavLink to="/crear-venta">Crear Venta</NavLink>
+				<NavLink to="/administrar-venta">Administrar</NavLink>
+                <NavLink to="/reportes">Reportes</NavLink>
 			</Menu>
 			<main>
 				<Switch>
-					<Route path="/productos"  component={Productos}/>
-					<Route path="/categorias" component={Categorias}/>
+					<Route path="/crear-venta"  component={CrearVenta}/>
+					<Route path="/reportes" component={Reportes}/>
 				</Switch>
 			</main>
+            <p>
+                <h3>
+                    Administrar
+                </h3>
+            </p>
 		</Contenedorapp>
 
         </div>

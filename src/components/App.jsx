@@ -11,6 +11,11 @@ import styled from 'styled-components';
 import Sidebar from './Sidebar';
 import Post from './Post';
 import Error from './Error';
+import Productos from './Productos';
+import Categorias from './Categorias';
+import Reportes from './Reportes';
+import CrearVenta from './CrearVenta';
+import AdministrarVentas from './AdministrarVentas';
 
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -30,6 +35,11 @@ const App = () => {
                 <Route path="/post/:id" component={Post} />
                 <Route path="/clientes" component={Clientes} />
                 <Route path="/ayuda" component={Ayuda} />
+                <Route path="/productos" component={Productos} />
+                <Route path="/categorias" component={Categorias} />
+                <Route path="/crear-venta" component={CrearVenta} />
+                <Route path="/reportes" component={Reportes} />
+                <Route path="/administrar-venta" component={AdministrarVentas} />
                 {/* <Route path="/carrito" component={Carrito} /> */}
                 <Route component={Error} />
                 </Switch>
