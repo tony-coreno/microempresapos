@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {Switch, NavLink, Route} from 'react-router-dom';
 import AdministrarVentas from './AdministrarVentas';
 import Reportes from './Reportes';
+import Carrito from './Carrito';
 const CrearVenta = () => {
     return ( 
         <div>
@@ -17,18 +18,18 @@ const CrearVenta = () => {
 					<Route path="/reportes" component={Reportes}/>
                     <Route path="/administrar-venta" component={AdministrarVentas}/>
 				</Switch>
+                <h4>Hola</h4>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur explicabo rerum adipisci in quasi! Quasi nisi atque dolores, sunt, voluptate cum ab beatae sapiente totam ea exercitationem, accusamus debitis quos!</p>
 			</main>
-            <p>
-                <h3>
-                    Te encuentras en crear venta
-                </h3>
-            </p>
+ 
+            <aside>
+                <Carrito />
+            </aside>
 		</Contenedorapp>
 
         </div>
      );
 }
-
 
 const Menu = styled.nav`
     width: 100%;
@@ -49,20 +50,17 @@ const Menu = styled.nav`
     }
 `;
  
-
-
 const Contenedorapp = styled.div`
     max-width: 1400px;
     padding: 5px;
     width: 100%;
     display: grid;
     gap: 20px;
-    //grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr 1fr;
     background: #fff;
     margin: 5px 0;
     border-radius: 20px;
     box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
 `;
- 
 
 export default CrearVenta;

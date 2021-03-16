@@ -26,7 +26,6 @@ const Almacen = () => {
      );
 }
 
-
 const Menu = styled.nav`
     width: 100%;
     text-align: center;
@@ -45,8 +44,6 @@ const Menu = styled.nav`
         text-decoration: none;
     }
 `;
- 
-
 
 const Contenedorapp = styled.div`
     max-width: 1400px;

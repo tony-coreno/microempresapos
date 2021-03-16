@@ -16,8 +16,6 @@ import Categorias from './Categorias';
 import Reportes from './Reportes';
 import CrearVenta from './CrearVenta';
 import AdministrarVentas from './AdministrarVentas';
-
-
 import 'bootstrap/dist/css/bootstrap.css';
 const App = () => {
     return ( 

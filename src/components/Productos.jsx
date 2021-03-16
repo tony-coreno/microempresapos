@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import {Switch, NavLink, Route} from 'react-router-dom';
 import Categorias from './Categorias';
-
 const Productos = () => {
     return ( 
         <div>
@@ -25,7 +24,6 @@ const Productos = () => {
      );
 }
 
-
 const Menu = styled.nav`
     width: 100%;
     text-align: center;
@@ -45,16 +43,6 @@ const Menu = styled.nav`
     }
 `;
  
-
-{/* 
-Estilos otra app
-
-
-
-
-*/}
-
-
 const Contenedorapp = styled.div`
     max-width: 1400px;
     padding: 5px;

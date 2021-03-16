@@ -2,19 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Carrito = () => {
-    return ( 
-        <Contenedor>
-        <Menu>
-            <h3></h3>
-        </Menu>
-        <main>
-            <h2></h2>
-        </main>
-        <aside>
-            z<h2></h2>
-        </aside>
-    </Contenedor>
- 
+    return (
+        <> 
+            <h2>Carrito</h2>
+            <h7>Sin productos agregados</h7>
+        </>
      );
 }
 
