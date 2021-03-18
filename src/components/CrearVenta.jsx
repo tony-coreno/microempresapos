@@ -18,8 +18,8 @@ const CrearVenta = () => {
 					<Route path="/reportes" component={Reportes}/>
                     <Route path="/administrar-venta" component={AdministrarVentas}/>
 				</Switch>
-                <h4>Hola</h4>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur explicabo rerum adipisci in quasi! Quasi nisi atque dolores, sunt, voluptate cum ab beatae sapiente totam ea exercitationem, accusamus debitis quos!</p>
+                <h4>Escanea un producto</h4>
+                <input />
 			</main>
  
             <aside>
