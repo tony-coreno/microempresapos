@@ -50,20 +50,13 @@ const Sidebar = () => {
             >
               <FontAwesomeIcon icon={faSearch} />
             </Link>
-
-
-
+            
             <Link
               to="/crear-venta"
               className="list-group-item list-group-item-action bg-light" data-toggle="tooltip" data-placement="right" title="Compras"
             >
               <FontAwesomeIcon icon={faShoppingCart} /><span className="badge badge-primary">0</span>
             </Link>
-
-
-
-
-
             <a
               href="#"
               className="list-group-item list-group-item-action bg-light" data-toggle="tooltip" data-placement="right" title="Ajustes"

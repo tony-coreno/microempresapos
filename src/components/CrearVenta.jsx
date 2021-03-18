@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import {Switch, NavLink, Route, BrowserRouter} from 'react-router-dom';
 import AdministrarVentas from './AdministrarVentas';
 import Reportes from './Reportes';
 import Carrito from './Carrito';
+import FormularioCrearVenta from './FormularioCrearVenta';
 const CrearVenta = () => {
+
+    const [ventaProducto, setVentaProducto] = useState([]);
+
     return ( 
         <div>
             <Contenedorapp>
@@ -19,11 +23,23 @@ const CrearVenta = () => {
                     <Route path="/administrar-venta" component={AdministrarVentas}/>
 				</Switch>
                 <h4>Escanea un producto</h4>
-                <input />
+                <FormularioCrearVenta  ventaProducto={ventaProducto} setVentaProducto={setVentaProducto} />
+                
+                    {/* <ol>
+                    { ventaProducto.map( (venta) =>{
+                            return(
+
+                                <ul>{venta}</ul>
+                            )
+
+                        })
+                    }
+                    </ol> */}
+                
 			</main>
  
             <aside>
-                <Carrito />
+                <Carrito ventaProducto={ventaProducto}/>
             </aside>
 		</Contenedorapp>
         </div>
