@@ -14,7 +14,7 @@ const ModalSesion = ({modalSesion, setModalSesion}) => {
     return (
       <Modal isOpen={modalSesion}>
       <ModalHeader>
-        Perfil
+        Cerrar Sesión
       </ModalHeader>
       <ModalBody>
         <FormGroup>

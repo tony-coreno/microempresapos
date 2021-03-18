@@ -41,6 +41,10 @@ const Menu = styled.nav`
         background: #147571;
         text-decoration: none;
     }
+    a.active{
+        border-bottom: 2px solid #F2F2F2;
+        padding-bottom: 3px;
+    }
 `;
  
 const Contenedorapp = styled.div`

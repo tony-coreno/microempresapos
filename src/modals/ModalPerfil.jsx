@@ -17,17 +17,13 @@ const ModalPerfil = ({modal, setModal}) => {
         Perfil
       </ModalHeader>
       <ModalBody>
-        <FormGroup>
-          <Label for="usuario" className="form-control">Usuario</Label>
-          <Input type="text" name="usuario"/>
-        </FormGroup>
+
         <FormGroup>
         <Label for="password"></Label>
-        <Input type="password" name="password"/>
         </FormGroup>
         </ModalBody>
       <ModalFooter>
-        <Button color="dark" onClick={() => setModal(false)}>Cerrar</Button>
+        <Button color="dark" onClick={() => setModal(false)}>Cerrar Sesión </Button>
       </ModalFooter>
       </Modal>    
      );

@@ -20,8 +20,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 const App = () => {
     return ( 
     <>
+
         <Sidebar />
-        <BrowserRouter>
         <ContenedorPrincipal>
                 <Header />
             <Main>
@@ -43,7 +43,7 @@ const App = () => {
                 </Switch>
             </Main>
         </ContenedorPrincipal>
-        </BrowserRouter>
+ 
      </>   
      );
 }

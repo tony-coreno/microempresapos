@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Switch, NavLink, Route} from 'react-router-dom';
+import {Switch, NavLink, Route, BrowserRouter} from 'react-router-dom';
 import AdministrarVentas from './AdministrarVentas';
 import Reportes from './Reportes';
 import Carrito from './Carrito';
@@ -26,7 +26,6 @@ const CrearVenta = () => {
                 <Carrito />
             </aside>
 		</Contenedorapp>
-
         </div>
      );
 }
@@ -47,6 +46,10 @@ const Menu = styled.nav`
     a:hover {
         background: #147571;
         text-decoration: none;
+    }
+    a.active{
+        border-bottom: 2px solid #F2F2F2;
+        padding-bottom: 3px;
     }
 `;
  

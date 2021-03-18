@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ModalPerfil from '../modals/ModalPerfil';
 import ModalSesion from '../modals/ModalSesion';
 import {Button} from "reactstrap";
-import { Link, BrowserRouter, Route} from 'react-router-dom';
-import Ventas from './Ventas';
+import { Link} from 'react-router-dom';
+import DropdownButton from 'react-bootstrap/DropdownButton'
 import {
   faUserAlt,
   faCog,
@@ -26,10 +26,11 @@ const Sidebar = () => {
         <div className="bg-light border-right" id="sidebar-wrapper">
           <div className="sidebar-heading"></div>
           <div className="list-group list-group-flush">
-             
-            <Button color="blue" className="list-group-item list-group-item-action bg-light" data-toggle="tooltip" data-placement="right" title="Notificaciones">
+            
+            <Button color="blue" className="list-group-item list-group-item-action bg-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <FontAwesomeIcon icon={faBell} /><span class="badge badge-primary">4</span>
             </Button>
+              
              <Button color="light" className="list-group-item list-group-item-action bg-light" onClick={() => setModal(true)} data-toggle="tooltip" data-placement="right" title="Perfil">
               <FontAwesomeIcon icon={faUserAlt} />
             </Button> 
@@ -44,18 +45,26 @@ const Sidebar = () => {
               <FontAwesomeIcon icon={faSearch} />
               </Link>
               </Route> */}
-              <a
-              href="#"
-              className="list-group-item list-group-item-action bg-light" data-toggle="tooltip" data-placement="right" title="Buscar"
+            <Link
+              to="/productos"
+              className="list-group-item list-group-item-action bg-light" data-toggle="tooltip" data-placement="right" title="Buscar producto"
             >
               <FontAwesomeIcon icon={faSearch} />
-            </a>
-            <a
-              href="#"
+            </Link>
+
+
+
+            <Link
+              to="/crear-venta"
               className="list-group-item list-group-item-action bg-light" data-toggle="tooltip" data-placement="right" title="Compras"
             >
               <FontAwesomeIcon icon={faShoppingCart} /><span className="badge badge-primary">0</span>
-            </a>
+            </Link>
+
+
+
+
+
             <a
               href="#"
               className="list-group-item list-group-item-action bg-light" data-toggle="tooltip" data-placement="right" title="Ajustes"
