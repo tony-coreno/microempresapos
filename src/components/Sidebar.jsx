@@ -6,7 +6,6 @@ import ModalPerfil from '../modals/ModalPerfil';
 import ModalSesion from '../modals/ModalSesion';
 import {Button} from "reactstrap";
 import { Link} from 'react-router-dom';
-import DropdownButton from 'react-bootstrap/DropdownButton'
 import {
   faUserAlt,
   faCog,
