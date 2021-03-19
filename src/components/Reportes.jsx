@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {Switch, NavLink, Route} from 'react-router-dom';
 import AdministrarVentas from './AdministrarVentas';
 import CrearVenta from './CrearVenta';
+import CardReportes from './CardReportes';
 const Almacen = () => {
     return ( 
         <div>

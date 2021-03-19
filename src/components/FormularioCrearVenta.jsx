@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
 const FormularioCrearVenta = ({ventaProducto, setVentaProducto}) => {
     
@@ -24,16 +25,24 @@ const FormularioCrearVenta = ({ventaProducto, setVentaProducto}) => {
    
     return (     
         <>
-        <h1></h1>
             <form onSubmit={handleSubmit}>
-                <input 
-                    value={listaProducto}
-                    onChange={handleInputChange}
-                />
+                <InputFormulario value={listaProducto}  onChange={handleInputChange} ></InputFormulario>
+                    
+                
             </form>
         </>
         
      );
 }
+
+const InputFormulario = styled.input`
+
+    border-radius: 5px;
+    overflow: hidden;
+    width: 30%;
+`;
+
+
+
  
 export default FormularioCrearVenta;

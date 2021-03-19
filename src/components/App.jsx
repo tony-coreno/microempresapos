@@ -15,6 +15,7 @@ import Productos from './Productos';
 import Categorias from './Categorias';
 import Reportes from './Reportes';
 import CrearVenta from './CrearVenta';
+import NuevoEmpleado from './NuevoEmpleado';
 import AdministrarVentas from './AdministrarVentas';
 import 'bootstrap/dist/css/bootstrap.css';
 const App = () => {
@@ -38,6 +39,7 @@ const App = () => {
                 <Route path="/crear-venta" component={CrearVenta} />
                 <Route path="/reportes" component={Reportes} />
                 <Route path="/administrar-venta" component={AdministrarVentas} />
+                <Route path="/agregar-empleado" component={NuevoEmpleado} />
                 {/* <Route path="/carrito" component={Carrito} /> */}
                 <Route component={Error} />
                 </Switch>

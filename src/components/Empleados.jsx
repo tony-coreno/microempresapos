@@ -2,7 +2,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {Button, Navbar} from 'reactstrap';
 import DataTable from 'react-data-table-component';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faSearch, faUserPlus} from "@fortawesome/free-solid-svg-icons";
+import {faUserPlus} from "@fortawesome/free-solid-svg-icons";
+import {NavLink} from 'react-router-dom';
 
 const tablaEmpleados =[
     {id:1, nombre:"Antonio", apellido: "Coreño", perfil: "Administrador", estatus: "Activo"},
@@ -52,7 +53,9 @@ const Empleados = () => {
     return ( 
         <div className="table-responsive">
             <Navbar>
-            <Button className="btn btn-success d-flex d-flex justify-content-between align-items-center"><FontAwesomeIcon icon={faUserPlus} /></Button>
+            <NavLink to="/agregar-empleado">    
+                <Button className="btn btn-success d-flex d-flex justify-content-between align-items-center"><FontAwesomeIcon icon={faUserPlus} /></Button>
+            </NavLink>
             </Navbar>
             <DataTable 
                 columns={columnas}

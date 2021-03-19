@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import {Switch, NavLink, Route, BrowserRouter} from 'react-router-dom';
+import {Switch, NavLink, Route} from 'react-router-dom';
 import AdministrarVentas from './AdministrarVentas';
 import Reportes from './Reportes';
 import Carrito from './Carrito';

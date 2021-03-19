@@ -6,7 +6,6 @@ import {
     ModalBody,
     ModalFooter,
     FormGroup,
-    Input,
     Label,
   } from "reactstrap";
   import 'bootstrap/dist/css/bootstrap.css';

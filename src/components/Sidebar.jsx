@@ -20,7 +20,7 @@ const Sidebar = () => {
   return(
     <>
 
-      <a className="navbar-brand" href="#"></a>
+      {/* <a className="navbar-brand" href="#"></a> */}
       <div className="d-flex" id="wrapper">
         <div className="bg-light border-right" id="sidebar-wrapper">
           <div className="sidebar-heading"></div>
@@ -33,17 +33,6 @@ const Sidebar = () => {
              <Button color="light" className="list-group-item list-group-item-action bg-light" onClick={() => setModal(true)} data-toggle="tooltip" data-placement="right" title="Perfil">
               <FontAwesomeIcon icon={faUserAlt} />
             </Button> 
-         {/* <a
-              href="#"
-              className="list-group-item list-group-item-action bg-light"
-            >
-              <FontAwesomeIcon icon={faUserAlt} />
-            </a> */}
-            {/* <Route>
-            <Link to="/carrito">
-              <FontAwesomeIcon icon={faSearch} />
-              </Link>
-              </Route> */}
             <Link
               to="/productos"
               className="list-group-item list-group-item-action bg-light" data-toggle="tooltip" data-placement="right" title="Buscar producto"
@@ -63,13 +52,6 @@ const Sidebar = () => {
             >
               <FontAwesomeIcon icon={faCog} />
             </a>
-
-          {/* <a
-              href="#"
-              className="list-group-item list-group-item-action bg-light"
-            >
-              <FontAwesomeIcon icon={faPowerOff} />
-            </a> */}
             <Button color="light" className="list-group-item list-group-item-action bg-light" onClick={() => setModalSesion(true)} ata-toggle="tooltip" data-placement="right" title="Cerrar Sesión">
               <FontAwesomeIcon icon={faPowerOff} />
             </Button> 

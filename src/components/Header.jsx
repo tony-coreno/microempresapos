@@ -1,8 +1,8 @@
 import {NavLink, Route} from 'react-router-dom';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faCashRegister, faClipboardList, faLayerGroup, faQuestionCircle, 
-        faTachometerAlt, faUsers, faUserTie} from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {faCashRegister, faClipboardList, faLayerGroup, faQuestionCircle, 
+//         faTachometerAlt, faUsers, faUserTie} from "@fortawesome/free-solid-svg-icons";
 const Header = () => {
     return ( 
         <ContenedorHeader>
