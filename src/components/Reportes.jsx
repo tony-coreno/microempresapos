@@ -21,7 +21,7 @@ const Almacen = () => {
 			</main>
             <p>
                 <h3>
-                    Te encuentras en reportes
+                    Reportes
                 </h3>
             </p>
 		</Contenedorapp>

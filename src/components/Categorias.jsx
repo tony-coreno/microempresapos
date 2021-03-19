@@ -17,7 +17,7 @@ const Categorias = () => {
 				</Switch>
 			</main>
 			<p>
-				<h3>Categorias te encuentras</h3>
+				<h3>Categorias</h3>
 			</p>
 		</Contenedorapp>
 

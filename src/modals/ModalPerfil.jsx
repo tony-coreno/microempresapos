@@ -5,8 +5,7 @@ import {
     ModalHeader,
     ModalBody,
     ModalFooter,
-    FormGroup,
-    Label,
+    FormGroup
   } from "reactstrap";
   import 'bootstrap/dist/css/bootstrap.css';
 const ModalPerfil = ({modal, setModal}) => {
@@ -18,11 +17,11 @@ const ModalPerfil = ({modal, setModal}) => {
       <ModalBody>
 
         <FormGroup>
-        <Label for="password"></Label>
+        {/* <Label for="password"></Label> */}
         </FormGroup>
         </ModalBody>
       <ModalFooter>
-        <Button color="dark" onClick={() => setModal(false)}>Cerrar Sesión </Button>
+         <Button color="dark" onClick={() => setModal(false)}>Cerrar</Button> 
       </ModalFooter>
       </Modal>    
      );

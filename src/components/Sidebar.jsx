@@ -26,7 +26,7 @@ const Sidebar = () => {
           <div className="sidebar-heading"></div>
           <div className="list-group list-group-flush">
             
-            <Button color="blue" className="list-group-item list-group-item-action bg-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <Button color="blue" className="list-group-item list-group-item-action bg-light" data-toggle="tooltip" data-placement="right" title="Notificaciones">
               <FontAwesomeIcon icon={faBell} /><span class="badge badge-primary">4</span>
             </Button>
               

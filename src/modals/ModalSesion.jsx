@@ -5,9 +5,7 @@ import {
     ModalHeader,
     ModalBody,
     ModalFooter,
-    FormGroup,
-    Input,
-    Label,
+    FormGroup
   } from "reactstrap";
   import 'bootstrap/dist/css/bootstrap.css';
 const ModalSesion = ({modalSesion, setModalSesion}) => {
@@ -18,16 +16,15 @@ const ModalSesion = ({modalSesion, setModalSesion}) => {
       </ModalHeader>
       <ModalBody>
         <FormGroup>
-          <Label for="usuario" className="form-control">Usuario</Label>
-          <Input type="text" name="usuario"/>
+        
         </FormGroup>
         <FormGroup>
-        <Label for="password"></Label>
-        <Input type="password" name="password"/>
+
         </FormGroup>
         </ModalBody>
       <ModalFooter>
-        <Button color="dark" onClick={() => setModalSesion(false)}>Cerrar</Button>
+        <Button color="dark" onClick={() => setModalSesion(false)}>Cancelar</Button>
+        <Button color="success" >Cerrar Sesión</Button>
       </ModalFooter>
       </Modal>    
      );
