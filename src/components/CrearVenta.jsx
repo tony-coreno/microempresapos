@@ -5,6 +5,8 @@ import AdministrarVentas from "./AdministrarVentas";
 import Reportes from "./Reportes";
 import Carrito from "./Carrito";
 import FormularioCrearVenta from "./FormularioCrearVenta";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faBarcode} from "@fortawesome/free-solid-svg-icons";
 const CrearVenta = () => {
   let f = new Date();
   return (
@@ -25,8 +27,8 @@ const CrearVenta = () => {
           </TituloEmpleado>
 
           <hr />
-          <h4>Escanea un producto</h4>
-          <FormularioCrearVenta />
+          <h4>  Escanea un producto </h4>
+          <FontAwesomeIcon icon={faBarcode} /><FormularioCrearVenta />
         </main>
 
         <aside>
@@ -66,7 +68,7 @@ const Contenedorapp = styled.div`
   width: 100%;
   display: grid;
   gap: 20px;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2fr 2fr;
   background: #fff;
   margin: 5px 0;
   border-radius: 20px;

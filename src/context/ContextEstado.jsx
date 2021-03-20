@@ -6,6 +6,13 @@ const ProveedorState = ({children}) => {
 
     const [ventaProducto, setVentaProducto] = useState([]);
     const [listaProducto, setListaProducto] = useState('');
+    const [base, setBase] = useState([{
+        id: 1,
+        nombre: 'Coca-Cola',
+        precio: 17.50,
+        cantidad: 1
+
+    }]);
 
     const handleInputChange = (e) => {
         setListaProducto(e.target.value);
@@ -25,7 +32,7 @@ const ProveedorState = ({children}) => {
 
 
     return ( 
-        <ContextEstado.Provider value={{ventaProducto, listaProducto, setListaProducto, setVentaProducto, handleInputChange, handleSubmit}}>
+        <ContextEstado.Provider value={{ventaProducto, listaProducto, setListaProducto, setVentaProducto, handleInputChange, handleSubmit, base}}>
             {children}
         </ContextEstado.Provider>
      );

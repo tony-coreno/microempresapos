@@ -5,7 +5,6 @@ import { ContextEstado } from '../context/ContextEstado';
     const FormularioCrearVenta = () => {
         const {handleSubmit, listaProducto, handleInputChange} = useContext(ContextEstado);
 
-   
     return (     
         <>
             <form onSubmit={handleSubmit}>
@@ -20,10 +19,7 @@ const InputFormulario = styled.input`
 
     border-radius: 5px;
     overflow: hidden;
-    width: 30%;
+    width: 50%;
 `;
 
-
-
- 
 export default FormularioCrearVenta;
