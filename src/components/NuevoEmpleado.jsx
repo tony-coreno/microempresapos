@@ -18,22 +18,22 @@ const NuevoEmpleado = () => {
         </div>
         <form>
           <hr />
-          <div class="row">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Nombre" />
+          <div className="row">
+            <div className="col">
+              <input type="text" className="form-control" placeholder="Nombre" />
             </div>
             <div class="col">
-              <input type="text" class="form-control" placeholder="Apellido Paterno" />
+              <input type="text" className="form-control" placeholder="Apellido Paterno" />
             </div>
           </div>
 
 
-          <div class="row mt-4">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Apellido Materno" />
+          <div className="row mt-4">
+            <div className="col">
+              <input type="text" className="form-control" placeholder="Apellido Materno" />
             </div>
-            <div class="col">
-              <input type="number" class="form-control" placeholder="Numero de empleado" />
+            <div className="col">
+              <input type="number" className="form-control" placeholder="Numero de empleado" />
             </div>
           </div>
         
@@ -50,18 +50,18 @@ const NuevoEmpleado = () => {
           </div> */}
 
           <hr />
-          <div class="form-group col-mt-4">
+          <div className="form-group col-mt-4">
             <h5>Perfil</h5>
-            <select id="inputState" class="form-control mt-2">
+            <select id="inputState" className="form-control mt-2">
               <option>Administrador</option>
               <option>Vendedor</option>
             </select>
           </div>
 
           <hr />
-          <div class="form-group col-mt-4">
+          <div className="form-group col-mt-4">
             <h5>Estado</h5>
-            <select id="inputState" class="form-control mt-2">
+            <select id="inputState" className="form-control mt-2">
               <option>Activo</option>
               <option>Inactivo</option>
             </select>

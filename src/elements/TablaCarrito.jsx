@@ -6,7 +6,7 @@ const TablaCarrito = () => {
 
     const {base} = useContext(ContextEstado);
     
-    const {id} = base;
+    // const {id} = base;
 
     const columnas = [
         {
@@ -30,6 +30,12 @@ const TablaCarrito = () => {
             selector: "cantidad",
             sortable: true
         },
+        {
+            name: "Eliminar",
+            selector: "cantidad",
+            sortable: true
+        },
+        
         ];
         
         const paginacionOpcion = {
@@ -47,8 +53,8 @@ const TablaCarrito = () => {
         columns={columnas}
         data={base}
         title="Detalle venta"
-        pagination
-        paginationComponentOptions={paginacionOpcion}
+        // pagination
+        // paginationComponentOptions={paginacionOpcion}
         fixedHeader
         fixedHeaderScrollHeight="300px"
     />

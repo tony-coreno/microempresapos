@@ -14,28 +14,28 @@ const ProveedorState = ({children}) => {
 
     },
     {
-        id: 1,
+        id: 2,
         nombre: 'Chips',
         precio: 17.50,
         cantidad: 1
 
     },
     {
-        id: 1,
+        id: 3,
         nombre: 'Coca-Cola',
         precio: 17.50,
         cantidad: 1
 
     },
     {
-        id: 1,
+        id: 4,
         nombre: 'Coca-Cola',
         precio: 17.50,
         cantidad: 1
 
     }
     ,{
-        id: 1,
+        id: 5,
         nombre: 'Coca-Cola',
         precio: 17.50,
         cantidad: 1

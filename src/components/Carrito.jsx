@@ -2,6 +2,9 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { ContextEstado } from "../context/ContextEstado";
 import TablaCarrito from './../elements/TablaCarrito';
+import "bootstrap/dist/css/bootstrap.css";
+import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Carrito = () => {
 const {ventaProducto} = useContext(ContextEstado);
@@ -13,24 +16,25 @@ const {ventaProducto} = useContext(ContextEstado);
       <Contenedor>
         <ol>
           {ventaProducto.map((venta) => {
-            return <ul>{venta}</ul>;
+            return <ul key={venta}>{venta}</ul>;
           })}
         </ol>
         <TablaCarrito />
+    
       </Contenedor>
       <TotalDiv>
-        <input readOnly></input>
 
+        <input readOnly></input>
         <h3>Total</h3>
       </TotalDiv>
-      <Boton>Metodo de pago</Boton>
+      <button className="btn btn-info"> <FontAwesomeIcon icon={faCreditCard} />  Método de pago</button>
     </>
   );
 };
 
 const Contenedor = styled.div`
-  padding: 15px;
-  width: 90%;
+  padding: 25px;
+  width: 100%;
   display: grid;
   gap: 20px;
   background: #eef3f5;
@@ -43,14 +47,9 @@ const TituloEmpleado = styled.h6`
   color: #fff;
 `;
 const TituloCarrito= styled.h4`
-  text-align: left;
+  text-align: center;
 `;
 const TotalDiv = styled.div`
   float: right;
 `;
-const Boton = styled.button`
-  background-color: #000;
-  color: #FFF;
-`;
-
 export default Carrito;
