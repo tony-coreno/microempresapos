@@ -12,7 +12,37 @@ const ProveedorState = ({children}) => {
         precio: 17.50,
         cantidad: 1
 
-    }]);
+    },
+    {
+        id: 1,
+        nombre: 'Chips',
+        precio: 17.50,
+        cantidad: 1
+
+    },
+    {
+        id: 1,
+        nombre: 'Coca-Cola',
+        precio: 17.50,
+        cantidad: 1
+
+    },
+    {
+        id: 1,
+        nombre: 'Coca-Cola',
+        precio: 17.50,
+        cantidad: 1
+
+    }
+    ,{
+        id: 1,
+        nombre: 'Coca-Cola',
+        precio: 17.50,
+        cantidad: 1
+
+    }
+
+]);
 
     const handleInputChange = (e) => {
         setListaProducto(e.target.value);
@@ -29,7 +59,6 @@ const ProveedorState = ({children}) => {
     
         }  
     }
-
 
     return ( 
         <ContextEstado.Provider value={{ventaProducto, listaProducto, setListaProducto, setVentaProducto, handleInputChange, handleSubmit, base}}>

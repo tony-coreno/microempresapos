@@ -9,7 +9,7 @@ const {ventaProducto} = useContext(ContextEstado);
     <>
       <TituloEmpleado>''</TituloEmpleado>
       <hr />
-      <TituloCarrito>Carrito </TituloCarrito>
+      <TituloCarrito>Carrito de compras </TituloCarrito>
       <Contenedor>
         <ol>
           {ventaProducto.map((venta) => {

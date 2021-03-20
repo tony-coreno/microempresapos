@@ -1,22 +1,24 @@
-import React, {useState} from 'react';
-import "./side.css";
-import "bootstrap/dist/css/bootstrap.css";
+import React, {useContext, useState} from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ModalPerfil from '../modals/ModalPerfil';
 import ModalSesion from '../modals/ModalSesion';
 import {Button} from "reactstrap";
 import { Link} from 'react-router-dom';
-import {
-  faUserAlt,
-  faCog,
-  faPowerOff,
-  faShoppingCart,
-  faSearch,
-  faBell,
-} from "@fortawesome/free-solid-svg-icons";
+import {faUserAlt, faCog, faPowerOff, faShoppingCart, faSearch,faBell} from "@fortawesome/free-solid-svg-icons";
+import "./side.css";
+import "bootstrap/dist/css/bootstrap.css";
+import { ContextEstado } from '../context/ContextEstado';
 const Sidebar = () => {
   const [modal, setModal] = useState(false);
   const [modalSesion, setModalSesion] = useState(false);
+  const {ventaProducto} = useContext(ContextEstado);
+  
+  const acumulador = () => {
+    
+    const cuenta =ventaProducto.length
+  }
+
+
   return(
     <>
 
