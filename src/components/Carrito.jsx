@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { ContextEstado } from "../context/ContextEstado";
 
-const Carrito = ({ ventaProducto }) => {
-
-
+const Carrito = () => {
+const {ventaProducto} = useContext(ContextEstado);
   return (
     <>
       <TituloEmpleado>''</TituloEmpleado>

@@ -40,7 +40,6 @@ const App = () => {
                 <Route path="/reportes" component={Reportes} />
                 <Route path="/administrar-venta" component={AdministrarVentas} />
                 <Route path="/agregar-empleado" component={NuevoEmpleado} />
-                {/* <Route path="/carrito" component={Carrito} /> */}
                 <Route component={Error} />
                 </Switch>
             </Main>

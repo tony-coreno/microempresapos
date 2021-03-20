@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Switch, NavLink, Route } from "react-router-dom";
 import AdministrarVentas from "./AdministrarVentas";
@@ -6,7 +6,6 @@ import Reportes from "./Reportes";
 import Carrito from "./Carrito";
 import FormularioCrearVenta from "./FormularioCrearVenta";
 const CrearVenta = () => {
-  const [ventaProducto, setVentaProducto] = useState([]);
   let f = new Date();
   return (
     <div>
@@ -27,25 +26,11 @@ const CrearVenta = () => {
 
           <hr />
           <h4>Escanea un producto</h4>
-          <FormularioCrearVenta
-            ventaProducto={ventaProducto}
-            setVentaProducto={setVentaProducto}
-          />
-
-          {/* <ol>
-                    { ventaProducto.map( (venta) =>{
-                            return(
-
-                                <ul>{venta}</ul>
-                            )
-
-                        })
-                    }
-                    </ol> */}
+          <FormularioCrearVenta />
         </main>
 
         <aside>
-          <Carrito ventaProducto={ventaProducto} />
+          <Carrito />
         </aside>
       </Contenedorapp>
     </div>
