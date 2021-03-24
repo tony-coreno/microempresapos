@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import {Switch, NavLink, Route} from 'react-router-dom';
 import AdministrarVentas from './AdministrarVentas';
 import CrearVenta from './CrearVenta';
-// import CardReportes from './CardReportes';
+import CardReportes from './CardReportes';
+
 const Almacen = () => {
     return ( 
         <div>
@@ -19,11 +20,8 @@ const Almacen = () => {
                     <Route path="/administrar-venta" component={AdministrarVentas}/>
 				</Switch>
 			</main>
-            <p>
-                <h3>
-                    Reportes
-                </h3>
-            </p>
+
+            <CardReportes />
 		</Contenedorapp>
 
         </div>

@@ -3,10 +3,12 @@ import styled from 'styled-components';
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import {faCashRegister, faClipboardList, faLayerGroup, faQuestionCircle, 
 //         faTachometerAlt, faUsers, faUserTie} from "@fortawesome/free-solid-svg-icons";
+// import Barra from './../elements/Barra';
 const Header = () => {
     return ( 
         <ContenedorHeader>
         <Route>
+            {/* <Barra /> */}
             <Titulo>Sistema POS</Titulo>
             <MenuNav>
                 {/* <NavLink to="/" exact={true} >Dashboard <FontAwesomeIcon icon={faTachometerAlt} /></NavLink>

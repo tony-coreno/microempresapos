@@ -8,7 +8,10 @@ import { ContextEstado } from '../context/ContextEstado';
     return (     
         <>
             <form onSubmit={handleSubmit}>
-                <InputFormulario type="number" value={listaProducto}  onChange={handleInputChange} ></InputFormulario>
+                <InputFormulario type="number" value={listaProducto}  onChange={handleInputChange} >
+
+                </InputFormulario>
+        
             </form>
         </>
         

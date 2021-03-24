@@ -55,7 +55,7 @@ const ProveedorState = ({children}) => {
         if (listaProducto.trim().length > 2 ){
             console.log('se insertó a la lista');
             setVentaProducto([...ventaProducto, listaProducto]);
-    
+            
     
         }  
     }

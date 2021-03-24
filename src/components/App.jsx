@@ -17,6 +17,7 @@ import Reportes from './Reportes';
 import CrearVenta from './CrearVenta';
 import NuevoEmpleado from './NuevoEmpleado';
 import AdministrarVentas from './AdministrarVentas';
+import Login from './../auth/Login';
 import 'bootstrap/dist/css/bootstrap.css';
 const App = () => {
     return ( 
@@ -40,6 +41,7 @@ const App = () => {
                 <Route path="/reportes" component={Reportes} />
                 <Route path="/administrar-venta" component={AdministrarVentas} />
                 <Route path="/agregar-empleado" component={NuevoEmpleado} />
+                <Route path="/login" component={Login} />
                 <Route component={Error} />
                 </Switch>
             </Main>
@@ -51,6 +53,7 @@ const App = () => {
 
 const ContenedorPrincipal = styled.div`
     padding: 10px;
+    margin-top: 0px;
     width: 90%;
     max-width: 1400px;
 `;
