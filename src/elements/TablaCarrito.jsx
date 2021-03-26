@@ -38,12 +38,12 @@ const TablaCarrito = () => {
         
         ];
         
-        const paginacionOpcion = {
-            rowsPerPageText: 'Filas por página',
-            rangeSeparatorText: 'de',
-            selectAllRowsItem: true,
-            selectAllRowsItemText: 'Todos'
-        }
+        // const paginacionOpcion = {
+        //     rowsPerPageText: 'Filas por página',
+        //     rangeSeparatorText: 'de',
+        //     selectAllRowsItem: true,
+        //     selectAllRowsItemText: 'Todos'
+        // }
 
 
 

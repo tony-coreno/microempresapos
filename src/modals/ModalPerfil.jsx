@@ -4,9 +4,7 @@ import {
     Modal,
     ModalHeader,
     ModalBody,
-    ModalFooter,
-    FormGroup,
-    Image
+    ModalFooter
   } from "reactstrap";
   import 'bootstrap/dist/css/bootstrap.css';
   import styled from 'styled-components';

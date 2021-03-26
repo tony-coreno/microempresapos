@@ -2,19 +2,19 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import {Button} from 'reactstrap';
-import { faArrowLeft, faEye } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from 'styled-components';
 
 const NuevoProducto = () => {
-  const boton = document.getElementById("boton");
-  const pass = document.getElementById("pass");
-  const mostrarContraseña = (e) => {
-    e.preventDefault();
-    if (pass.type == "password") {
-      pass.type = "text";
-    }
-  };
+  // const boton = document.getElementById("boton");
+  // const pass = document.getElementById("pass");
+  // const mostrarContraseña = (e) => {
+  //   e.preventDefault();
+  //   if (pass.type == "password") {
+  //     pass.type = "text";
+  //   }
+  // };
   return (
     <>
       <main className="caja-contenido col-12">
@@ -100,10 +100,6 @@ const Titulo = styled.h5`
     text-align: center;
 `;
 
-const BotonCentrado = styled.div`
 
-    display: flex;
-    flex-direction: row;
-`;
 
 export default NuevoProducto;

@@ -6,16 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {Button} from 'reactstrap';
 import styled from 'styled-components';
 const NuevoEmpleado = () => {
-  const boton = document.getElementById('boton');
-  const pass = document.getElementById('pass');
-  const mostrarContraseña = (e) => {
-    e.preventDefault();
-    if(pass.type=="password"){
-      pass.type ="text";
-      
-    }
 
-  }
   return (
     <>
       <main className="caja-contenido col-12">
@@ -55,7 +46,7 @@ const NuevoEmpleado = () => {
             </div>
             <div class="col">
               <input id="pass" type="password" className="form-control" placeholder="Contraseña" />
-              <button id="boton" className="btn-sm btn-primary mt-2" onClick={()=>mostrarContraseña} ><i>Mostrar <FontAwesomeIcon icon={faEye} /></i></button>
+              <button id="boton" className="btn-sm btn-primary mt-2" ><i>Mostrar <FontAwesomeIcon icon={faEye} /></i></button>
             </div>
           </div>
 
