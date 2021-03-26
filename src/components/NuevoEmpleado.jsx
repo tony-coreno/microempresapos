@@ -12,7 +12,7 @@ const NuevoEmpleado = () => {
       <main className="caja-contenido col-12">
         <div>
             <NavLink to="/empleados">
-          <Button className="btn btn-success">
+          <Button className="btn btn-info">
             <FontAwesomeIcon icon={faArrowLeft} />
           </Button>
           </NavLink>
@@ -69,7 +69,7 @@ const NuevoEmpleado = () => {
           </div>
           
           <div>
-            <button className="btn btn-success">Registrar</button>
+            <button className="btn btn-info">Registrar</button>
           </div>
         </form>
       </main>

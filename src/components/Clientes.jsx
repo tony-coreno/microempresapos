@@ -1,5 +1,9 @@
 import React from 'react';
 import DataTable from 'react-data-table-component';
+import { NavLink} from "react-router-dom";
+import {Button, Navbar} from 'reactstrap';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faUserTie} from "@fortawesome/free-solid-svg-icons";
 const columnas = [
     {
     name: "ID",
@@ -49,6 +53,11 @@ const paginacionOpcion = {
 const Clientes = () => {
     return ( 
         <div>
+             <Navbar>
+            <NavLink to="/nuevo-cliente">    
+                <Button className="btn btn-info d-flex d-flex justify-content-between align-items-center"><FontAwesomeIcon icon={faUserTie} /></Button>
+            </NavLink>
+            </Navbar>
              <DataTable 
                 columns={columnas}
                 data={tablaEmpleados}

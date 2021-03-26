@@ -19,12 +19,12 @@ const ModalSesion = ({modalSesion, setModalSesion}) => {
         
         </FormGroup>
         <FormGroup>
-
+          <h6>¿Desea continuar?</h6>
         </FormGroup>
         </ModalBody>
       <ModalFooter>
-        <Button color="dark" onClick={() => setModalSesion(false)}>Cancelar</Button>
-        <Button color="success" >Cerrar Sesión</Button>
+        <Button color="danger" onClick={() => setModalSesion(false)}>Cancelar</Button>
+        <Button color="info" >Cerrar Sesión</Button>
       </ModalFooter>
       </Modal>    
      );

@@ -54,7 +54,7 @@ const Empleados = () => {
         <div className="table-responsive">
             <Navbar>
             <NavLink to="/agregar-empleado">    
-                <Button className="btn btn-success d-flex d-flex justify-content-between align-items-center"><FontAwesomeIcon icon={faUserPlus} /></Button>
+                <Button className="btn btn-info d-flex d-flex justify-content-between align-items-center"><FontAwesomeIcon icon={faUserPlus} /></Button>
             </NavLink>
             </Navbar>
             <DataTable 

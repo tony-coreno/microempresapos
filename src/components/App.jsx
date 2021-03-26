@@ -8,6 +8,7 @@ import NuevoProducto from './../products/NuevoProducto';
 import Empleados from './Empleados';
 import Clientes from './Clientes';
 import Ayuda from './Ayuda';
+import NuevoCliente from './../clients/NuevoCliente';
 import styled from 'styled-components';
 import Sidebar from './Sidebar';
 import Post from './Post';
@@ -45,6 +46,7 @@ const App = () => {
                 <Route path="/administrar-venta" component={AdministrarVentas} />
                 <Route path= "/agregar-empleado" exact={true} component={NuevoEmpleado} />
                 <Route path="/settings" component={Settings} />
+                <Route path="/nuevo-cliente" component={NuevoCliente} />
                 <Route path="/login" component={Login} />
                 <Route component={Error} />
                 </Switch>
