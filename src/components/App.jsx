@@ -4,6 +4,7 @@ import Header from './Header';
 import Inicio from './Inicio';
 import Almacen from './Almacen';
 import Ventas from './Ventas';
+import NuevoProducto from './../products/NuevoProducto';
 import Empleados from './Empleados';
 import Clientes from './Clientes';
 import Ayuda from './Ayuda';
@@ -19,6 +20,7 @@ import NuevoEmpleado from './NuevoEmpleado';
 import AdministrarVentas from './AdministrarVentas';
 import Login from './../auth/Login';
 import 'bootstrap/dist/css/bootstrap.css';
+import Settings from '../settings/Settings';
 const App = () => {
     return ( 
     <>
@@ -29,6 +31,7 @@ const App = () => {
             <Main>
                 <Switch>
                 <Route path="/" exact={true} component={Inicio} />
+                <Route path="/agregar-producto" exact={true} component={NuevoProducto} />
                 <Route path="/empleados" component={Empleados} />
                 <Route path="/almacen" component={Almacen} />
                 <Route path="/ventas" component={Ventas} />
@@ -40,7 +43,8 @@ const App = () => {
                 <Route path="/crear-venta" component={CrearVenta} />
                 <Route path="/reportes" component={Reportes} />
                 <Route path="/administrar-venta" component={AdministrarVentas} />
-                <Route path="/agregar-empleado" component={NuevoEmpleado} />
+                <Route path= "/agregar-empleado" exact={true} component={NuevoEmpleado} />
+                <Route path="/settings" component={Settings} />
                 <Route path="/login" component={Login} />
                 <Route component={Error} />
                 </Switch>

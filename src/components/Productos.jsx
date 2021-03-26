@@ -3,6 +3,9 @@ import styled from "styled-components";
 import { Switch, NavLink, Route } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import Categorias from "./Categorias";
+import {Button, Navbar} from 'reactstrap';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faShoppingBag} from "@fortawesome/free-solid-svg-icons";
 const Productos = () => {
   const tablaProductos = [
     {
@@ -41,6 +44,11 @@ const Productos = () => {
       selector: "estatus",
       sortable: true,
     },
+    {
+      name: "Acciones",
+      selector: "estatus",
+      sortable: true,
+    },
   ];
 
   const paginacionOpcion = {
@@ -62,7 +70,11 @@ const Productos = () => {
             <Route path="/categorias" component={Categorias} />
           </Switch>
         </main>
-
+        <Navbar>
+            <NavLink to="/agregar-producto">    
+                <Button className="btn btn-success d-flex d-flex justify-content-between align-items-center"><FontAwesomeIcon icon={faShoppingBag} /></Button>
+            </NavLink>
+            </Navbar>
         <DataTable
           columns={columnas}
           data={tablaProductos}

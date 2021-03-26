@@ -32,7 +32,7 @@ const TablaCarrito = () => {
         },
         {
             name: "Eliminar",
-            selector: "cantidad",
+            selector: "nombre",
             sortable: true
         },
         

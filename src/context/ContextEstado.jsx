@@ -8,38 +8,16 @@ const ProveedorState = ({children}) => {
     const [listaProducto, setListaProducto] = useState('');
     const [base, setBase] = useState([{
         id: 1,
-        nombre: 'Coca-Cola',
+        nombre: '',
         precio: 17.50,
         cantidad: 1
 
     },
     {
         id: 2,
-        nombre: 'Chips',
+        nombre: '',
         precio: 17.50,
         cantidad: 1
-
-    },
-    {
-        id: 3,
-        nombre: 'Coca-Cola',
-        precio: 17.50,
-        cantidad: 1
-
-    },
-    {
-        id: 4,
-        nombre: 'Coca-Cola',
-        precio: 17.50,
-        cantidad: 1
-
-    }
-    ,{
-        id: 5,
-        nombre: 'Coca-Cola',
-        precio: 17.50,
-        cantidad: 1
-
     }
 
 ]);

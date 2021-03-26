@@ -3,7 +3,8 @@ import {NavLink} from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.css";
 import { faArrowLeft, faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import {Button} from 'reactstrap';
+import styled from 'styled-components';
 const NuevoEmpleado = () => {
   const boton = document.getElementById('boton');
   const pass = document.getElementById('pass');
@@ -20,11 +21,11 @@ const NuevoEmpleado = () => {
       <main className="caja-contenido col-12">
         <div>
             <NavLink to="/empleados">
-          <button className="fa fa-button-light">
+          <Button className="btn btn-success">
             <FontAwesomeIcon icon={faArrowLeft} />
-          </button>
+          </Button>
           </NavLink>
-          <h5>Nuevo Empleado</h5>
+          <Titulo>Nuevo Empleado</Titulo>
         </div>
         <form>
           <hr />
@@ -54,23 +55,13 @@ const NuevoEmpleado = () => {
             </div>
             <div class="col">
               <input id="pass" type="password" className="form-control" placeholder="Contraseña" />
-              <button id="boton" className="btn-sm btn-primary " onClick={()=>mostrarContraseña} ><i>Mostrar <FontAwesomeIcon icon={faEye} /></i></button>
+              <button id="boton" className="btn-sm btn-primary mt-2" onClick={()=>mostrarContraseña} ><i>Mostrar <FontAwesomeIcon icon={faEye} /></i></button>
             </div>
           </div>
-{/* 
-          <div class="row mt-4">
-            <div class="col">
-              <input
-                type="number"
-                class="form-control"
-                placeholder="Numero de empleado"
-              />
-            </div>
-          </div> */}
 
           <hr />
           <div className="form-group col-mt-4">
-            <h5>Perfil</h5>
+            <Titulo>Perfil</Titulo>
             <select id="inputState" className="form-control mt-2">
               <option>Administrador</option>
               <option>Vendedor</option>
@@ -79,7 +70,7 @@ const NuevoEmpleado = () => {
 
           <hr />
           <div className="form-group col-mt-4">
-            <h5>Estado</h5>
+            <Titulo>Estado</Titulo>
             <select id="inputState" className="form-control mt-2">
               <option>Activo</option>
               <option>Inactivo</option>
@@ -87,12 +78,18 @@ const NuevoEmpleado = () => {
           </div>
           
           <div>
-            <button className="btn btn-success">Enviar</button>
+            <button className="btn btn-success">Registrar</button>
           </div>
         </form>
       </main>
     </>
   );
 };
+
+const Titulo = styled.h5`
+
+    text-align: center;
+
+`;
 
 export default NuevoEmpleado;

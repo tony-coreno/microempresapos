@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { ContextEstado } from "../context/ContextEstado";
-import TablaCarrito from './../elements/TablaCarrito';
+import TablaCarrito from "./../elements/TablaCarrito";
 import "bootstrap/dist/css/bootstrap.css";
-import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
+import { faBan, faCreditCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Carrito = () => {
-const {ventaProducto} = useContext(ContextEstado);
+  const { ventaProducto } = useContext(ContextEstado);
   return (
     <>
       <TituloEmpleado>''</TituloEmpleado>
@@ -20,14 +20,24 @@ const {ventaProducto} = useContext(ContextEstado);
           })}
         </ol>
         <TablaCarrito />
-    
       </Contenedor>
       <TotalDiv>
-
         <input readOnly></input>
         <h3>Total</h3>
       </TotalDiv>
-      <button className="btn btn-info"> <FontAwesomeIcon icon={faCreditCard} />  Método de pago</button>
+      
+      <div>
+        <button className="btn btn-success ">
+          {" "}
+          <FontAwesomeIcon icon={faBan} /> Cancelar
+        </button>
+          {"           "}
+        <button className="btn btn-success ">
+          {" "}
+          {" "}
+          <FontAwesomeIcon icon={faCreditCard} /> Método de pago
+        </button>
+      </div>
     </>
   );
 };
@@ -46,7 +56,7 @@ const Contenedor = styled.div`
 const TituloEmpleado = styled.h6`
   color: #fff;
 `;
-const TituloCarrito= styled.h4`
+const TituloCarrito = styled.h4`
   text-align: center;
 `;
 const TotalDiv = styled.div`

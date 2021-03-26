@@ -5,26 +5,49 @@ import {
     ModalHeader,
     ModalBody,
     ModalFooter,
-    FormGroup
+    FormGroup,
+    Image
   } from "reactstrap";
   import 'bootstrap/dist/css/bootstrap.css';
+  import styled from 'styled-components';
 const ModalPerfil = ({modal, setModal}) => {
     return (
+      <>
       <Modal isOpen={modal}>
       <ModalHeader>
         Perfil
       </ModalHeader>
       <ModalBody>
+      <div>
+      <Ventas>Ventas realizadas</Ventas>
+      <Cifra>$5000</Cifra>
+      <img src="https://img.icons8.com/officel/80/000000/person-male.png"/>
+        
+      </div>
+      <hr />
+      <div>
+        <h3>Administrador</h3>
 
-        <FormGroup>
-        {/* <Label for="password"></Label> */}
-        </FormGroup>
+      </div>
         </ModalBody>
       <ModalFooter>
-         <Button color="dark" onClick={() => setModal(false)}>Cerrar</Button> 
+         <Button color="dark" onClick={() => setModal(false)}>Cambiar foto</Button> 
+         <Button color="warning" onClick={() => setModal(false)}>Cerrar</Button> 
       </ModalFooter>
       </Modal>    
+    </>
      );
 }
- 
+
+const Ventas = styled.h5`
+  text-align: right;
+`;
+
+const Cifra = styled.h6`
+  text-align: right;
+  color: #198236;
+`;
+
+
+
 export default ModalPerfil;
