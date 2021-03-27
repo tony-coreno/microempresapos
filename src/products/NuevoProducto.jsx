@@ -1,10 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
-import {Button} from 'reactstrap';
-import { faArrowLeft} from "@fortawesome/free-solid-svg-icons";
+import { Button } from "reactstrap";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const NuevoProducto = () => {
   // const boton = document.getElementById("boton");
@@ -59,47 +59,62 @@ const NuevoProducto = () => {
           </div>
 
           <hr />
-          <div className="form-group col-mt-4">
-            <Titulo>Categoría</Titulo>
-            <select id="inputState" className="form-control mt-2">
-              <option>...</option>
-              <option>...</option>
-            </select>
-          </div>
-          <div className="form-group col-mt-4">
-            <Titulo>Unidad</Titulo>
-            <select id="inputState" className="form-control mt-2">
-              <option>Kg</option>
-              <option>Lts</option>
-              <option>Grs</option>
-            </select>
-            <div className="form-group col-mt-4">
-              <br />
-            <Titulo>Estado</Titulo>
-            <select id="inputState" className="form-control mt-">
-              <option>Activo</option>
-              <option>Retirar del almacén</option>
-              <option>Agotado</option>
-            </select>
-          </div>
-          </div>
 
+          <div>
+          <Titulo>Categoría</Titulo>
+            <div className="form-group col-mt-4">
+              <select id="inputState" className="form-control mt-2">
+                <option>...</option>
+                <option>...</option>
+              </select>
+              
+            </div>
+            <div className="form-group col-mt-4">
+              <Titulo>Unidad</Titulo>
+              <select id="inputState" className="form-control mt-2">
+                <option>Kg</option>
+                <option>Lts</option>
+                <option>Grs</option>
+              </select>
+              <div className="form-group col-mt-4">
+                <br />
+                <Titulo>Estado</Titulo>
+                <select id="inputState" className="form-control mt-">
+                  <option>Activo</option>
+                  <option>Retirar del almacén</option>
+                  <option>Agotado</option>
+                </select>
+              </div>
+            </div>
+          </div>
           <hr />
-      
-            <button className="btn btn-success">Registrar</button>
+
+          <button className="btn btn-success">Registrar</button>
         </form>
       </main>
     </>
   );
 };
 
-
-
 const Titulo = styled.h5`
-
-    text-align: center;
+  text-align: center;
 `;
 
+const Categoria = styled.h6`
+  text-align: right;
+`;
 
+const Contenedorapp = styled.div`
+  max-width: 1400px;
+  padding: 5px;
+  width: 100%;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 2fr 3fr;
+  background: #fff;
+  margin: 5px 0;
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
+`;
 
 export default NuevoProducto;

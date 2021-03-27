@@ -5,9 +5,38 @@ import TablaCarrito from "./../elements/TablaCarrito";
 import "bootstrap/dist/css/bootstrap.css";
 import { faBan, faCreditCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Swal from 'sweetalert2';
 
 const Carrito = () => {
   const { ventaProducto } = useContext(ContextEstado);
+  const cancelar = () => {
+    Swal.fire({
+      title: 'Cancelar venta',
+      text: '¿Desea continuar?',
+      icon: 'warning',
+      confirmButtonText: 'De acuerdo',
+      cancelButtonText:'Cancel'	
+    })
+  }
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+  
+  Toast.fire({
+    icon: 'success',
+    title: 'Signed in successfully'
+  })
+
+
   return (
     <>
       <TituloEmpleado>''</TituloEmpleado>
@@ -27,7 +56,7 @@ const Carrito = () => {
       </TotalDiv>
       
       <div>
-        <button className="btn btn-success ">
+        <button className="btn btn-success" onClick={() => cancelar()}>
           {" "}
           <FontAwesomeIcon icon={faBan} /> Cancelar
         </button>

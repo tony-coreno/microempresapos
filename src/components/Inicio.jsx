@@ -36,7 +36,7 @@ const Inicio = () => {
 
   return (
     <>
-      <Pricipal>Panel de control</Pricipal>
+      <Principal>Panel de control</Principal>
       <hr />
       <Divisor>
         
@@ -117,9 +117,11 @@ const Titulo =styled.div`
      display: flex;
      flex-direction: col;
 `;
-export default Inicio;
 
-const Pricipal = styled.h4`
+
+const Principal = styled.h4`
 
      text-align: center;
 `;
+
+export default Inicio;

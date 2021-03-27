@@ -9,6 +9,7 @@ import {
   import 'bootstrap/dist/css/bootstrap.css';
   import styled from 'styled-components';
 const ModalPerfil = ({modal, setModal}) => {
+  
     return (
       <>
       <Modal isOpen={modal}>
