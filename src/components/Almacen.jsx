@@ -9,7 +9,7 @@ const Almacen = () => {
             <Contenedorapp>
 			<Menu>
 				<NavLink to="/productos">Productos</NavLink>
-				<NavLink to="/categorias">Categorias</NavLink>
+				<NavLink to="/categorias">Categorías</NavLink>
 			</Menu>
 			<main>
 				<Switch>

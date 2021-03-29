@@ -47,15 +47,15 @@ const Settings = () => {
           <hr />
           <div className="form-group col-mt-4">
             <h5>Fuente</h5>
-            <button className="btn btn-primary mt-2">Aumentar</button>
+            <button className="btn btn-outline-primary mt-2">Aumentar</button>
             <hr />
-            <button className="btn btn-dark mt-2">Disminuir</button>
+            <button className="btn btn-outline-dark mt-2">Disminuir</button>
           </div>
 
           <hr />
 
           <SeccionBoton>
-            <button className="btn btn-success">Guardar</button>
+            <button className="btn btn-outline-success">Guardar</button>
           </SeccionBoton>
         </form>
       </main>

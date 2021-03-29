@@ -12,13 +12,16 @@ import {
   faBell,
   faCalendarAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import { Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button } from 'reactstrap';
 // import PopoverExampleMulti from "../modals/PopDerecha";
 
 const ElementosSideBar = () => {
   const [modal, setModal] = useState(false);
   const [modalSesion, setModalSesion] = useState(false);
+  const [popoverOpen, setPopoverOpen] = useState(false);
+
+  const toggle = () => setPopoverOpen(!popoverOpen);
   return (
     <>
       <img

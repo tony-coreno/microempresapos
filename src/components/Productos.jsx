@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { Switch, NavLink, Route } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import Categorias from "./Categorias";
-import {Button, Navbar} from 'reactstrap';
+import { Button, Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faShoppingBag} from "@fortawesome/free-solid-svg-icons";
+import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 const Productos = () => {
   const tablaProductos = [
     {
@@ -71,10 +71,16 @@ const Productos = () => {
           </Switch>
         </main>
         <Navbar>
-            <NavLink to="/agregar-producto">    
-                <Button className="btn btn-success d-flex d-flex justify-content-between align-items-center"><FontAwesomeIcon icon={faShoppingBag} /></Button>
-            </NavLink>
-            </Navbar>
+          <NavLink to="/agregar-producto">
+            <Button
+              className="btn btn-success d-flex d-flex justify-content-between align-items-center"
+              data-toggle="tooltip"
+              data-placement="right"
+              title="Agregar producto">
+              <FontAwesomeIcon icon={faShoppingBag} />
+            </Button>
+          </NavLink>
+        </Navbar>
         <DataTable
           columns={columnas}
           data={tablaProductos}
@@ -113,15 +119,14 @@ const Menu = styled.nav`
 `;
 
 const Contenedorapp = styled.div`
-max-width: 1400px;
-padding: 5px;
-width: 100%;
+  max-width: 1400px;
+  padding: 5px;
+  width: 100%;
 
-
-background: #fff;
-margin: 5px 0;
-border-radius: 20px;
-box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
+  background: #fff;
+  margin: 5px 0;
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
 `;
 
 export default Productos;

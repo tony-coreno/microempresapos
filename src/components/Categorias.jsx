@@ -9,7 +9,7 @@ const Categorias = () => {
             <Contenedorapp>
 			<Menu>
 				<NavLink to="/productos">Productos</NavLink>
-				<NavLink to="/categorias">Categorias</NavLink>
+				<NavLink to="/categorias">Categorías</NavLink>
 			</Menu>
 			<main>
 				<Switch>
@@ -17,7 +17,7 @@ const Categorias = () => {
 				</Switch>
 			</main>
 			<p>
-				<h3>Categorias</h3>
+				<h3>Categorías</h3>
 			</p>
 		</Contenedorapp>
 
