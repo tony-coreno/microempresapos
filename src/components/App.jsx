@@ -22,6 +22,8 @@ import AdministrarVentas from './AdministrarVentas';
 import Login from './../auth/Login';
 import 'bootstrap/dist/css/bootstrap.css';
 import Settings from '../settings/Settings';
+import Calendario from '../elements/calendar/Calendario';
+
 const App = () => {
     return ( 
     <>
@@ -48,6 +50,7 @@ const App = () => {
                 <Route path="/settings" component={Settings} />
                 <Route path="/nuevo-cliente" component={NuevoCliente} />
                 <Route path="/login" component={Login} />
+                <Route path="/calendar" component={Calendario} />
                 <Route component={Error} />
                 </Switch>
             </Main>

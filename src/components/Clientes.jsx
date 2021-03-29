@@ -1,74 +1,80 @@
-import React from 'react';
-import DataTable from 'react-data-table-component';
-import { NavLink} from "react-router-dom";
-import {Button, Navbar} from 'reactstrap';
+import React from "react";
+import DataTable from "react-data-table-component";
+import { NavLink } from "react-router-dom";
+import { Button, Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faUserTie} from "@fortawesome/free-solid-svg-icons";
+import { faUserTie } from "@fortawesome/free-solid-svg-icons";
 const columnas = [
-    {
+  {
     name: "ID",
     selector: "id",
     sortable: true,
-    grow: 1
-},
-{
+    grow: 1,
+  },
+  {
     name: "Nombre",
     selector: "nombre",
-    sortable: true
-},
-{
+    sortable: true,
+  },
+  {
     name: "Apellido",
     selector: "apellido",
-    sortable: true
-},
-{
+    sortable: true,
+  },
+  {
     name: "Teléfono",
     selector: "perfil",
-    sortable: true
-},
-{
+    sortable: true,
+  },
+  {
     name: "Compras Realizadas",
     selector: "perfil",
-    sortable: true
-},
-{
+    sortable: true,
+  },
+  {
     name: "Opciones",
     selector: "opciones",
-    sortable: true
-}
+    sortable: true,
+  },
 ];
 
-const tablaEmpleados =[
-    {id:"", nombre:"", apellido: "", perfil: "", opciones: ""}
-
+const tablaEmpleados = [
+  { id: "", nombre: "", apellido: "", perfil: "", opciones: "" },
 ];
 
 const paginacionOpcion = {
-    rowsPerPageText: 'Filas por página',
-    rangeSeparatorText: 'de',
-    selectAllRowsItem: true,
-    selectAllRowsItemText: 'Todos'
-}
+  rowsPerPageText: "Filas por página",
+  rangeSeparatorText: "de",
+  selectAllRowsItem: true,
+  selectAllRowsItemText: "Todos",
+};
 
 const Clientes = () => {
-    return ( 
-        <div>
-             <Navbar>
-            <NavLink to="/nuevo-cliente">    
-                <Button className="btn btn-info d-flex d-flex justify-content-between align-items-center"><FontAwesomeIcon icon={faUserTie} /></Button>
-            </NavLink>
-            </Navbar>
-             <DataTable 
-                columns={columnas}
-                data={tablaEmpleados}
-                title="Clientes"
-                pagination
-                paginationComponentOptions={paginacionOpcion}
-                fixedHeader
-                fixedHeaderScrollHeight="300px"
-            />
-        </div>
-     );
-}
- 
+  return (
+    <div>
+      <Navbar>
+        <NavLink to="/nuevo-cliente">
+          <Button
+            className="btn btn-info d-flex d-flex justify-content-between align-items-center"
+            data-toggle="tooltip"
+            data-placement="right"
+            title="Agregar cliente"
+          >
+            <FontAwesomeIcon icon={faUserTie} />
+          </Button>
+        </NavLink>
+      </Navbar>
+      <DataTable
+        columns={columnas}
+        data={tablaEmpleados}
+        title="Clientes"
+        pagination
+        paginationComponentOptions={paginacionOpcion}
+        fixedHeader
+        fixedHeaderScrollHeight="300px"
+      />
+    </div>
+  );
+};
+
 export default Clientes;

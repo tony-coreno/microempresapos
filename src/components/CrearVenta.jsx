@@ -32,7 +32,7 @@ const CrearVenta = () => {
           <h4>  Escanea un producto </h4>
           <FontAwesomeIcon icon={faBarcode} /><FormularioCrearVenta />
           <hr />
-          <button className="btn btn-success">
+          <button className="btn btn-outline-primary">
              <FontAwesomeIcon icon={faCashRegister} />  Ingresar producto manual</button>
           <ProductoManual />
         </main>

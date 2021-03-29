@@ -51,17 +51,17 @@ const Carrito = () => {
         <TablaCarrito />
       </Contenedor>
       <TotalDiv>
-        <input readOnly></input>
+        <input readOnly className="form-control"></input>
         <h3>Total</h3>
       </TotalDiv>
       
       <div>
-        <button className="btn btn-success" onClick={() => cancelar()}>
+        <button className="btn btn-outline-danger" onClick={() => cancelar()}>
           {" "}
           <FontAwesomeIcon icon={faBan} /> Cancelar
         </button>
           {"           "}
-        <button className="btn btn-success ">
+        <button className="btn btn-outline-info">
           {" "}
           {" "}
           <FontAwesomeIcon icon={faCreditCard} /> Método de pago
