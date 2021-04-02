@@ -25,7 +25,7 @@ const ModalPerfil = ({modal, setModal}) => {
       </div>
       <hr />
       <div>
-        <h3>Administrador</h3>
+        <h3>{sessionStorage.getItem('nombre') || 'Invitado'}</h3>
 
       </div>
         </ModalBody>

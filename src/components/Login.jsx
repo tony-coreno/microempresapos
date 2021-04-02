@@ -34,11 +34,13 @@ const Login = () => {
             sessionStorage.setItem('token', token)
             sessionStorage.setItem('nombre', nombre)
             sessionStorage.setItem('idusuario', idusuario)
-            window.location.href='./'
+            window.location.href='/'
         }
     }
 
     return ( 
+ 
+    
         <div className="container mt-4">
         <div className="row">
           <div className="col-md-6 mx-auto">
@@ -77,7 +79,9 @@ const Login = () => {
           </div>
         </div>
       </div>
+
      );
 }
- 
+
+
 export default Login;

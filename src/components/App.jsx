@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { Route, Switch} from 'react-router-dom';
 import Header from './Header';
 import Inicio from './Inicio';
@@ -19,15 +19,14 @@ import Reportes from './Reportes';
 import CrearVenta from './CrearVenta';
 import NuevoEmpleado from './NuevoEmpleado';
 import AdministrarVentas from './AdministrarVentas';
-import Login from './../auth/Login';
+import Login from './Login'
 import 'bootstrap/dist/css/bootstrap.css';
 import Settings from '../settings/Settings';
 import Calendario from '../elements/calendar/Calendario';
-
 const App = () => {
     return ( 
     <>
-
+        {/* <Login /> */}
         <Sidebar />
         <ContenedorPrincipal>
                 <Header />
@@ -48,8 +47,8 @@ const App = () => {
                 <Route path="/administrar-venta" component={AdministrarVentas} />
                 <Route path= "/agregar-empleado" exact={true} component={NuevoEmpleado} />
                 <Route path="/settings" component={Settings} />
-                <Route path="/nuevo-cliente" component={NuevoCliente} />
                 <Route path="/login" component={Login} />
+                <Route path="/nuevo-cliente" component={NuevoCliente} />
                 <Route path="/calendar" component={Calendario} />
                 <Route component={Error} />
                 </Switch>
