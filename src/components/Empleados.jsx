@@ -81,6 +81,20 @@ const Empleados = () => {
   //         selectAllRowsItemText: 'Todos'
   //     }
 
+  const buscar = async(e)=>{
+    if(e.target.value ===''){
+      return obtenerEmpleados()
+    }
+    const buscar = e.target.value
+    const token = sessionStorage.getItem('token')
+    const respuesta = await Axios.get(`http://localhost:4000/empleados/buscar/${buscar}/${sessionStorage.getItem('idusuario')}`,{
+      headers:{'autorizacion':token}
+    })
+    setEmpleados(respuesta.data)
+}
+
+
+
   return (
     <>
       <Navbar>
@@ -100,6 +114,8 @@ const Empleados = () => {
                 type="search"
                 placeholder="Buscar..."
                 aria-label="Search"
+                onChange={buscar}
+                autoFocus
               /><FontAwesomeIcon icon={faSearch}/>
             </div>
           </div>
@@ -110,7 +126,7 @@ const Empleados = () => {
             <div className="row">
               <div className="col-md-12">
                 <div className="card">
-                  <div className="bg-info card-header">
+                  <div className="bg-info card-header py-2">
                     <Titulo>
                       Empleados de { sessionStorage.getItem("nombre") || 'Invitado' }
                     </Titulo>

@@ -51,7 +51,7 @@ const NuevoEmpleado = () => {
       showConfirmButton: false,
     });
     setTimeout(() => {
-    window.location.href = "/agregar-empleado";
+    window.location.href = "/empleados";
     }, 1500);
   }
 
