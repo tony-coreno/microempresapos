@@ -126,6 +126,7 @@ const eliminar = async (id) => {
             <FontAwesomeIcon icon={faUserPlus} />
           </Button>
         </NavLink>
+        { sessionStorage.getItem("token") ?
         <div className="col-md-4 ml-auto">
             <div className="input-group fa-2x">
               <input
@@ -138,6 +139,9 @@ const eliminar = async (id) => {
               /><FontAwesomeIcon icon={faSearch}/>
             </div>
           </div>
+        :
+        <div></div>
+        }
       </Navbar>
       <div className="table-responsive table-borderless table-hover">
         <Tabla>

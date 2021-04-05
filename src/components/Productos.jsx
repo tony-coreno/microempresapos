@@ -98,6 +98,9 @@ const Productos = () => {
               <FontAwesomeIcon icon={faShoppingBag} />
             </Button>
           </NavLink>
+          { sessionStorage.getItem("token")  ?
+
+          
           <div className="col-md-4 ml-auto mt-4">
             <div className="input-group fa-2x">
               <input
@@ -109,7 +112,10 @@ const Productos = () => {
                 // onChange={buscar}
               /><FontAwesomeIcon icon={faSearch}/>
             </div>
-          </div>
+          </div> 
+        :
+        <div></div>  
+        }
         </Navbar>
         {/* <DataTable
           columns={columnas}

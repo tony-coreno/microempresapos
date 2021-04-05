@@ -26,7 +26,8 @@ import Calendario from '../elements/calendar/Calendario';
 const App = () => {
     return ( 
     <>
-        {/* <Login /> */}
+        { sessionStorage.getItem("token") ?
+        <>
         <Sidebar />
         <ContenedorPrincipal>
                 <Header />
@@ -54,7 +55,12 @@ const App = () => {
                 </Switch>
             </Main>
         </ContenedorPrincipal>
- 
+        </>
+        :
+        <Login />
+   
+        }
+
      </>   
      );
 }
@@ -70,7 +76,7 @@ const Main = styled.main`
 	background: #fff;
 	padding: 20px;
 	border-radius: 10px;
-	box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.7);
+	box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
 `;
 
 export default App;

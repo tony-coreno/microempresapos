@@ -4,8 +4,11 @@ import styled from 'styled-components';
 // import {faCashRegister, faClipboardList, faLayerGroup, faQuestionCircle, 
 //         faTachometerAlt, faUsers, faUserTie} from "@fortawesome/free-solid-svg-icons";
 // import Barra from './../elements/Barra';
+import Login from './Login';
 const Header = () => {
     return ( 
+        <>
+        { sessionStorage.getItem("token") ?
         <ContenedorHeader>
         <Route>
             {/* <Barra /> */}
@@ -27,7 +30,12 @@ const Header = () => {
             </MenuNav>
         </Route>
     </ContenedorHeader>
-     );
+    :
+    
+    <div></div>
+    }
+    </>
+    );
 }
 const ContenedorHeader = styled.header`
     text-align: center;
