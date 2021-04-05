@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ContextEstado } from "../context/ContextEstado";
 import TablaCarrito from "./../elements/TablaCarrito";
 import "bootstrap/dist/css/bootstrap.css";
-import { faBan, faCreditCard } from "@fortawesome/free-solid-svg-icons";
+import { faBan, faCreditCard, faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Swal from 'sweetalert2';
 
@@ -52,7 +52,7 @@ const Carrito = () => {
       </Contenedor>
       <TotalDiv>
         <input readOnly className="form-control"></input>
-        <h3>Total</h3>
+        <h3> <FontAwesomeIcon icon={faDollarSign}/> Total</h3>
       </TotalDiv>
       
       <div>

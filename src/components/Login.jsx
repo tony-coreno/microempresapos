@@ -44,7 +44,7 @@ const Login = () => {
   return (
     <Contenedor className="container mt-4">
       <div className="row">
-        <div className="col-md-6 mx-auto">
+        <div className="col-md-4 mx-auto">
           <Fondo className="card">
             <div className="container text-center fa-5x">
               {/* <i><FontAwesomeIcon icon={faUserPlus} /></i> */}
@@ -96,7 +96,7 @@ const Login = () => {
 const Fondo = styled.div`
   // background: #147551;
   color: #fff;
-   //opacity: 0.8;
+  //opacity: 0.8;
   background: linear-gradient(#ffffff 50%, rgba(255, 255, 255, 0) 0) 0 0,
     radial-gradient(circle closest-side, #ffffff 53%, rgba(255, 255, 255, 0) 0)
       0 0,

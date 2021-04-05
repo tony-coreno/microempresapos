@@ -29,7 +29,7 @@ const ModalSesion = ({modalSesion, setModalSesion}) => {
         </ModalBody>
       <ModalFooter>
         <Button color="danger" onClick={() => setModalSesion(false)}>Cancelar</Button>
-        <Button color="info" onClick={()=> salir()}>Cerrar Sesión</Button>
+        <Button color="warning" onClick={()=> salir()}>Cerrar Sesión</Button>
       </ModalFooter>
       </Modal>    
      );

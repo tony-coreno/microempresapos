@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {NavLink} from 'react-router-dom';
 import Axios from 'axios';
 import "bootstrap/dist/css/bootstrap.css";
-import { faArrowLeft, faEye } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faEye, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {Button} from 'reactstrap';
 import styled from 'styled-components';
@@ -116,7 +116,7 @@ const NuevoEmpleado = () => {
             </select>
           </div>
           <div>
-            <button className="btn btn-info">Registrar</button>
+            <button className="btn btn-outline-info"><FontAwesomeIcon icon={faPlusCircle} /> Registrar</button>
           </div>
         </form>
       </main>

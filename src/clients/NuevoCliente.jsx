@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import {Button} from 'reactstrap';
-import { faArrowLeft} from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faUserTag} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from 'styled-components';
 
@@ -59,7 +59,7 @@ const NuevoCliente = () => {
 
           <hr />
       
-            <button className="btn btn-info">Agregar</button>
+            <button className="btn btn-outline-info"><FontAwesomeIcon icon={faUserTag} /> Agregar</button>
         </form>
       </main>
     </>

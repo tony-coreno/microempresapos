@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import Axios from 'axios';
 import "bootstrap/dist/css/bootstrap.css";
 import { Button } from "reactstrap";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faSave } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Swal from 'sweetalert2';
+
 import styled from "styled-components";
 
 const NuevoProducto = () => {
@@ -15,6 +18,41 @@ const NuevoProducto = () => {
   //     pass.type = "text";
   //   }
   // };
+  const [sku, setSku] = useState('');
+  const [producto, setProducto] = useState('');
+  const [existencia, setExistencia] = useState('');
+  const [precioventa, setPrecioventa] = useState('');
+  const [categoria, setCategoria] = useState('');
+  const [unidad, setUnidad] = useState('');
+  const [estado, setEstado] = useState('');
+
+
+  const guardar = async(req, res) => {
+    const stock ={
+      sku,
+      producto,
+      existencia,
+      precioventa,
+      categoria,
+      unidad,
+      estado: estado,
+      jefe: sessionStorage.getItem('idusuario')
+    }
+    const token = sessionStorage.getItem('token')
+    const respuesta = await Axios.post('http://localhost:4000/productos/agregar',stock,{
+      headers:{'autorizacion':token}
+    })
+    const mensaje = respuesta.data.mensaje
+    Swal.fire({
+      icon: "success",
+      title: mensaje,
+      showConfirmButton: false,
+    });
+    setTimeout(() => {
+    window.location.href = "/productos";
+    }, 1500);
+  }
+  
   return (
     <>
       <main className="caja-contenido col-12">
@@ -30,13 +68,14 @@ const NuevoProducto = () => {
           <hr />
           <div className="row">
             <div className="col">
-              <input type="number" className="form-control" placeholder="SKU" />
+              <input type="number" className="form-control" placeholder="SKU" onChange={(e)=>setSku(e.target.value)} />
             </div>
             <div class="col">
               <input
                 type="text"
                 className="form-control"
                 placeholder="Nombre producto"
+                onChange={(e)=> setProducto(e.target.value)}
               />
             </div>
           </div>
@@ -47,6 +86,7 @@ const NuevoProducto = () => {
                 type="number"
                 className="form-control"
                 placeholder="Existencia"
+                onChange={(e)=>setExistencia (e.target.value)}
               />
             </div>
             <div className="col">
@@ -54,6 +94,7 @@ const NuevoProducto = () => {
                 type="number"
                 className="form-control"
                 placeholder="Precio de venta"
+                onChange={(e)=>setPrecioventa (e.target.value)}
               />
             </div>
           </div>
@@ -89,7 +130,7 @@ const NuevoProducto = () => {
           </div>
           <hr />
 
-          <button className="btn btn-success">Registrar</button>
+          <button className="btn btn-outline-success"><FontAwesomeIcon icon={faSave} /> Guardar</button>
         </form>
       </main>
     </>
