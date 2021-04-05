@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {NavLink} from 'react-router-dom';
 import Axios from 'axios';
 import "bootstrap/dist/css/bootstrap.css";
@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {Button} from 'reactstrap';
 import styled from 'styled-components';
 import Swal from 'sweetalert2';
+import { ContextEstado } from "../context/ContextEstado";
 const NuevoEmpleado = () => {
 
   const [nombre, setNombre] = useState('');
@@ -16,7 +17,7 @@ const NuevoEmpleado = () => {
   const [usuario, setUsuario] = useState('');
   const [contrasena, setContrasena] = useState('');
   const [perfilSelected, setPerfilSelected] = useState([]);
-  const [perfil, setPerfil] = useState('');
+  const {perfil, setPerfil} = useContext(ContextEstado);
   const [estado, setEstado] = useState('');
   const [estadoSelected, setEstadoSelected] = useState([]);
 

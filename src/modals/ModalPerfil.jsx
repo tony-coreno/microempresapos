@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
     Button,
     Modal,
@@ -8,7 +8,9 @@ import {
   } from "reactstrap";
   import 'bootstrap/dist/css/bootstrap.css';
   import styled from 'styled-components';
+import { ContextEstado } from '../context/ContextEstado';
 const ModalPerfil = ({modal, setModal}) => {
+  const {perfil} = useContext(ContextEstado)
   
     return (
       <>
@@ -23,7 +25,7 @@ const ModalPerfil = ({modal, setModal}) => {
 
       <img src="https://img.icons8.com/officel/80/000000/person-male.png"/>
       <hr />
-      <Ventas>Tipo de cuenta: Empleado</Ventas>
+      <Ventas>Tipo de cuenta: {perfil || 'Empleado'}</Ventas>
       </div>
       <hr />
       <div>

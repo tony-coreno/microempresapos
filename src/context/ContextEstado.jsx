@@ -6,6 +6,7 @@ const ProveedorState = ({children}) => {
 
     const [ventaProducto, setVentaProducto] = useState([]);
     const [listaProducto, setListaProducto] = useState('');
+    const [perfil, setPerfil] = useState('');
     const [empleados, setEmpleados] = useState([]);
     const [base, setBase] = useState([{
         id: 1,
@@ -40,7 +41,7 @@ const ProveedorState = ({children}) => {
     }
 
     return ( 
-        <ContextEstado.Provider value={{ventaProducto, listaProducto, setListaProducto, setVentaProducto, handleInputChange, handleSubmit, base, empleados, setEmpleados}}>
+        <ContextEstado.Provider value={{ventaProducto, listaProducto, setListaProducto, setVentaProducto, handleInputChange, handleSubmit, base, empleados, setEmpleados, perfil, setPerfil}}>
             {children}
         </ContextEstado.Provider>
      );
