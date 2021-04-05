@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Switch, NavLink, Route } from "react-router-dom";
+import Axios from 'axios'
 // import DataTable from "react-data-table-component";
 import Categorias from "./Categorias";
 import { Button, Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faShoppingBag, faTrashAlt, faUserEdit } from "@fortawesome/free-solid-svg-icons";
 const Productos = () => {
+  const [productos, setProductos] = useState([]);
+  useEffect (()=>{
+    obtenerProductos();
+  },[]);
+
+
   // const tablaProductos = [
   //   {
   //     id: "",
@@ -57,6 +64,17 @@ const Productos = () => {
   //   selectAllRowsItem: true,
   //   selectAllRowsItemText: "Todos",
   // };
+  const obtenerProductos = async () => {
+    const id = sessionStorage.getItem("idusuario");
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.get(
+      "http://localhost:4000/productos/listarporadmin/" + id,
+      {
+        headers: { autorizacion: token },
+      }
+    );
+    setProductos(respuesta.data);
+  };
 
   return (
     <div>
@@ -128,19 +146,20 @@ const Productos = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {/* {empleados.map((empleado, i) => {
+                       {productos.map((producto, i) => {
                         return (
-                          <tr key={empleado.id}>
+                          <tr key={producto.id}>
                             <td>{i + 1}</td>
-                            <td>{empleado.numeroempleado}</td>
-                            <td>{empleado.nombre}</td>
-                            <td>{empleado.apellidopaterno}</td>
-                            <td>{empleado.usuario}</td>
-                            <td>{empleado.perfil}</td>
-                            <td>{empleado.estado}</td>
+                            <td>{producto.sku}</td>
+                            <td>{producto.producto}</td>
+                            <td>{producto.existencia}</td>
+                            <td>{producto.precioventa}</td>
+                            <td>{producto.categoria}</td>
+                            <td>{producto.unidad}</td>
+                            <td>{producto.estado ? 'En existencia' : 'Agotado'}</td>
                             <td>
                               <button
-                                className="bn btn-outline-info mr-2"
+                                className="bn btn-outline-dark mr-2"
                                 //   onClick={() => eliminar(empleado._id)}
                               >
                                 <FontAwesomeIcon icon={faUserEdit} />
@@ -151,7 +170,7 @@ const Productos = () => {
                             </td>
                           </tr>
                         );
-                      })} */}
+                      })} 
                     </tbody>
                   </table>
                 </div>

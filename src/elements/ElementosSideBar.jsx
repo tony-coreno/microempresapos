@@ -11,6 +11,8 @@ import {
   faSearch,
   faBell,
   faCalendarAlt,
+  faTruck,
+  faClipboard,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from 'reactstrap';
@@ -50,18 +52,16 @@ const ElementosSideBar = () => {
       >
         <FontAwesomeIcon icon={faUserAlt} />
       </Button>
-
       <Link
-        to="/calendar"
+        to="/crear-venta"
         className="list-group-item list-group-item-action bg-light"
         data-toggle="tooltip"
         data-placement="right"
-        title="Agenda"
+        title="Compras"
       >
-        <FontAwesomeIcon icon={faCalendarAlt} />
+        <FontAwesomeIcon icon={faShoppingCart} />
         <span className="badge badge-primary">0</span>
       </Link>
-
       <Link
         to="/productos"
         className="list-group-item list-group-item-action bg-light"
@@ -73,14 +73,32 @@ const ElementosSideBar = () => {
       </Link>
 
       <Link
-        to="/crear-venta"
+        to="/calendar"
         className="list-group-item list-group-item-action bg-light"
         data-toggle="tooltip"
         data-placement="right"
-        title="Compras"
+        title="Agenda"
       >
-        <FontAwesomeIcon icon={faShoppingCart} />
+        <FontAwesomeIcon icon={faCalendarAlt} />
         <span className="badge badge-primary">0</span>
+      </Link>
+      <Link
+        to="/"
+        className="list-group-item list-group-item-action bg-light"
+        data-toggle="tooltip"
+        data-placement="right"
+        title="Proveedores"
+      >
+        <FontAwesomeIcon icon={faTruck} />
+      </Link>
+      <Link
+        to="/"
+        className="list-group-item list-group-item-action bg-light"
+        data-toggle="tooltip"
+        data-placement="right"
+        title="Notas"
+      >
+        <FontAwesomeIcon icon={faClipboard} />
       </Link>
 
       <Link
@@ -92,6 +110,7 @@ const ElementosSideBar = () => {
       >
         <FontAwesomeIcon icon={faCog} />
       </Link>
+      
       <Button
         color="light"
         className="list-group-item list-group-item-action bg-light"

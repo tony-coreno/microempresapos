@@ -20,8 +20,10 @@ const ModalPerfil = ({modal, setModal}) => {
       <div>
       <Ventas>Ventas realizadas</Ventas>
       <Cifra>$5000</Cifra>
+
       <img src="https://img.icons8.com/officel/80/000000/person-male.png"/>
-        
+      <hr />
+      <Ventas>Tipo de cuenta: Empleado</Ventas>
       </div>
       <hr />
       <div>

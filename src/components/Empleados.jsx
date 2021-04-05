@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import Axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 import styled from "styled-components";
 import { Button, Navbar } from "reactstrap";
 //import DataTable from 'react-data-table-component';
+import Swal from 'sweetalert2'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faSearch,
@@ -12,6 +13,7 @@ import {
   faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
+import { ContextEstado } from "../context/ContextEstado";
 
 // const tablaEmpleados =[
 //     {id:1, nombre:"Antonio", apellido: "Coreño", perfil: "Administrador", estatus: "Activo"},
@@ -22,7 +24,7 @@ import { NavLink } from "react-router-dom";
 // ];
 
 const Empleados = () => {
-  const [empleados, setEmpleados] = useState([]);
+  const {empleados, setEmpleados} = useContext(ContextEstado);
   useEffect(() => {
     obtenerEmpleados();
   }, []);
@@ -92,6 +94,23 @@ const Empleados = () => {
     })
     setEmpleados(respuesta.data)
 }
+const eliminar = async (id) => {
+  const token = sessionStorage.getItem("token");
+  const respuesta = await Axios.delete(
+    "http://localhost:4000/empleados/eliminar/" + id,
+    {
+      headers: { autorizacion: token },
+    }
+  );
+  const mensaje = respuesta.data.mensaje;
+  Swal.fire({
+    icon: "success",
+    title: mensaje,
+    showConfirmButton: false,
+    timer: 1500,
+  });
+  obtenerEmpleados();
+};
 
 
 
@@ -112,7 +131,7 @@ const Empleados = () => {
               <input
                 className="form-control mr-sm-4"
                 type="search"
-                placeholder="Buscar..."
+                placeholder="Buscar por nombre..."
                 aria-label="Search"
                 onChange={buscar}
                 autoFocus
@@ -158,11 +177,11 @@ const Empleados = () => {
                             <td>
                               <button
                                 className="bn btn-outline-info mr-2"
-                                //   onClick={() => eliminar(empleado._id)}
+                                
                               >
                                 <FontAwesomeIcon icon={faUserEdit} />
                               </button>
-                              <button className="bn btn-outline-dark">
+                              <button className="bn btn-outline-dark" onClick={() => eliminar(empleado._id)}>
                                 <FontAwesomeIcon icon={faTrashAlt} />
                               </button>
                             </td>
