@@ -17,9 +17,9 @@ const Calendario = () => {
   const eventStyleGetter = (event, start, end, isSelected) => {
     console.log(event, start, end, isSelected);
     const style = {
-      backgroundColor: "#190238",
-      borderRadius: "0px",
-      opacity: 0.2,
+      background: '#190245',
+      borderRadius: "50px",
+      opacity: 0.9,
       display: "block",
       color: "white",
     };

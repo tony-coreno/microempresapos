@@ -13,7 +13,7 @@ const Login = () => {
     e.preventDefault();
     const sesion = { usuario, contrasena };
     const respuesta = await Axios.post(
-      "http://localhost:4000/administrador/login",
+      "/administrador/login",
       sesion
     );
     const mensaje = respuesta.data.mensaje;

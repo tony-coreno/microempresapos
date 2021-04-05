@@ -41,7 +41,7 @@ const NuevoEmpleado = () => {
       jefe: sessionStorage.getItem('idusuario')
     }
     const token = sessionStorage.getItem('token')
-    const respuesta = await Axios.post('http://localhost:4000/empleados/crear',empleado,{
+    const respuesta = await Axios.post('/empleados/crear',empleado,{
       headers: {autorizacion: token}
     })
     const mensaje = respuesta.data.mensaje;
