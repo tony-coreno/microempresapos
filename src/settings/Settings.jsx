@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
-import { faArrowLeft} from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faSave} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from 'styled-components';
 
@@ -55,7 +55,7 @@ const Settings = () => {
           <hr />
 
           <SeccionBoton>
-            <button className="btn btn-outline-success">Guardar</button>
+            <button className="btn btn-outline-success"><FontAwesomeIcon icon={faSave} /> Guardar</button>
           </SeccionBoton>
         </form>
       </main>

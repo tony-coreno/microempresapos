@@ -23,6 +23,8 @@ import Login from "./Login";
 import "bootstrap/dist/css/bootstrap.css";
 import Settings from "../settings/Settings";
 import Calendario from "../elements/calendar/Calendario";
+import Proveedores from "./Proveedores";
+import Notas from "./Notas";
 const App = () => {
   return (
     <>
@@ -49,6 +51,8 @@ const App = () => {
                 <Route path="/categorias" component={Categorias} />
                 <Route path="/crear-venta" component={CrearVenta} />
                 <Route path="/reportes" component={Reportes} />
+                <Route path="/proveedores" component={Proveedores} />
+                <Route path="/notas" component={Notas} />
                 <Route
                   path="/administrar-venta"
                   component={AdministrarVentas}

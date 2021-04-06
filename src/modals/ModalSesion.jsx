@@ -7,6 +7,7 @@ import {
     ModalFooter,
     FormGroup
   } from "reactstrap";
+  import styled from 'styled-components';
   import 'bootstrap/dist/css/bootstrap.css';
 const ModalSesion = ({modalSesion, setModalSesion}) => {
   const salir = () => {
@@ -17,14 +18,14 @@ const ModalSesion = ({modalSesion, setModalSesion}) => {
     return (
       <Modal isOpen={modalSesion}>
       <ModalHeader>
-        Cerrar Sesión
+        <Texto> Cerrar Sesión </Texto>
       </ModalHeader>
       <ModalBody>
         <FormGroup>
         
         </FormGroup>
         <FormGroup>
-          <h6>¿Desea continuar?</h6>
+          <Texto>¿Desea continuar?</Texto>
         </FormGroup>
         </ModalBody>
       <ModalFooter>
@@ -35,4 +36,9 @@ const ModalSesion = ({modalSesion, setModalSesion}) => {
      );
 }
  
+const Texto = styled.h6`
+
+  text-align: center;
+
+`;
 export default ModalSesion;

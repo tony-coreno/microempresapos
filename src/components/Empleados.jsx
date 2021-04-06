@@ -112,8 +112,6 @@ const eliminar = async (id) => {
   obtenerEmpleados();
 };
 
-
-
   return (
     <>
       <Navbar>
@@ -181,7 +179,7 @@ const eliminar = async (id) => {
                             <td>
                               <button
                                 className="bn btn-outline-info mr-2"
-                                
+                
                               >
                                 <FontAwesomeIcon icon={faUserEdit} />
                               </button>

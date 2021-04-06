@@ -55,7 +55,7 @@ const NuevoEmpleado = () => {
     window.location.href = "/empleados";
     }, 1500);
   }
-
+  
   return (
     <>
       <main className="caja-contenido col-12">
@@ -126,7 +126,6 @@ const NuevoEmpleado = () => {
 };
 
 const Titulo = styled.h5`
-
     text-align: center;
 
 `;

@@ -25,7 +25,7 @@ const CrearVenta = () => {
             <Route path="/administrar-venta" component={AdministrarVentas} />
           </Switch>
           <TituloEmpleado>
-            Vendedor:{" Antonio |"}  Fecha: {f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear()}
+            Vendedor : {sessionStorage.getItem('nombre')} | Fecha: {f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear()}
           </TituloEmpleado>
 
           <hr />

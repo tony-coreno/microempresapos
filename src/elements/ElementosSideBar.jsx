@@ -83,7 +83,7 @@ const ElementosSideBar = () => {
         <span className="badge badge-primary">0</span>
       </Link>
       <Link
-        to="/"
+        to="/proveedores"
         className="list-group-item list-group-item-action bg-light"
         data-toggle="tooltip"
         data-placement="right"
@@ -92,7 +92,7 @@ const ElementosSideBar = () => {
         <FontAwesomeIcon icon={faTruck} />
       </Link>
       <Link
-        to="/"
+        to="/notas"
         className="list-group-item list-group-item-action bg-light"
         data-toggle="tooltip"
         data-placement="right"
