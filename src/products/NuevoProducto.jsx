@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Axios from 'axios';
 import "bootstrap/dist/css/bootstrap.css";
@@ -22,10 +22,14 @@ const NuevoProducto = () => {
   const [producto, setProducto] = useState('');
   const [existencia, setExistencia] = useState('');
   const [precioventa, setPrecioventa] = useState('');
-  const [categoria, setCategoria] = useState('');
+  const [categoriaSelected, setCategoriaSelected] = useState('');
+  const [categoria, setCategoria] = useState([]);
   const [unidad, setUnidad] = useState('');
   const [estado, setEstado] = useState('');
 
+  useEffect(() => {
+    setCategoriaSelected(['Bebidas','Abarrotes'])
+  },[])
 
   const guardar = async(req, res) => {
     const stock ={
@@ -39,7 +43,7 @@ const NuevoProducto = () => {
       jefe: sessionStorage.getItem('idusuario')
     }
     const token = sessionStorage.getItem('token')
-    const respuesta = await Axios.post('http://localhost:4000/productos/agregar',stock,{
+    const respuesta = await Axios.post('/productos/agregar',stock,{
       headers:{'autorizacion':token}
     })
     const mensaje = respuesta.data.mensaje
@@ -64,7 +68,7 @@ const NuevoProducto = () => {
           </NavLink>
           <Titulo>Agregar Producto</Titulo>
         </div>
-        <form>
+        <form onSubmit={guardar}>
           <hr />
           <div className="row">
             <div className="col">
@@ -104,9 +108,11 @@ const NuevoProducto = () => {
           <div>
           <Titulo>Categoría</Titulo>
             <div className="form-group col-mt-4">
-              <select id="inputState" className="form-control mt-2">
-                <option>...</option>
-                <option>...</option>
+              <select className="form-control mt-2"
+                onChange={(e)=> setCategoriaSelected(e.target.value)}
+                value={categoriaSelected}
+              >
+                {categoria.map((categorias)=>(<option key={categorias}>{categorias}</option>))}
               </select>
               
             </div>
@@ -120,7 +126,7 @@ const NuevoProducto = () => {
               <div className="form-group col-mt-4">
                 <br />
                 <Titulo>Estado</Titulo>
-                <select id="inputState" className="form-control mt-">
+                <select value={estado} className="form-control mt-">
                   <option>Activo</option>
                   <option>Retirar del almacén</option>
                   <option>Agotado</option>
@@ -130,7 +136,7 @@ const NuevoProducto = () => {
           </div>
           <hr />
 
-          <button className="btn btn-outline-success"><FontAwesomeIcon icon={faSave} /> Guardar</button>
+          <button className="btn btn-outline-success"><FontAwesomeIcon icon={faSave}/> Guardar</button>
         </form>
       </main>
     </>

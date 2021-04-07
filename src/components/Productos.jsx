@@ -1,69 +1,30 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Switch, NavLink, Route } from "react-router-dom";
-import Axios from 'axios'
-// import DataTable from "react-data-table-component";
+import Axios from "axios";
 import Categorias from "./Categorias";
+import Swal from 'sweetalert2';
 import { Button, Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faShoppingBag, faTrashAlt, faUserEdit } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSearch,
+  faShoppingBag,
+  faTrashAlt,
+  faUserEdit,
+} from "@fortawesome/free-solid-svg-icons";
 const Productos = () => {
   const [productos, setProductos] = useState([]);
-  useEffect (()=>{
+  const [sku, setSku] = useState('');
+  const [producto, setProducto] = useState('');
+  const [existencia, setExistencia] = useState('');
+  const [precioventa, setPrecioventa] = useState('');
+  const [categoria, setCategoria] = useState('');
+  const [unidad, setUnidad] = useState('');
+  const [estado, setEstado] = useState('');
+  useEffect(() => {
     obtenerProductos();
-  },[]);
+  }, []);
 
-
-  // const tablaProductos = [
-  //   {
-  //     id: "",
-  //     nombre: "",
-  //     apellido: "",
-  //     perfil: "",
-  //     estatus: "",
-  //   },
-  // ];
-
-  // const columnas = [
-  //   {
-  //     name: "SKU",
-  //     selector: "id",
-  //     sortable: true,
-  //     grow: 1,
-  //   },
-  //   {
-  //     name: "Nombre Producto",
-  //     selector: "nombre",
-  //     sortable: true,
-  //   },
-  //   {
-  //     name: "Existencia",
-  //     selector: "apellido",
-  //     sortable: true,
-  //   },
-  //   {
-  //     name: "Categoria",
-  //     selector: "perfil",
-  //     sortable: true,
-  //   },
-  //   {
-  //     name: "Precio de venta",
-  //     selector: "estatus",
-  //     sortable: true,
-  //   },
-  //   {
-  //     name: "Acciones",
-  //     selector: "estatus",
-  //     sortable: true,
-  //   },
-  // ];
-
-  // const paginacionOpcion = {
-  //   rowsPerPageText: "Filas por página",
-  //   rangeSeparatorText: "de",
-  //   selectAllRowsItem: true,
-  //   selectAllRowsItemText: "Todos",
-  // };
   const obtenerProductos = async () => {
     const id = sessionStorage.getItem("idusuario");
     const token = sessionStorage.getItem("token");
@@ -75,7 +36,6 @@ const Productos = () => {
     );
     setProductos(respuesta.data);
   };
-
   return (
     <div>
       <Contenedorapp>
@@ -94,97 +54,91 @@ const Productos = () => {
               className="btn btn-success d-flex d-flex justify-content-between align-items-center"
               data-toggle="tooltip"
               data-placement="right"
-              title="Agregar producto">
+              title="Agregar producto"
+            >
               <FontAwesomeIcon icon={faShoppingBag} />
             </Button>
           </NavLink>
-          { sessionStorage.getItem("token")  ?
-
-          
-          <div className="col-md-4 ml-auto mt-4">
-            <div className="input-group fa-2x">
-              <input
-                className="form-control mr-sm-4"
-                type="search"
-                placeholder="Buscar..."
-                aria-label="Search"
-                autoFocus
-                // onChange={buscar}
-              /><FontAwesomeIcon icon={faSearch}/>
+          {sessionStorage.getItem("token") ? (
+            <div className="col-md-4 ml-auto mt-4">
+              <div className="input-group fa-2x">
+                <input
+                  className="form-control mr-sm-4"
+                  type="search"
+                  placeholder="Buscar..."
+                  aria-label="Search"
+                  autoFocus
+                  // onChange={buscar}
+                />
+                <FontAwesomeIcon icon={faSearch} />
+              </div>
             </div>
-          </div> 
-        :
-        <div></div>  
-        }
+          ) : (
+            <div></div>
+          )}
         </Navbar>
-        {/* <DataTable
-          columns={columnas}
-          data={tablaProductos}
-          title="Gestión producto"
-          pagination
-          paginationComponentOptions={paginacionOpcion}
-          fixedHeader
-          fixedHeaderScrollHeight="300px"
-        /> */}
-             <div className="table-responsive table-borderless table-hover">
-        <div>
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12">
-                <div className="card">
-                  <div className="bg-light card-header">
-                    <Titulo>
-                      Productos de { sessionStorage.getItem("nombre") || 'Invitado' }
-                    </Titulo>
+        <div className="table-responsive table-borderless table-hover">
+          <div>
+            <div className="container">
+              <div className="row">
+                <div className="col-md-12">
+                  <div className="card">
+                    <div className="bg-light card-header">
+                      <Titulo>
+                        Productos de{" "}
+                        {sessionStorage.getItem("nombre") || "Invitado"}
+                      </Titulo>
+                    </div>
+                    <table className="table table-responsive-lg ">
+                      <thead className="light">
+                        <tr>
+                          <th>#</th>
+                          <th>SKU</th>
+                          <th>Producto</th>
+                          <th>Existencia</th>
+                          <th>Precio de venta</th>
+                          <th>Categoría</th>
+                          <th>Unidad</th>
+                          <th>Estado</th>
+                          <th>Opciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {productos.map((producto, i) => {
+                          return (
+                            <tr key={producto.id}>
+                              <td>{i + 1}</td>
+                              <td>{producto.sku}</td>
+                              <td>{producto.producto}</td>
+                              <td>{producto.existencia}</td>
+                              <td>{producto.precioventa}</td>
+                              <td>{producto.categoria}</td>
+                              <td>{producto.unidad}</td>
+                              <td>
+                                {producto.estado}
+                              </td>
+                              <td>
+                                <button
+                                  className="bn btn-outline-dark mr-2"
+                                  //   onClick={() => eliminar(empleado._id)}
+                                >
+                                  <FontAwesomeIcon icon={faUserEdit} />
+                                </button>
+                                <button className="bn btn-outline-dark">
+                                  <FontAwesomeIcon icon={faTrashAlt} />
+                                </button>
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
                   </div>
-                  <table className="table table-responsive-lg ">
-                    <thead className="light">
-                      <tr>
-                        <th>#</th>
-                        <th>SKU</th>
-                        <th>Producto</th>
-                        <th>Existencia</th>
-                        <th>Precio de venta</th>
-                        <th>Categoría</th>
-                        <th>Unidad</th>
-                        <th>Estado</th>
-                        <th>Opciones</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                       {productos.map((producto, i) => {
-                        return (
-                          <tr key={producto.id}>
-                            <td>{i + 1}</td>
-                            <td>{producto.sku}</td>
-                            <td>{producto.producto}</td>
-                            <td>{producto.existencia}</td>
-                            <td>{producto.precioventa}</td>
-                            <td>{producto.categoria}</td>
-                            <td>{producto.unidad}</td>
-                            <td>{producto.estado ? 'En existencia' : 'Agotado'}</td>
-                            <td>
-                              <button
-                                className="bn btn-outline-dark mr-2"
-                                //   onClick={() => eliminar(empleado._id)}
-                              >
-                                <FontAwesomeIcon icon={faUserEdit} />
-                              </button>
-                              <button className="bn btn-outline-dark">
-                                <FontAwesomeIcon icon={faTrashAlt} />
-                              </button>
-                            </td>
-                          </tr>
-                        );
-                      })} 
-                    </tbody>
-                  </table>
                 </div>
               </div>
             </div>
           </div>
-          </div>
-          </div>
+        </div>
       </Contenedorapp>
     </div>
   );

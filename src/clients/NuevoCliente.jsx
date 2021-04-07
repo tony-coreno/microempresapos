@@ -30,13 +30,13 @@ const NuevoCliente = () => {
           <hr />
           <div className="row">
             <div className="col">
-              <input type="number" className="form-control" placeholder="SKU" />
+              <input type="text" className="form-control" placeholder="Nombre" />
             </div>
             <div class="col">
               <input
                 type="text"
                 className="form-control"
-                placeholder="Nombre Cliente"
+                placeholder="Apellido"
               />
             </div>
           </div>
@@ -50,12 +50,22 @@ const NuevoCliente = () => {
               />
             </div>
             <div className="col">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Código promocional"
+              />
+            </div>
+            <div className="col">
               <input readOnly
                 className="form-control"
                 placeholder="Compras"
               />
             </div>
+
+            
           </div>
+          
 
           <hr />
       
