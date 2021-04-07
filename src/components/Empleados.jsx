@@ -33,7 +33,7 @@ const Empleados = () => {
     const id = sessionStorage.getItem("idusuario");
     const token = sessionStorage.getItem("token");
     const respuesta = await Axios.get(
-      "http://localhost:4000/empleados/listarporadmin/" + id,
+      "/empleados/listarporadmin/" + id,
       {
         headers: { autorizacion: token },
       }

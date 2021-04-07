@@ -7,7 +7,7 @@ const Almacen = () => {
     const [pago, setPago] = useState([]);
 
     useEffect( ()=>{
-        setPago(['Efectivo','Tarjeta'])
+        setPago([''])
     },[])
 
   return (

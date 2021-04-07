@@ -30,7 +30,7 @@ const NuevoCliente = () => {
           <hr />
           <div className="row">
             <div className="col">
-              <input type="text" className="form-control" placeholder="Nombre" />
+              <input type="text" className="form-control" placeholder="Nombre" autoFocus/>
             </div>
             <div class="col">
               <input
