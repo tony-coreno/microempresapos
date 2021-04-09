@@ -1,9 +1,10 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { NavLink, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import { faArrowLeft, faSave} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from 'styled-components';
+import { ContextEstado } from "../context/ContextEstado";
 
 const Settings = () => {
   // const boton = document.getElementById("boton");
@@ -14,7 +15,15 @@ const Settings = () => {
   // //     pass.type = "text";
   // //   }
   // // };
+
+  const {setTituloPOS, tituloPos} = useContext(ContextEstado);
+  const [empresa, setEmpresa] = useState('');
+  const onSubmit= (e) => {
+    e.preventDefault();
+    setTituloPOS(empresa);
+  }  
   return (
+
     <>
       <main className="caja-contenido col-12">
         <div>
@@ -25,7 +34,7 @@ const Settings = () => {
           </NavLink>
           <Titulo>Ajustes</Titulo>
         </div>
-        <form>
+        <form onSubmit={onSubmit}>
           <hr />
 
 
@@ -33,7 +42,10 @@ const Settings = () => {
             <div className="col">
        
             <h7>Nombre</h7>
-              <input type="text" className="form-control mt-2" placeholder="Nombre del Negocio" />
+              <input type="text" className="form-control mt-2"
+              placeholder="Nombre del Negocio"
+              onChange={(e)=>setEmpresa(e.target.value)}
+              />
             </div>
             <div class="col">
             <h7>Tema</h7>
@@ -49,7 +61,7 @@ const Settings = () => {
             <h5>Fuente</h5>
             <button className="btn btn-outline-primary mt-2">Aumentar</button>
             <hr />
-            <button className="btn btn-outline-dark mt-2">Disminuir</button>
+            <button className="btn btn-outline-dark mt-2" >Disminuir</button>
           </div>
 
           <hr />

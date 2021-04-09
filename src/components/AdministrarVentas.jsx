@@ -7,7 +7,7 @@ const Almacen = () => {
     const [pago, setPago] = useState([]);
 
     useEffect( ()=>{
-        setPago([''])
+        setPago(['Efectivo', 'Tarjeta'])
     },[])
 
   return (
@@ -36,7 +36,7 @@ const Almacen = () => {
                 <input
                   type="text"
                   className="form-control mt-2"
-                  placeholder="Nombre del Negocio"
+                  placeholder=""
                 />
               </div>
               <div class="col">
@@ -69,8 +69,7 @@ const Almacen = () => {
                            {pago.map((medio, i) => {
                    return (
                      <tr key={medio}>
-                       <td>{pago}</td>
-                       <td>{}</td>
+                       <td>{medio}</td>
                        <td>
                          {/* <button
                            className="bn btn-outline-info mr-2"

@@ -1,18 +1,22 @@
+import { useContext } from 'react';
 import {NavLink, Route} from 'react-router-dom';
 import styled from 'styled-components';
+import { ContextEstado } from '../context/ContextEstado';
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import {faCashRegister, faClipboardList, faLayerGroup, faQuestionCircle, 
 //         faTachometerAlt, faUsers, faUserTie} from "@fortawesome/free-solid-svg-icons";
 // import Barra from './../elements/Barra';
-import Login from './Login';
+// import Login from './Login';
+
 const Header = () => {
+    const {tituloPos} = useContext(ContextEstado)
     return ( 
         <>
         { sessionStorage.getItem("token") ?
         <ContenedorHeader>
         <Route>
             {/* <Barra /> */}
-            <Titulo>Sistema POS</Titulo>
+            <Titulo>{tituloPos}</Titulo>
             <MenuNav>
                 {/* <NavLink to="/" exact={true} >Dashboard <FontAwesomeIcon icon={faTachometerAlt} /></NavLink>
                 <NavLink to="/empleados">Empleados <FontAwesomeIcon icon={faUserTie} /></NavLink>
@@ -49,8 +53,7 @@ const ContenedorHeader = styled.header`
 const Titulo = styled.h1`
     margin-bottom: 5px;
     font-size: 26px;
-    text-transform: uppercase;
-     
+    text-transform: uppercase;     
 `;
 
 const MenuNav = styled.nav`
