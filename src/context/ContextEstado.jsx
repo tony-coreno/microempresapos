@@ -10,21 +10,6 @@ const ProveedorState = ({children}) => {
     const [empleados, setEmpleados] = useState([]);
     const [pagar, setPagar] = useState('');
     const [articulos, setArticulos] = useState(0);
-    const [base, setBase] = useState([{
-        id: 1,
-        nombre: '',
-        precio: 17.50,
-        cantidad: 1
-
-    },
-    {
-        id: 2,
-        nombre: '',
-        precio: 17.50,
-        cantidad: 1
-    }
-
-]);
 
     const handleInputChange = (e) => {
         setListaProducto(e.target.value);
@@ -43,7 +28,7 @@ const ProveedorState = ({children}) => {
     }
 
     return ( 
-        <ContextEstado.Provider value={{articulos,setArticulos,ventaProducto, setVentaProducto, pagar, setPagar, listaProducto, setListaProducto, setVentaProducto, handleInputChange, handleSubmit, base, empleados, setEmpleados, perfil, setPerfil}}>
+        <ContextEstado.Provider value={{articulos,setArticulos,ventaProducto, setVentaProducto, pagar, setPagar, listaProducto, setListaProducto, setVentaProducto, handleInputChange, handleSubmit, empleados, setEmpleados, perfil, setPerfil}}>
             {children}
         </ContextEstado.Provider>
      );
