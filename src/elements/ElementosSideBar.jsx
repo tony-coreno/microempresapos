@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import ModalPerfil from "../modals/ModalPerfil";
 import ModalSesion from "../modals/ModalSesion";
@@ -16,12 +16,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from 'reactstrap';
+import { ContextEstado } from "../context/ContextEstado";
 // import PopoverExampleMulti from "../modals/PopDerecha";
 
 const ElementosSideBar = () => {
   const [modal, setModal] = useState(false);
   const [modalSesion, setModalSesion] = useState(false);
   const [popoverOpen, setPopoverOpen] = useState(false);
+  const {articulos} = useContext(ContextEstado)
 
   const toggle = () => setPopoverOpen(!popoverOpen);
   return (
@@ -39,7 +41,7 @@ const ElementosSideBar = () => {
         title="Notificaciones"
       >
         <FontAwesomeIcon icon={faBell} />
-        <span className="badge badge-primary">4</span>
+        <span className="badge badge-primary">0</span>
       </Button>
 
       <Button
@@ -60,7 +62,7 @@ const ElementosSideBar = () => {
         title="Compras"
       >
         <FontAwesomeIcon icon={faShoppingCart} />
-        <span className="badge badge-primary">0</span>
+        <span className="badge badge-primary">{articulos}</span>
       </Link>
       <Link
         to="/productos"

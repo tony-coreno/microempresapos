@@ -8,6 +8,8 @@ const ProveedorState = ({children}) => {
     const [listaProducto, setListaProducto] = useState('');
     const [perfil, setPerfil] = useState('');
     const [empleados, setEmpleados] = useState([]);
+    const [pagar, setPagar] = useState('');
+    const [articulos, setArticulos] = useState(0);
     const [base, setBase] = useState([{
         id: 1,
         nombre: '',
@@ -32,16 +34,16 @@ const ProveedorState = ({children}) => {
     const handleSubmit = (e, value) => {
 
         e.preventDefault();
-        if (listaProducto.trim().length > 2 ){
+        if (listaProducto.trim().length > 5 ){
             console.log('se insertó a la lista');
             setVentaProducto([...ventaProducto, listaProducto]);
+            setArticulos(articulos + 1)
             
-    
-        }  
+        }
     }
 
     return ( 
-        <ContextEstado.Provider value={{ventaProducto, listaProducto, setListaProducto, setVentaProducto, handleInputChange, handleSubmit, base, empleados, setEmpleados, perfil, setPerfil}}>
+        <ContextEstado.Provider value={{articulos,setArticulos,ventaProducto, setVentaProducto, pagar, setPagar, listaProducto, setListaProducto, setVentaProducto, handleInputChange, handleSubmit, base, empleados, setEmpleados, perfil, setPerfil}}>
             {children}
         </ContextEstado.Provider>
      );

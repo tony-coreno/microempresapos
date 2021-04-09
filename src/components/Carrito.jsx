@@ -1,41 +1,74 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { ContextEstado } from "../context/ContextEstado";
 import TablaCarrito from "./../elements/TablaCarrito";
 import "bootstrap/dist/css/bootstrap.css";
-import { faBan, faCreditCard, faDollarSign } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBan,
+  faCreditCard,
+  faDollarSign,
+  faMoneyBill,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 const Carrito = () => {
-  const { ventaProducto } = useContext(ContextEstado);
+  const { ventaProducto, setVentaProducto, setListaProducto } = useContext(
+    ContextEstado
+  );
+  const { pagar, setPagar, setArticulos } = useContext(ContextEstado);
+
+  // const {articulo} = articulos;
+  // setArticulos({...articulos,
+  //   articulo: articulo+1
+  //   })
+
+  useEffect(() => {
+    pago();
+  }, [pagar]);
+
+  useEffect(() => {
+    limpiar()
+
+  }, [ventaProducto]);
+
+
+  const limpiar = () =>{
+    setListaProducto('')
+}
+
+
   const cancelar = () => {
-    Swal.fire({
-      title: 'Cancelar venta',
-      text: '¿Desea continuar?',
-      icon: 'warning',
-      confirmButtonText: 'De acuerdo',
-      cancelButtonText:'Cancel'	
-    })
-  }
+    setVentaProducto([""]);
+    setListaProducto("");
+    setArticulos(0);
+    window.location.href='/crear-venta'
+    // Swal.fire({
+    //   title: 'Cancelar venta',
+    //   text: '¿Desea continuar?',
+    //   icon: 'warning',
+    //   confirmButtonText: 'De acuerdo',
+    //   cancelButtonText:'Cancel'
+    // })
+  };
+  const pago = () => {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
+    });
 
-  const Toast = Swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 1500,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-  })
-  
-  Toast.fire({
-    icon: 'success',
-    title: 'Venta exitosa'
-  })
-
+    Toast.fire({
+      icon: "success",
+      title: "Venta exitosa",
+    });
+  };
 
   return (
     <>
@@ -45,26 +78,37 @@ const Carrito = () => {
       <Contenedor>
         <ol>
           {ventaProducto.map((venta) => {
-            return <ul key={venta}>{venta}</ul>;
+            return (
+            <ul key={venta.id}>{venta} </ul>
+            );
           })}
         </ol>
         <TablaCarrito />
       </Contenedor>
       <TotalDiv>
         <input readOnly className="form-control"></input>
-        <h3> <FontAwesomeIcon icon={faDollarSign}/> Total</h3>
+        <h3>
+          {" "}
+          <FontAwesomeIcon icon={faDollarSign} /> Total
+        </h3>
       </TotalDiv>
-      
+
       <div>
         <button className="btn btn-outline-danger" onClick={() => cancelar()}>
           {" "}
           <FontAwesomeIcon icon={faBan} /> Cancelar
         </button>
-          {"           "}
+        {"           "}
         <button className="btn btn-outline-info">
           {" "}
-          {" "}
           <FontAwesomeIcon icon={faCreditCard} /> Método de pago
+        </button>
+        <button
+          className="btn btn-outline-success mr-4"
+          onClick={() => setPagar("")}
+        >
+          {" "}
+          <FontAwesomeIcon icon={faMoneyBill} /> Pagar
         </button>
       </div>
     </>

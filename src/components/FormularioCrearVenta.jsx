@@ -1,9 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { ContextEstado } from '../context/ContextEstado';
 
     const FormularioCrearVenta = () => {
-        const {handleSubmit, listaProducto, handleInputChange} = useContext(ContextEstado);
+        const {handleSubmit, listaProducto, handleInputChange, setListaProducto} = useContext(ContextEstado);
+
+        useEffect(()=>{
+            limpiar()
+        },[])
+
+        const limpiar = () =>{
+            setListaProducto('')
+        }
 
     return (     
         <>

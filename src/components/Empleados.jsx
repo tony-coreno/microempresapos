@@ -3,10 +3,11 @@ import Axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 import styled from "styled-components";
 import { Button, Navbar } from "reactstrap";
-//import DataTable from 'react-data-table-component';
 import Swal from 'sweetalert2'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faFileExcel,
+  faFilePdf,
     faSearch,
   faTrashAlt,
   faUserEdit,
@@ -14,14 +15,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import { ContextEstado } from "../context/ContextEstado";
-
-// const tablaEmpleados =[
-//     {id:1, nombre:"Antonio", apellido: "Coreño", perfil: "Administrador", estatus: "Activo"},
-//     {id:2, nombre:"Jose", apellido: "Torres", perfil: "Administrador", estatus: "Activo"},
-//     {id:3, nombre:"Edgar", apellido: "Perez", perfil: "Vendedor", estatus: "Activo"},
-//     {id:4, nombre:"Juan", apellido: "Sanchez", perfil: "Vendedor", estatus: "Activo"},
-//     {id:5, nombre:"Pedro", apellido: "Torres", perfil: "Vendedor", estatus: "Activo"},
-// ];
 
 const Empleados = () => {
   const {empleados, setEmpleados} = useContext(ContextEstado);
@@ -89,7 +82,7 @@ const Empleados = () => {
     }
     const buscar = e.target.value
     const token = sessionStorage.getItem('token')
-    const respuesta = await Axios.get(`http://localhost:4000/empleados/buscar/${buscar}/${sessionStorage.getItem('idusuario')}`,{
+    const respuesta = await Axios.get(`/empleados/buscar/${buscar}/${sessionStorage.getItem('idusuario')}`,{
       headers:{'autorizacion':token}
     })
     setEmpleados(respuesta.data)
@@ -97,7 +90,7 @@ const Empleados = () => {
 const eliminar = async (id) => {
   const token = sessionStorage.getItem("token");
   const respuesta = await Axios.delete(
-    "http://localhost:4000/empleados/eliminar/" + id,
+    "/empleados/eliminar/" + id,
     {
       headers: { autorizacion: token },
     }
@@ -115,6 +108,7 @@ const eliminar = async (id) => {
   return (
     <>
       <Navbar>
+      <Herramientas className=""> 
         <NavLink to="/agregar-empleado">
           <Button className="btn btn-info d-flex d-flex justify-content-between align-items-center pr-2"
           data-toggle="tooltip"
@@ -124,6 +118,26 @@ const eliminar = async (id) => {
             <FontAwesomeIcon icon={faUserPlus} />
           </Button>
         </NavLink>
+
+        <NavLink to="/agregar-empleado">
+          <Button className="btn btn-danger d-flex d-flex justify-content-between align-items-center pr-2"
+          data-toggle="tooltip"
+          data-placement="right"
+          title="Imprimir empleados"
+          >
+            <FontAwesomeIcon icon={faFilePdf} />
+          </Button>
+        </NavLink>
+        <NavLink to="/agregar-empleado">
+          <Button className="btn btn-success d-flex d-flex justify-content-between align-items-center pr-2"
+          data-toggle="tooltip"
+          data-placement="right"
+          title="Exportar empleados"
+          >
+            <FontAwesomeIcon icon={faFileExcel} />
+          </Button>
+        </NavLink>
+        </Herramientas>
         { sessionStorage.getItem("token") ?
         <div className="col-md-4 ml-auto">
             <div className="input-group fa-2x">
@@ -210,5 +224,14 @@ const Tabla = styled.section`
 
 const Titulo = styled.h4`
   color: #fff;
+`;
+
+const Herramientas = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 4px;
+  padding: 10px;
+  
+
 `;
 export default Empleados;
