@@ -4,8 +4,8 @@ import "bootstrap/dist/css/bootstrap.css";
 
 const Barra = () => {
   return (
-    <nav className="navbar navbar-light bg-light">
-      <div className="container">
+    <nav className="navbar navbar bg-dark">
+      <div className="container p-1">
         <a href="#!" className="navbar-brand">
             SISTEMA POS
         </a>

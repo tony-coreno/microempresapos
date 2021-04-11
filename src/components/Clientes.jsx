@@ -1,54 +1,9 @@
 import React from "react";
-// import DataTable from "react-data-table-component";
 import { NavLink } from "react-router-dom";
 import { Button, Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserTie } from "@fortawesome/free-solid-svg-icons";
-import styled from 'styled-components'
-// const columnas = [
-//   {
-//     name: "ID",
-//     selector: "id",
-//     sortable: true,
-//     grow: 1,
-//   },
-//   {
-//     name: "Nombre",
-//     selector: "nombre",
-//     sortable: true,
-//   },
-//   {
-//     name: "Apellido",
-//     selector: "apellido",
-//     sortable: true,
-//   },
-//   {
-//     name: "Teléfono",
-//     selector: "perfil",
-//     sortable: true,
-//   },
-//   {
-//     name: "Compras Realizadas",
-//     selector: "perfil",
-//     sortable: true,
-//   },
-//   {
-//     name: "Opciones",
-//     selector: "opciones",
-//     sortable: true,
-//   },
-// ];
-
-// const tablaEmpleados = [
-//   { id: "", nombre: "", apellido: "", perfil: "", opciones: "" },
-// ];
-
-// const paginacionOpcion = {
-//   rowsPerPageText: "Filas por página",
-//   rangeSeparatorText: "de",
-//   selectAllRowsItem: true,
-//   selectAllRowsItemText: "Todos",
-// };
+import styled from "styled-components";
 
 const Clientes = () => {
   return (
@@ -65,40 +20,31 @@ const Clientes = () => {
           </Button>
         </NavLink>
       </Navbar>
-      {/* <DataTable
-        columns={columnas}
-        data={tablaEmpleados}
-        title="Clientes"
-        pagination
-        paginationComponentOptions={paginacionOpcion}
-        fixedHeader
-        fixedHeaderScrollHeight="300px"
-      /> */}
-              <div className="table-responsive table-borderless table-hover">
-          <div>
-            <div className="container">
-              <div className="row">
-                <div className="col-md-12">
-                  <div className="card">
-                    <div className="bg-info card-header">
-                      <Titulo>
-                        Clientes de{" "}
-                        {sessionStorage.getItem("nombre") || "Invitado"}
-                      </Titulo>
-                    </div>
-                    <table className="table table-responsive-lg ">
-                      <thead className="light">
-                        <tr>
-                          <th>#</th>
-                          <th>Nombre</th>
-                          <th>Apellido</th>
-                          <th>Teléfono</th>
-                          <th>Compras realizadas</th>
-                          <th>Opciones</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {/* {productos.map((producto, i) => {
+      <div className="table-responsive table-borderless table-hover">
+        <div>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="card">
+                  <div className="bg-info card-header">
+                    <Titulo>
+                      Clientes de{" "}
+                      {sessionStorage.getItem("nombre") || "Invitado"}
+                    </Titulo>
+                  </div>
+                  <table className="table table-responsive-lg ">
+                    <thead className="light">
+                      <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Teléfono</th>
+                        <th>Compras realizadas</th>
+                        <th>Opciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {/* {productos.map((producto, i) => {
                           return (
                             <tr key={producto.id}>
                               <td>{i + 1}</td>
@@ -125,14 +71,14 @@ const Clientes = () => {
                             </tr>
                           );
                         })} */}
-                      </tbody>
-                    </table>
-                  </div>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
   );
 };

@@ -8,7 +8,7 @@ const CardReportes = () => {
       <Cuadros className="p-4">
         <div>
           <div className="card">
-            <img src="https://img.icons8.com/plasticine/100/000000/business-report.png" />
+            <img src="https://img.icons8.com/plasticine/100/000000/business-report.png" alt="Reportes" />
             {/* <img src="..." className="card-img-top" alt="..." />  */}
             <div className="card-body">
               <h5 className="card-title"></h5>
@@ -24,6 +24,7 @@ const CardReportes = () => {
             <img
               className="card-img-top"
               src="https://img.icons8.com/plasticine/100/000000/total-sales.png"
+              alt="Reportes del mes"
             />
             {/* <img src="..." className="card-img-top" alt="..." />  */}
             <div className="card-body">

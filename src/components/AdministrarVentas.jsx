@@ -142,11 +142,11 @@ const Contenedorapp = styled.div`
 const SeccionBoton = styled.div`
   width: 50%;
 `;
-const Tabla = styled.section`
-  background: #fff;
-  text-align: center;
-  font-family: "Open Sans", sans-serif;
-`;
+// const Tabla = styled.section`
+//   background: #fff;
+//   text-align: center;
+//   font-family: "Open Sans", sans-serif;
+// `;
 
 const Titulo = styled.h6`
   color: #fff;

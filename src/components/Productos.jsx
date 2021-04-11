@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Switch, NavLink, Route } from "react-router-dom";
 import Axios from "axios";
 import Categorias from "./Categorias";
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 import { Button, Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,13 +14,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 const Productos = () => {
   const [productos, setProductos] = useState([]);
-  const [sku, setSku] = useState('');
-  const [producto, setProducto] = useState('');
-  const [existencia, setExistencia] = useState('');
-  const [precioventa, setPrecioventa] = useState('');
-  const [categoria, setCategoria] = useState('');
-  const [unidad, setUnidad] = useState('');
-  const [estado, setEstado] = useState('');
+  // const [sku, setSku] = useState('');
+  // const [producto, setProducto] = useState('');
+  // const [existencia, setExistencia] = useState('');
+  // const [precioventa, setPrecioventa] = useState('');
+  // const [categoria, setCategoria] = useState('');
+  // const [unidad, setUnidad] = useState('');
+  // const [estado, setEstado] = useState('');
   useEffect(() => {
     obtenerProductos();
   }, []);
@@ -29,7 +29,7 @@ const Productos = () => {
     const id = sessionStorage.getItem("idusuario");
     const token = sessionStorage.getItem("token");
     const respuesta = await Axios.get(
-      "http://localhost:4000/productos/listarporadmin/" + id,
+      "/productos/listarporadmin/" + id,
       {
         headers: { autorizacion: token },
       }

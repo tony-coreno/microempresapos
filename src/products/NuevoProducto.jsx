@@ -147,21 +147,21 @@ const Titulo = styled.h5`
   text-align: center;
 `;
 
-const Categoria = styled.h6`
-  text-align: right;
-`;
+// const Categoria = styled.h6`
+//   text-align: right;
+// `;
 
-const Contenedorapp = styled.div`
-  max-width: 1400px;
-  padding: 5px;
-  width: 100%;
-  display: grid;
-  gap: 20px;
-  grid-template-columns: 2fr 3fr;
-  background: #fff;
-  margin: 5px 0;
-  border-radius: 20px;
-  box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
-`;
+// const Contenedorapp = styled.div`
+//   max-width: 1400px;
+//   padding: 5px;
+//   width: 100%;
+//   display: grid;
+//   gap: 20px;
+//   grid-template-columns: 2fr 3fr;
+//   background: #fff;
+//   margin: 5px 0;
+//   border-radius: 20px;
+//   box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
+// `;
 
 export default NuevoProducto;

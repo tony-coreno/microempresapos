@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Axios from "axios";
 import { Switch, NavLink, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 import styled from "styled-components";
 const Login = () => {
@@ -49,6 +49,7 @@ const Login = () => {
               <img
                 src="https://img.icons8.com/plasticine/100/000000/total-sales.png"
                 title="POS"
+                alt="POS"
               />
             </div>
             <div className="card-header text-center">

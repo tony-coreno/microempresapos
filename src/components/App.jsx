@@ -11,7 +11,6 @@ import Ayuda from "./Ayuda";
 import NuevoCliente from "./../clients/NuevoCliente";
 import styled from "styled-components";
 import Sidebar from "./Sidebar";
-import Post from "./Post";
 import Error from "./Error";
 import Productos from "./Productos";
 import Categorias from "./Categorias";
@@ -44,7 +43,6 @@ const App = () => {
                 <Route path="/empleados" component={Empleados} />
                 <Route path="/almacen" component={Almacen} />
                 <Route path="/ventas" component={Ventas} />
-                <Route path="/post/:id" component={Post} />
                 <Route path="/clientes" component={Clientes} />
                 <Route path="/ayuda" component={Ayuda} />
                 <Route path="/productos" component={Productos} />
