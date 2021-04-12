@@ -19,10 +19,10 @@ const NuevoEmpleado = () => {
   const [numeroempleado, setNumeroEmpleado] = useState("");
   const [usuario, setUsuario] = useState("");
   const [contrasena, setContrasena] = useState("");
-  const [perfilSelected, setPerfilSelected] = useState([]);
+  const [perfilSelected, setPerfilSelected] = useState(['']);
   const { perfil, setPerfil } = useContext(ContextEstado);
   const [estado, setEstado] = useState("");
-  const [estadoSelected, setEstadoSelected] = useState([]);
+  const [estadoSelected, setEstadoSelected] = useState(['']);
 
   useEffect(() => {
     setPerfilSelected(["Administrador", "Vendedor"]);

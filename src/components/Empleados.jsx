@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import Barra from '../elements/Barra'
 import Axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 import styled from "styled-components";
@@ -15,6 +16,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import { ContextEstado } from "../context/ContextEstado";
+// import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 const Empleados = () => {
   const { empleados, setEmpleados } = useContext(ContextEstado);
@@ -59,31 +61,42 @@ const Empleados = () => {
     });
     obtenerEmpleados();
   };
-
+ let f = new Date();
   return (
     <>
+    {/* <Barra /> */}
+    {/* <div>
+      <ReactHTMLTableToExcel
+        id="botonExportarExcel"
+        className="btn btn-outline-success"
+        table="tablaEmpleados"
+        filename={`Empleados-${f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear()}}`}
+        sheet="13-04"
+        buttonText={<FontAwesomeIcon icon={faFileExcel} />}
+      />
+    </div> */}
       <Navbar>
         <Herramientas className="">
           <NavLink to="/agregar-empleado">
-            <Button
+            <Boton
               className="btn btn-info d-flex d-flex justify-content-between align-items-center pr-2"
               data-toggle="tooltip"
               data-placement="right"
               title="Agregar Empleado"
             >
               <FontAwesomeIcon icon={faUserPlus} />
-            </Button>
+            </Boton>
           </NavLink>
 
           <NavLink to="/agregar-empleado">
-            <Button
+            <Boton
               className="btn btn-danger d-flex d-flex justify-content-between align-items-center pr-2"
               data-toggle="tooltip"
               data-placement="right"
               title="Imprimir empleados"
             >
               <FontAwesomeIcon icon={faFilePdf} />
-            </Button>
+            </Boton>
           </NavLink>
           <NavLink to="/agregar-empleado">
             <Button
@@ -126,7 +139,7 @@ const Empleados = () => {
                       {sessionStorage.getItem("nombre") || "Invitado"}
                     </Titulo>
                   </div>
-                  <table className="table table-responsive-lg ">
+                  <table className="table table-responsive-lg " id="tablaEmpleados">
                     <thead className="light">
                       <tr>
                         <th>#</th>
@@ -191,5 +204,13 @@ const Herramientas = styled.div`
   flex-direction: row;
   margin: 4px;
   padding: 10px;
+`;
+
+const Boton = styled.button`
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+outline: none;
+
 `;
 export default Empleados;

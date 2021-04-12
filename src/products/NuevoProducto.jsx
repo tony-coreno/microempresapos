@@ -22,13 +22,17 @@ const NuevoProducto = () => {
   const [producto, setProducto] = useState('');
   const [existencia, setExistencia] = useState('');
   const [precioventa, setPrecioventa] = useState('');
-  const [categoriaSelected, setCategoriaSelected] = useState('');
-  const [categoria, setCategoria] = useState([]);
+  const [categoriaSelected, setCategoriaSelected] = useState(['']);
+  const [categoria, setCategoria] = useState('');
+  const [unidadSelected, setUnidadSelected] = useState([''])
   const [unidad, setUnidad] = useState('');
+  const [estadoSelected, setEstadoSelected] = useState([''])
   const [estado, setEstado] = useState('');
 
   useEffect(() => {
-    setCategoriaSelected(['Bebidas','Abarrotes'])
+    setCategoriaSelected(['Bebidas','Abarrotes','Medicamentos'])
+    setUnidadSelected(['ml', 'grs', 'lts'])
+    setEstadoSelected(['Activo', 'Inactivo', 'Agotado'])
   },[])
 
   const guardar = async(req, res) => {
@@ -37,7 +41,7 @@ const NuevoProducto = () => {
       producto,
       existencia,
       precioventa,
-      categoria,
+      categoria: categoria,
       unidad,
       estado: estado,
       jefe: sessionStorage.getItem('idusuario')
@@ -109,27 +113,25 @@ const NuevoProducto = () => {
           <Titulo>Categoría</Titulo>
             <div className="form-group col-mt-4">
               <select className="form-control mt-2"
-                onChange={(e)=> setCategoriaSelected(e.target.value)}
-                value={categoriaSelected}
+                onChange={(e)=> setCategoria(e.target.value)}
+                value={categoria}
               >
-                {categoria.map((categorias)=>(<option key={categorias}>{categorias}</option>))}
+                {categoriaSelected.map((categorias)=>(<option key={categorias}>{categorias}</option>))}
               </select>
               
             </div>
             <div className="form-group col-mt-4">
               <Titulo>Unidad</Titulo>
-              <select id="inputState" className="form-control mt-2">
-                <option>Kg</option>
-                <option>Lts</option>
-                <option>Grs</option>
+              <select className="form-control mt-2"
+              onChange={(e)=> setUnidad(e.target.value)}
+                value={unidad}
+              >{unidadSelected.map((unidad)=>(<option key={unidad}>{unidad}</option>))}
               </select>
               <div className="form-group col-mt-4">
                 <br />
                 <Titulo>Estado</Titulo>
-                <select value={estado} className="form-control mt-">
-                  <option>Activo</option>
-                  <option>Retirar del almacén</option>
-                  <option>Agotado</option>
+                <select onChange={(e)=> setEstado(e.target.value)} value={estado} className="form-control mt-"
+                >{estadoSelected.map((estado)=>(<option key={estado}>{estado}</option>))}
                 </select>
               </div>
             </div>
