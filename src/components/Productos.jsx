@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Switch, NavLink, Route } from "react-router-dom";
 import Axios from "axios";
 import Categorias from "./Categorias";
-// import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 import { Button, Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,13 +14,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 const Productos = () => {
   const [productos, setProductos] = useState([]);
-  // const [sku, setSku] = useState('');
-  // const [producto, setProducto] = useState('');
-  // const [existencia, setExistencia] = useState('');
-  // const [precioventa, setPrecioventa] = useState('');
-  // const [categoria, setCategoria] = useState('');
-  // const [unidad, setUnidad] = useState('');
-  // const [estado, setEstado] = useState('');
   useEffect(() => {
     obtenerProductos();
   }, []);
@@ -35,6 +28,34 @@ const Productos = () => {
       }
     );
     setProductos(respuesta.data);
+  };
+  const buscar = async (e) => {
+    if (e.target.value === "") {
+      return obtenerProductos();
+    }
+    const buscar = e.target.value;
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.get(
+      `/productos/buscar/${buscar}/${sessionStorage.getItem("idusuario")}`,
+      {
+        headers: { autorizacion: token },
+      }
+    );
+    setProductos(respuesta.data);
+  };
+  const eliminar = async (id) => {
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.delete("/productos/eliminar/" + id, {
+      headers: { autorizacion: token },
+    });
+    const mensaje = respuesta.data.mensaje;
+    Swal.fire({
+      icon: "success",
+      title: mensaje,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    obtenerProductos();
   };
   return (
     <div>
@@ -65,8 +86,9 @@ const Productos = () => {
                 <input
                   className="form-control mr-sm-4"
                   type="search"
-                  placeholder="Buscar..."
+                  placeholder="Buscar por producto..."
                   aria-label="Search"
+                  onChange={buscar}
                   autoFocus
                   // onChange={buscar}
                 />
@@ -124,7 +146,7 @@ const Productos = () => {
                                 >
                                   <FontAwesomeIcon icon={faUserEdit} />
                                 </button>
-                                <button className="bn btn-outline-dark">
+                                <button className="bn btn-outline-dark" onClick={() => eliminar(producto._id)}>
                                   <FontAwesomeIcon icon={faTrashAlt} />
                                 </button>
                               </td>

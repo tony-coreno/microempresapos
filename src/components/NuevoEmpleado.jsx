@@ -25,8 +25,8 @@ const NuevoEmpleado = () => {
   const [estadoSelected, setEstadoSelected] = useState(['']);
 
   useEffect(() => {
-    setPerfilSelected(["Administrador", "Vendedor"]);
-    setEstadoSelected(["Activo", "Inactivo"]);
+    setPerfilSelected(["","Administrador", "Vendedor"]);
+    setEstadoSelected(["","Activo", "Inactivo"]);
   }, []);
 
   const guardar = async (e) => {
@@ -47,14 +47,27 @@ const NuevoEmpleado = () => {
       headers: { autorizacion: token },
     });
     const mensaje = respuesta.data.mensaje;
-    Swal.fire({
-      icon: "success",
-      title: mensaje,
-      showConfirmButton: false,
-    });
-    setTimeout(() => {
-      window.location.href = "/empleados";
-    }, 1500);
+    // if(mensaje === 'Por favor seleccione un perfil'){
+       Swal.fire({
+         icon: "warning",
+         title: mensaje,
+         showConfirmButton: false,
+         timer:2000
+       });
+
+    // }
+    // if(estado === 'Por favor asigne un estado'){
+    //   Swal.fire({
+    //     icon: "warning",
+    //     title: mensaje,
+    //     showConfirmButton: false,
+    //     timer:2000
+    //   });
+
+    // }
+     setTimeout(() => {
+       window.location.href = "/empleados";
+     }, 1500);
   };
 
   return (

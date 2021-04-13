@@ -26,13 +26,13 @@ const NuevoProducto = () => {
   const [categoria, setCategoria] = useState('');
   const [unidadSelected, setUnidadSelected] = useState([''])
   const [unidad, setUnidad] = useState('');
-  const [estadoSelected, setEstadoSelected] = useState([''])
+  const [estadoSelected, setEstadoSelected] = useState([])
   const [estado, setEstado] = useState('');
 
   useEffect(() => {
-    setCategoriaSelected(['Bebidas','Abarrotes','Medicamentos'])
-    setUnidadSelected(['ml', 'grs', 'lts'])
-    setEstadoSelected(['Activo', 'Inactivo', 'Agotado'])
+    setCategoriaSelected(['','Bebidas','Abarrotes','Medicamentos'])
+    setUnidadSelected(['','ml', 'grs', 'lts'])
+    setEstadoSelected(['','Activo', 'Inactivo', 'Agotado'])
   },[])
 
   const guardar = async(req, res) => {
@@ -76,7 +76,7 @@ const NuevoProducto = () => {
           <hr />
           <div className="row">
             <div className="col">
-              <input type="number" className="form-control" placeholder="SKU" onChange={(e)=>setSku(e.target.value)} />
+              <input type="number" className="form-control" placeholder="SKU" onChange={(e)=>setSku(e.target.value)} required />
             </div>
             <div class="col">
               <input
