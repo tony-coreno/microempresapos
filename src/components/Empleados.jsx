@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import Barra from '../elements/Barra'
+// import Barra from '../elements/Barra'
 import Axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 import styled from "styled-components";
