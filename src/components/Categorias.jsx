@@ -16,9 +16,49 @@ const Categorias = () => {
 					<Route path="/productos" component={Productos}/>
 				</Switch>
 			</main>
-			<p>
-				<h3>Categorías</h3>
-			</p>
+            <hr />
+            <div className="table-responsive table-borderless table-hover">
+              <div className="container">
+                <div className="row">
+                  <div className="col-12">
+                    <div className="card">
+                      <div className="bg-light card-header py-1">
+                        <Titulo>Detalle de venta</Titulo>
+                      </div>
+                      <table className="table table-responsive-sm ">
+                        <thead className="light">
+                          <tr>
+                            <th>Medio de pago</th>
+                            <th>Estado</th>
+                            <th>Eliminar</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                           {/* {pago.map((medio, i) => {
+                   return (
+                     <tr key={medio}>
+                       <td>{medio}</td>
+                       <td>
+                          <button
+                           className="bn btn-outline-info mr-2"
+                           
+                         >
+                           <FontAwesomeIcon icon={faUserEdit} />
+                         </button>
+                         <button className="bn btn-outline-dark" onClick={() => eliminar(empleado._id)}>
+                           <FontAwesomeIcon icon={faTrashAlt} />
+                         </button> 
+                       </td>
+                     </tr>
+                   );
+                 })}  */}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 		</Contenedorapp>
 
         </div>
@@ -62,5 +102,9 @@ const Contenedorapp = styled.div`
     box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
 `;
 
+const Titulo = styled.h6`
+  color: #fff;
+  text-align: center;
+`;
 
 export default Categorias;
