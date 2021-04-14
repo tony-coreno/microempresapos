@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Axios from 'axios';
 import "bootstrap/dist/css/bootstrap.css";
@@ -28,12 +28,16 @@ const NuevoProducto = () => {
   const [unidad, setUnidad] = useState('');
   const [estadoSelected, setEstadoSelected] = useState([])
   const [estado, setEstado] = useState('');
+  const [talla, setTalla] = useState('');
 
-  useEffect(() => {
-    setCategoriaSelected(['','Bebidas','Abarrotes','Medicamentos'])
-    setUnidadSelected(['','ml', 'grs', 'lts'])
-    setEstadoSelected(['','Activo', 'Inactivo', 'Agotado'])
-  },[])
+
+        useEffect(() => {
+        setCategoriaSelected(['','Bebidas','Abarrotes','Medicamentos'])
+        setUnidadSelected(['','ml', 'grs', 'lts'])
+        setEstadoSelected(['','Activo', 'Inactivo', 'Agotado'])
+
+        },[])
+
 
   const guardar = async(req, res) => {
     const stock ={
@@ -44,6 +48,7 @@ const NuevoProducto = () => {
       categoria: categoria,
       unidad,
       estado: estado,
+      talla,
       jefe: sessionStorage.getItem('idusuario')
     }
     const token = sessionStorage.getItem('token')
@@ -86,6 +91,34 @@ const NuevoProducto = () => {
                 onChange={(e)=> setProducto(e.target.value)}
               />
             </div>
+
+
+            { (sessionStorage.getItem("negocio") === "Ropa") ?
+            <>
+                          <div class="col">
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Ropa"
+                          />
+                        </div>
+                        <div class="col">
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Talla"
+                            onChange={(e)=> setTalla(e.target.value)}
+                          />
+                        </div>
+            </>
+                        
+                        :
+                        <>
+                          
+                        </>
+            }
+
+
           </div>
 
           <div className="row mt-4">

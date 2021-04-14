@@ -32,9 +32,11 @@ const Login = () => {
       const token = respuesta.data.token;
       const nombre = respuesta.data.nombre;
       const idusuario = respuesta.data.id;
+      const negocio = respuesta.data.negocio;
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("nombre", nombre);
       sessionStorage.setItem("idusuario", idusuario);
+      sessionStorage.setItem("negocio", negocio);
       window.location.href = "/";
     }
   };
