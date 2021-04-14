@@ -15,9 +15,10 @@ const Barra = () => {
   let f = new Date();
   return (
     <nav className="navbar navbar bg-light">
-      <div className="container p-1">
-        <div>
-        <ReactHTMLTableToExcel
+      <div className="container p-1 mt-2">
+        <h2 className="mt-2">SISTEMA POS</h2>
+      
+        {/* <ReactHTMLTableToExcel
 
           id="botonExportarExcel"
           className="btn btn-info btn-block"
@@ -54,7 +55,7 @@ const Barra = () => {
         />
         </div>
 
-        <a href=""></a>
+        <a href=""></a> */}
       </div>
     </nav>
   );

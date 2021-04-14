@@ -16,9 +16,15 @@ const CrearVenta = () => {
     <div>
       <Contenedorapp>
         <Menu>
+          {(sessionStorage.getItem("perfil") === "Administrador") ?
+          <>
           <NavLink to="/crear-venta">Crear Venta</NavLink>
           <NavLink to="/administrar-venta">Administrar</NavLink>
           <NavLink to="/reportes">Reportes</NavLink>
+          </>
+          :
+          <NavLink to="/crear-venta">Crear Venta</NavLink>
+          }
         </Menu>
         <main>
           <Switch>

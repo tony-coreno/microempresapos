@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import {NavLink, Route} from 'react-router-dom';
 import styled from 'styled-components';
 import { ContextEstado } from '../context/ContextEstado';
+import Barra from '../elements/Barra'
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import {faCashRegister, faClipboardList, faLayerGroup, faQuestionCircle, 
 //         faTachometerAlt, faUsers, faUserTie} from "@fortawesome/free-solid-svg-icons";
@@ -35,8 +36,8 @@ const Header = () => {
         </Route>
     </ContenedorHeader>
     :
-    
-    <div></div>
+    <Barra />
+
     }
     </>
     );

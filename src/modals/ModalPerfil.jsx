@@ -11,6 +11,7 @@ import {
 import { ContextEstado } from '../context/ContextEstado';
 const ModalPerfil = ({modal, setModal}) => {
   const {perfil} = useContext(ContextEstado)
+  const cuenta = sessionStorage.getItem("perfil")
   
     return (
       <>
@@ -25,7 +26,7 @@ const ModalPerfil = ({modal, setModal}) => {
 
       <img src="https://img.icons8.com/officel/80/000000/person-male.png"/>
       <hr />
-      <Ventas>Tipo de cuenta: {perfil || 'Empleado'}</Ventas>
+      <Ventas>Tipo de cuenta: {cuenta || 'Empleado'}</Ventas>
       </div>
       <hr />
       <div>
