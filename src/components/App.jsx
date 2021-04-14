@@ -19,11 +19,12 @@ import CrearVenta from "./CrearVenta";
 import NuevoEmpleado from "./NuevoEmpleado";
 import AdministrarVentas from "./AdministrarVentas";
 import Login from "./Login";
-import "bootstrap/dist/css/bootstrap.css";
+import LoginEmpleado from './LoginEmpleado';
 import Settings from "../settings/Settings";
 import Calendario from "../elements/calendar/Calendario";
 import Proveedores from "./Proveedores";
 import Notas from "./Notas";
+import "bootstrap/dist/css/bootstrap.css";
 const App = () => {
   return (
     <>
@@ -61,7 +62,7 @@ const App = () => {
                   component={NuevoEmpleado}
                 />
                 <Route path="/settings" component={Settings} />
-                <Route path="/login" component={Login} />
+                <Route path="/login" exact component={Login} />
                 <Route path="/nuevo-cliente" component={NuevoCliente} />
                 <Route path="/calendar" component={Calendario} />
                 <Route component={Error} />
@@ -70,7 +71,13 @@ const App = () => {
           </ContenedorPrincipal>
         </>
       ) : (
+        <>
+        <Route>
+        <Route path="/sesion" exact component={LoginEmpleado} />
+        </Route>
         <Login />
+        </>
+
       )}
     </>
   );

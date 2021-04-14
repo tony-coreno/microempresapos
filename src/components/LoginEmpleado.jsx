@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import { Switch, NavLink, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +12,7 @@ const Login = () => {
   const login = async (e) => {
     e.preventDefault();
     const sesion = { usuario, contrasena };
-    const respuesta = await Axios.post("/administrador/login", sesion);
+    const respuesta = await Axios.post("/empleados/login", sesion);
     const mensaje = respuesta.data.mensaje;
     if (mensaje !== "Bienvenido") {
       Swal.fire({
@@ -32,14 +31,11 @@ const Login = () => {
       const token = respuesta.data.token;
       const nombre = respuesta.data.nombre;
       const idusuario = respuesta.data.id;
-      const negocio = respuesta.data.negocio;
       const perfil = respuesta.data.perfil;
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("nombre", nombre);
       sessionStorage.setItem("idusuario", idusuario);
-      sessionStorage.setItem("negocio", negocio);
       sessionStorage.setItem("perfil", perfil);
-
       window.location.href = "/";
     }
   };
@@ -59,20 +55,8 @@ const Login = () => {
             </div>
             <div className="card-header text-center">
               <hr />
-              <Contenedorapp>
-                <Menu>
-                  <NavLink to="/sesion">Empleado</NavLink>
-                </Menu>
-                <main>
-                  <Switch>
-                    <Route path="/" />
-                    <Route path="/" />
-                    <Route path="/" />
-                  </Switch>
-                </main>
-              </Contenedorapp>
               <br />
-              <h4>Iniciar Sesión</h4>
+              <h4>Iniciar Sesión Empleado</h4>
             </div>
             <div className="card-body">
               <form onSubmit={login}>

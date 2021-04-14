@@ -12,7 +12,7 @@ const Header = () => {
     const {tituloPos} = useContext(ContextEstado)
     return ( 
         <>
-        { sessionStorage.getItem("token") ?
+        { (sessionStorage.getItem("token") && ((sessionStorage.getItem("perfil") ==="Administrador"))) ?
         <ContenedorHeader>
         <Route>
             {/* <Barra /> */}
