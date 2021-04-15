@@ -59,6 +59,7 @@ const Login = () => {
             </div>
             <div className="card-header text-center">
               <hr />
+              <br />
               <Contenedorapp>
                 <Menu>
                   <NavLink to="/sesion">Empleado</NavLink>

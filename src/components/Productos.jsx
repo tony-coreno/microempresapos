@@ -13,7 +13,7 @@ import {
   faUserEdit,
 } from "@fortawesome/free-solid-svg-icons";
 const Productos = () => {
-  const [productos, setProductos] = useState([]);
+  const [productos, setProductos] = useState(['']);
   useEffect(() => {
     obtenerProductos();
   }, []);
@@ -70,6 +70,10 @@ const Productos = () => {
           </Switch>
         </main>
         <Navbar>
+
+        { sessionStorage.getItem("perfil") ==="Administrador" ?
+           
+            <>
           <NavLink to="/agregar-producto">
             <Button
               className="btn btn-success d-flex d-flex justify-content-between align-items-center"
@@ -80,6 +84,12 @@ const Productos = () => {
               <FontAwesomeIcon icon={faShoppingBag} />
             </Button>
           </NavLink>
+          </>
+          :
+          <>
+          </>
+          }
+    
           {sessionStorage.getItem("token") ? (
             <div className="col-md-4 ml-auto mt-4">
               <div className="input-group fa-2x">

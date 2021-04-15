@@ -36,7 +36,7 @@ const Login = () => {
       sessionStorage.setItem("nombre", nombre);
       sessionStorage.setItem("idusuario", idusuario);
       sessionStorage.setItem("perfil", perfil);
-      window.location.href = "/";
+      window.location.href = "/crear-venta";
     }
   };
 
@@ -108,41 +108,8 @@ const Fondo = styled.div`
   border-radius: 10px;
   box-shadow: 0px 0px 15px rgba(129, 129, 129, 0.7);
 `;
-const Menu = styled.nav`
-  width: 100%;
-  text-align: center;
-  background: #147871;
-  grid-column: span 2;
-  border-radius: 1px;
 
-  a {
-    color: #fff;
-    display: inline-block;
-    padding: 15px 20px;
-  }
-
-  a:hover {
-    background: #170238;
-    text-decoration: none;
-  }
-  // a.active {
-  //   border-bottom: 2px solid #f2f2f2;
-  //   padding-bottom: 3px;
-  // }
-`;
-
-const Contenedorapp = styled.div`
-  max-width: 1400px;
-  padding: 5px;
-  width: 100%;
-  display: grid;
-  gap: 1px;
-  //grid-template-columns: 2fr 1fr;
-  background: #fff;
-  margin: 0px 0;
-  border-radius: 10px;
-  box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
-`;
 
 const Contenedor = styled.div``;
+
 export default Login;

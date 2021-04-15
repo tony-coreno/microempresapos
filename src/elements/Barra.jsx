@@ -1,22 +1,24 @@
 import React from "react";
 
 import "bootstrap/dist/css/bootstrap.css";
-import ReactHTMLTableToExcel from "react-html-table-to-excel";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFileExcel,
-  faFilePdf,
-  faSearch,
-  faTrashAlt,
-  faUserEdit,
-  faUserPlus,
-} from "@fortawesome/free-solid-svg-icons";
+import styled from 'styled-components'
+// import ReactHTMLTableToExcel from "react-html-table-to-excel";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faFileExcel,
+//   faFilePdf,
+//   faSearch,
+//   faTrashAlt,
+//   faUserEdit,
+//   faUserPlus,
+// } from "@fortawesome/free-solid-svg-icons";
 const Barra = () => {
   let f = new Date();
   return (
-    <nav className="navbar navbar bg-light">
-      <div className="container p-1 mt-2">
-        <h2 className="mt-2">SISTEMA POS</h2>
+    <Contenedor>
+    <nav>
+      <div>
+        <h3 className="mt-1 ">SISTEMA POS</h3>
       
         {/* <ReactHTMLTableToExcel
 
@@ -58,7 +60,19 @@ const Barra = () => {
         <a href=""></a> */}
       </div>
     </nav>
+    </Contenedor>
   );
 };
+
+
+const Contenedor = styled.div`
+
+background: #fff;
+margin-top:20px;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
+
+`;
 
 export default Barra;
