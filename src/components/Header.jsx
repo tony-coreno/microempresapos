@@ -17,8 +17,10 @@ const Header = () => {
         <ContenedorHeader>
         <Route>
             {/* <Barra /> */}
+            {/* <Contenedor> */}
             <Titulo>{tituloPos}</Titulo>
-            <Contenedor>
+            {/* </Contenedor> */}
+           
             <MenuNav>
                 {/* <NavLink to="/" exact={true} >Dashboard <FontAwesomeIcon icon={faTachometerAlt} /></NavLink>
                 <NavLink to="/empleados">Empleados <FontAwesomeIcon icon={faUserTie} /></NavLink>
@@ -34,7 +36,7 @@ const Header = () => {
                 <NavLink to="/ventas" >Ventas </NavLink>
                 <NavLink to="/ayuda">Ayuda </NavLink>
             </MenuNav>
-            </Contenedor>
+            
         </Route>
     </ContenedorHeader>
     :
@@ -52,7 +54,7 @@ const ContenedorHeader = styled.header`
     background-color: FFFFFF;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
-    gap: 0px;
+    gap: 20px;
     margin: 20px 0 0 0;
 `;
 const Titulo = styled.h1`
@@ -82,7 +84,7 @@ const MenuNav = styled.nav`
 
 const Contenedor = styled.div`
 
-background: #fff;
+background: #FFF;
 padding: 20px;
 border-radius: 10px;
 box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);

@@ -28,9 +28,7 @@ const Categorias = () => {
                       <table className="table table-responsive-sm ">
                         <thead className="light">
                           <tr>
-                            <th>Medio de pago</th>
-                            <th>Estado</th>
-                            <th>Eliminar</th>
+                            <th>Categorias</th>
                           </tr>
                         </thead>
                         <tbody>

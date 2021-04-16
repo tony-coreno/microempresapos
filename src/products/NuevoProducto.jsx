@@ -65,7 +65,6 @@ const NuevoProducto = () => {
     window.location.href = "/productos";
     }, 1500);
   }
-  
   return (
     <>
       <main className="caja-contenido col-12">

@@ -26,6 +26,8 @@ import Proveedores from "./Proveedores";
 import Notas from "./Notas";
 import "bootstrap/dist/css/bootstrap.css";
 const App = () => {
+
+
   return (
     <>
       {sessionStorage.getItem("token") ? (
@@ -92,7 +94,7 @@ const ContenedorPrincipal = styled.div`
 
 const Main = styled.main`
   background: #fff;
-  padding: 20px;
+  padding: -10px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
 `;
