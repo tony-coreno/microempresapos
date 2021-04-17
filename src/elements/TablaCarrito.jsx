@@ -2,12 +2,9 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { ContextEstado } from "../context/ContextEstado";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faTrash, faTrashRestoreAlt} from "@fortawesome/free-solid-svg-icons";
+import {faTrash} from "@fortawesome/free-solid-svg-icons";
 const TablaCarrito = () => {
-
   const {ventaProducto} = useContext(ContextEstado)
-
-
   return (
     <>
       <div className="table-responsive table-borderless table-hover">
@@ -59,12 +56,6 @@ const TablaCarrito = () => {
     </>
   );
 };
-
-// const Tabla = styled.section`
-//   background: #fff;
-//   text-align: center;
-//   font-family: "Open Sans", sans-serif;
-// `;
 
 const Titulo = styled.h6`
   color: #fff;

@@ -19,10 +19,6 @@ const Header = () => {
         <Contenedor>
             {/* <Barra /> */}
             <Titulo>{tituloPos}</Titulo>
-
-
-
-           
             <MenuNav>
                 {/* <NavLink to="/" exact={true} >Dashboard <FontAwesomeIcon icon={faTachometerAlt} /></NavLink>
                 <NavLink to="/empleados">Empleados <FontAwesomeIcon icon={faUserTie} /></NavLink>

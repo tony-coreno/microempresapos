@@ -41,7 +41,7 @@ const ElementosSideBar = () => {
         title="Notificaciones"
       >
         <FontAwesomeIcon icon={faBell} />
-        <span className="badge badge-primary">0</span>
+        <span className="badge badge-success">0</span>
       </Button>
 
       <Button
@@ -62,7 +62,7 @@ const ElementosSideBar = () => {
         title="Compras"
       >
         <FontAwesomeIcon icon={faShoppingCart} />
-        <span className="badge badge-primary">{articulos}</span>
+        <span className="badge badge-success">{articulos}</span>
       </Link>
       <Link
         to="/productos"
@@ -82,7 +82,7 @@ const ElementosSideBar = () => {
         title="Agenda"
       >
         <FontAwesomeIcon icon={faCalendarAlt} />
-        <span className="badge badge-primary">0</span>
+        <span className="badge badge-warning">0</span>
       </Link>
       <Link
         to="/proveedores"
