@@ -16,10 +16,12 @@ const Header = () => {
         { (sessionStorage.getItem("token") && ((sessionStorage.getItem("perfil") ==="Administrador"))) ?
         <ContenedorHeader>
         <Route>
+        <Contenedor>
             {/* <Barra /> */}
-            {/* <Contenedor> */}
             <Titulo>{tituloPos}</Titulo>
-            {/* </Contenedor> */}
+
+
+
            
             <MenuNav>
                 {/* <NavLink to="/" exact={true} >Dashboard <FontAwesomeIcon icon={faTachometerAlt} /></NavLink>
@@ -36,7 +38,7 @@ const Header = () => {
                 <NavLink to="/ventas" >Ventas </NavLink>
                 <NavLink to="/ayuda">Ayuda </NavLink>
             </MenuNav>
-            
+            </Contenedor>
         </Route>
     </ContenedorHeader>
     :
@@ -50,41 +52,48 @@ const Header = () => {
 }
 const ContenedorHeader = styled.header`
     text-align: center;
+    color: #FFF;
     margin-bottom: 0px;
     background-color: FFFFFF;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     gap: 20px;
     margin: 20px 0 0 0;
+    max-height: 125px;
 `;
 const Titulo = styled.h1`
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-size: 26px;
-    text-transform: uppercase;     
+    text-transform: uppercase;  
+ 
 `;
 
 const MenuNav = styled.nav`
     a {
         text-decoration: none;
-        color: #165168;
-        //color: #FFFFFF;
+        //color: #165168;
+        color: #FFFFFF;
         margin: 0 10px;
+        padding: 7px;
+  
     }
     a:hover {
-        color: #190238;
+        color: #052C48;
         cursor: pointer;
         transition: .3s ease all;
     }
     a.active{
-        border-bottom: 2px solid #165168;
+        border-bottom: 2px solid #f2f2f2;
+        //border-bottom: 2px solid #165168;
         padding-bottom: 3px;
     }
     
 `;
 
 const Contenedor = styled.div`
-
-background: #FFF;
+background: #147551;
+opacity: 0.8;
+//background: #FFF;
 padding: 20px;
 border-radius: 10px;
 box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);

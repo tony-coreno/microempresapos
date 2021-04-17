@@ -18,7 +18,7 @@ const Barra = () => {
     <Contenedor>
     <nav>
       <div>
-        <h3 className="mt-1 ">SISTEMA POS</h3>
+        <h3 className="mt-1 text-center">SISTEMA POS</h3>
       
         {/* <ReactHTMLTableToExcel
 
@@ -67,7 +67,9 @@ const Barra = () => {
 
 const Contenedor = styled.div`
 
-background: #fff;
+background: #147551;
+opacity: 0.8;
+color: #FFF;
 margin-top:20px;
 padding: 20px;
 border-radius: 10px;

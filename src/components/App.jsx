@@ -94,7 +94,7 @@ const ContenedorPrincipal = styled.div`
 
 const Main = styled.main`
   background: #fff;
-  padding: -10px;
+  padding: 10px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
 `;

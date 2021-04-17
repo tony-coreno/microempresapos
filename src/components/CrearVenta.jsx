@@ -133,8 +133,9 @@ const Menu = styled.nav`
   width: 100%;
   text-align: center;
   background: #147551;
+  //opacity: 0.8;
   grid-column: span 2;
-  border-radius: 3px;
+  border-radius: 10px;
 
   a {
     color: #fff;

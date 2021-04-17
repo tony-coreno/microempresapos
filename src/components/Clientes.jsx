@@ -26,7 +26,7 @@ const Clientes = () => {
             <div className="row">
               <div className="col-md-12">
                 <div className="card">
-                  <div className="bg-info card-header">
+                  <div className="bg-light card-header">
                     <Titulo>
                       Clientes de{" "}
                       {sessionStorage.getItem("nombre") || "Invitado"}
@@ -84,7 +84,7 @@ const Clientes = () => {
 };
 
 const Titulo = styled.h4`
-  color: #fff;
+  color: #000;
   text-align: center;
 `;
 

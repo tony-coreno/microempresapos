@@ -68,7 +68,7 @@ const Menu = styled.nav`
     text-align: center;
     background: #147551;
     grid-column: span 2;
-    border-radius: 3px;
+    border-radius: 10px;
  
     a {
         color: #fff;

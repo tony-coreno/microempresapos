@@ -112,14 +112,14 @@ const Empleados = () => {
         {sessionStorage.getItem("token") ? (
           <div className="col-md-4 ml-auto">
             <div className="input-group fa-2x">
-              <input
+              <Buscar
                 className="form-control mr-sm-4"
                 type="search"
                 placeholder="Buscar por nombre..."
                 aria-label="Search"
                 onChange={buscar}
                 autoFocus
-              />
+                ></Buscar>
               <FontAwesomeIcon icon={faSearch} />
             </div>
           </div>
@@ -133,7 +133,7 @@ const Empleados = () => {
             <div className="row">
               <div className="col-md-12">
                 <div className="card">
-                  <div className="bg-info card-header py-2">
+                  <div className="bg-light card-header py-2">
                     <Titulo>
                       Empleados de{" "}
                       {sessionStorage.getItem("nombre") || "Invitado"}
@@ -196,7 +196,7 @@ const Tabla = styled.section`
 `;
 
 const Titulo = styled.h4`
-  color: #fff;
+  color: #000;
 `;
 
 const Herramientas = styled.div`
@@ -204,6 +204,7 @@ const Herramientas = styled.div`
   flex-direction: row;
   margin: 4px;
   padding: 10px;
+  gap: 20px;
 `;
 
 const Boton = styled.button`
@@ -211,6 +212,12 @@ display: inline-flex;
 justify-content: space-between;
 align-items: center;
 outline: none;
+
+`;
+
+const Buscar = styled.input`
+
+  border-radius: 10px;
 
 `;
 export default Empleados;
