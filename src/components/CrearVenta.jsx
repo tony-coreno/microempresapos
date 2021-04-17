@@ -36,9 +36,11 @@ const CrearVenta = () => {
           </TituloEmpleado>
 
           <hr />
+          <Contenedor>
           <h4>  Escanea un producto </h4>
           <FontAwesomeIcon icon={faBarcode} /><FormularioCrearVenta />
           <hr />
+
           <Link
               to="/"
               className="btn btn-outline-primary"
@@ -50,6 +52,7 @@ const CrearVenta = () => {
           {/* <button className="btn btn-outline-primary">
              <FontAwesomeIcon icon={faCashRegister} />  Ingresar producto manual</button> */}
           <ProductoManual />
+          </Contenedor>
           <div className="modal fade" id="addEmpleado">
         <div className="modal-dialog modal-lg">
           <div className="modal-content">
@@ -159,7 +162,7 @@ const Contenedorapp = styled.div`
   width: 100%;
   display: grid;
   gap: 20px;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: 2fr 4fr;
   background: #fff;
   margin: 5px 0;
   border-radius: 20px;
@@ -168,6 +171,18 @@ const Contenedorapp = styled.div`
 
 const TituloEmpleado = styled.h6`
   font-family: Open-sans;
+`;
+
+const Contenedor = styled.div`
+  padding: 25px;
+  width: 100%;
+  display: grid;
+  gap: 20px;
+  //background: #eef3f5;
+  background: #FFF;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
 `;
 
 export default CrearVenta;

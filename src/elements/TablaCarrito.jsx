@@ -1,6 +1,13 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
+import { ContextEstado } from "../context/ContextEstado";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faTrash, faTrashRestoreAlt} from "@fortawesome/free-solid-svg-icons";
 const TablaCarrito = () => {
+
+  const {ventaProducto} = useContext(ContextEstado)
+
+
   return (
     <>
       <div className="table-responsive table-borderless table-hover">
@@ -11,10 +18,10 @@ const TablaCarrito = () => {
                 <div className="bg-dark card-header py-1">
                   <Titulo>Detalle de venta</Titulo>
                 </div>
-                <table className="table table-responsive-lg ">
+                <table className="table table-responsive-lg text-center ">
                   <thead className="light">
                     <tr>
-                      <th>#</th>
+                      <th># Artículos</th>
                       <th>SKU</th>
                       <th>Producto</th>
                       <th>Precio</th>
@@ -23,30 +30,25 @@ const TablaCarrito = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {/* {empleados.map((empleado, i) => {
+                    {ventaProducto.map((producto, i) => {
                         return (
-                          <tr key={empleado.id}>
+                          <tr key={producto._id}>
                             <td>{i + 1}</td>
-                            <td>{empleado.numeroempleado}</td>
-                            <td>{empleado.nombre}</td>
-                            <td>{empleado.apellidopaterno}</td>
-                            <td>{empleado.usuario}</td>
-                            <td>{empleado.perfil}</td>
-                            <td>{empleado.estado}</td>
+                            <td>{producto.sku}</td>
+                            <td>{producto.producto}</td>
+                            <td>{producto.precioventa}</td>
+                            <td>{producto.unidad}</td>
                             <td>
                               <button
-                                className="bn btn-outline-info mr-2"
+                                className="bn btn-outline-dark mr-2"
                                 
                               >
-                                <FontAwesomeIcon icon={faUserEdit} />
+                                <FontAwesomeIcon icon={faTrash} />
                               </button>
-                              <button className="bn btn-outline-dark" onClick={() => eliminar(empleado._id)}>
-                                <FontAwesomeIcon icon={faTrashAlt} />
-                              </button>
-                            </td>
+                          </td>
                           </tr>
                         );
-                      })} */}
+                      })}
                   </tbody>
                 </table>
               </div>

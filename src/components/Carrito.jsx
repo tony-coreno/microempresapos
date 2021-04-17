@@ -13,15 +13,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Swal from "sweetalert2";
 
 const Carrito = () => {
-  const { ventaProducto, setVentaProducto, setListaProducto } = useContext(
+  const { ventaProducto, setVentaProducto, setListaProducto} = useContext(
     ContextEstado
   );
   const { pagar, setPagar, setArticulos } = useContext(ContextEstado);
-
-  // const {articulo} = articulos;
-  // setArticulos({...articulos,
-  //   articulo: articulo+1
-  //   })
 
   useEffect(() => {
     pago();
@@ -74,16 +69,10 @@ const Carrito = () => {
     <>
       <TituloEmpleado>''</TituloEmpleado>
       <hr />
-      <TituloCarrito>Carrito de compras </TituloCarrito>
+
       <Contenedor>
-        <ol>
-          {ventaProducto.map((venta) => {
-            return (
-            <ul key={venta.id}>{venta} </ul>
-            );
-          })}
-        </ol>
-        <TablaCarrito />
+      <TituloCarrito>Carrito de compras </TituloCarrito>
+        <TablaCarrito/>
       </Contenedor>
       <TotalDiv>
         <input readOnly className="form-control"></input>
@@ -92,7 +81,6 @@ const Carrito = () => {
           <FontAwesomeIcon icon={faDollarSign} /> Total
         </h3>
       </TotalDiv>
-
       <div>
         <button className="btn btn-outline-danger" onClick={() => cancelar()}>
           {" "}
@@ -120,10 +108,11 @@ const Contenedor = styled.div`
   width: 100%;
   display: grid;
   gap: 20px;
-  background: #eef3f5;
+  //background: #eef3f5;
+  background: #FFF;
   margin: 10px 0;
   border-radius: 10px;
-  box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
+  box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
 `;
 
 const TituloEmpleado = styled.h6`
@@ -135,4 +124,5 @@ const TituloCarrito = styled.h4`
 const TotalDiv = styled.div`
   float: right;
 `;
+
 export default Carrito;
