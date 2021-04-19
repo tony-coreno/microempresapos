@@ -26,8 +26,6 @@ import Proveedores from "./Proveedores";
 import Notas from "./Notas";
 import "bootstrap/dist/css/bootstrap.css";
 const App = () => {
-
-
   return (
     <>
       {sessionStorage.getItem("token") ? (
