@@ -16,7 +16,7 @@ const Carrito = () => {
   const { ventaProducto, setVentaProducto, setListaProducto} = useContext(
     ContextEstado
   );
-  const { pagar, setPagar, setArticulos } = useContext(ContextEstado);
+  const { pagar, setPagar, setArticulos,total } = useContext(ContextEstado);
 
   useEffect(() => {
     pago();
@@ -75,7 +75,7 @@ const Carrito = () => {
         <TablaCarrito/>
       </Contenedor>
       <TotalDiv>
-        <input readOnly className="form-control"></input>
+        <input readOnly className="form-control" value={total}></input>
         <h3>
           {" "}
           <FontAwesomeIcon icon={faDollarSign} /> Total

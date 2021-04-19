@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { ContextEstado } from "../context/ContextEstado";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,6 +28,7 @@ const TablaCarrito = () => {
                   </thead>
                   <tbody>
                     {ventaProducto.map((producto, i) => {
+                      
                         return (
                           <tr key={producto._id}>
                             <td>{i + 1}</td>
