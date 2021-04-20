@@ -12,7 +12,7 @@ const Proveedores = () => {
       <aside>
           <Contenedor>
           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem veritatis eligendi hic et vel temporibus commodi! Voluptate facere at, id dicta tempore dolores fuga nulla pariatur harum mollitia quos eligendi.</p>
-          <h3>Hola Mundo</h3>
+          <h3>...</h3>
           </Contenedor>
       </aside>
       </Contenedorapp>
