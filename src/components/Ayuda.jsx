@@ -11,8 +11,8 @@ const Ayuda = () => {
       <Contenedorapp>
         <Contenedor>
           <Menu>
-            <NavLink to="/administrar-venta">Acerca De</NavLink>
             <NavLink to="/crear-venta">Manuales de usuario</NavLink>
+            <NavLink to="/administrar-venta">Acerca De</NavLink>
           </Menu>
           <main>
             <Switch>
@@ -25,6 +25,11 @@ const Ayuda = () => {
         <aside>
           <Contenedor>
             <h3>Contacto</h3>
+            <p>
+              <a href="https://icons8.com/icon/3vf8VrOhkfVi/supplier">
+                Iconos utilizados
+              </a>
+            </p>
           </Contenedor>
         </aside>
       </Contenedorapp>
