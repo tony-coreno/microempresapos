@@ -13,7 +13,6 @@ import styled from 'styled-components'
 //   faUserPlus,
 // } from "@fortawesome/free-solid-svg-icons";
 const Barra = () => {
-  let f = new Date();
   return (
     <Contenedor>
     <nav>

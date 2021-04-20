@@ -16,7 +16,7 @@ const Settings = () => {
   // //   }
   // // };
 
-  const {setTituloPOS, tituloPos} = useContext(ContextEstado);
+  const {setTituloPOS} = useContext(ContextEstado);
   const [empresa, setEmpresa] = useState('');
   const onSubmit= (e) => {
     e.preventDefault();

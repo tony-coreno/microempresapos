@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {
     Button,
     Modal,
@@ -8,9 +8,7 @@ import {
   } from "reactstrap";
   import 'bootstrap/dist/css/bootstrap.css';
   import styled from 'styled-components';
-import { ContextEstado } from '../context/ContextEstado';
 const ModalPerfil = ({modal, setModal}) => {
-  const {perfil} = useContext(ContextEstado)
   const cuenta = sessionStorage.getItem("perfil")
   
     return (

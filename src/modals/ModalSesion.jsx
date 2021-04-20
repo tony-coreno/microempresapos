@@ -21,9 +21,12 @@ const ModalSesion = ({modalSesion, setModalSesion}) => {
         <Texto> Cerrar Sesión </Texto>
       </ModalHeader>
       <ModalBody>
-        <FormGroup>
-        
-        </FormGroup>
+
+        <img
+        src="https://img.icons8.com/plasticine/100/000000/total-sales.png"
+        title="POS" className="text-center"
+      />
+
         <FormGroup>
           <Texto>¿Desea continuar?</Texto>
         </FormGroup>
@@ -39,6 +42,8 @@ const ModalSesion = ({modalSesion, setModalSesion}) => {
 const Texto = styled.h6`
 
   text-align: center;
-
 `;
+
+
+
 export default ModalSesion;

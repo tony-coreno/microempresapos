@@ -22,10 +22,8 @@ import { ContextEstado } from "../context/ContextEstado";
 const ElementosSideBar = () => {
   const [modal, setModal] = useState(false);
   const [modalSesion, setModalSesion] = useState(false);
-  const [popoverOpen, setPopoverOpen] = useState(false);
   const {articulos} = useContext(ContextEstado)
 
-  const toggle = () => setPopoverOpen(!popoverOpen);
   return (
     <>
       <img

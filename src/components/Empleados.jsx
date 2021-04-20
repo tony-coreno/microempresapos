@@ -61,7 +61,6 @@ const Empleados = () => {
     });
     obtenerEmpleados();
   };
- let f = new Date();
   return (
     <>
     {/* <Barra /> */}

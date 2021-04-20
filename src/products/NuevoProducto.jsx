@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Axios from 'axios';
 import "bootstrap/dist/css/bootstrap.css";
@@ -39,7 +39,8 @@ const NuevoProducto = () => {
         },[])
 
 
-  const guardar = async(req, res) => {
+  const guardar = async(e) => {
+    e.preventDefault();
     const stock ={
       sku,
       producto,

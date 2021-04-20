@@ -1,6 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { ContextEstado } from "../context/ContextEstado";
+import ModalPagar from "../modals/ModalPagar";
 import TablaCarrito from "./../elements/TablaCarrito";
 import "bootstrap/dist/css/bootstrap.css";
 import {
@@ -13,31 +14,29 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Swal from "sweetalert2";
 
 const Carrito = () => {
-  const { ventaProducto, setVentaProducto, setListaProducto} = useContext(
+  const [modal, setModal] = useState(false);
+  const { ventaProducto, setVentaProducto, setListaProducto } = useContext(
     ContextEstado
   );
-  const { pagar, setPagar, setArticulos,total } = useContext(ContextEstado);
+  const { pagar, setArticulos } = useContext(ContextEstado);
 
   useEffect(() => {
     pago();
   }, [pagar]);
 
   useEffect(() => {
-    limpiar()
-
+    limpiar();
   }, [ventaProducto]);
 
-
-  const limpiar = () =>{
-    setListaProducto('')
-}
-
+  const limpiar = () => {
+    setListaProducto("");
+  };
 
   const cancelar = () => {
     setVentaProducto([""]);
     setListaProducto("");
     setArticulos(0);
-    window.location.href='/crear-venta'
+    window.location.href = "/crear-venta";
     // Swal.fire({
     //   title: 'Cancelar venta',
     //   text: '¿Desea continuar?',
@@ -71,18 +70,18 @@ const Carrito = () => {
       <hr />
 
       <Contenedor>
-      <TituloCarrito>Carrito de compras </TituloCarrito>
-        <TablaCarrito/>
+        <TituloCarrito>Carrito de compras </TituloCarrito>
+        <TablaCarrito />
       </Contenedor>
       <TotalDiv>
-        <input readOnly className="form-control" value={total}></input>
+        <input readOnly className="form-control" value=""></input>
         <h3>
           {" "}
           <FontAwesomeIcon icon={faDollarSign} /> Total
         </h3>
       </TotalDiv>
       <div>
-        <button className="btn btn-outline-danger" onClick={() => cancelar()}>
+        <button className="btn btn-outline-danger" onClick={cancelar}>
           {" "}
           <FontAwesomeIcon icon={faBan} /> Cancelar
         </button>
@@ -93,12 +92,13 @@ const Carrito = () => {
         </button>
         <button
           className="btn btn-outline-success mr-4"
-          onClick={() => setPagar("")}
+          onClick={() => setModal(true)}
         >
           {" "}
           <FontAwesomeIcon icon={faMoneyBill} /> Pagar
         </button>
       </div>
+      <ModalPagar modal={modal} setModal={setModal} />
     </>
   );
 };
@@ -109,7 +109,7 @@ const Contenedor = styled.div`
   display: grid;
   gap: 20px;
   //background: #eef3f5;
-  background: #FFF;
+  background: #fff;
   margin: 10px 0;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);

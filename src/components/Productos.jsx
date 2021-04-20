@@ -209,11 +209,11 @@ const Contenedorapp = styled.div`
   border-radius: 20px;
   box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
 `;
-const Tabla = styled.section`
-  background: #fff;
-  text-align: center;
-  font-family: "Open Sans", sans-serif;
-`;
+// const Tabla = styled.section`
+//   background: #fff;
+//   text-align: center;
+//   font-family: "Open Sans", sans-serif;
+// `;
 
 const Titulo = styled.h4`
   color: #000;

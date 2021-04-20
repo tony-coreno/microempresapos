@@ -25,7 +25,6 @@ import Calendario from "../elements/calendar/Calendario";
 import Proveedores from "./Proveedores";
 import Notas from "./Notas";
 import "bootstrap/dist/css/bootstrap.css";
-import Barra from "../elements/Barra";
 const App = () => {
   return (
     <>
