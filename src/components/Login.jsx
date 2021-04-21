@@ -40,7 +40,7 @@ const Login = () => {
       sessionStorage.setItem("negocio", negocio);
       sessionStorage.setItem("perfil", perfil);
 
-      window.location.href = "/";
+      window.location.href = "/crear-venta";
     }
   };
 

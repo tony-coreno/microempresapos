@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Switch, NavLink, Route, Link } from "react-router-dom";
 import AdministrarVentas from "./AdministrarVentas";
@@ -6,25 +6,27 @@ import Reportes from "./Reportes";
 import Carrito from "./Carrito";
 import FormularioCrearVenta from "./FormularioCrearVenta";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faBarcode, faCashRegister} from "@fortawesome/free-solid-svg-icons";
+import { faBarcode, faCashRegister } from "@fortawesome/free-solid-svg-icons";
 import ProductoManual from "../elements/ProductoManual";
 import "bootstrap/dist/css/bootstrap.css";
-// import ModalVentaManual from "../modals/ModalVentaManual";
+import { ContextEstado } from "../context/ContextEstado";
+import DetalleVenta from "../elements/DetalleVenta";
 const CrearVenta = () => {
+  const { articulos } = useContext(ContextEstado);
   let f = new Date();
   return (
     <div>
       <Contenedorapp>
         <Menu>
-          {(sessionStorage.getItem("perfil") === "Administrador") ?
-          <>
-          <NavLink to="/crear-venta">Crear Venta</NavLink>
-          <NavLink to="/administrar-venta">Administrar</NavLink>
-          <NavLink to="/reportes">Reportes</NavLink>
-          </>
-          :
-          <NavLink to="/crear-venta">Crear Venta</NavLink>
-          }
+          {sessionStorage.getItem("perfil") === "Administrador" ? (
+            <>
+              <NavLink to="/crear-venta">Crear Venta</NavLink>
+              <NavLink to="/administrar-venta">Administrar</NavLink>
+              <NavLink to="/reportes">Reportes</NavLink>
+            </>
+          ) : (
+            <NavLink to="/crear-venta">Crear Venta</NavLink>
+          )}
         </Menu>
         <main>
           <Switch>
@@ -32,96 +34,34 @@ const CrearVenta = () => {
             <Route path="/administrar-venta" component={AdministrarVentas} />
           </Switch>
           <TituloEmpleado>
-            Vendedor : {sessionStorage.getItem('nombre')} | Fecha: {f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear()}
+            Vendedor : {sessionStorage.getItem("nombre")} | Fecha:{" "}
+            {f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear()}
           </TituloEmpleado>
 
           <hr />
           <Contenedor>
-          <h4>  Escanea un producto </h4>
-          <FontAwesomeIcon icon={faBarcode} /><FormularioCrearVenta />
-          <hr />
+            <h4> Escanea un producto </h4>
+            <FontAwesomeIcon icon={faBarcode} />
+            <FormularioCrearVenta />
+            <hr />
 
-          <Link
+            <Link
               to="/"
               className="btn btn-outline-primary"
               data-toggle="modal"
               data-target="#addEmpleado"
             >
-              <i><FontAwesomeIcon icon={faCashRegister} /></i> Ingresar producto manual
+              <i>
+                <FontAwesomeIcon icon={faCashRegister} />
+              </i>{" "}
+              Ingresar producto manual
             </Link>
-          {/* <button className="btn btn-outline-primary">
+            {/* <button className="btn btn-outline-primary">
              <FontAwesomeIcon icon={faCashRegister} />  Ingresar producto manual</button> */}
-          <ProductoManual />
+            <ProductoManual />
+
+            {articulos > 0 ? <DetalleVenta /> : <></>}
           </Contenedor>
-          <div className="modal fade" id="addEmpleado">
-        <div className="modal-dialog modal-lg">
-          <div className="modal-content">
-            <div className="modal-header bg-primary text-white">
-              <h5 className="modal-title">Add Empleado</h5>
-              <button className="close" data-dismiss="modal">
-                <span>&times;</span>
-              </button>
-            </div>
-            <div className="modal-body">
-              <form>
-                <div className="form-group">
-                  <label>Nombres</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    required
-                    // onChange={(e) => setNombres(e.target.value)}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Apellidos</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    required
-                    // onChange={(e) => setApellidos(e.target.value)}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Puesto</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    required
-                    // onChange={(e) => setPuesto(e.target.value)}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Identificación</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    required
-                    // onChange={(e) => setIdentificacion(e.target.value)}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Tipo de contrato</label>
-                  {/* <select
-                    className="form-control"
-                    onChange={(e) => setContratoSelect(e.target.value)}
-                    value={contratoSelect}
-                  >
-                    {tcontratos.map((tcontrato) => (
-                      <option key={tcontrato}>{tcontrato}</option>
-                    ))}
-                  </select> */}
-                </div>
-                <div className="form-group">
-                  <button className="btn btn-primary" type="submit">
-                    Guardar
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
         </main>
 
         <aside>
@@ -179,7 +119,7 @@ const Contenedor = styled.div`
   display: grid;
   gap: 20px;
   //background: #eef3f5;
-  background: #FFF;
+  background: #fff;
   margin: 10px 0;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);

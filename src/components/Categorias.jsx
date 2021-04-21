@@ -58,7 +58,6 @@ const Categorias = () => {
               </div>
             </div>
 		</Contenedorapp>
-
         </div>
      );
 }

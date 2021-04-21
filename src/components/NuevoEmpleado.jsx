@@ -19,14 +19,14 @@ const NuevoEmpleado = () => {
   const [numeroempleado, setNumeroEmpleado] = useState("");
   const [usuario, setUsuario] = useState("");
   const [contrasena, setContrasena] = useState("");
-  const [perfilSelected, setPerfilSelected] = useState(['']);
+  const [perfilSelected, setPerfilSelected] = useState([""]);
   const { perfil, setPerfil } = useContext(ContextEstado);
   const [estado, setEstado] = useState("");
-  const [estadoSelected, setEstadoSelected] = useState(['']);
+  const [estadoSelected, setEstadoSelected] = useState([""]);
 
   useEffect(() => {
-    setPerfilSelected(["","Administrador", "Vendedor"]);
-    setEstadoSelected(["","Activo", "Inactivo"]);
+    setPerfilSelected(["", "Administrador", "Vendedor"]);
+    setEstadoSelected(["", "Activo", "Inactivo"]);
   }, []);
 
   const guardar = async (e) => {
@@ -48,12 +48,12 @@ const NuevoEmpleado = () => {
     });
     const mensaje = respuesta.data.mensaje;
     // if(mensaje === 'Por favor seleccione un perfil'){
-       Swal.fire({
-         icon: "warning",
-         title: mensaje,
-         showConfirmButton: false,
-         timer:2000
-       });
+    Swal.fire({
+      icon: "warning",
+      title: mensaje,
+      showConfirmButton: false,
+      timer: 2000,
+    });
 
     // }
     // if(estado === 'Por favor asigne un estado'){
@@ -65,9 +65,9 @@ const NuevoEmpleado = () => {
     //   });
 
     // }
-     setTimeout(() => {
-       window.location.href = "/empleados";
-     }, 1500);
+    setTimeout(() => {
+      window.location.href = "/empleados";
+    }, 1500);
   };
 
   return (

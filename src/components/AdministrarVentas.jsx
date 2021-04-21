@@ -129,7 +129,7 @@ const Menu = styled.nav`
 
 const Contenedorapp = styled.div`
   max-width: 1400px;
-  padding: 5px;
+  padding: 20px;
   width: 100%;
   display: grid;
   gap: 20px;

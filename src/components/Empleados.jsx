@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from "react";
-// import Barra from '../elements/Barra'
+import React, { useContext, useEffect, useState } from "react";
 import Axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 import styled from "styled-components";
@@ -16,9 +15,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import { ContextEstado } from "../context/ContextEstado";
+import ActualizarEmpleados from "../modals/ActualizarEmpleados";
 // import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 const Empleados = () => {
+  const [modal, setModal] = useState(false);
   const { empleados, setEmpleados } = useContext(ContextEstado);
   useEffect(() => {
     obtenerEmpleados();
@@ -163,7 +164,7 @@ const Empleados = () => {
                             <td>{empleado.perfil}</td>
                             <td>{empleado.estado}</td>
                             <td>
-                              <button className="bn btn-outline-info mr-2">
+                              <button className="bn btn-outline-info mr-2" onClick={() => setModal(true)}>
                                 <FontAwesomeIcon icon={faUserEdit} />
                               </button>
                               <button
@@ -183,6 +184,7 @@ const Empleados = () => {
             </div>
           </div>
         </Tabla>
+        <ActualizarEmpleados setModal={setModal} modal={modal} />
       </div>
     </>
   );
