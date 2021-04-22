@@ -3,17 +3,21 @@ import styled from "styled-components";
 import { Switch, NavLink, Route } from "react-router-dom";
 import Axios from "axios";
 import Categorias from "./Categorias";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 import { Button, Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faFileExcel,
+  faFilePdf,
   faSearch,
   faShoppingBag,
+  faThLarge,
   faTrashAlt,
   faUserEdit,
+  faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 const Productos = () => {
-  const [productos, setProductos] = useState(['']);
+  const [productos, setProductos] = useState([""]);
   useEffect(() => {
     obtenerProductos();
   }, []);
@@ -21,12 +25,9 @@ const Productos = () => {
   const obtenerProductos = async () => {
     const id = sessionStorage.getItem("idusuario");
     const token = sessionStorage.getItem("token");
-    const respuesta = await Axios.get(
-      "/productos/listarporadmin/" + id,
-      {
-        headers: { autorizacion: token },
-      }
-    );
+    const respuesta = await Axios.get("/productos/listarporadmin/" + id, {
+      headers: { autorizacion: token },
+    });
     setProductos(respuesta.data);
   };
   const buscar = async (e) => {
@@ -71,38 +72,60 @@ const Productos = () => {
           </Switch>
         </main>
         <Navbar>
+          <Herramientas className="">
+            <NavLink to="/agregar-producto">
+              <Boton
+                className="btn btn-success d-flex d-flex justify-content-between align-items-center pr-2"
+                data-toggle="tooltip"
+                data-placement="right"
+                title="Agregar Producto"
+              >
+                <FontAwesomeIcon icon={faShoppingBag} />
+              </Boton>
+            </NavLink>
 
-        { sessionStorage.getItem("perfil") ==="Administrador" ?
-           
-            <>
-          <NavLink to="/agregar-producto">
-            <Button
-              className="btn btn-success d-flex d-flex justify-content-between align-items-center"
-              data-toggle="tooltip"
-              data-placement="right"
-              title="Agregar producto"
-            >
-              <FontAwesomeIcon icon={faShoppingBag} />
-            </Button>
-          </NavLink>
-          </>
-          :
-          <>
-          </>
-          }
-    
+            <NavLink to="/agregar-empleado">
+              <Boton
+                className="btn btn-danger d-flex d-flex justify-content-between align-items-center pr-2"
+                data-toggle="tooltip"
+                data-placement="right"
+                title="Imprimir productos"
+              >
+                <FontAwesomeIcon icon={faFilePdf} />
+              </Boton>
+            </NavLink>
+            <NavLink to="/agregar-empleado">
+              <Button
+                className="btn btn-success d-flex d-flex justify-content-between align-items-center pr-2"
+                data-toggle="tooltip"
+                data-placement="right"
+                title="Exportar productos"
+              >
+                <FontAwesomeIcon icon={faFileExcel} />
+              </Button>
+            </NavLink>
+            <NavLink to="/productos-cards">
+              <Button
+                className="btn btn-success d-flex d-flex justify-content-between align-items-center pr-2"
+                data-toggle="tooltip"
+                data-placement="right"
+                title="productos card"
+              >
+                <FontAwesomeIcon icon={faThLarge} />
+              </Button>
+            </NavLink>
+          </Herramientas>
           {sessionStorage.getItem("token") ? (
-            <div className="col-md-4 ml-auto mt-4">
+            <div className="col-md-4 ml-auto">
               <div className="input-group fa-2x">
-                <input
+                <Buscar
                   className="form-control mr-sm-4"
                   type="search"
                   placeholder="Buscar por producto..."
                   aria-label="Search"
                   onChange={buscar}
                   autoFocus
-                  // onChange={buscar}
-                />
+                ></Buscar>
                 <FontAwesomeIcon icon={faSearch} />
               </div>
             </div>
@@ -147,9 +170,7 @@ const Productos = () => {
                               <td>{producto.precioventa}</td>
                               <td>{producto.categoria}</td>
                               <td>{producto.unidad}</td>
-                              <td>
-                                {producto.estado}
-                              </td>
+                              <td>{producto.estado}</td>
                               <td>
                                 <button
                                   className="bn btn-outline-dark mr-2"
@@ -157,7 +178,10 @@ const Productos = () => {
                                 >
                                   <FontAwesomeIcon icon={faUserEdit} />
                                 </button>
-                                <button className="bn btn-outline-dark" onClick={() => eliminar(producto._id)}>
+                                <button
+                                  className="bn btn-outline-dark"
+                                  onClick={() => eliminar(producto._id)}
+                                >
                                   <FontAwesomeIcon icon={faTrashAlt} />
                                 </button>
                               </td>
@@ -199,6 +223,12 @@ const Menu = styled.nav`
     padding-bottom: 3px;
   }
 `;
+const Boton = styled.button`
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  outline: none;
+`;
 
 const Contenedorapp = styled.div`
   max-width: 1400px;
@@ -210,14 +240,20 @@ const Contenedorapp = styled.div`
   border-radius: 20px;
   box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
 `;
-// const Tabla = styled.section`
-//   background: #fff;
-//   text-align: center;
-//   font-family: "Open Sans", sans-serif;
-// `;
-
 const Titulo = styled.h4`
   color: #000;
+`;
+
+const Herramientas = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 4px;
+  padding: 10px;
+  gap: 20px;
+`;
+
+const Buscar = styled.input`
+  border-radius: 10px;
 `;
 
 export default Productos;

@@ -6,6 +6,7 @@ import Almacen from "./Almacen";
 import Ventas from "./Ventas";
 import NuevoProducto from "./../products/NuevoProducto";
 import Empleados from "./Empleados";
+import VistaProductoCard from '../products/VistaProductoCard'
 import Clientes from "./Clientes";
 import Ayuda from "./Ayuda";
 import NuevoCliente from "./../clients/NuevoCliente";
@@ -47,6 +48,7 @@ const App = () => {
                 <Route path="/clientes" component={Clientes} />
                 <Route path="/ayuda" component={Ayuda} />
                 <Route path="/productos" component={Productos} />
+                <Route path="/productos-cards" component={VistaProductoCard} />
                 <Route path="/categorias" component={Categorias} />
                 <Route path="/crear-venta" component={CrearVenta} />
                 <Route path="/reportes" component={Reportes} />

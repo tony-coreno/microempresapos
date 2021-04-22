@@ -1,10 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
-import {Button} from 'reactstrap';
-import { faArrowLeft, faUserTag} from "@fortawesome/free-solid-svg-icons";
+import { Button } from "reactstrap";
+import { faArrowLeft, faUserTag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const NuevoCliente = () => {
   // const boton = document.getElementById("boton");
@@ -30,13 +30,25 @@ const NuevoCliente = () => {
           <hr />
           <div className="row">
             <div className="col">
-              <input type="text" className="form-control" placeholder="Nombre" autoFocus/>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Nombre"
+                autoFocus
+              />
             </div>
             <div class="col">
               <input
                 type="text"
                 className="form-control"
                 placeholder="Apellido"
+              />
+            </div>
+            <div class="col">
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Correo"
               />
             </div>
           </div>
@@ -57,32 +69,27 @@ const NuevoCliente = () => {
               />
             </div>
             <div className="col">
-              <input readOnly
-                className="form-control"
-                placeholder="Compras"
-              />
+              <select className="form-control">
+                <option>Tipo de cliente</option>
+                <option>Mayoreo</option>
+                <option>Menúdeo</option>
+              </select>
             </div>
-
-            
           </div>
-          
 
           <hr />
-      
-            <button className="btn btn-outline-info"><FontAwesomeIcon icon={faUserTag} /> Agregar</button>
+
+          <button className="btn btn-outline-info">
+            <FontAwesomeIcon icon={faUserTag} /> Agregar
+          </button>
         </form>
       </main>
     </>
   );
 };
 
-
-
 const Titulo = styled.h5`
-
-    text-align: center;
+  text-align: center;
 `;
-
-
 
 export default NuevoCliente;
