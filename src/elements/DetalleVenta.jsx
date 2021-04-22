@@ -6,24 +6,30 @@ const DetalleVenta = () => {
       <Contenedorapp>
         <hr />
         <h4>Método de pago</h4>
+        <select className="form-control">
+          <option></option>
+          <option>Efectivo</option>
+          <option>Tarjeta</option>
+        </select>
         <div className="table-responsive table-borderless table-hover">
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <div className="card">
-                <div className="bg-success card-header py-1">
-                  <Titulo>Detalle de venta</Titulo>
-                </div>
-                <table className="table table-responsive-lg text-center ">
-                  <thead className="light">
-                    <tr>
-                      <th># Artículos</th>
-                      <th>SKU</th>
-                      <th>Producto</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {/* {ventaProducto.map((producto, i) => {
+          <div className="container">
+            <div className="row">
+              <div className="col-12">
+                <div className="card">
+                  <div className="bg-success card-header py-1">
+                    <div className="form-group col-mt-4">
+                      <Titulo></Titulo>
+                    </div>
+                    <Titulo>Subtotal</Titulo>
+                  </div>
+                  <table className="table table-responsive-lg text-center ">
+                    <thead className="light">
+                      <tr>
+                        <th>IVA</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {/* {ventaProducto.map((producto, i) => {
                       
                         return (
                           <tr key={producto._id}>
@@ -43,13 +49,13 @@ const DetalleVenta = () => {
                           </tr>
                         );
                       })} */}
-                  </tbody>
-                </table>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
       </Contenedorapp>
     </>
   );
@@ -82,6 +88,5 @@ const Titulo = styled.h6`
   color: #fff;
   text-align: center;
 `;
-
 
 export default DetalleVenta;

@@ -5,32 +5,38 @@ import styled from "styled-components";
 const ModalVenta = ({ modal, setModal }) => {
   return (
     <>
-        <Modal isOpen={modal}>
-          <ModalHeader></ModalHeader>
-          <ModalBody>
-            <Contenedor>
-              <Ventas>Ventas</Ventas>
-              <Cifra>$5000</Cifra>
-              <hr />
-              <Ventas>Tipo de cuenta: 'Empleado'</Ventas>
-            </Contenedor>
+      <Modal isOpen={modal}>
+        <ModalHeader>
+          <img
+            src="https://img.icons8.com/plasticine/100/000000/total-sales.png"
+            alt="POS"
+          />
+        </ModalHeader>
+        <ModalBody>
+          <Contenedor>
+            <Ventas>Ventas</Ventas>
+            <Cifra>$5000</Cifra>
             <hr />
-            <div>
-              <p className="text-center">Ingrese contraseña para confirmar venta</p>
-              <input className="form-control" autoFocus />
-            </div>
-          </ModalBody>
+            <Ventas></Ventas>
+          </Contenedor>
+          <hr />
+          <div>
+            <p className="text-center">
+              Ingrese contraseña para confirmar venta
+            </p>
+            <input className="form-control" autoFocus type="password" />
+          </div>
+        </ModalBody>
 
-          <ModalFooter>
-            <Button color="dark" onClick={() => setModal(false)}>
-              Cancelar
-            </Button>
-            <Button color="warning" onClick={() => setModal(false)}>
-              Confirmar venta
-            </Button>
-          </ModalFooter>
-        </Modal>
-
+        <ModalFooter>
+          <Button color="primary" onClick={() => setModal(false)}>
+            Cancelar
+          </Button>
+          <Button color="success" onClick={() => setModal(false)}>
+            Confirmar venta
+          </Button>
+        </ModalFooter>
+      </Modal>
     </>
   );
 };

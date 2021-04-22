@@ -88,7 +88,7 @@ const Carrito = () => {
         {"           "}
         <button className="btn btn-outline-info">
           {" "}
-          <FontAwesomeIcon icon={faCreditCard} /> Método de pago
+          <FontAwesomeIcon icon={faCreditCard} /> Corte de caja
         </button>
         <button
           className="btn btn-outline-success mr-4"

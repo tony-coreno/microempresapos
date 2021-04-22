@@ -62,7 +62,8 @@ const Productos = () => {
       <Contenedorapp>
         <Menu>
           <NavLink to="/productos">Productos</NavLink>
-          <NavLink to="/categorias">Categorias</NavLink>
+          <NavLink to="/categorias">Categorías</NavLink>
+          <NavLink to="/categorias">Devoluciones</NavLink>
         </Menu>
         <main>
           <Switch>
