@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import Axios from "axios";
 import { Button, Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserTie } from "@fortawesome/free-solid-svg-icons";
+import { faQuestion, faUserTie } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
+import { ContextEstado } from "../context/ContextEstado";
 
 const Clientes = () => {
+  useEffect(() => {
+    obtenerClientes();
+  }, []);
+  const { clientes, setClientes } = useContext(ContextEstado);
+  const obtenerClientes = async () => {
+    const id = sessionStorage.getItem("idusuario");
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.get("/clientes/listarporadmin/" + id, {
+      headers: { autorizacion: token },
+    });
+    setClientes(respuesta.data);
+  };
   return (
     <div>
       <Navbar>
@@ -21,130 +35,53 @@ const Clientes = () => {
         </NavLink>
       </Navbar>
       <Contenedorapp>
-      <Contenedor>
-        <h4>Clientes destacados</h4>
-
-      </Contenedor>
-      <aside>
+        <Contenedor>
+          <h4>Clientes destacados</h4>
+        </Contenedor>
+        <aside>
           <Contenedor2>
-          <div className="card ms-1 animate__animated animate__fadeIn" style={ { maxWidth: 240 } }>
-            <div className="row no-gutters">
-                <div className="col-md-4">
-                    <img src="https://img.icons8.com/officel/80/000000/supplier.png" className="card-img" alt="POS" />
-                </div>
-                <div className="col-md-8">
-                    
-                    <div className="card-body">
-                        <h5 className="card-title">Provider</h5>
-                        <p className="card-text">prov</p>
-{/* 
-                        {
-                            ( alter_ego !== characters ) 
-                                && <p className="card-text"> { characters } </p>
-                        } */}
+            {clientes.map((cliente) => {
+              return (
+                <div
+                  className="card ms-1 animate__animated animate__fadeIn"
+                  style={{ maxWidth: 240 }}
+                  key={cliente.id}
+                >
+                  <div className="row no-gutters">
+                    <div className="col-md-4">
+                      <img
+                        src="https://img.icons8.com/officel/80/000000/supplier.png"
+                        className="card-img"
+                        alt="POS"
+                      />
+                    </div>
+                    <div className="col-md-8">
+                      <div className="card-body">
+                        <h5 className="card-title">{cliente.nombre}</h5>
+                        <h6 className="card-text">
+                          Cliente: {cliente.tipocliente}
+                        </h6>
 
                         <p className="card-text">
-                            <small className="text-muted">Tel(55-11-92-34-85)</small>
+                          <small className="text-muted">
+                            Tel: {cliente.telefono}
+                            <button className="btn btn-outline-info">
+                              <FontAwesomeIcon icon={faQuestion} />
+                            </button>
+                          </small>
                         </p>
-{/* 
+                        {/* 
                         <Link to={ `./hero/${ id }` }>
                             Más...
                         </Link> */}
-
+                      </div>
                     </div>
-
+                  </div>
                 </div>
-            </div>
-        </div>
-        <div className="card ms-1 animate__animated animate__fadeIn" style={ { maxWidth: 240 } }>
-            <div className="row no-gutters">
-                <div className="col-md-4">
-                    <img src="https://img.icons8.com/officel/80/000000/supplier.png" className="card-img" alt="POS" />
-                </div>
-                <div className="col-md-8">
-                    
-                    <div className="card-body">
-                        <h5 className="card-title">Provider</h5>
-                        <p className="card-text">prov</p>
-{/* 
-                        {
-                            ( alter_ego !== characters ) 
-                                && <p className="card-text"> { characters } </p>
-                        } */}
-
-                        <p className="card-text">
-                            <small className="text-muted">Tel(55-11-92-34-85)</small>
-                        </p>
-{/* 
-                        <Link to={ `./hero/${ id }` }>
-                            Más...
-                        </Link> */}
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div className="card ms-1 animate__animated animate__fadeIn" style={ { maxWidth: 240 } }>
-            <div className="row no-gutters">
-                <div className="col-md-4">
-                    <img src="https://img.icons8.com/officel/80/000000/supplier.png" className="card-img" alt="POS" />
-                </div>
-                <div className="col-md-8">
-                    
-                    <div className="card-body">
-                        <h5 className="card-title">Provider</h5>
-                        <p className="card-text">prov</p>
-{/* 
-                        {
-                            ( alter_ego !== characters ) 
-                                && <p className="card-text"> { characters } </p>
-                        } */}
-
-                        <p className="card-text">
-                            <small className="text-muted">Tel(55-11-92-34-85)</small>
-                        </p>
-{/* 
-                        <Link to={ `./hero/${ id }` }>
-                            Más...
-                        </Link> */}
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div className="card ms-1 animate__animated animate__fadeIn" style={ { maxWidth: 240 } }>
-            <div className="row no-gutters">
-                <div className="col-md-4">
-                    <img src="https://img.icons8.com/officel/80/000000/supplier.png" className="card-img" alt="POS" />
-                </div>
-                <div className="col-md-8">
-                    
-                    <div className="card-body">
-                        <h5 className="card-title">Provider</h5>
-                        <p className="card-text">prov</p>
-{/* 
-                        {
-                            ( alter_ego !== characters ) 
-                                && <p className="card-text"> { characters } </p>
-                        } */}
-
-                        <p className="card-text">
-                            <small className="text-muted">Tel(55-11-92-34-85)</small>
-                        </p>
-{/* 
-                        <Link to={ `./hero/${ id }` }>
-                            Más...
-                        </Link> */}
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
+              );
+            })}
           </Contenedor2>
-      </aside>
+        </aside>
       </Contenedorapp>
     </div>
   );
@@ -168,7 +105,6 @@ const Contenedorapp = styled.div`
   box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
 `;
 
-
 const Contenedor = styled.div`
   padding: 25px;
   width: 100%;
@@ -188,11 +124,10 @@ const Contenedor2 = styled.div`
   gap: 10px;
   grid-template-columns: 2fr 2fr;
   //background: #eef3f5;
-  background: #FFF;
+  background: #fff;
   margin: 10px 0;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
 `;
-
 
 export default Clientes;

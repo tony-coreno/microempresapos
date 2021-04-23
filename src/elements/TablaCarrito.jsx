@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { ContextEstado } from "../context/ContextEstado";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faTrash} from "@fortawesome/free-solid-svg-icons";
+import {faTimes, faTrash} from "@fortawesome/free-solid-svg-icons";
 const TablaCarrito = () => {
   const {ventaProducto} = useContext(ContextEstado)
   return (
@@ -38,10 +38,10 @@ const TablaCarrito = () => {
                             <td>{producto.unidad}</td>
                             <td>
                               <button
-                                className="bn btn-outline-dark mr-2"
+                                className="bn btn-outline-danger mr-2"
                                 
                               >
-                                <FontAwesomeIcon icon={faTrash} />
+                                <FontAwesomeIcon icon={faTimes} />
                               </button>
                           </td>
                           </tr>

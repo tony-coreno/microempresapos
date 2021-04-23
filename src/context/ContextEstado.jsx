@@ -10,6 +10,7 @@ const ProveedorState = ({ children }) => {
   const [empleados, setEmpleados] = useState([]);
   const [pagar, setPagar] = useState("");
   const [articulos, setArticulos] = useState(0);
+  const [clientes, setClientes] = useState([""]);
 
   const handleInputChange = (e) => {
     setListaProducto(e.target.value);
@@ -52,6 +53,8 @@ const ProveedorState = ({ children }) => {
         setPerfil,
         setTituloPOS,
         tituloPos,
+        clientes,
+        setClientes
       }}
     >
       {children}
