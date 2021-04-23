@@ -50,7 +50,7 @@ const Clientes = () => {
                   <div className="row no-gutters">
                     <div className="col-md-4">
                       <img
-                        src="https://img.icons8.com/officel/80/000000/supplier.png"
+                        src="https://img.icons8.com/emoji/96/000000/man-office-worker.png"
                         className="card-img"
                         alt="POS"
                       />

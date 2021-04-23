@@ -9,12 +9,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFileExcel,
   faFilePdf,
+  faFilter,
   faSearch,
   faShoppingBag,
-  faThLarge,
   faTrashAlt,
   faUserEdit,
-  faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 const Productos = () => {
   const [productos, setProductos] = useState([""]);
@@ -106,12 +105,12 @@ const Productos = () => {
             </NavLink>
             <NavLink to="/productos-cards">
               <Button
-                className="btn btn-success d-flex d-flex justify-content-between align-items-center pr-2"
+                className="btn btn-warning d-flex d-flex justify-content-between align-items-center pr-2"
                 data-toggle="tooltip"
                 data-placement="right"
-                title="productos card"
+                title="Filtrar stock"
               >
-                <FontAwesomeIcon icon={faThLarge} />
+                <FontAwesomeIcon icon={faFilter} />
               </Button>
             </NavLink>
           </Herramientas>
@@ -150,6 +149,7 @@ const Productos = () => {
                         <tr>
                           <th>#</th>
                           <th>SKU</th>
+                          <th>Marca</th>
                           <th>Producto</th>
                           <th>Existencia</th>
                           <th>Precio de venta</th>
@@ -165,6 +165,7 @@ const Productos = () => {
                             <tr key={producto.id}>
                               <td>{i + 1}</td>
                               <td>{producto.sku}</td>
+                              <td>{producto.producto}</td>
                               <td>{producto.producto}</td>
                               <td>{producto.existencia}</td>
                               <td>{producto.precioventa}</td>

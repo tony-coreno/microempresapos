@@ -25,7 +25,7 @@ const NuevoEmpleado = () => {
   const [estadoSelected, setEstadoSelected] = useState([""]);
 
   useEffect(() => {
-    setPerfilSelected(["", "Administrador", "Vendedor"]);
+    setPerfilSelected(["", "Encargado", "Vendedor", "Cajero"]);
     setEstadoSelected(["", "Activo", "Inactivo"]);
   }, []);
 

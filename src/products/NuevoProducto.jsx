@@ -10,14 +10,6 @@ import Swal from "sweetalert2";
 import styled from "styled-components";
 
 const NuevoProducto = () => {
-  // const boton = document.getElementById("boton");
-  // const pass = document.getElementById("pass");
-  // const mostrarContraseña = (e) => {
-  //   e.preventDefault();
-  //   if (pass.type == "password") {
-  //     pass.type = "text";
-  //   }
-  // };
   const [sku, setSku] = useState("");
   const [producto, setProducto] = useState("");
   const [existencia, setExistencia] = useState("");
