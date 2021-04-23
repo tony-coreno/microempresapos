@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   BarChart,
   Bar,
@@ -7,16 +7,15 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  Pie,
-  PieChart,
-  Cell,
 } from "recharts";
 import styled from "styled-components";
+import { ContextEstado } from "../context/ContextEstado";
 const Inicio = () => {
+  const {articulos} = useContext(ContextEstado)
   const data = [
     {
       name: "Ventas del día",
-      Ganancia: 2000,
+      Ganancia: articulos,
       Perdidas: 400,
     },
     {
@@ -63,44 +62,6 @@ const Inicio = () => {
         <Titulo>
         
         </Titulo>
-        <PieChart width={800} height={400}>
-          <Pie
-            data={data2}
-            cx={120}
-            cy={200}
-            innerRadius={60}
-            outerRadius={80}
-            fill="#8884d8"
-            paddingAngle={5}
-            dataKey="value"
-          >
-            {data2.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
-          </Pie>
-          <Pie
-            data={data2}
-            cx={420}
-            cy={200}
-            startAngle={180}
-            endAngle={0}
-            innerRadius={60}
-            outerRadius={80}
-            fill="#8884d8"
-            paddingAngle={5}
-            dataKey="value"
-          >
-            {data2.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
-          </Pie>
-        </PieChart>
       </Divisor>
     </>
   );

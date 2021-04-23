@@ -25,6 +25,7 @@ import Settings from "../settings/Settings";
 import Calendario from "../elements/calendar/Calendario";
 import Proveedores from "./Proveedores";
 import Notas from "./Notas";
+import Devoluciones from '../products/Devoluciones'
 import "bootstrap/dist/css/bootstrap.css";
 const App = () => {
   return (
@@ -50,6 +51,7 @@ const App = () => {
                 <Route path="/productos" component={Productos} />
                 <Route path="/productos-cards" component={VistaProductoCard} />
                 <Route path="/categorias" component={Categorias} />
+                <Route path="/devoluciones" component={Devoluciones} />
                 <Route path="/crear-venta" component={CrearVenta} />
                 <Route path="/reportes" component={Reportes} />
                 <Route path="/proveedores" component={Proveedores} />

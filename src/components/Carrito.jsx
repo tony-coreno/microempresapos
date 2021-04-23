@@ -20,9 +20,8 @@ const Carrito = () => {
   );
   const { pagar, setArticulos } = useContext(ContextEstado);
 
-  useEffect(() => {
-    pago();
-  }, [pagar]);
+  // useEffect(() => {
+  // }, [pagar]);
 
   useEffect(() => {
     limpiar();

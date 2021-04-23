@@ -3,6 +3,15 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import styled from "styled-components";
 const ActualizarEmpleados = ({ modal, setModal }) => {
+  // const obtenerEmpleado = async () => {
+  //   const id = sessionStorage.getItem("idusuario");
+  //   const token = sessionStorage.getItem("token");
+  //   const respuesta = await Axios.get("/empleados/listarporadmin/" + id, {
+  //     headers: { autorizacion: token },
+  //   });
+  //   setEmpleados(respuesta.data);
+  //   console.log(respuesta.data.nombre);
+  // };
   return (
     <>
       <Modal isOpen={modal}>
@@ -44,7 +53,6 @@ const ActualizarEmpleados = ({ modal, setModal }) => {
             </form>
           </Contenedor>
         </ModalBody>
-
         <ModalFooter>
           <Button color="dark" onClick={() => setModal(false)}>
             Cancelar

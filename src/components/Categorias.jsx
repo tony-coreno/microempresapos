@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Switch, NavLink, Route } from "react-router-dom";
 import Productos from "./Productos";
+import Devluciones from "../products/Devoluciones";
 
 const Categorias = () => {
   return (
@@ -10,11 +11,12 @@ const Categorias = () => {
         <Menu>
           <NavLink to="/productos">Productos</NavLink>
           <NavLink to="/categorias">Categorías</NavLink>
-          <NavLink to="/">Devoluciones</NavLink>
+          <NavLink to="/devoluciones">Devoluciones</NavLink>
         </Menu>
         <main>
           <Switch>
             <Route path="/productos" component={Productos} />
+            <Route path="/devoluciones" component={Devluciones} />
           </Switch>
         </main>
         <hr />
