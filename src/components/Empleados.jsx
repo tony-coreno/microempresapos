@@ -64,8 +64,8 @@ const Empleados = () => {
   };
   return (
     <>
-    {/* <Barra /> */}
-    {/* <div>
+      {/* <Barra /> */}
+      {/* <div>
       <ReactHTMLTableToExcel
         id="botonExportarExcel"
         className="btn btn-outline-success"
@@ -119,7 +119,7 @@ const Empleados = () => {
                 aria-label="Search"
                 onChange={buscar}
                 autoFocus
-                ></Buscar>
+              ></Buscar>
               <FontAwesomeIcon icon={faSearch} />
             </div>
           </div>
@@ -139,7 +139,10 @@ const Empleados = () => {
                       {sessionStorage.getItem("nombre") || "Invitado"}
                     </Titulo>
                   </div>
-                  <table className="table table-responsive-lg " id="tablaEmpleados">
+                  <table
+                    className="table table-responsive-lg "
+                    id="tablaEmpleados"
+                  >
                     <thead className="light">
                       <tr>
                         <th>#</th>
@@ -155,7 +158,7 @@ const Empleados = () => {
                     <tbody>
                       {empleados.map((empleado, i) => {
                         return (
-                          <tr key={empleado.id}>
+                          <tr key={empleado._id}>
                             <td>{i + 1}</td>
                             <td>{empleado.numeroempleado}</td>
                             <td>{empleado.nombre}</td>
@@ -164,7 +167,10 @@ const Empleados = () => {
                             <td>{empleado.perfil}</td>
                             <td>{empleado.estado}</td>
                             <td>
-                              <button className="bn btn-outline-info mr-2" onClick={() => setModal(true)}>
+                              <button
+                                className="bn btn-outline-info mr-2"
+                                onClick={() => setModal(true)}
+                              >
                                 <FontAwesomeIcon icon={faUserEdit} />
                               </button>
                               <button
@@ -209,16 +215,13 @@ const Herramientas = styled.div`
 `;
 
 const Boton = styled.button`
-display: inline-flex;
-justify-content: space-between;
-align-items: center;
-outline: none;
-
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  outline: none;
 `;
 
 const Buscar = styled.input`
-
   border-radius: 10px;
-
 `;
 export default Empleados;

@@ -1,24 +1,27 @@
 import React, { useContext, useEffect, useState } from "react";
-import styled from "styled-components";
 import { ContextEstado } from "../context/ContextEstado";
 import ModalPagar from "../modals/ModalPagar";
 import TablaCarrito from "./../elements/TablaCarrito";
 import "bootstrap/dist/css/bootstrap.css";
+import styled from "styled-components";
 import {
   faBan,
   faCreditCard,
-  faDollarSign,
   faMoneyBill,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Swal from "sweetalert2";
+import BarraTotal from "./BarraTotal";
 
 const Carrito = () => {
   const [modal, setModal] = useState(false);
-  const { ventaProducto, setVentaProducto, setListaProducto } = useContext(
-    ContextEstado
-  );
-  const { pagar, setArticulos } = useContext(ContextEstado);
+  const {
+    ventaProducto,
+    setVentaProducto,
+    setListaProducto,
+    total,
+  } = useContext(ContextEstado);
+  const { setArticulos } = useContext(ContextEstado);
 
   // useEffect(() => {
   // }, [pagar]);
@@ -72,14 +75,20 @@ const Carrito = () => {
         <TituloCarrito>Carrito de compras </TituloCarrito>
         <TablaCarrito />
       </Contenedor>
-      <TotalDiv>
-        <input readOnly className="form-control" value=""></input>
+      {/* <TotalDiv>
+        <input readOnly className="form-control" value={total}></input>
         <h3>
           {" "}
           <FontAwesomeIcon icon={faDollarSign} /> Total
         </h3>
-      </TotalDiv>
+
+      </TotalDiv> */}
+
       <div>
+        <Contenedor>
+          <BarraTotal />
+        </Contenedor>
+
         <button className="btn btn-outline-danger" onClick={cancelar}>
           {" "}
           <FontAwesomeIcon icon={faBan} /> Cancelar

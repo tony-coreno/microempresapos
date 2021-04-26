@@ -70,10 +70,6 @@ const Clientes = () => {
                             </button>
                           </small>
                         </p>
-                        {/* 
-                        <Link to={ `./hero/${ id }` }>
-                            Más...
-                        </Link> */}
                       </div>
                     </div>
                   </div>
@@ -87,10 +83,10 @@ const Clientes = () => {
   );
 };
 
-const Titulo = styled.h4`
-  color: #000;
-  text-align: center;
-`;
+// const Titulo = styled.h4`
+//   color: #000;
+//   text-align: center;
+// `;
 
 const Contenedorapp = styled.div`
   max-width: 1400px;

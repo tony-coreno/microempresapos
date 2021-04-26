@@ -2,9 +2,13 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { ContextEstado } from "../context/ContextEstado";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faTimes, faTrash} from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 const TablaCarrito = () => {
-  const {ventaProducto} = useContext(ContextEstado)
+  const { ventaProducto, total, setTotal } = useContext(ContextEstado);
+  // useMemo(()=> {
+  //   setTotal([...total + ventaProducto.precioventa])
+  // },[ventaProducto.precioventa])
+  let pagar = 0;
   return (
     <>
       <div className="table-responsive table-borderless table-hover">
@@ -28,25 +32,24 @@ const TablaCarrito = () => {
                   </thead>
                   <tbody>
                     {ventaProducto.map((producto, i) => {
-                      
-                        return (
-                          <tr key={producto._id}>
-                            <td>{i + 1}</td>
-                            <td>{producto.sku}</td>
-                            <td>{producto.producto}</td>
-                            <td>{producto.precioventa}</td>
-                            <td>{producto.unidad}</td>
-                            <td>
-                              <button
-                                className="bn btn-outline-danger mr-2"
-                                
-                              >
-                                <FontAwesomeIcon icon={faTimes} />
-                              </button>
+                      const { precioventa } = producto;
+                      pagar = pagar + precioventa;
+                      setTotal(pagar);
+                      return (
+                        <tr key={producto._id}>
+                          <td>{i + 1}</td>
+                          <td>{producto.sku}</td>
+                          <td>{producto.producto}</td>
+                          <td>{precioventa}</td>
+                          <td>{producto.unidad}</td>
+                          <td>
+                            <button className="bn btn-outline-danger mr-2">
+                              <FontAwesomeIcon icon={faTimes} />
+                            </button>
                           </td>
-                          </tr>
-                        );
-                      })}
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>

@@ -23,6 +23,7 @@ const ModalSesion = ({ modalSesion, setModalSesion }) => {
         <img
           src="https://img.icons8.com/plasticine/100/000000/total-sales.png"
           title="POS"
+          alt="POS"
           className="text-center"
         />
 

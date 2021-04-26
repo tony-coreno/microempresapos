@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Axios from "axios";
-import "bootstrap/dist/css/bootstrap.css";
 import { Button } from "reactstrap";
 import { faArrowLeft, faSave } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Swal from "sweetalert2";
+import "bootstrap/dist/css/bootstrap.css";
 
 import styled from "styled-components";
 
@@ -14,6 +14,7 @@ const NuevoProducto = () => {
   const [producto, setProducto] = useState("");
   const [existencia, setExistencia] = useState("");
   const [precioventa, setPrecioventa] = useState("");
+  const [marca, setMarca] = useState("");
   const [categoriaSelected, setCategoriaSelected] = useState([""]);
   const [categoria, setCategoria] = useState("");
   const [unidadSelected, setUnidadSelected] = useState([""]);
@@ -23,8 +24,8 @@ const NuevoProducto = () => {
   const [talla, setTalla] = useState("");
 
   useEffect(() => {
-    setCategoriaSelected(["", "Bebidas", "Abarrotes", "Medicamentos"]);
-    setUnidadSelected(["", "ml", "grs", "lts"]);
+    setCategoriaSelected(["", "Bebidas", "Abarrotes", "Frituras", "Lácteos",]);
+    setUnidadSelected(["", "ml", "grs", "lts", "Unidades",]);
     setEstadoSelected(["", "Activo", "Inactivo", "Agotado"]);
   }, []);
 
@@ -35,6 +36,7 @@ const NuevoProducto = () => {
       producto,
       existencia,
       precioventa,
+      marca,
       categoria: categoria,
       unidad,
       estado: estado,
@@ -76,6 +78,7 @@ const NuevoProducto = () => {
                 placeholder="SKU"
                 onChange={(e) => setSku(e.target.value)}
                 required
+                autoFocus
               />
             </div>
             <div class="col">
@@ -84,6 +87,15 @@ const NuevoProducto = () => {
                 className="form-control"
                 placeholder="Nombre producto"
                 onChange={(e) => setProducto(e.target.value)}
+                required
+              />
+            </div>
+            <div class="col">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Marca"
+                onChange={(e) => setMarca(e.target.value)}
               />
             </div>
 

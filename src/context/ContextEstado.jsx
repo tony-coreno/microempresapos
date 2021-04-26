@@ -5,7 +5,7 @@ const ContextEstado = React.createContext();
 const ProveedorState = ({ children }) => {
   const [ventaProducto, setVentaProducto] = useState([]);
   const [listaProducto, setListaProducto] = useState([]);
-  const [total, setTotal] = useState(0);
+  const [total, setTotal ] = useState(0);
   const [perfil, setPerfil] = useState("");
   const [empleados, setEmpleados] = useState([]);
   const [pagar, setPagar] = useState("");
@@ -35,6 +35,7 @@ const ProveedorState = ({ children }) => {
     <ContextEstado.Provider
       value={{
         total,
+        setTotal,
         articulos,
         setArticulos,
         ventaProducto,

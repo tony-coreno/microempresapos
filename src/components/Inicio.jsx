@@ -25,18 +25,19 @@ const Inicio = () => {
     },
   ];
 
-  const data2 = [
-    { name: "Group A", value: 400 },
-    { name: "Group B", value: 300 },
-    { name: "Group C", value: 300 },
-    { name: "Group D", value: 200 },
-  ];
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+  // const data2 = [
+  //   { name: "Group A", value: 400 },
+  //   { name: "Group B", value: 300 },
+  //   { name: "Group C", value: 300 },
+  //   { name: "Group D", value: 200 },
+  // ];
+  // const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
   return (
     <>
-      <Principal>Panel de control</Principal>
+      <Principal>Ventas Marzo</Principal>
       <hr />
+      <Contenedor2>
       <Divisor>
         
         <BarChart
@@ -60,9 +61,9 @@ const Inicio = () => {
           {/*fill="#82ca9d" */}
         </BarChart>
         <Titulo>
-        
         </Titulo>
       </Divisor>
+      </Contenedor2>
     </>
   );
 };
@@ -84,5 +85,28 @@ const Principal = styled.h4`
 
      text-align: center;
 `;
-
+// const Contenedor = styled.div`
+//   padding: 25px;
+//   width: 100%;
+//   display: grid;
+//   gap: 20px;
+//   //background: #eef3f5;
+//   background: #fff;
+//   margin: 10px 0;
+//   border-radius: 10px;
+//   box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
+// `;
+const Contenedor2 = styled.div`
+  display: flex;
+  padding: 20px;
+  width: 100%;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 2fr 2fr;
+  //background: #eef3f5;
+  background: #fff;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
+`;
 export default Inicio;

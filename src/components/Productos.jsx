@@ -19,12 +19,21 @@ const Productos = () => {
   const [productos, setProductos] = useState([""]);
   useEffect(() => {
     obtenerProductos();
+    //obtenerProductosEmpleados();
   }, []);
 
   const obtenerProductos = async () => {
     const id = sessionStorage.getItem("idusuario");
     const token = sessionStorage.getItem("token");
     const respuesta = await Axios.get("/productos/listarporadmin/" + id, {
+      headers: { autorizacion: token },
+    });
+    setProductos(respuesta.data);
+  };
+  const obtenerProductosEmpleados = async () => {
+    const token = sessionStorage.getItem("token");
+    const jefe = sessionStorage.getItem("jefe")
+    const respuesta = await Axios.get("/productos/listarporadmin/" + jefe, {
       headers: { autorizacion: token },
     });
     setProductos(respuesta.data);
@@ -162,10 +171,10 @@ const Productos = () => {
                       <tbody>
                         {productos.map((producto, i) => {
                           return (
-                            <tr key={producto.id}>
+                            <tr key={producto._id}>
                               <td>{i + 1}</td>
                               <td>{producto.sku}</td>
-                              <td>{producto.producto}</td>
+                              <td>{producto.marca}</td>
                               <td>{producto.producto}</td>
                               <td>{producto.existencia}</td>
                               <td>{producto.precioventa}</td>
