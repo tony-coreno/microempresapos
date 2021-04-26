@@ -10,6 +10,7 @@ import VistaProductoCard from '../products/VistaProductoCard'
 import Clientes from "./Clientes";
 import Ayuda from "./Ayuda";
 import NuevoCliente from "./../clients/NuevoCliente";
+import NuevoProveedor from '../providers/NuevoProveedor';
 import styled from "styled-components";
 import Sidebar from "./Sidebar";
 import Error from "./Error";
@@ -68,6 +69,7 @@ const App = () => {
                 <Route path="/settings" component={Settings} />
                 <Route path="/login" exact component={Login} />
                 <Route path="/nuevo-cliente" component={NuevoCliente} />
+                <Route path="/nuevo-proveedor" component={NuevoProveedor} />
                 <Route path="/calendar" component={Calendario} />
                 <Route component={Error} />
               </Switch>

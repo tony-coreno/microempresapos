@@ -9,26 +9,27 @@ import { ContextEstado } from "../context/ContextEstado";
 
 const Proveedores = () => {
   useEffect(() => {
-    obtenerClientes();
+    obtenerProveedores();
   }, []);
-  const { clientes, setClientes } = useContext(ContextEstado);
-  const obtenerClientes = async () => {
+  const { proveedores, setProveedores } = useContext(ContextEstado);
+  const obtenerProveedores = async () => {
     const id = sessionStorage.getItem("idusuario");
     const token = sessionStorage.getItem("token");
-    const respuesta = await Axios.get("/clientes/listarporadmin/" + id, {
+    const respuesta = await Axios.get("/proveedores/proveedorporadmin/" + id, {
       headers: { autorizacion: token },
     });
-    setClientes(respuesta.data);
+    setProveedores(respuesta.data);
+    
   };
   return (
     <div>
       <Navbar>
-        <NavLink to="/nuevo-cliente">
+        <NavLink to="/nuevo-proveedor">
           <Button
             className="btn btn-info d-flex d-flex justify-content-between align-items-center"
             data-toggle="tooltip"
             data-placement="right"
-            title="Agregar cliente"
+            title="Agregar proveedor"
           >
             <FontAwesomeIcon icon={faUserTie} />
           </Button>
@@ -40,12 +41,12 @@ const Proveedores = () => {
         </Contenedor>
         <aside>
           <Contenedor2>
-            {clientes.map((cliente) => {
+            {proveedores.map((proveedor) => {
               return (
                 <div
                   className="card ms-1 animate__animated animate__fadeIn"
                   style={{ maxWidth: 240 }}
-                  key={cliente.id}
+                  key={proveedor._id}
                 >
                   <div className="row no-gutters">
                     <div className="col-md-4">
@@ -57,14 +58,14 @@ const Proveedores = () => {
                     </div>
                     <div className="col-md-8">
                       <div className="card-body">
-                        <h5 className="card-title">{cliente.nombre}</h5>
+                        <h5 className="card-title">{proveedor.nombre}</h5>
                         <h6 className="card-text">
-                          Cliente: {cliente.tipocliente}
+                          Marca: {proveedor.marca}
                         </h6>
 
                         <p className="card-text">
                           <small className="text-muted">
-                            Tel: {cliente.telefono}
+                            Tel: {proveedor.telefono}
                             <button className="btn btn-outline-info">
                               <FontAwesomeIcon icon={faQuestion} />
                             </button>
