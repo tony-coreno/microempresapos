@@ -9,7 +9,7 @@ const Categorias = () => {
     <div>
       <Contenedorapp>
         <Contenedor>
-          <h4>Categorias</h4>
+          <h4>Categorias de admin</h4>
         </Contenedor>
         <aside>
           <Contenedor2>
