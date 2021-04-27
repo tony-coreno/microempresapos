@@ -1,35 +1,59 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
+import { NegocioState } from "../context/ContextTipoNegocio";
 const DetalleVenta = () => {
+  const [metodopago, setMetodoPago] = useState("");
+  const [metodoPagoSelected, setMetodoPagoSelected] = useState([]);
+  // const {
+  //   metodopago,
+  //   setMetodoPago,
+  //   metodoPagoSelected,
+  //   setMetodoPagoSelected,
+  // } = useState([]);
+
+  useEffect(() => {
+    setMetodoPagoSelected(["", "Efectivo", "Tarjeta", "Vale despensa"]);
+  }, []);
+  const codigo = (e) => {
+    e.preventDefault();
+    alert("Me llegó");
+  };
   return (
     <>
       <Contenedorapp>
         <hr />
         <h4>Método de pago</h4>
-        <select className="form-control">
-          <option></option>
-          <option>Efectivo</option>
-          <option>Tarjeta</option>
+        <select
+          onChange={(e) => setMetodoPago(e.target.value)}
+          value={metodopago}
+          className="form-control mt-"
+        >
+          {metodoPagoSelected.map((pago) => (
+            <option key={pago}>{pago}</option>
+          ))}
         </select>
-        <div className="table-responsive table-borderless table-hover">
-          <div className="container">
-            <div className="row">
-              <div className="col-12">
-                <div className="card">
-                  <div className="bg-success card-header py-1">
-                    <div className="form-group col-mt-4">
-                      <Titulo></Titulo>
+        <form onSubmit={codigo}>
+          <label>Código Promocional</label>
+          <input className="form-control" />
+          <div className="table-responsive table-borderless table-hover mt-2">
+            <div className="container">
+              <div className="row">
+                <div className="col-12">
+                  <div className="card">
+                    <div className="bg-success card-header py-1">
+                      <div className="form-group col-mt-4">
+                        <Titulo></Titulo>
+                      </div>
+                      <Titulo>Subtotal</Titulo>
                     </div>
-                    <Titulo>Subtotal</Titulo>
-                  </div>
-                  <table className="table table-responsive-lg text-center ">
-                    <thead className="light">
-                      <tr>
-                        <th>IVA</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {/* {ventaProducto.map((producto, i) => {
+                    <table className="table table-responsive-lg text-center ">
+                      <thead className="light">
+                        <tr>
+                          <th>IVA</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {/* {ventaProducto.map((producto, i) => {
                       
                         return (
                           <tr key={producto._id}>
@@ -49,13 +73,14 @@ const DetalleVenta = () => {
                           </tr>
                         );
                       })} */}
-                    </tbody>
-                  </table>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </Contenedorapp>
     </>
   );

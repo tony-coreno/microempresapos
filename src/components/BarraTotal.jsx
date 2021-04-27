@@ -15,7 +15,7 @@ const BarraTotalEfectivo = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
- 
+    box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.7);
     @media(max-width: 31.25rem) { /* 500px */
         flex-direction: column;
         font-size: 14px;

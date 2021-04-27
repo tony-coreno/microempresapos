@@ -22,18 +22,23 @@ const Proveedores = () => {
   };
   return (
     <div>
-      <Navbar>
-        <NavLink to="/nuevo-proveedor">
-          <Button
-            className="btn btn-info d-flex d-flex justify-content-between align-items-center"
-            data-toggle="tooltip"
-            data-placement="right"
-            title="Agregar proveedor"
-          >
-            <FontAwesomeIcon icon={faUserTie} />
-          </Button>
-        </NavLink>
-      </Navbar>
+      {sessionStorage.getItem("token") &&
+      sessionStorage.getItem("perfil") === "Administrador" ? (
+        <Navbar>
+          <NavLink to="/nuevo-proveedor">
+            <Button
+              className="btn btn-info d-flex d-flex justify-content-between align-items-center"
+              data-toggle="tooltip"
+              data-placement="right"
+              title="Agregar proveedor"
+            >
+              <FontAwesomeIcon icon={faUserTie} />
+            </Button>
+          </NavLink>
+        </Navbar>
+      ) : (
+        <></>
+      )}
       <Contenedorapp>
         <Contenedor>
           <h4>Proveedores</h4>
