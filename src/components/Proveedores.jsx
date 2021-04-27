@@ -1,17 +1,17 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Axios from "axios";
 import { Button, Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestion, faUserTie } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
-import { ContextEstado } from "../context/ContextEstado";
 
 const Proveedores = () => {
+  const [proveedores, setProveedores] = useState([""]);
   useEffect(() => {
     obtenerProveedores();
   }, []);
-  const { proveedores, setProveedores } = useContext(ContextEstado);
+
   const obtenerProveedores = async () => {
     const id = sessionStorage.getItem("idusuario");
     const token = sessionStorage.getItem("token");
@@ -19,7 +19,6 @@ const Proveedores = () => {
       headers: { autorizacion: token },
     });
     setProveedores(respuesta.data);
-    
   };
   return (
     <div>
@@ -41,12 +40,12 @@ const Proveedores = () => {
         </Contenedor>
         <aside>
           <Contenedor2>
-            {proveedores.map((proveedor) => {
+            {proveedores.map((provider) => {
               return (
                 <div
                   className="card ms-1 animate__animated animate__fadeIn"
                   style={{ maxWidth: 240 }}
-                  key={proveedor._id}
+                  key={provider._id}
                 >
                   <div className="row no-gutters">
                     <div className="col-md-4">
@@ -58,14 +57,14 @@ const Proveedores = () => {
                     </div>
                     <div className="col-md-8">
                       <div className="card-body">
-                        <h5 className="card-title">{proveedor.nombre}</h5>
+                        <h5 className="card-title">{provider.nombre}</h5>
                         <h6 className="card-text">
-                          Marca: {proveedor.marca}
+                          Marca: {provider.marcaproveedor}
                         </h6>
 
                         <p className="card-text">
                           <small className="text-muted">
-                            Tel: {proveedor.telefono}
+                            Tel: {provider.telefono}
                             <button className="btn btn-outline-info">
                               <FontAwesomeIcon icon={faQuestion} />
                             </button>
