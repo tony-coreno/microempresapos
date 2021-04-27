@@ -9,6 +9,7 @@ const TablaCarrito = () => {
   //   setTotal([...total + ventaProducto.precioventa])
   // },[ventaProducto.precioventa])
   let pagar = 0;
+  
   return (
     <>
       <div className="table-responsive table-borderless table-hover">
