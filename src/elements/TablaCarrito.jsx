@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { ContextEstado } from "../context/ContextEstado";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 const TablaCarrito = () => {
-  const { ventaProducto, total, setTotal } = useContext(ContextEstado);
+  const { ventaProducto, setTotal } = useContext(ContextEstado);
+  const [cantidad, setCantidad] = useState(0);
+  let cant = 0;
   // useMemo(()=> {
   //   setTotal([...total + ventaProducto.precioventa])
   // },[ventaProducto.precioventa])
@@ -38,7 +40,7 @@ const TablaCarrito = () => {
                       setTotal(pagar);
                       return (
                         <tr key={producto._id}>
-                          <td>{i + 1}</td>
+                          <td>{1}</td>
                           <td>{producto.sku}</td>
                           <td>{producto.producto}</td>
                           <td>{precioventa}</td>

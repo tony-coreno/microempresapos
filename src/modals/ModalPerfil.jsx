@@ -20,7 +20,7 @@ const ModalPerfil = ({modal, setModal}) => {
       <ModalBody>
       <div>
       <Ventas>Ventas realizadas</Ventas>
-      <Cifra>$5000</Cifra>
+      <Ventas>$5000</Ventas>
 
       <img src="https://img.icons8.com/officel/80/000000/person-male.png" alt="POS"/>
       <hr />
@@ -45,10 +45,10 @@ const Ventas = styled.h5`
   text-align: right;
 `;
 
-const Cifra = styled.h6`
-  text-align: right;
-  color: #198236;
-`;
+// const Cifra = styled.h6`
+//   text-align: right;
+//   color: #198236;
+// `;
 
 
 

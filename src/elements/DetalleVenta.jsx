@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
-import { NegocioState } from "../context/ContextTipoNegocio";
+import { ContextEstado } from "../context/ContextEstado";
 const DetalleVenta = () => {
-  const [metodopago, setMetodoPago] = useState("");
-  const [metodoPagoSelected, setMetodoPagoSelected] = useState([]);
+
+  const {metodopago, setMetodoPago,pagoSelected, setPagoSelected} = useContext(ContextEstado)
   // const {
   //   metodopago,
   //   setMetodoPago,
@@ -12,7 +12,7 @@ const DetalleVenta = () => {
   // } = useState([]);
 
   useEffect(() => {
-    setMetodoPagoSelected(["", "Efectivo", "Tarjeta", "Vale despensa"]);
+    setPagoSelected(["", "Efectivo", "Tarjeta", "Vale despensa"]);
   }, []);
   const codigo = (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ const DetalleVenta = () => {
           value={metodopago}
           className="form-control mt-"
         >
-          {metodoPagoSelected.map((pago) => (
+          {pagoSelected.map((pago) => (
             <option key={pago}>{pago}</option>
           ))}
         </select>
