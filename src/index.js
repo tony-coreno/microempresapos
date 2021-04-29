@@ -9,6 +9,14 @@ import "./index.css";
 
 Axios.defaults.baseURL = "http://localhost:4000";
 
+if(navigator.serviceWorker){
+  navigator.serviceWorker.register('.././sw.js')
+      .then(registrado => console.log('Se instaló correctamente.. ... ', registrado))
+      .catch(error => console.log('Falló la instalación... ', error))
+}else{
+  console.log('Service Workers no soportados')
+}
+
 ReactDOM.render(
   <ProveedorState>
       <BrowserRouter>
@@ -17,3 +25,4 @@ ReactDOM.render(
   </ProveedorState>,
   document.getElementById("root")
 );
+
