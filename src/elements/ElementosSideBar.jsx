@@ -13,6 +13,8 @@ import {
   faCalendarAlt,
   faTruck,
   faClipboard,
+  faQuestion,
+  faIdCard,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from 'reactstrap';
@@ -93,6 +95,15 @@ const ElementosSideBar = () => {
         <FontAwesomeIcon icon={faTruck} />
       </Link>
       <Link
+        to="clientes"
+        className="list-group-item list-group-item-action bg-light"
+        data-toggle="tooltip"
+        data-placement="right"
+        title="Clientes"
+      >
+        <FontAwesomeIcon icon={faIdCard} />
+      </Link>
+      <Link
         to="/notas"
         className="list-group-item list-group-item-action bg-light"
         data-toggle="tooltip"
@@ -111,7 +122,22 @@ const ElementosSideBar = () => {
       >
         <FontAwesomeIcon icon={faCog} />
       </Link>
-      
+
+      { sessionStorage.getItem("token") &&
+      sessionStorage.getItem("perfil") !== "Administrador" ?
+      <Link
+        to="ayuda"
+        className="list-group-item list-group-item-action bg-light"
+        data-toggle="tooltip"
+        data-placement="right"
+        title="Ayuda"
+      >
+        <FontAwesomeIcon icon={faQuestion} />
+      </Link>
+      :
+      <>
+      </>
+      }
       <Button
         color="light"
         className="list-group-item list-group-item-action bg-light"

@@ -32,7 +32,7 @@ const Productos = () => {
   };
   const obtenerProductosEmpleados = async () => {
     const token = sessionStorage.getItem("token");
-    const jefe = sessionStorage.getItem("jefe")
+    const jefe = sessionStorage.getItem("jefe");
     const respuesta = await Axios.get("/productos/listarporadmin/" + jefe, {
       headers: { autorizacion: token },
     });
@@ -112,6 +112,7 @@ const Productos = () => {
                 <FontAwesomeIcon icon={faFileExcel} />
               </Button>
             </NavLink>
+
             <NavLink to="/productos-cards">
               <Button
                 className="btn btn-warning d-flex d-flex justify-content-between align-items-center pr-2"
