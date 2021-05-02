@@ -13,7 +13,7 @@ const Categorias = () => {
         </Contenedor>
         <aside>
           <Contenedor2>
-            <h3>Hol</h3>
+            <h3>Productos</h3>
             {/* {proveedores.map((provider) => {
               return (
                 <div

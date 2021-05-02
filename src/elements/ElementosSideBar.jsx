@@ -15,16 +15,17 @@ import {
   faClipboard,
   faQuestion,
   faIdCard,
+  faDollyFlatbed,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button } from 'reactstrap';
+import { Button } from "reactstrap";
 import { ContextEstado } from "../context/ContextEstado";
 // import PopoverExampleMulti from "../modals/PopDerecha";
 
 const ElementosSideBar = () => {
   const [modal, setModal] = useState(false);
   const [modalSesion, setModalSesion] = useState(false);
-  const {articulos} = useContext(ContextEstado)
+  const { articulos } = useContext(ContextEstado);
 
   return (
     <>
@@ -55,6 +56,7 @@ const ElementosSideBar = () => {
       >
         <FontAwesomeIcon icon={faUserAlt} />
       </Button>
+
       <Link
         to="/crear-venta"
         className="list-group-item list-group-item-action bg-light"
@@ -73,6 +75,15 @@ const ElementosSideBar = () => {
         title="Buscar producto"
       >
         <FontAwesomeIcon icon={faSearch} />
+      </Link>
+      <Link
+        to="/kardex"
+        className="list-group-item list-group-item-action bg-light"
+        data-toggle="tooltip"
+        data-placement="right"
+        title="Kardex"
+      >
+        <FontAwesomeIcon icon={faDollyFlatbed} />
       </Link>
 
       <Link
@@ -123,21 +134,22 @@ const ElementosSideBar = () => {
         <FontAwesomeIcon icon={faCog} />
       </Link>
 
-      { sessionStorage.getItem("token") &&
-      sessionStorage.getItem("perfil") !== "Administrador" ?
-      <Link
-        to="ayuda"
-        className="list-group-item list-group-item-action bg-light"
-        data-toggle="tooltip"
-        data-placement="right"
-        title="Ayuda"
-      >
-        <FontAwesomeIcon icon={faQuestion} />
-      </Link>
-      :
-      <>
-      </>
-      }
+      {sessionStorage.getItem("token") &&
+      sessionStorage.getItem("perfil") !== "Administrador" ? (
+        <>
+          <Link
+            to="ayuda"
+            className="list-group-item list-group-item-action bg-light"
+            data-toggle="tooltip"
+            data-placement="right"
+            title="Ayuda"
+          >
+            <FontAwesomeIcon icon={faQuestion} />
+          </Link>
+        </>
+      ) : (
+        <></>
+      )}
       <Button
         color="light"
         className="list-group-item list-group-item-action bg-light"
