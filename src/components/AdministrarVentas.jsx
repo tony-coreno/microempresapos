@@ -1,22 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Switch, NavLink, Route } from "react-router-dom";
 import Reportes from "./Reportes";
 import CrearVenta from "./CrearVenta";
 import { ContextEstado } from "../context/ContextEstado";
 const Almacen = () => {
-  const {setPagoSelected, pagoSelected} = useContext(ContextEstado);
-
-    //const [pago, setPago] = useState([]);
-
-   // useEffect( ()=>{
-   //     setPago(['Efectivo', 'Tarjeta'])
-   // },[])
-
-    const enviar = ((e)=> {
-      e.preventDefault();
-      setPagoSelected([...pagoSelected,e.target.value])
-    })
+  const { setPagoSelected, pagoSelected } = useContext(ContextEstado);
+  const enviar = (e) => {
+    e.preventDefault();
+    setPagoSelected([...pagoSelected, e.target.value]);
+  };
 
   return (
     <div>
@@ -45,10 +38,10 @@ const Almacen = () => {
                   type="text"
                   className="form-control mt-2"
                   placeholder=""
-                  onSubmit={(e)=>enviar(e)}
+                  onSubmit={(e) => enviar(e)}
                 />
               </div>
-              <div class="col">
+              <div className="col">
                 <h7>IVA (16%)</h7>
                 <select id="inputState" className="form-control mt-2">
                   <option>Activo</option>
@@ -75,30 +68,28 @@ const Almacen = () => {
                           </tr>
                         </thead>
                         <tbody>
-                           {pagoSelected.map((medio, i) => {
-                   return (
-                     <tr key={medio}>
-                       <td>{medio}</td>
-                       <td>
-                         <button className="btn btn-outline-success">Activo</button>
-                       </td>
-                       <td>
-                         <button className="btn btn-outline-danger">Eliminar</button>
-                       </td>
-                       <td>
-                         {/* <button
-                           className="bn btn-outline-info mr-2"
-                           
-                         >
-                           <FontAwesomeIcon icon={faUserEdit} />
-                         </button>
-                         <button className="bn btn-outline-dark" onClick={() => eliminar(empleado._id)}>
-                           <FontAwesomeIcon icon={faTrashAlt} />
-                         </button> */}
-                       </td>
-                     </tr>
-                   );
-                 })} 
+                          { (pagoSelected !== null) ?
+                          pagoSelected.map((medio, i) => {
+                            return (
+                              <tr key={medio}>
+                                <td>{medio}</td>
+                                <td>
+                                  <button className="btn btn-outline-success">
+                                    Activo
+                                  </button>
+                                </td>
+                                <td>
+                                  <button className="btn btn-outline-danger">
+                                    Eliminar
+                                  </button>
+                                </td>
+                              </tr>
+                            );
+                          })
+                          :
+                          <>
+                          </>
+                        }
                         </tbody>
                       </table>
                     </div>

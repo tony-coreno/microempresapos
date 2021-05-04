@@ -101,26 +101,29 @@ const ModalVenta = ({ modal, setModal }) => {
             )}
           </Contenedor>
           <hr />
-          { (total !==0 ) ?
-          <div>
-            <p className="text-center">
-              Ingrese contraseña para confirmar venta
-            </p>
-            <input className="form-control" autoFocus type="password" />
-          </div>
-          :
-          <>
-          </>
-          }
+          {total !== 0 ? (
+            <div>
+              <p className="text-center">
+                Ingrese contraseña para confirmar venta
+              </p>
+              <input className="form-control" autoFocus type="password" />
+            </div>
+          ) : (
+            <></>
+          )}
         </ModalBody>
 
         <ModalFooter>
           <Button color="primary" onClick={() => setModal(false)}>
             Cancelar
           </Button>
-          <Button color="success" onClick={(e) => guardar(e)}>
-            Confirmar venta
-          </Button>
+          {total !== 0 ? (
+            <Button color="success" onClick={(e) => guardar(e)}>
+              Confirmar venta
+            </Button>
+          ) : (
+            <></>
+          )}
         </ModalFooter>
       </Modal>
     </>

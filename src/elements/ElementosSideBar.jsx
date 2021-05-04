@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import ModalPerfil from "../modals/ModalPerfil";
 import ModalSesion from "../modals/ModalSesion";
+import ModalNotificacion from '../modals/ModalNotificacion';
 import { Link } from "react-router-dom";
 import {
   faUserAlt,
@@ -20,11 +21,11 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from "reactstrap";
 import { ContextEstado } from "../context/ContextEstado";
-// import PopoverExampleMulti from "../modals/PopDerecha";
 
 const ElementosSideBar = () => {
   const [modal, setModal] = useState(false);
   const [modalSesion, setModalSesion] = useState(false);
+  const [modalNotificacion, setModalNotificacion] = useState(false);
   const { articulos } = useContext(ContextEstado);
 
   return (
@@ -34,10 +35,10 @@ const ElementosSideBar = () => {
         title="POS"
         alt="POS"
       />
-      {/* <PopoverExampleMulti /> */}
       <Button
         color="blue"
         className="list-group-item list-group-item-action bg-light"
+        onClick={() => setModalNotificacion(true)}
         data-toggle="tooltip"
         data-placement="right"
         title="Notificaciones"
@@ -162,6 +163,7 @@ const ElementosSideBar = () => {
       </Button>
       <ModalPerfil modal={modal} setModal={setModal} />
       <ModalSesion modalSesion={modalSesion} setModalSesion={setModalSesion} />
+      <ModalNotificacion modalNotificacion={modalNotificacion} setModalNotificacion={setModalNotificacion} />
     </>
   );
 };
