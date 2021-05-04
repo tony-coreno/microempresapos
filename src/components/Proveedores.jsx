@@ -5,6 +5,7 @@ import { Button, Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestion, faUserTie } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
+import ProveedorInfo from "../providers/ProveedorInfo";
 
 const Proveedores = () => {
   const [proveedores, setProveedores] = useState([""]);
@@ -42,6 +43,7 @@ const Proveedores = () => {
       <Contenedorapp>
         <Contenedor>
           <h4>Proveedores</h4>
+          <ProveedorInfo />
         </Contenedor>
         <aside>
           <Contenedor2>

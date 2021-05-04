@@ -245,7 +245,6 @@ const Contenedorapp = styled.div`
   max-width: 1400px;
   padding: 5px;
   width: 100%;
-
   background: #fff;
   margin: 5px 0;
   border-radius: 20px;

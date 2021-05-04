@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { ContextEstado } from "../context/ContextEstado";
 import styled from "styled-components";
-import Axios from 'axios';
-import Swal from 'sweetalert2';
+import Axios from "axios";
+import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.css";
 const ModalVenta = ({ modal, setModal }) => {
-  const {total, metodopago} = useContext(ContextEstado);
+  const { total, metodopago } = useContext(ContextEstado);
 
   // const pago = () => {
   //   const Toast = Swal.mixin({
@@ -62,7 +62,6 @@ const ModalVenta = ({ modal, setModal }) => {
       icon: "success",
       title: "Registro exitoso",
     });
-
   };
 
   return (
@@ -76,18 +75,43 @@ const ModalVenta = ({ modal, setModal }) => {
         </ModalHeader>
         <ModalBody>
           <Contenedor>
-            <Ventas>Ventas</Ventas>
-            <Cifra>$5000</Cifra>
+            {total !== 0 ? (
+              <>
+                <Ventas>Metodo de pago</Ventas>
+                <Cifra>{metodopago}</Cifra>
+                <Ventas>Total</Ventas>
+                <Cifra>${total}</Cifra>
+              </>
+            ) : (
+              <>
+                <Cifra>Sin compras</Cifra>
+              </>
+            )}
             <hr />
-            <Ventas></Ventas>
+            {metodopago === "Efectivo" ? (
+              <Ventas>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Efectivo recibido"
+                />
+              </Ventas>
+            ) : (
+              <></>
+            )}
           </Contenedor>
           <hr />
+          { (total !==0 ) ?
           <div>
             <p className="text-center">
               Ingrese contraseña para confirmar venta
             </p>
             <input className="form-control" autoFocus type="password" />
           </div>
+          :
+          <>
+          </>
+          }
         </ModalBody>
 
         <ModalFooter>

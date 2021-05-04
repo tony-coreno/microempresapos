@@ -28,6 +28,9 @@ import Proveedores from "./Proveedores";
 import Notas from "./Notas";
 import Devoluciones from '../products/Devoluciones';
 import Kardex from './Kardex';
+import VentasDia from '../reports/VentasDia';
+import VentasMes from '../reports/VentasMes';
+import FiltrarVentas from '../reports/FiltrarVentas';
 import "bootstrap/dist/css/bootstrap.css";
 const App = () => {
   return (
@@ -73,6 +76,9 @@ const App = () => {
                 <Route path="/nuevo-cliente" component={NuevoCliente} />
                 <Route path="/nuevo-proveedor" component={NuevoProveedor} />
                 <Route path="/calendar" component={Calendario} />
+                <Route path="/ventas-dia" component={VentasDia} />
+                <Route path="/ventas-mes" component={VentasMes} />
+                <Route path="/filtrar-ventas" component={FiltrarVentas} />
                 <Route component={Error} />
               </Switch>
             </Main>

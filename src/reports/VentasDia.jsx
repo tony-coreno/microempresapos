@@ -1,18 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import { Switch, NavLink, Route } from "react-router-dom";
-import Productos from "./Productos";
+import Productos from "../components/Productos";
 import { Button, Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+    faArrowLeft,
   faFileExcel,
   faFilePdf,
   faFilter,
   faSearch,
-  faShoppingBag,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Categorias = () => {
+const VentasDia = () => {
   return (
     <div>
         <Menu>
@@ -27,14 +27,14 @@ const Categorias = () => {
         </main>
       <Navbar>
         <Herramientas className="">
-          <NavLink to="/agregar-producto">
+          <NavLink to="/reportes">
             <Boton
               className="btn btn-success d-flex d-flex justify-content-between align-items-center pr-2"
               data-toggle="tooltip"
               data-placement="right"
-              title="Agregar Producto"
+              title="Reportes"
             >
-              <FontAwesomeIcon icon={faShoppingBag} />
+              <FontAwesomeIcon icon={faArrowLeft} />
             </Boton>
           </NavLink>
 
@@ -89,7 +89,7 @@ const Categorias = () => {
       </Navbar>
       <Contenedorapp>
         <Contenedor>
-          <h4>Categorias de admin</h4>
+          <h4>Ventas</h4>
         </Contenedor>
         <aside>
           <Contenedor2>
@@ -223,4 +223,4 @@ const Herramientas = styled.div`
 const Buscar = styled.input`
   border-radius: 10px;
 `;
-export default Categorias;
+export default VentasDia;

@@ -113,7 +113,7 @@ const VistaProductoCard = () => {
                     </div>
                     <div className="col-md-8">
                       <div className="card-body">
-                        <h5 className="card-title">{producto.producto}</h5>
+                        <h5 className="card-title">{producto.marca}</h5>
                         <h6 className="card-text">
                           Stock: {producto.existencia}
                         </h6>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import styled from "styled-components";
 const CardReportes = () => {
@@ -8,14 +9,17 @@ const CardReportes = () => {
       <Cuadros className="p-4">
         <div>
           <div className="card">
-            <img src="https://img.icons8.com/plasticine/100/000000/business-report.png" alt="Reportes" />
+            <img
+              src="https://img.icons8.com/plasticine/100/000000/business-report.png"
+              alt="Reportes"
+            />
             {/* <img src="..." className="card-img-top" alt="..." />  */}
             <div className="card-body">
               <h5 className="card-title"></h5>
               <p className="card-text"></p>
-              <button className="btn btn-outline-success">
+              <Link className="btn btn-outline-success" to="/ventas-dia">
                 Reportes del día
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -30,9 +34,9 @@ const CardReportes = () => {
             <div className="card-body">
               <h5 className="card-title"></h5>
               <p className="card-text"></p>
-              <button className="btn btn-outline-success">
+              <Link className="btn btn-outline-success" to="/ventas-mes">
                 Reportes del Mes
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -41,9 +45,9 @@ const CardReportes = () => {
             <div className="card-body">
               <h5 className="card-title"></h5>
               <p className="card-text"></p>
-              <button className="btn btn-outline-success">
+              <Link className="btn btn-outline-success" to="/filtrar-ventas">
                 Filtrar busqueda
-              </button>
+              </Link>
             </div>
           </div>
         </div>
