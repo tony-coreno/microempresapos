@@ -2,10 +2,10 @@ import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import styled from 'styled-components';
 import "bootstrap/dist/css/bootstrap.css";
-const ModalVentaManual = ({modalManual, setModalManual}) => {
+const ModalUnidadProducto = ({modalUnidad, setModalUnidad, unidadSelected, setUnidadSelected}) => {
     return ( 
       <>
-      <Modal isOpen={modalManual}>
+      <Modal isOpen={modalUnidad}>
         <ModalHeader>
           <img
             src="https://img.icons8.com/plasticine/100/000000/total-sales.png"
@@ -14,16 +14,25 @@ const ModalVentaManual = ({modalManual, setModalManual}) => {
         </ModalHeader>
         <ModalBody>
           <Contenedor>
-            <h3>Ingrese producto</h3>
-            <hr />
+            <h3>Unidades disponibles</h3>
+            {
+                unidadSelected.map((unidad=> <p>{unidad}</p>))
+                
+            }
+
           </Contenedor>
           <hr />
+          <h6 className="text-center">Agregar Unidad</h6>
+          <input className="form-control" />
          
         </ModalBody>
 
         <ModalFooter>
-          <Button color="primary" onClick={() => setModalManual(false)}>
+          <Button color="primary" onClick={() => setModalUnidad(false)}>
             Cancelar
+          </Button>
+          <Button color="info" onClick={() => setModalUnidad(false)}>
+            Aceptar
           </Button>
           {/* {total !== 0 ? (
             <Button color="success" onClick={(e) => guardar(e)}>
@@ -51,4 +60,4 @@ const Contenedor = styled.div`
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
 `;
-export default ModalVentaManual;
+export default ModalUnidadProducto;

@@ -12,7 +12,7 @@ const DetalleVenta = () => {
   // } = useState([]);
 
   useEffect(() => {
-    setPagoSelected(["", "Efectivo", "Tarjeta", "Vale despensa"]);
+    setPagoSelected(["Efectivo", "Tarjeta", "Vale despensa"]);
   }, []);
   const codigo = (e) => {
     e.preventDefault();

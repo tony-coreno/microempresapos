@@ -56,55 +56,23 @@ const ModalNotificacion = ({ modalNotificacion, setModalNotificacion }) => {
         </ModalHeader>
         <ModalBody>
           <Contenedor>
-            {total !== 0 ? (
-              <>
-                <Ventas>Notificaciones</Ventas>
-                <Cifra>{metodopago}</Cifra>
-                <Ventas>Total</Ventas>
-                <Cifra>${total}</Cifra>
-              </>
-            ) : (
-              <>
-                <Cifra>Sin Notificaciones</Cifra>
-              </>
-            )}
-            <hr />
-            {metodopago === "Efectivo" ? (
-              <Ventas>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Efectivo recibido"
-                />
-              </Ventas>
-            ) : (
-              <></>
-            )}
+            <h3>Sin Notificaciones</h3>
           </Contenedor>
           <hr />
-          {total !== 0 ? (
-            <div>
-              <p className="text-center">
-                Ingrese contraseña para confirmar venta
-              </p>
-              <input className="form-control" autoFocus type="password" />
-            </div>
-          ) : (
-            <></>
-          )}
+         
         </ModalBody>
 
         <ModalFooter>
           <Button color="primary" onClick={() => setModalNotificacion(false)}>
             Cancelar
           </Button>
-          {total !== 0 ? (
+          {/* {total !== 0 ? (
             <Button color="success" onClick={(e) => guardar(e)}>
-              Confirmar venta
+              
             </Button>
           ) : (
             <></>
-          )}
+          )} */}
         </ModalFooter>
       </Modal>
     </>

@@ -2,14 +2,20 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Axios from "axios";
 import { Button } from "reactstrap";
-import { faArrowLeft, faSave } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeft,
+  faLayerGroup,
+  faSave,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.css";
 
 import styled from "styled-components";
+import ModalUnidadProducto from "../modals/ModalUnidadProducto";
 
 const NuevoProducto = () => {
+  const [modalUnidad, setModalUnidad] = useState(false);
   const [sku, setSku] = useState("");
   const [producto, setProducto] = useState("");
   const [existencia, setExistencia] = useState("");
@@ -24,8 +30,8 @@ const NuevoProducto = () => {
   const [talla, setTalla] = useState("");
 
   useEffect(() => {
-    setCategoriaSelected(["", "Bebidas", "Abarrotes", "Frituras", "Lácteos",]);
-    setUnidadSelected(["", "ml", "grs", "lts", "Unidades",]);
+    setCategoriaSelected(["", "Bebidas", "Abarrotes", "Frituras", "Lácteos"]);
+    setUnidadSelected(["", "ml", "grs", "lts", "Unidades"]);
     setEstadoSelected(["", "Activo", "Inactivo", "Agotado"]);
   }, []);
 
@@ -62,10 +68,21 @@ const NuevoProducto = () => {
       <main className="caja-contenido col-12">
         <div>
           <NavLink to="/productos">
-            <Button className="btn btn-success">
+            <Button className="btn btn-success mr-3">
               <FontAwesomeIcon icon={faArrowLeft} />
             </Button>
           </NavLink>
+
+            <Button
+              className="btn btn-warning"
+              data-toggle="tooltip"
+              data-placement="right"
+              title="Agregar unidad"
+              onClick={() => setModalUnidad(true)}
+            >
+              <FontAwesomeIcon icon={faLayerGroup} />
+            </Button>
+
           <Titulo>Agregar Producto</Titulo>
         </div>
         <form onSubmit={guardar}>
@@ -189,6 +206,7 @@ const NuevoProducto = () => {
           </button>
         </form>
       </main>
+      <ModalUnidadProducto modalUnidad={modalUnidad} setModalUnidad={setModalUnidad} unidadSelected={unidadSelected} setUnidadSelected={setUnidadSelected} />
     </>
   );
 };

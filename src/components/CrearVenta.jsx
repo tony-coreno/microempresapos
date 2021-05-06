@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { Switch, NavLink, Route, Link } from "react-router-dom";
 import AdministrarVentas from "./AdministrarVentas";
@@ -7,12 +7,13 @@ import Carrito from "./Carrito";
 import FormularioCrearVenta from "./FormularioCrearVenta";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBarcode, faCashRegister } from "@fortawesome/free-solid-svg-icons";
-import ProductoManual from "../elements/ProductoManual";
 import "bootstrap/dist/css/bootstrap.css";
 import { ContextEstado } from "../context/ContextEstado";
 import DetalleVenta from "../elements/DetalleVenta";
+import ModalVentaManual from "../modals/ModalVentaManual";
 const CrearVenta = () => {
   const { articulos } = useContext(ContextEstado);
+  const [modalManual, setModalManual] = useState(false);
   let f = new Date();
   return (
     <div>
@@ -45,21 +46,20 @@ const CrearVenta = () => {
             <FormularioCrearVenta />
             <hr />
 
-            <Link
+            <button
               to="/"
               className="btn btn-outline-primary"
               data-toggle="modal"
               data-target="#addEmpleado"
+              onClick={() => setModalManual(true)}
             >
               <i>
                 <FontAwesomeIcon icon={faCashRegister} />
               </i>{" "}
               Ingresar producto manual
-            </Link>
+            </button>
             {/* <button className="btn btn-outline-primary">
              <FontAwesomeIcon icon={faCashRegister} />  Ingresar producto manual</button> */}
-            <ProductoManual />
-
             {articulos > 0 ? <DetalleVenta /> : <></>}
           </Contenedor>
         </main>
@@ -68,7 +68,9 @@ const CrearVenta = () => {
           <Carrito />
         </aside>
       </Contenedorapp>
+      <ModalVentaManual modalManual={modalManual} setModalManual={setModalManual} />
     </div>
+  
   );
 };
 
