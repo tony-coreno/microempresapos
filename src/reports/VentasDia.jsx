@@ -89,7 +89,7 @@ const VentasDia = () => {
       </Navbar>
       <Contenedorapp>
         <Contenedor>
-          <h4>Ventas</h4>
+          <h4>Ventas del Día</h4>
         </Contenedor>
         <aside>
           <Contenedor2>

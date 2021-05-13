@@ -34,12 +34,13 @@ const Almacen = () => {
             <div className="row">
               <div className="col">
                 <h7>Agregar medio de pago</h7>
+                <form onSubmit={enviar}>
                 <input
                   type="text"
                   className="form-control mt-2"
-                  placeholder=""
-                  onSubmit={(e) => enviar(e)}
+                  placeholder="Inserte medio"
                 />
+                </form>
               </div>
               <div className="col">
                 <h7>IVA (16%)</h7>

@@ -41,32 +41,32 @@ const ModalVenta = ({ modal, setModal }) => {
     const respuesta = await Axios.post("/ventas/crearventa", venta, {
       headers: { autorizacion: token },
     });
-    // const mensaje = respuesta.data.mensaje;
-    const Toast = Swal.mixin({
-      toast: true,
-      position: "top-end",
-      showConfirmButton: false,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener("mouseenter", Swal.stopTimer);
-        toast.addEventListener("mouseleave", Swal.resumeTimer);
-      },
-    });
-
-    // Swal.fire({
-    //   icon: "success",
-    //   title: mensaje,
+     const mensaje = respuesta.data.mensaje;
+    // const Toast = Swal.mixin({
+    //   toast: true,
+    //   position: "top-end",
     //   showConfirmButton: false,
+    //   timerProgressBar: true,
+    //   didOpen: (toast) => {
+    //     toast.addEventListener("mouseenter", Swal.stopTimer);
+    //     toast.addEventListener("mouseleave", Swal.resumeTimer);
+    //   },
     // });
+
+     Swal.fire({
+       icon: "success",
+       title: mensaje,
+       showConfirmButton: false,
+     });
     setTimeout(() => {
       window.location.href = "/crear-venta";
     }, 1500);
-    Toast.fire({
-      icon: "success",
-      title: "Registro exitoso",
-    });
-  };
-
+  //   Toast.fire({
+  //     icon: "success",
+  //     title: "Registro exitoso",
+  //   });
+  // };
+  }
   return (
     <>
       <Modal isOpen={modal}>
@@ -106,10 +106,10 @@ const ModalVenta = ({ modal, setModal }) => {
           <hr />
           {total !== 0 ? (
             <div>
-              <p className="text-center">
+              {/* <p className="text-center">
                 Ingrese contraseña para confirmar venta
               </p>
-              <input className="form-control" autoFocus type="password" />
+              <input className="form-control" autoFocus type="password" /> */}
             </div>
           ) : (
             <></>
