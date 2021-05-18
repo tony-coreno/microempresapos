@@ -14,7 +14,7 @@ const ModalVentaManual = ({modalManual, setModalManual}) => {
         </ModalHeader>
         <ModalBody>
           <Contenedor>
-            <h3>Ingrese producto</h3>
+            <h3>Ingrese producto sin código de barra</h3>
             <hr />
           </Contenedor>
           <hr />
