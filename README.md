@@ -1,5 +1,10 @@
-### Proyecto POS
+# Proyecto POS
 
-´´´ Node JS, MongoDB´´´
+Desarrollado con el stack MERN
+
+``` 
+Mongo DB - Express - React - Node JS
+
+```
 
 
