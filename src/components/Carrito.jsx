@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { ContextEstado } from "../context/ContextEstado";
 import ModalPagar from "../modals/ModalPagar";
 import TablaCarrito from "./../elements/TablaCarrito";
-import "bootstrap/dist/css/bootstrap.css";
+import BarraTotal from "./BarraTotal";
 import styled from "styled-components";
 import {
   faBan,
@@ -10,8 +10,7 @@ import {
   faMoneyBill,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Swal from "sweetalert2";
-import BarraTotal from "./BarraTotal";
+import "bootstrap/dist/css/bootstrap.css";
 
 const Carrito = () => {
   const [modal, setModal] = useState(false);
@@ -19,7 +18,7 @@ const Carrito = () => {
     ventaProducto,
     setVentaProducto,
     setListaProducto,
-    total,
+    //total,
   } = useContext(ContextEstado);
   const { setArticulos } = useContext(ContextEstado);
 
@@ -47,25 +46,6 @@ const Carrito = () => {
     //   cancelButtonText:'Cancel'
     // })
   };
-  const pago = () => {
-    const Toast = Swal.mixin({
-      toast: true,
-      position: "top-end",
-      showConfirmButton: false,
-      timer: 1500,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener("mouseenter", Swal.stopTimer);
-        toast.addEventListener("mouseleave", Swal.resumeTimer);
-      },
-    });
-
-    Toast.fire({
-      icon: "success",
-      title: "Venta exitosa",
-    });
-  };
-
   return (
     <>
       <TituloEmpleado>''</TituloEmpleado>
@@ -75,15 +55,6 @@ const Carrito = () => {
         <TituloCarrito>Carrito de compras </TituloCarrito>
         <TablaCarrito />
       </Contenedor>
-      {/* <TotalDiv>
-        <input readOnly className="form-control" value={total}></input>
-        <h3>
-          {" "}
-          <FontAwesomeIcon icon={faDollarSign} /> Total
-        </h3>
-
-      </TotalDiv> */}
-
       <div>
         <Contenedor>
           <BarraTotal />
@@ -129,8 +100,4 @@ const TituloEmpleado = styled.h6`
 const TituloCarrito = styled.h4`
   text-align: center;
 `;
-const TotalDiv = styled.div`
-  float: right;
-`;
-
 export default Carrito;

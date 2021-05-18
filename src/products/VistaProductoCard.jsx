@@ -3,10 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import Axios from "axios";
 import { Button, Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowLeft,
-  faSearch,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faSearch } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
 const VistaProductoCard = () => {
@@ -66,16 +63,19 @@ const VistaProductoCard = () => {
       <Contenedorapp>
         <Contenedor>
           <div className="list-group bg">
-            <a
-              href="#"
+            <Link
+              to="/productos"
               // className="list-group-item list-group-item-action active"
               className="list-group-item d-flex justify-content-between align-items-center"
               aria-current="true"
             >
               Vista
-            </a>
+            </Link>
             <ul className="list-group">
-              <Link className="list-group-item d-flex justify-content-between align-items-center">
+              <Link
+                to="/productos"
+                className="list-group-item d-flex justify-content-between align-items-center"
+              >
                 Marca
                 <span className="badge badge-success badge-pill">14</span>
               </Link>
@@ -99,9 +99,9 @@ const VistaProductoCard = () => {
             {productos.map((producto) => {
               return (
                 <div
+                  key={producto._id}
                   className="card ms-1 animate__animated animate__fadeIn"
                   style={{ maxWidth: 240 }}
-                  key={producto.id}
                 >
                   <div className="row no-gutters">
                     <div className="col-md-4">

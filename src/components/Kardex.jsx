@@ -172,9 +172,9 @@ const Boton = styled.button`
   outline: none;
 `;
 
-const Titulo = styled.h4`
-  color: #000;
-`;
+// const Titulo = styled.h4`
+//   color: #000;
+// `;
 
 const Herramientas = styled.div`
   display: flex;

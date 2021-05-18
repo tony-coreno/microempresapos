@@ -1,16 +1,17 @@
 import React, { useContext, useState } from "react";
-import styled from "styled-components";
-import { Switch, NavLink, Route, Link } from "react-router-dom";
+import { ContextEstado } from "../context/ContextEstado";
 import AdministrarVentas from "./AdministrarVentas";
+import DetalleVenta from "../elements/DetalleVenta";
+import ModalVentaManual from "../modals/ModalVentaManual";
 import Reportes from "./Reportes";
 import Carrito from "./Carrito";
 import FormularioCrearVenta from "./FormularioCrearVenta";
+import { Switch, NavLink, Route } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBarcode, faCashRegister } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.css";
-import { ContextEstado } from "../context/ContextEstado";
-import DetalleVenta from "../elements/DetalleVenta";
-import ModalVentaManual from "../modals/ModalVentaManual";
+
 const CrearVenta = () => {
   const { articulos } = useContext(ContextEstado);
   const [modalManual, setModalManual] = useState(false);
@@ -60,17 +61,18 @@ const CrearVenta = () => {
             </button>
             {/* <button className="btn btn-outline-primary">
              <FontAwesomeIcon icon={faCashRegister} />  Ingresar producto manual</button> */}
-            {articulos > 0 ? <DetalleVenta /> : <></>}
+            {articulos > 0 ? <DetalleVenta /> : null}
           </Contenedor>
         </main>
-
         <aside>
           <Carrito />
         </aside>
       </Contenedorapp>
-      <ModalVentaManual modalManual={modalManual} setModalManual={setModalManual} />
+      <ModalVentaManual
+        modalManual={modalManual}
+        setModalManual={setModalManual}
+      />
     </div>
-  
   );
 };
 

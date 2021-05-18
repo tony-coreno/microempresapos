@@ -207,11 +207,6 @@ const Boton = styled.button`
   align-items: center;
   outline: none;
 `;
-
-const Titulo = styled.h4`
-  color: #000;
-`;
-
 const Herramientas = styled.div`
   display: flex;
   flex-direction: row;
@@ -219,7 +214,6 @@ const Herramientas = styled.div`
   padding: 10px;
   gap: 20px;
 `;
-
 const Buscar = styled.input`
   border-radius: 10px;
 `;

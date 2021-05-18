@@ -1,50 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import { ContextEstado } from "../context/ContextEstado";
 import styled from "styled-components";
-import Axios from "axios";
-import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.css";
 const ModalNotificacion = ({ modalNotificacion, setModalNotificacion }) => {
-  const { total, metodopago } = useContext(ContextEstado);
-  const guardar = async (e) => {
-    e.preventDefault();
-    const venta = {
-      idusuario: sessionStorage.getItem("idusuario"),
-      jefe: sessionStorage.getItem("idusuario"),
-      total: total,
-      metodopago: metodopago,
-    };
-    const token = sessionStorage.getItem("token");
-    const respuesta = await Axios.post("/ventas/crearventa", venta, {
-      headers: { autorizacion: token },
-    });
-    // const mensaje = respuesta.data.mensaje;
-    const Toast = Swal.mixin({
-      toast: true,
-      position: "top-end",
-      showConfirmButton: false,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener("mouseenter", Swal.stopTimer);
-        toast.addEventListener("mouseleave", Swal.resumeTimer);
-      },
-    });
-
-    // Swal.fire({
-    //   icon: "success",
-    //   title: mensaje,
-    //   showConfirmButton: false,
-    // });
-    setTimeout(() => {
-      window.location.href = "/crear-venta";
-    }, 1500);
-    Toast.fire({
-      icon: "success",
-      title: "Registro exitoso",
-    });
-  };
-
   return (
     <>
       <Modal isOpen={modalNotificacion}>

@@ -30,14 +30,14 @@ const Productos = () => {
     });
     setProductos(respuesta.data);
   };
-  const obtenerProductosEmpleados = async () => {
-    const token = sessionStorage.getItem("token");
-    const jefe = sessionStorage.getItem("jefe");
-    const respuesta = await Axios.get("/productos/listarporadmin/" + jefe, {
-      headers: { autorizacion: token },
-    });
-    setProductos(respuesta.data);
-  };
+  // const obtenerProductosEmpleados = async () => {
+  //   const token = sessionStorage.getItem("token");
+  //   const jefe = sessionStorage.getItem("jefe");
+  //   const respuesta = await Axios.get("/productos/listarporadmin/" + jefe, {
+  //     headers: { autorizacion: token },
+  //   });
+  //   setProductos(respuesta.data);
+  // };
   const buscar = async (e) => {
     if (e.target.value === "") {
       return obtenerProductos();
@@ -139,7 +139,7 @@ const Productos = () => {
               </div>
             </div>
           ) : (
-            <div></div>
+            null
           )}
         </Navbar>
         <div className="table-responsive table-borderless table-hover">
@@ -154,7 +154,7 @@ const Productos = () => {
                         {sessionStorage.getItem("nombre") || "Invitado"}
                       </Titulo>
                     </div>
-                    <table className="table table-responsive-lg ">
+                    <table className="table table-responsive-lg " id="tablaProductos">
                       <thead className="light">
                         <tr>
                           <th>#</th>
@@ -211,7 +211,6 @@ const Productos = () => {
     </div>
   );
 };
-
 const Menu = styled.nav`
   width: 100%;
   text-align: center;
@@ -240,7 +239,6 @@ const Boton = styled.button`
   align-items: center;
   outline: none;
 `;
-
 const Contenedorapp = styled.div`
   max-width: 1400px;
   padding: 5px;
@@ -253,7 +251,6 @@ const Contenedorapp = styled.div`
 const Titulo = styled.h4`
   color: #000;
 `;
-
 const Herramientas = styled.div`
   display: flex;
   flex-direction: row;
@@ -261,7 +258,6 @@ const Herramientas = styled.div`
   padding: 10px;
   gap: 20px;
 `;
-
 const Buscar = styled.input`
   border-radius: 10px;
 `;

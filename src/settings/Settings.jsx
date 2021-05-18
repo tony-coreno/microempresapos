@@ -41,14 +41,14 @@ const Settings = () => {
           <div className="row">
             <div className="col">
        
-            <h7>Nombre</h7>
+            <h6>Nombre</h6>
               <input type="text" className="form-control mt-2"
               placeholder="Nombre del Negocio"
               onChange={(e)=>setEmpresa(e.target.value)}
               />
             </div>
-            <div class="col">
-            <h7>Tema</h7>
+            <div className="col">
+            <h6>Tema</h6>
             <select id="inputState" className="form-control mt-2">
               <option>Claro</option>
               <option>Dark</option>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { Switch, NavLink, Route } from "react-router-dom";
 import Reportes from "./Reportes";
@@ -6,9 +6,10 @@ import CrearVenta from "./CrearVenta";
 import { ContextEstado } from "../context/ContextEstado";
 const Almacen = () => {
   const { setPagoSelected, pagoSelected } = useContext(ContextEstado);
+  const [medioPago, setMedioPago] = useState("");
   const enviar = (e) => {
     e.preventDefault();
-    setPagoSelected([...pagoSelected, e.target.value]);
+    setPagoSelected([...pagoSelected, medioPago]);
   };
 
   return (
@@ -25,25 +26,23 @@ const Almacen = () => {
             <Route path="/reportes" component={Reportes} />
           </Switch>
         </main>
-        <p>
           <h3>Administrar</h3>
-          <hr />
-          <form>
+          <form onSubmit={enviar}>
             <hr />
-
+            <p></p>
             <div className="row">
               <div className="col">
-                <h7>Agregar medio de pago</h7>
-                <form onSubmit={enviar}>
-                  <input
-                    type="text"
-                    className="form-control mt-2"
-                    placeholder="Inserte medio"
-                  />
-                </form>
+                <h6>Agregar medio de pago</h6>
+                <input
+                  type="text"
+                  className="form-control mt-2"
+                  placeholder="Inserte medio"
+                  onChange={(e) => setMedioPago(e.target.value)}
+                  autoFocus
+                />
               </div>
               <div className="col">
-                <h7>IVA (16%)</h7>
+                <h6>IVA (16%)</h6>
                 <select id="inputState" className="form-control mt-2">
                   <option>Activo</option>
                   <option>Inactivo</option>
@@ -104,7 +103,7 @@ const Almacen = () => {
               <button className="btn btn-outline-success">Guardar</button>
             </SeccionBoton>
           </form>
-        </p>
+        
       </Contenedorapp>
     </div>
   );

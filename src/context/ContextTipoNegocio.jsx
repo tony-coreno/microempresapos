@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 
-const ContextTipoNegocio = React.createContext();
+// const ContextTipoNegocio = React.createContext();
 
-const NegocioState = ({ children }) => {
-  const [metodopago, setMetodoPago] = useState("");
-  const [metodoPagoSelected, setMetodoPagoSelected] = useState([]);
+// const NegocioState = ({ children }) => {
+//   const [metodopago, setMetodoPago] = useState("");
+//   const [metodoPagoSelected, setMetodoPagoSelected] = useState([]);
 
-  return (
-    <ContextTipoNegocio.Provider
-      value={{
-        metodopago,
-        metodoPagoSelected,
-        setMetodoPago,
-        setMetodoPagoSelected,
-      }}
-    >
-      {children}
-    </ContextTipoNegocio.Provider>
-  );
-};
+//   return (
+//     <ContextTipoNegocio.Provider
+//       value={{
+//         metodopago,
+//         metodoPagoSelected,
+//         setMetodoPago,
+//         setMetodoPagoSelected,
+//       }}
+//     >
+//       {children}
+//     </ContextTipoNegocio.Provider>
+//   );
+// };
 
-export { ContextTipoNegocio, NegocioState };
+// export { ContextTipoNegocio, NegocioState };

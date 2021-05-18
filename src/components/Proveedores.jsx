@@ -84,7 +84,7 @@ const Proveedores = () => {
       )}
       <Contenedorapp>
         <Contenedor>
-          {info.length == 0 ? (
+          {info.length === 0 ? (
             <img
               className="img-thumbnail"
               src="https://img.icons8.com/plasticine/100/000000/total-sales.png"

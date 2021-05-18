@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import Axios from "axios";
 import { Button, Navbar } from "reactstrap";
@@ -40,14 +40,15 @@ const Clientes = () => {
         </Contenedor>
         <aside>
           <Contenedor2>
-            {clientes.map((cliente) => {
+            {clientes.map((cliente,i) => {
               return (
+                <Fragment key={cliente._id}>
                 <div
+                  key={cliente._id}
                   className="card ms-1 animate__animated animate__fadeIn"
                   style={{ maxWidth: 240 }}
-                  key={cliente.id}
                 >
-                  <div className="row no-gutters">
+                  <div key={cliente._id} className="row no-gutters">
                     <div className="col-md-4">
                       <img
                         src="https://img.icons8.com/emoji/96/000000/man-office-worker.png"
@@ -55,15 +56,15 @@ const Clientes = () => {
                         alt="POS"
                       />
                     </div>
-                    <div className="col-md-8">
+                    <div key={cliente._id} className="col-md-8">
                       <div className="card-body">
                         <h5 className="card-title">{cliente.nombre}</h5>
                         <h6 className="card-text">
                           Cliente: {cliente.tipocliente}
                         </h6>
 
-                        <p className="card-text">
-                          <small className="text-muted">
+                        <p key={cliente._id} className="card-text">
+                          <small key={cliente._id} className="text-muted">
                             Tel: {cliente.telefono}
                             <button className="btn btn-outline-info">
                               <FontAwesomeIcon icon={faQuestion} />
@@ -74,6 +75,7 @@ const Clientes = () => {
                     </div>
                   </div>
                 </div>
+                </Fragment>
               );
             })}
           </Contenedor2>

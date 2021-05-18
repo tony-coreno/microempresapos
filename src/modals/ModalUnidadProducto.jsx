@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import styled from 'styled-components';
 import "bootstrap/dist/css/bootstrap.css";
 const ModalUnidadProducto = ({modalUnidad, setModalUnidad, unidadSelected, setUnidadSelected}) => {
+  const [unidadaAgregar, setUnidadAgregar] = useState('');
+
+  const guardar = (e) => {
+    e.preventDefault();
+    setUnidadSelected([...unidadSelected,unidadaAgregar])
+    setModalUnidad(false)
+    alert(unidadSelected)
+  }
+
     return ( 
       <>
       <Modal isOpen={modalUnidad}>
@@ -23,7 +32,7 @@ const ModalUnidadProducto = ({modalUnidad, setModalUnidad, unidadSelected, setUn
           </Contenedor>
           <hr />
           <h6 className="text-center">Agregar Unidad</h6>
-          <input className="form-control" />
+          <input className="form-control" onChange={(e)=>setUnidadAgregar(e.target.value)} />
          
         </ModalBody>
 
@@ -31,7 +40,7 @@ const ModalUnidadProducto = ({modalUnidad, setModalUnidad, unidadSelected, setUn
           <Button color="primary" onClick={() => setModalUnidad(false)}>
             Cancelar
           </Button>
-          <Button color="info" onClick={() => setModalUnidad(false)}>
+          <Button color="info" onClick={(e) => guardar(e)}>
             Aceptar
           </Button>
           {/* {total !== 0 ? (
@@ -41,6 +50,7 @@ const ModalUnidadProducto = ({modalUnidad, setModalUnidad, unidadSelected, setUn
           ) : (
             <></>
           )} */}
+ 
         </ModalFooter>
       </Modal>
     </>
