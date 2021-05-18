@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Axios from "axios";
-import { Button, Navbar } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faTrash, faUserTie } from "@fortawesome/free-solid-svg-icons";
-import styled from "styled-components";
 import ProveedorInfo from "../providers/ProveedorInfo";
+import { Button, Navbar } from "reactstrap";
+import styled from "styled-components";
+import Swal from 'sweetalert2'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEdit,
+  faTrash,
+  faUserFriends,
+} from "@fortawesome/free-solid-svg-icons";
+
+
 
 const Proveedores = () => {
   const [proveedores, setProveedores] = useState([""]);
@@ -31,6 +38,21 @@ const Proveedores = () => {
     console.log(respuesta.data);
   };
 
+  const eliminar = async (id) => {
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.delete("/proveedores/eliminar/" + id, {
+      headers: { autorizacion: token },
+    });
+    const mensaje = respuesta.data.mensaje;
+    Swal.fire({
+      icon: "success",
+      title: mensaje,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    obtenerProveedores();
+  };
+
   return (
     <div>
       {sessionStorage.getItem("token") &&
@@ -44,7 +66,7 @@ const Proveedores = () => {
                 data-placement="right"
                 title="Agregar proveedor"
               >
-                <FontAwesomeIcon icon={faUserTie} />
+                <FontAwesomeIcon icon={faUserFriends} />
               </Button>
             </NavLink>
             <h5>Proveedores</h5>
@@ -63,7 +85,8 @@ const Proveedores = () => {
       <Contenedorapp>
         <Contenedor>
           {info.length == 0 ? (
-            <img className="img-thumbnail"
+            <img
+              className="img-thumbnail"
               src="https://img.icons8.com/plasticine/100/000000/total-sales.png"
               alt="POS"
             />
@@ -106,7 +129,7 @@ const Proveedores = () => {
                             </button>
                             <button
                               className="btn btn-outline-danger"
-                              onClick={(e) => buscarProveedor(e, provider._id)}
+                              onClick={() => eliminar(provider._id)}
                             >
                               <FontAwesomeIcon icon={faTrash} />
                             </button>
@@ -125,10 +148,10 @@ const Proveedores = () => {
   );
 };
 
-const Titulo = styled.h4`
-  color: #000;
-  text-align: center;
-`;
+// const Titulo = styled.h4`
+//   color: #000;
+//   text-align: center;
+// `;
 
 const Contenedorapp = styled.div`
   max-width: 1400px;
@@ -179,7 +202,7 @@ const Contenedor3 = styled.div`
   border-radius: 20px;
   box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
 `;
-const Buscar = styled.input`
-  border-radius: 10px;
-`;
+// const Buscar = styled.input`
+//   border-radius: 10px;
+// `;
 export default Proveedores;

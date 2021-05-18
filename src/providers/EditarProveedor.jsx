@@ -1,15 +1,39 @@
 import React from "react";
+import Axios from "axios";
+import Swal from "sweetalert2";
 
 const EditarProveedor = ({ prov, setInfo }) => {
   const cancelar = (e) => {
     e.preventDefault();
     setInfo([]);
   };
+
+
+  const actualizar = async(e, {prov})=>{
+    e.preventDefault()
+    const id = prov._id
+    const token = sessionStorage.getItem('token')
+    const proveedor = {
+        nombre: e.target.nombre
+    }
+    const respuesta = await Axios.put('/proveedores/actualizar/'+id,proveedor,{
+        headers:{'autorizacion':token}
+    })
+    const mensaje = respuesta.data.mensaje
+    Swal.fire({
+        icon: 'success',
+        title: mensaje,
+        showConfirmButton: false
+    })
+    setTimeout(()=>{
+        window.location.href='/proveedores'
+    },1500)
+}
   return (
     <>
-      <form className="container">
+      <form className="container" onSubmit={actualizar}>
         <label>Editar Nombre</label>
-        <input className="form-control" placeholder={prov.nombre} />
+        <input className="form-control" placeholder={prov.nombre} onChange={(e)=>e.target.nombre} name="nombre" />
         <label className="mt-2">Editar Marca</label>
         <input
           className="form-control mt-1"

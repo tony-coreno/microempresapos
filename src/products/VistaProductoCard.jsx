@@ -115,12 +115,12 @@ const VistaProductoCard = () => {
                       <div className="card-body">
                         <h5 className="card-title">{producto.marca}</h5>
                         <h6 className="card-text">
-                          Stock: {producto.existencia}
+                          {/* Stock: {producto.existencia} */}
                         </h6>
 
                         <p className="card-text">
                           <small className="text-muted">
-                            Cat: {producto.categoria}
+                            {/* Cat: {producto.categoria} */}
                             <br />
                           </small>
                         </p>

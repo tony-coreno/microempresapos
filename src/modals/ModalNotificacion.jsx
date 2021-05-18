@@ -59,7 +59,6 @@ const ModalNotificacion = ({ modalNotificacion, setModalNotificacion }) => {
             <h3>Sin Notificaciones</h3>
           </Contenedor>
           <hr />
-         
         </ModalBody>
 
         <ModalFooter>
@@ -79,14 +78,14 @@ const ModalNotificacion = ({ modalNotificacion, setModalNotificacion }) => {
   );
 };
 
-const Ventas = styled.h5`
-  text-align: right;
-`;
+// const Ventas = styled.h5`
+//   text-align: right;
+// `;
 
-const Cifra = styled.h6`
-  text-align: right;
-  color: #198236;
-`;
+// const Cifra = styled.h6`
+//   text-align: right;
+//   color: #198236;
+// `;
 const Contenedor = styled.div`
   padding: 25px;
   width: 90%;

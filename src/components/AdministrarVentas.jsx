@@ -35,11 +35,11 @@ const Almacen = () => {
               <div className="col">
                 <h7>Agregar medio de pago</h7>
                 <form onSubmit={enviar}>
-                <input
-                  type="text"
-                  className="form-control mt-2"
-                  placeholder="Inserte medio"
-                />
+                  <input
+                    type="text"
+                    className="form-control mt-2"
+                    placeholder="Inserte medio"
+                  />
                 </form>
               </div>
               <div className="col">
@@ -69,28 +69,27 @@ const Almacen = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          { (pagoSelected !== null) ?
-                          pagoSelected.map((medio, i) => {
-                            return (
-                              <tr key={medio}>
-                                <td>{medio}</td>
-                                <td>
-                                  <button className="btn btn-outline-success">
-                                    Activo
-                                  </button>
-                                </td>
-                                <td>
-                                  <button className="btn btn-outline-danger">
-                                    Eliminar
-                                  </button>
-                                </td>
-                              </tr>
-                            );
-                          })
-                          :
-                          <>
-                          </>
-                        }
+                          {pagoSelected !== null ? (
+                            pagoSelected.map((medio, i) => {
+                              return (
+                                <tr key={medio}>
+                                  <td>{medio}</td>
+                                  <td>
+                                    <button className="btn btn-outline-success">
+                                      Activo
+                                    </button>
+                                  </td>
+                                  <td>
+                                    <button className="btn btn-outline-danger">
+                                      Eliminar
+                                    </button>
+                                  </td>
+                                </tr>
+                              );
+                            })
+                          ) : (
+                            <></>
+                          )}
                         </tbody>
                       </table>
                     </div>
