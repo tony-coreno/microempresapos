@@ -5,7 +5,7 @@ const ContextEstado = React.createContext();
 const ProveedorState = ({ children }) => {
   const [ventaProducto, setVentaProducto] = useState([]);
   const [listaProducto, setListaProducto] = useState([]);
-  const [total, setTotal ] = useState(0);
+  const [total, setTotal] = useState(0);
   const [totalProd, setTotalProd] = useState(0);
   const [perfil, setPerfil] = useState("");
   const [empleados, setEmpleados] = useState([]);
@@ -24,12 +24,15 @@ const ProveedorState = ({ children }) => {
   const handleSubmit = (e, value) => {
     e.preventDefault();
     if (listaProducto.trim().length > 5) {
-      console.log("se insertó a la lista");
-      setArticulos(articulos + 1);
       const obtenerProducto = async () => {
         const sku = listaProducto;
         const respuesta = await Axios.get(`/productos/carrito/${sku}`);
-        setVentaProducto([...ventaProducto, ...respuesta.data]);
+        if (respuesta.data.length > 0) {
+          setVentaProducto([...ventaProducto, ...respuesta.data]);
+          setArticulos(articulos + 1);
+        } else {
+          alert("Ingrese un producto válido");
+        }
       };
       obtenerProducto();
     }
@@ -64,7 +67,7 @@ const ProveedorState = ({ children }) => {
         metodopago,
         setMetodoPago,
         pagoSelected,
-        setPagoSelected
+        setPagoSelected,
       }}
     >
       {children}
