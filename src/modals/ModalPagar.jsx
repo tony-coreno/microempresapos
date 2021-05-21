@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.css";
 const ModalVenta = ({ modal, setModal }) => {
   const { total, metodopago } = useContext(ContextEstado);
   let f = new Date();
-  const fechaventa = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
+  // const fechaventa = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
 
   // const pago = () => {
   //   const Toast = Swal.mixin({
@@ -35,7 +35,7 @@ const ModalVenta = ({ modal, setModal }) => {
       jefe: sessionStorage.getItem("idusuario"),
       total: total,
       metodopago: metodopago,
-      fechaventa: fechaventa
+      fechaventa: f,
     };
     const token = sessionStorage.getItem("token");
     const respuesta = await Axios.post("/ventas/crearventa", venta, {

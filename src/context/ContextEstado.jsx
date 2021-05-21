@@ -6,6 +6,7 @@ const ProveedorState = ({ children }) => {
   const [ventaProducto, setVentaProducto] = useState([]);
   const [listaProducto, setListaProducto] = useState([]);
   const [total, setTotal ] = useState(0);
+  const [totalProd, setTotalProd] = useState(0);
   const [perfil, setPerfil] = useState("");
   const [empleados, setEmpleados] = useState([]);
   const [pagar, setPagar] = useState("");
@@ -38,6 +39,8 @@ const ProveedorState = ({ children }) => {
       value={{
         total,
         setTotal,
+        setTotalProd,
+        totalProd,
         articulos,
         setArticulos,
         ventaProducto,

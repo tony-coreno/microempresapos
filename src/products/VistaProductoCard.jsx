@@ -8,6 +8,7 @@ import styled from "styled-components";
 
 const VistaProductoCard = () => {
   const [productos, setProductos] = useState([""]);
+  const [total, setTotal] = useState(0);
   useEffect(() => {
     obtenerProductos();
   }, []);
@@ -32,7 +33,12 @@ const VistaProductoCard = () => {
       }
     );
     setProductos(respuesta.data);
+    alert(productos)
+
   };
+
+
+
   return (
     <div>
       <Navbar>
@@ -91,6 +97,10 @@ const VistaProductoCard = () => {
                 Existencia
                 <span className="badge badge-danger badge-pill">1</span>
               </li>
+              <li className="list-group-item d-flex justify-content-between align-items-center">
+                {`Total en productos: $ ${total}`}
+                <span className="badge badge-success badge-pill">1</span>
+              </li>
             </ul>
           </div>
         </Contenedor>
@@ -107,7 +117,7 @@ const VistaProductoCard = () => {
                     <div className="col-md-4">
                       <img
                         src="https://img.icons8.com/cute-clipart/64/000000/shopping-cart-loaded.png"
-                        className="card-img"
+                        className="card-img animate__animated animate__pulse"
                         alt="POS"
                       />
                     </div>

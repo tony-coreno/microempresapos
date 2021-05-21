@@ -42,7 +42,8 @@ const TablaCarrito = () => {
                         //    carritoActual = carritoActual.filter(producto =>producto._id !== producto._id)
                         //   setVentaProducto([...carritoActual])
                         // })
-                      const { precioventa } = producto;
+
+                      const { precioventa, sku } = producto;
                       pagar = pagar + precioventa;
                       setTotal(pagar);
                       return (

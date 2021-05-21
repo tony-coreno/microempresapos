@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Switch, NavLink, Route } from "react-router-dom";
 import Axios from "axios";
@@ -15,8 +15,10 @@ import {
   faTrashAlt,
   faUserEdit,
 } from "@fortawesome/free-solid-svg-icons";
+import { ContextEstado } from "../context/ContextEstado";
 const Productos = () => {
   const [productos, setProductos] = useState([""]);
+const {totalProd, setTotalProd} = useContext(ContextEstado);
   useEffect(() => {
     obtenerProductos();
     //obtenerProductosEmpleados();
@@ -29,6 +31,12 @@ const Productos = () => {
       headers: { autorizacion: token },
     });
     setProductos(respuesta.data);
+    console.log(productos)
+    let totalProductos = productos.reduce((totales, prod) => {
+      return ((totales + parseInt(prod.precioventa)))
+    },0)
+    console.log(totalProductos)
+    setTotalProd(totalProductos)
   };
   // const obtenerProductosEmpleados = async () => {
   //   const token = sessionStorage.getItem("token");
@@ -66,6 +74,8 @@ const Productos = () => {
     });
     obtenerProductos();
   };
+
+
   return (
     <div>
       <Contenedorapp>
@@ -150,8 +160,9 @@ const Productos = () => {
                   <div className="card">
                     <div className="bg-light card-header">
                       <Titulo>
-                        Productos de{" "}
+                        Productos de{" "} 
                         {sessionStorage.getItem("nombre") || "Invitado"}
+                        | Total en productos: $ {totalProd} 
                       </Titulo>
                     </div>
                     <table className="table table-responsive-lg " id="tablaProductos">

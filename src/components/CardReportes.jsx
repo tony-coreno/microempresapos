@@ -9,6 +9,7 @@ const CardReportes = () => {
         <div>
           <div className="card">
             <img
+              className="animate__animated animate__fadeIn"
               src="https://img.icons8.com/plasticine/100/000000/business-report.png"
               alt="Reportes"
             />
@@ -22,7 +23,7 @@ const CardReportes = () => {
         <div>
           <div className="card">
             <img
-              className="card-img-top"
+              className="card-img-top animate__animated animate__fadeIn"
               src="https://img.icons8.com/plasticine/100/000000/total-sales.png"
               alt="Reportes del mes"
             />
