@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import Swal from 'sweetalert2'
 const ContextEstado = React.createContext();
 
 const ProveedorState = ({ children }) => {
@@ -21,7 +22,7 @@ const ProveedorState = ({ children }) => {
 
   const [tituloPos, setTituloPOS] = useState("Sistema Pos");
 
-  const handleSubmit = (e, value) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (listaProducto.trim().length > 5) {
       const obtenerProducto = async () => {
@@ -31,8 +32,12 @@ const ProveedorState = ({ children }) => {
           setVentaProducto([...ventaProducto, ...respuesta.data]);
           setArticulos(articulos + 1);
         } else {
-          alert("Ingrese un producto válido");
-        }
+          Swal.fire({
+            icon: "error",
+            title: "Producto Inválido",
+            showConfirmButton: false,
+            timer: 1000,
+          });        }
       };
       obtenerProducto();
     }

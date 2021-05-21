@@ -1,8 +1,29 @@
-import React from "react";
+import React, {useState, useContext} from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import styled from "styled-components";
+import { ContextEstado } from "../context/ContextEstado";
 import "bootstrap/dist/css/bootstrap.css";
 const ModalVentaManual = ({ modalManual, setModalManual }) => {
+const {setVentaProducto, ventaProducto} = useContext(ContextEstado)
+const [producto, setProducto] = useState('');
+const [precioventa, setPrecioVenta] = useState('');
+const [cantidad, setCantidad] = useState(0);
+const [unidad, setUnidad] = useState('');
+
+const manual ={
+  producto: producto,
+  precioventa: parseInt(precioventa),
+  cantidad: parseInt(cantidad),
+  unidad: unidad
+}
+
+const enviar = (e) => {
+  e.preventDefault();
+  setVentaProducto([...ventaProducto, manual])
+  console.log(ventaProducto)
+  setModalManual(false)
+
+}
   return (
     <>
       <Modal isOpen={modalManual}>
@@ -18,13 +39,13 @@ const ModalVentaManual = ({ modalManual, setModalManual }) => {
             <hr />
             <div className="container-fluid">
               <label>Nombre producto</label>
-              <input className="form-control" autoFocus />
+              <input className="form-control" onChange={(e)=>setProducto(e.target.value)} autoFocus />
               <label>Precio</label>
-              <input className="form-control" />
+              <input className="form-control" onChange={(e)=>setPrecioVenta(e.target.value)} />
               <label>Cantidad</label>
-              <input type="number" className="form-control" />
+              <input type="number" className="form-control" onChange={(e)=>setCantidad(e.target.value)} />
               <label>Unidad</label>
-              <input className="form-control" />
+              <input className="form-control" onChange={(e)=>setUnidad(e.target.value)} />
             </div>
           </Contenedor>
           <hr />
@@ -34,8 +55,8 @@ const ModalVentaManual = ({ modalManual, setModalManual }) => {
           <Button color="info" onClick={() => setModalManual(false)}>
             Cancelar
           </Button>
-          <Button color="success" onClick={() => setModalManual(false)}>
-            Confirmar
+          <Button color="success" onClick={(e) => enviar(e)}>
+            Agregar
           </Button>
           {/* {total !== 0 ? (
             <Button color="success" onClick={(e) => guardar(e)}>
