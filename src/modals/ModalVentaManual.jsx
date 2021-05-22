@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { ContextEstado } from "../context/ContextEstado";
 import "bootstrap/dist/css/bootstrap.css";
 const ModalVentaManual = ({ modalManual, setModalManual }) => {
-const {setVentaProducto, ventaProducto} = useContext(ContextEstado)
+const {setVentaProducto, ventaProducto,  setArticulos, articulos} = useContext(ContextEstado)
 const [producto, setProducto] = useState('');
 const [precioventa, setPrecioVenta] = useState('');
 const [cantidad, setCantidad] = useState(0);
@@ -21,6 +21,7 @@ const enviar = (e) => {
   e.preventDefault();
   setVentaProducto([...ventaProducto, manual])
   console.log(ventaProducto)
+  setArticulos(articulos + 1);
   setModalManual(false)
 
 }

@@ -1,30 +1,81 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
 import { Switch, NavLink, Route } from "react-router-dom";
 import Productos from "../components/Productos";
+import Axios from "axios";
 import { Button, Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faArrowLeft,
+  faArrowLeft,
   faFileExcel,
   faFilePdf,
   faFilter,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from "recharts";
+import styled from "styled-components";
 const VentasDia = () => {
+  const [ventas, setVentas] = useState([""]);
+  const [tarjeta, setTarjeta] = useState([""]);
+  const [pago, setPago] = useState(0);
+  useEffect(() => {
+    obtenerVentas();
+  }, []);
+
+
+  const obtenerVentas = async () => {
+    const id = sessionStorage.getItem("idusuario");
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.get("/ventas/ventasdia/" + id, {
+      headers: { autorizacion: token },
+    });
+    setVentas(respuesta.data);
+    // console.log(ventas)
+    const dia = await ventas.filter((venta) => {
+      return venta.metodopago === "Tarjeta";
+    });
+    console.log(dia);
+    setTarjeta(dia);
+    console.log(dia);
+    let total = await tarjeta.reduce((tarjetaTotal, tarj) => {
+      return tarjetaTotal + tarj.total;
+    }, 0);
+    console.log(total);
+    setPago(total);
+  };
+
+  const data = [
+    {
+      name: "Pagos con tarjeta",
+      Tarjeta: `${pago}`,
+      Perdidas: 400,
+    },
+    {
+      name: "Marzo",
+      Tarjeta: 4841,
+      Perdidas: 2100,
+    },
+  ];
+
   return (
     <div>
-        <Menu>
-          <NavLink to="/productos">Productos</NavLink>
-          <NavLink to="/categorias">Categorías</NavLink>
-          <NavLink to="/devoluciones">Devoluciones</NavLink>
-        </Menu>
-        <main>
-          <Switch>
-            <Route path="/productos" component={Productos} />
-          </Switch>
-        </main>
+      <Menu>
+        <NavLink to="/reportes">Reportes</NavLink>
+        <NavLink to="/reportes-dia">Reportes del día</NavLink>
+        <NavLink to="/devoluciones">Reportes del mes</NavLink>
+      </Menu>
+      <main>
+        <Switch>
+          <Route path="/productos" component={Productos} />
+        </Switch>
+      </main>
       <Navbar>
         <Herramientas className="">
           <NavLink to="/reportes">
@@ -90,16 +141,45 @@ const VentasDia = () => {
       <Contenedorapp>
         <Contenedor>
           <h4>Ventas del Día</h4>
+          <>
+            {/* <Principal>Ventas Mayo</Principal> */}
+            <hr />
+            <div>
+              <div>
+                  <BarChart
+                    width={500}
+                    height={300}
+                    data={data}
+                    margin={{
+                      top: 20,
+                      right: 30,
+                      left: 20,
+                      bottom: 5,
+                    }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="Tarjeta" stackId="a" fill="#212E36" />
+                    <Bar dataKey="Perdidas" stackId="a" fill="#052C48" />
+                    {/*fill="#82ca9d" */}
+                  </BarChart>
+              </div>
+            </div>
+          </>
         </Contenedor>
+
         <aside>
           <Contenedor2>
             <h3>Productos</h3>
-            {/* {proveedores.map((provider) => {
+            {/* {ventas.map((venta) => {
               return (
                 <div
                   className="card ms-1 animate__animated animate__fadeIn"
                   style={{ maxWidth: 240 }}
-                  key={provider._id}
+                  key={venta._id}
                 >
                   <div className="row no-gutters">
                     <div className="col-md-4">
@@ -111,14 +191,14 @@ const VentasDia = () => {
                     </div>
                     <div className="col-md-8">
                       <div className="card-body">
-                        <h5 className="card-title">{provider.nombre}</h5>
+                        <h5 className="card-title">{venta.total}</h5>
                         <h6 className="card-text">
-                          Marca: {provider.marcaproveedor}
+                          Venta: {venta.fechaventa}
                         </h6>
 
                         <p className="card-text">
                           <small className="text-muted">
-                            Tel: {provider.telefono}
+                            Tel: {venta.metodopago}
                             <button className="btn btn-outline-info">
                               <FontAwesomeIcon icon={faQuestion} />
                             </button>
@@ -129,7 +209,7 @@ const VentasDia = () => {
                   </div>
                 </div>
               );
-            })} */}
+            })}  */}
           </Contenedor2>
         </aside>
       </Contenedorapp>
@@ -171,7 +251,7 @@ const Contenedor2 = styled.div`
   width: 100%;
   display: grid;
   gap: 10px;
-  grid-template-columns: 2fr 2fr;
+  //grid-template-columns: 1fr 5fr;
   //background: #eef3f5;
   background: #fff;
   margin: 10px 0;
@@ -219,4 +299,19 @@ const Herramientas = styled.div`
 const Buscar = styled.input`
   border-radius: 10px;
 `;
+
+const Divisor = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const Titulo = styled.div`
+  display: flex;
+  flex-direction: col;
+`;
+
+const Principal = styled.h4`
+  text-align: center;
+`;
+
 export default VentasDia;
