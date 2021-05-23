@@ -1,32 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { ContextEstado } from "../context/ContextEstado";
 import styled from "styled-components";
 import Axios from "axios";
 import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.css";
+
 const ModalVenta = ({ modal, setModal }) => {
   const { total, metodopago } = useContext(ContextEstado);
+  const [cambio, setCambio] = useState(0);
   let f = new Date();
-  // const fechaventa = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
-
-  // const pago = () => {
-  //   const Toast = Swal.mixin({
-  //     toast: true,
-  //     position: "top-end",
-  //     showConfirmButton: false,
-  //     timerProgressBar: true,
-  //     didOpen: (toast) => {
-  //       toast.addEventListener("mouseenter", Swal.stopTimer);
-  //       toast.addEventListener("mouseleave", Swal.resumeTimer);
-  //     },
-  //   });
-
-  //   Toast.fire({
-  //     icon: "success",
-  //     title: "Registro exitoso",
-  //   });
-  // };
 
   const guardar = async (e) => {
     e.preventDefault();
@@ -41,32 +24,23 @@ const ModalVenta = ({ modal, setModal }) => {
     const respuesta = await Axios.post("/ventas/crearventa", venta, {
       headers: { autorizacion: token },
     });
-     const mensaje = respuesta.data.mensaje;
-    // const Toast = Swal.mixin({
-    //   toast: true,
-    //   position: "top-end",
-    //   showConfirmButton: false,
-    //   timerProgressBar: true,
-    //   didOpen: (toast) => {
-    //     toast.addEventListener("mouseenter", Swal.stopTimer);
-    //     toast.addEventListener("mouseleave", Swal.resumeTimer);
-    //   },
-    // });
+    const mensaje = respuesta.data.mensaje;
+    darCambio();
 
-     Swal.fire({
-       icon: "success",
-       title: mensaje,
-       showConfirmButton: false,
-     });
-    setTimeout(() => {
-      window.location.href = "/crear-venta";
-    }, 1500);
-  //   Toast.fire({
-  //     icon: "success",
-  //     title: "Registro exitoso",
-  //   });
-  // };
-  }
+    Swal.fire({
+      icon: "success",
+      title: mensaje,
+      showConfirmButton: false,
+    });
+    // setTimeout(() => {
+    //   window.location.href = "/crear-venta";
+    // }, 1500);
+  };
+
+  const darCambio = () => {
+    let restante = cambio - total;
+    console.log(restante);
+  };
   return (
     <>
       <Modal isOpen={modal}>
@@ -92,16 +66,28 @@ const ModalVenta = ({ modal, setModal }) => {
             )}
             <hr />
             {metodopago === "Efectivo" ? (
-              <Ventas>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Efectivo recibido"
-                />
-              </Ventas>
-            ) : (
-              <></>
-            )}
+              <>
+                <Ventas>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Efectivo recibido"
+                    onChange={(e) => setCambio(e.target.value)}
+                  />
+                </Ventas>
+                <Ventas>
+                  <label>Cambio</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="$0.00"
+                    value={0}
+                    onChange={()=>darCambio()}
+                    readOnly
+                  />
+                </Ventas>
+              </>
+            ) : null}
           </Contenedor>
           <hr />
           {total !== 0 ? (
@@ -112,10 +98,9 @@ const ModalVenta = ({ modal, setModal }) => {
               <input className="form-control" autoFocus type="password" /> */}
             </div>
           ) : (
-            <></>
+            null
           )}
         </ModalBody>
-
         <ModalFooter>
           <Button color="primary" onClick={() => setModal(false)}>
             Cancelar
@@ -125,7 +110,7 @@ const ModalVenta = ({ modal, setModal }) => {
               Confirmar venta
             </Button>
           ) : (
-            <></>
+            null
           )}
         </ModalFooter>
       </Modal>

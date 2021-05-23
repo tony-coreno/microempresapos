@@ -94,6 +94,7 @@ const Login = () => {
                     className="form-control"
                     required
                     onChange={(e) => setContrasena(e.target.value)}
+                    autoComplete="off"
                   />
                 </div>
                 <input
