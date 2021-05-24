@@ -22,10 +22,9 @@ const TablaCarrito = () => {
     setVentaProducto(nuevoCarrito)
     setArticulos(articulos -1)
 
-    if(ventaProducto.length === 0){
-      pagar = 0
-      return;
-    }
+     if(articulos === 1){
+       setTotal(0)
+     }
 
   }
   return (
@@ -56,7 +55,7 @@ const TablaCarrito = () => {
                       //    carritoActual = carritoActual.filter(producto =>producto._id !== producto._id)
                       //   setVentaProducto([...carritoActual])
                       // })
-
+                      
                       const { precioventa } = producto;
                       // const { sku } = producto;
                       pagar = pagar + precioventa;
@@ -65,6 +64,9 @@ const TablaCarrito = () => {
                       //   return item.sku === sku;
                       // });
                       // console.log(existe);
+                      if (articulos === 0) {
+                        pagar = 0
+                      }
                       return (
                         <tr key={producto._id}>
                           <td>{1}</td>

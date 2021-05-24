@@ -35,7 +35,6 @@ const Proveedores = () => {
     const id = prov;
     const respuesta = await Axios.get("/proveedores/buscar/" + id);
     setInfo(respuesta.data);
-    console.log(respuesta.data);
   };
 
   const eliminar = async (id) => {

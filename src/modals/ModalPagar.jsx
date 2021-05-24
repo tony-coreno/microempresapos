@@ -72,7 +72,7 @@ const ModalVenta = ({ modal, setModal }) => {
         </ModalHeader>
         <ModalBody>
           <Contenedor>
-            {total !== 0 ? (
+            {total !== 0  ? (
               <>
                 <Ventas>Metodo de pago</Ventas>
                 <Cifra>{metodopago}</Cifra>
