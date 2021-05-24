@@ -24,7 +24,7 @@ const BarraTotalEfectivo = styled.div`
 
 
 const BarraTotal = () => {  
-    const {total} = useContext(ContextEstado);
+    let {total} = useContext(ContextEstado);
     return ( 
         <>
             <BarraTotalEfectivo>

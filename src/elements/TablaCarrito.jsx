@@ -4,7 +4,7 @@ import { ContextEstado } from "../context/ContextEstado";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 const TablaCarrito = () => {
-  const { ventaProducto, setTotal } = useContext(ContextEstado);
+  const { ventaProducto, setTotal, setVentaProducto, setArticulos, articulos } = useContext(ContextEstado);
   // const [cantidad, setCantidad] = useState(0);
   // let carritoActual = []
   // let cant = 0;
@@ -12,6 +12,22 @@ const TablaCarrito = () => {
   //   setTotal([...total + ventaProducto.precioventa])
   // },[ventaProducto.precioventa])
   let pagar = 0;
+
+
+  const eliminar = (e, id) => {
+    e.preventDefault();
+    let nuevoCarrito = ventaProducto.filter(venta =>{
+      return venta._id !== id
+    })
+    setVentaProducto(nuevoCarrito)
+    setArticulos(articulos -1)
+
+    if(ventaProducto.length === 0){
+      pagar = 0
+      return;
+    }
+
+  }
   return (
     <>
       <div className="table-responsive table-borderless table-hover">
@@ -59,7 +75,7 @@ const TablaCarrito = () => {
                           <td>
                             <button
                               className="bn btn-outline-danger mr-2"
-                              // onClick={(e)=>eliminarCarrito(e)}
+                              onClick={(e)=>eliminar(e, producto._id)}
                             >
                               <FontAwesomeIcon icon={faTimes} />
                             </button>
