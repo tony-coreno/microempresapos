@@ -35,8 +35,7 @@ const {totalProd, setTotalProd} = useContext(ContextEstado);
     let totalProductos = productos.reduce((totales, prod) => {
       return ((totales + parseInt(prod.precioventa)))
     },0)
-    console.log(totalProductos)
-    setTotalProd(totalProductos)
+     await setTotalProd(totalProductos)
   };
   // const obtenerProductosEmpleados = async () => {
   //   const token = sessionStorage.getItem("token");

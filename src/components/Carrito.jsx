@@ -20,7 +20,7 @@ const Carrito = () => {
     setListaProducto,
     //total,
   } = useContext(ContextEstado);
-  const { setArticulos } = useContext(ContextEstado);
+  const { setArticulos, articulos } = useContext(ContextEstado);
 
   // useEffect(() => {
   // }, [pagar]);
@@ -34,18 +34,24 @@ const Carrito = () => {
   };
 
   const cancelar = () => {
-    setVentaProducto([""]);
-    setListaProducto("");
-    setArticulos(0);
-    window.location.href = "/crear-venta";
-    // Swal.fire({
-    //   title: 'Cancelar venta',
-    //   text: '¿Desea continuar?',
-    //   icon: 'warning',
-    //   confirmButtonText: 'De acuerdo',
-    //   cancelButtonText:'Cancel'
-    // })
-  };
+    if(articulos > 0){
+      setVentaProducto([""]);
+      setListaProducto("");
+      setArticulos(0);
+      window.location.href = "/crear-venta";
+      // Swal.fire({
+      //   title: 'Cancelar venta',
+      //   text: '¿Desea continuar?',
+      //   icon: 'warning',
+      //   confirmButtonText: 'De acuerdo',
+      //   cancelButtonText:'Cancel'
+      // })
+    }
+    else{
+      return null;
+    }
+    }
+
   return (
     <>
       <TituloEmpleado>''</TituloEmpleado>

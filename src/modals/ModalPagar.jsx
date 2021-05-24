@@ -7,9 +7,20 @@ import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.css";
 
 const ModalVenta = ({ modal, setModal }) => {
-  const { total, metodopago } = useContext(ContextEstado);
+  const { total, metodopago, ventaProducto } = useContext(ContextEstado);
   const [cambio, setCambio] = useState(0);
   let f = new Date();
+
+  /* ==== Fecha
+  // console.log(f)
+  // console.log('____');
+  // let hora = Date.parse(f);
+  // console.log(hora);
+  // console.log('____');
+  // f = new Date(hora * 1000)
+  // console.log(f.toUTCString())
+
+  */
 
   const guardar = async (e) => {
     e.preventDefault();
@@ -19,27 +30,36 @@ const ModalVenta = ({ modal, setModal }) => {
       total: total,
       metodopago: metodopago,
       fechaventa: f,
+      articulos: ventaProducto
     };
     const token = sessionStorage.getItem("token");
+    darCambio();
+
+    if(cambio >= 0 ){
+    
     const respuesta = await Axios.post("/ventas/crearventa", venta, {
       headers: { autorizacion: token },
     });
     const mensaje = respuesta.data.mensaje;
-    darCambio();
 
     Swal.fire({
       icon: "success",
       title: mensaje,
       showConfirmButton: false,
     });
-    // setTimeout(() => {
-    //   window.location.href = "/crear-venta";
-    // }, 1500);
+     setTimeout(() => {
+       window.location.href = "/crear-venta";
+     }, 1500);
+     return cambio;
+    }
+    else{
+      alert('Mayor')
+    }
   };
 
   const darCambio = () => {
     let restante = cambio - total;
-    console.log(restante);
+    alert(restante);
   };
   return (
     <>

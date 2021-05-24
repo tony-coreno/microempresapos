@@ -1,9 +1,10 @@
 import React, {useState, useContext} from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import styled from "styled-components";
 import { ContextEstado } from "../context/ContextEstado";
+import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.css";
 const ModalVentaManual = ({ modalManual, setModalManual }) => {
+  
 const {setVentaProducto, ventaProducto,  setArticulos, articulos} = useContext(ContextEstado)
 const [producto, setProducto] = useState('');
 const [precioventa, setPrecioVenta] = useState('');
@@ -23,7 +24,7 @@ const enviar = (e) => {
   console.log(ventaProducto)
   setArticulos(articulos + 1);
   setModalManual(false)
-
+  
 }
   return (
     <>
@@ -59,13 +60,6 @@ const enviar = (e) => {
           <Button color="success" onClick={(e) => enviar(e)}>
             Agregar
           </Button>
-          {/* {total !== 0 ? (
-            <Button color="success" onClick={(e) => guardar(e)}>
-              
-            </Button>
-          ) : (
-            <></>
-          )} */}
         </ModalFooter>
       </Modal>
     </>

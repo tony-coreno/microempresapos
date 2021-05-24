@@ -12,8 +12,6 @@ const TablaCarrito = () => {
   //   setTotal([...total + ventaProducto.precioventa])
   // },[ventaProducto.precioventa])
   let pagar = 0;
-
-  
   return (
     <>
       <div className="table-responsive table-borderless table-hover">
@@ -37,15 +35,20 @@ const TablaCarrito = () => {
                   </thead>
                   <tbody>
                     {ventaProducto.map((producto, i) => {
-                        // const eliminarCarrito = ((e)=>{
-                        //   e.preventDefault();
-                        //    carritoActual = carritoActual.filter(producto =>producto._id !== producto._id)
-                        //   setVentaProducto([...carritoActual])
-                        // })
+                      // const eliminarCarrito = ((e)=>{
+                      //   e.preventDefault();
+                      //    carritoActual = carritoActual.filter(producto =>producto._id !== producto._id)
+                      //   setVentaProducto([...carritoActual])
+                      // })
 
-                      const { precioventa, sku } = producto;
+                      const { precioventa } = producto;
+                      // const { sku } = producto;
                       pagar = pagar + precioventa;
                       setTotal(pagar);
+                      // let existe = ventaProducto.some((item) => {
+                      //   return item.sku === sku;
+                      // });
+                      // console.log(existe);
                       return (
                         <tr key={producto._id}>
                           <td>{1}</td>
@@ -54,7 +57,8 @@ const TablaCarrito = () => {
                           <td>{precioventa}</td>
                           <td>{producto.unidad}</td>
                           <td>
-                            <button className="bn btn-outline-danger mr-2"
+                            <button
+                              className="bn btn-outline-danger mr-2"
                               // onClick={(e)=>eliminarCarrito(e)}
                             >
                               <FontAwesomeIcon icon={faTimes} />

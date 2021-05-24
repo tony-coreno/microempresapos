@@ -44,7 +44,8 @@ const VentasDia = () => {
     console.log(dia);
     setTarjeta(dia);
     console.log(dia);
-    let total = await tarjeta.reduce((tarjetaTotal, tarj) => {
+    let total = 0;
+     total = await tarjeta.reduce((tarjetaTotal, tarj) => {
       return tarjetaTotal + tarj.total;
     }, 0);
     console.log(total);
@@ -173,7 +174,7 @@ const VentasDia = () => {
 
         <aside>
           <Contenedor2>
-            <h3>Productos</h3>
+            <input className="form-control" type="date" />
             {/* {ventas.map((venta) => {
               return (
                 <div
@@ -300,18 +301,18 @@ const Buscar = styled.input`
   border-radius: 10px;
 `;
 
-const Divisor = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
+// const Divisor = styled.div`
+//   display: flex;
+//   flex-direction: row;
+// `;
 
-const Titulo = styled.div`
-  display: flex;
-  flex-direction: col;
-`;
+// const Titulo = styled.div`
+//   display: flex;
+//   flex-direction: col;
+// `;
 
-const Principal = styled.h4`
-  text-align: center;
-`;
+// const Principal = styled.h4`
+//   text-align: center;
+// `;
 
 export default VentasDia;

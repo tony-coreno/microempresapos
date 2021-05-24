@@ -1,7 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Axios from "axios";
 import styled from "styled-components";
 
 const ProductosMayorVenta = () => {
+  const [ventas, setVentas] = useState([""]);
+
+  useEffect(() => {
+    obtenerVentas();
+  }, []);
+
+  const obtenerVentas = async () => {
+    const id = sessionStorage.getItem("idusuario");
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.get("/ventas/ventasdia/" + id, {
+      headers: { autorizacion: token },
+    });
+    setVentas(respuesta.data);
+    // console.log(ventas)
+    // const dia = await ventas.filter((venta) => {
+    //   return venta.metodopago === "Tarjeta";
+    // });
+    console.log(ventas);
+  };
+
   return (
     <>
       <Contenedor>
@@ -52,4 +73,5 @@ const Contenedor = styled.div`
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
 `;
+
 export default ProductosMayorVenta;

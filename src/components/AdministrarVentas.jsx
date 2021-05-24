@@ -87,7 +87,7 @@ const Almacen = () => {
                               );
                             })
                           ) : (
-                            <></>
+                             null
                           )}
                         </tbody>
                       </table>
