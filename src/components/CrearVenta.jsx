@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBarcode, faCashRegister } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.css";
+import { Spinner } from "reactstrap";
 
 const CrearVenta = () => {
   const { articulos } = useContext(ContextEstado);
