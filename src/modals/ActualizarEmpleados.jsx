@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import styled from "styled-components";
-const ActualizarEmpleados = ({ modal, setModal }) => {
+const ActualizarEmpleados = ({ modal, setModal, empleados }) => {
   // const obtenerEmpleado = async () => {
   //   const id = sessionStorage.getItem("idusuario");
   //   const token = sessionStorage.getItem("token");
@@ -12,6 +12,20 @@ const ActualizarEmpleados = ({ modal, setModal }) => {
   //   setEmpleados(respuesta.data);
   //   console.log(respuesta.data.nombre);
   // };
+
+// const [info, setInfo] = useState([]);
+
+// const nuevaData = () => {
+//   setInfo(empleados)
+//   alert(nuevaData)
+// }
+
+// useEffect(()=>{
+//   nuevaData()
+// },[])
+
+alert(empleados)
+
   return (
     <>
       <Modal isOpen={modal}>

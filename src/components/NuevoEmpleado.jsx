@@ -136,6 +136,14 @@ const NuevoEmpleado = () => {
                 className="form-control"
                 placeholder="Contraseña"
               />
+            </div>
+            <div class="col">
+              <input
+                type="password"
+                onChange={(e) => setContrasena(e.target.value)}
+                className="form-control"
+                placeholder="Confirmar contraseña"
+              />
               <button className="btn-sm btn-primary mt-2">
                 <i>
                   Mostrar <FontAwesomeIcon icon={faEye} />

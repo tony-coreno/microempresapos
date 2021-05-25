@@ -190,7 +190,7 @@ const Empleados = () => {
             </div>
           </div>
         </Tabla>
-        <ActualizarEmpleados setModal={setModal} modal={modal} />
+        <ActualizarEmpleados empleados={empleados} setModal={setModal} modal={modal} />
       </div>
     </>
   );

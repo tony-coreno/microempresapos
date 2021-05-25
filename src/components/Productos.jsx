@@ -18,10 +18,16 @@ import {
 import { ContextEstado } from "../context/ContextEstado";
 const Productos = () => {
   const [productos, setProductos] = useState([""]);
-const {totalProd, setTotalProd} = useContext(ContextEstado);
+  const { totalProd } = useContext(ContextEstado);
+  let perfil = sessionStorage.getItem("perfil");
+  let surtir = "";
   useEffect(() => {
-    obtenerProductos();
-    //obtenerProductosEmpleados();
+    if (perfil === "Administrador") {
+      obtenerProductos();
+    } else {
+      obtenerProductosEmpleados();
+    }
+
   }, []);
 
   const obtenerProductos = async () => {
@@ -31,20 +37,20 @@ const {totalProd, setTotalProd} = useContext(ContextEstado);
       headers: { autorizacion: token },
     });
     setProductos(respuesta.data);
-    console.log(productos)
-    let totalProductos = productos.reduce((totales, prod) => {
-      return ((totales + parseInt(prod.precioventa)))
-    },0)
-     await setTotalProd(totalProductos)
+    console.log(productos);
+    // let totalProductos = productos.reduce((totales, prod) => {
+    //   return totales + parseInt(prod.precioventa);
+    // }, 0);
+    // await setTotalProd(totalProductos);
   };
-  // const obtenerProductosEmpleados = async () => {
-  //   const token = sessionStorage.getItem("token");
-  //   const jefe = sessionStorage.getItem("jefe");
-  //   const respuesta = await Axios.get("/productos/listarporadmin/" + jefe, {
-  //     headers: { autorizacion: token },
-  //   });
-  //   setProductos(respuesta.data);
-  // };
+   const obtenerProductosEmpleados = async () => {
+     const token = sessionStorage.getItem("token");
+     const jefe = sessionStorage.getItem("jefe");
+     const respuesta = await Axios.get("/productos/listarporadmin/" + jefe, {
+       headers: { autorizacion: token },
+     });
+     setProductos(respuesta.data);
+   };
   const buscar = async (e) => {
     if (e.target.value === "") {
       return obtenerProductos();
@@ -73,7 +79,6 @@ const {totalProd, setTotalProd} = useContext(ContextEstado);
     });
     obtenerProductos();
   };
-
 
   return (
     <div>
@@ -147,9 +152,7 @@ const {totalProd, setTotalProd} = useContext(ContextEstado);
                 <FontAwesomeIcon icon={faSearch} />
               </div>
             </div>
-          ) : (
-            null
-          )}
+          ) : null}
         </Navbar>
         <div className="table-responsive table-borderless table-hover">
           <div>
@@ -159,12 +162,15 @@ const {totalProd, setTotalProd} = useContext(ContextEstado);
                   <div className="card">
                     <div className="bg-light card-header">
                       <Titulo>
-                        Productos de{" "} 
-                        {sessionStorage.getItem("nombre") || "Invitado"}
-                        | Total en productos: $ {totalProd} 
+                        Productos de{" "}
+                        {sessionStorage.getItem("nombre") || "Invitado"}| Total
+                        en productos: $ {totalProd}
                       </Titulo>
                     </div>
-                    <table className="table table-responsive-lg " id="tablaProductos">
+                    <table
+                      className="table table-responsive-lg "
+                      id="tablaProductos"
+                    >
                       <thead className="light">
                         <tr>
                           <th>#</th>
@@ -181,14 +187,23 @@ const {totalProd, setTotalProd} = useContext(ContextEstado);
                       </thead>
                       <tbody>
                         {productos.map((producto, i) => {
+                          let {existencia} = producto;
+
+                          if (existencia < 50){
+                            surtir=`alert alert-danger text-center`
+                          }
+                          else{
+                            surtir = `alert alert-success text-center`
+                          }
                           return (
+
                             <tr key={producto._id}>
                               <td>{i + 1}</td>
                               <td>{producto.sku}</td>
                               <td>{producto.marca}</td>
                               <td>{producto.producto}</td>
-                              <td>{producto.existencia}</td>
-                              <td>{producto.precioventa}</td>
+                              <td className={surtir}>{producto.existencia}</td>
+                              <td className="text-center">{producto.precioventa}</td>
                               <td>{producto.categoria}</td>
                               <td>{producto.unidad}</td>
                               <td>{producto.estado}</td>

@@ -125,7 +125,7 @@ const ModalVenta = ({ modal, setModal }) => {
           <Button color="primary" onClick={() => setModal(false)}>
             Cancelar
           </Button>
-          {total !== 0 ? (
+          {total !== 0 && metodopago !== "" ? (
             <Button color="success" onClick={(e) => guardar(e)}>
               Confirmar venta
             </Button>
