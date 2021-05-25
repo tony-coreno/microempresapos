@@ -70,6 +70,9 @@ const Almacen = () => {
                         <tbody>
                           {pagoSelected !== null ? (
                             pagoSelected.map((medio, i) => {
+                              if(medio === ""){
+                                return;
+                              }
                               return (
                                 <tr key={medio}>
                                   <td>{medio}</td>
