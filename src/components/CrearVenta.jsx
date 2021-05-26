@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ContextEstado } from "../context/ContextEstado";
-import Axios from "axios";
 import AdministrarVentas from "./AdministrarVentas";
 import DetalleVenta from "../elements/DetalleVenta";
 import ModalVentaManual from "../modals/ModalVentaManual";
@@ -14,21 +13,7 @@ import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.css";
 
 const CrearVenta = () => {
-  const [pagos, setPagos] = useState([""]);
 
-  useEffect(() => {
-    obtenerPagos();
-  }, []);
-
-  const obtenerPagos = async () => {
-    const id = sessionStorage.getItem("idusuario");
-    const token = sessionStorage.getItem("token");
-    const respuesta = await Axios.get("/pagos/pagoadmin/" + id, {
-      headers: { autorizacion: token },
-    });
-    setPagos(respuesta.data);
-    console.log(pagos);
-  };
 
   const { articulos } = useContext(ContextEstado);
   const [modalManual, setModalManual] = useState(false);

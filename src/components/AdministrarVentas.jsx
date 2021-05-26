@@ -1,17 +1,63 @@
-import React, { useContext, useState } from "react";
+import React, { useState, useEffect } from "react";
+import Axios from 'axios';
 import styled from "styled-components";
 import { Switch, NavLink, Route } from "react-router-dom";
+import Swal from 'sweetalert2';
 import Reportes from "./Reportes";
 import CrearVenta from "./CrearVenta";
-import { ContextEstado } from "../context/ContextEstado";
 const Almacen = () => {
-  const { setPagoSelected, pagoSelected } = useContext(ContextEstado);
-  const [medioPago, setMedioPago] = useState("");
-  const enviar = (e) => {
+
+  const [pagos, setPagos] = useState([]);
+  const [nombre, setNombre] = useState("");
+
+  useEffect(() => {
+    obtenerPagos();
+  }, []);
+
+  const obtenerPagos = async () => {
+    const id = sessionStorage.getItem("idusuario");
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.get("/pagos/pagoadmin/" + id, {
+      headers: { autorizacion: token },
+    });
+    setPagos(respuesta.data)
+  };  
+
+  const guardar = async (e) => {
     e.preventDefault();
-    setPagoSelected([...pagoSelected, medioPago]);
+    const pago = {
+      jefe: sessionStorage.getItem("idusuario"),
+      nombre: nombre
+    };
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.post("/pagos/crear", pago, {
+      headers: { autorizacion: token },
+    });
+    const mensaje = respuesta.data.mensaje;
+    Swal.fire({
+      icon: "warning",
+      title: mensaje,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    obtenerPagos();
   };
 
+  const eliminar = async (e, id) => {
+    e.preventDefault();
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.delete("/pagos/eliminar/" + id, {
+      headers: { autorizacion: token },
+    });
+    const mensaje = respuesta.data.mensaje;
+    Swal.fire({
+      icon: "warning",
+      title: mensaje,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    obtenerPagos();
+  };
   return (
     <div>
       <Contenedorapp>
@@ -27,7 +73,7 @@ const Almacen = () => {
           </Switch>
         </main>
           <h3>Administrar</h3>
-          <form onSubmit={enviar}>
+          <form onSubmit={guardar}>
             <hr />
             <p></p>
             <div className="row">
@@ -37,7 +83,7 @@ const Almacen = () => {
                   type="text"
                   className="form-control mt-2"
                   placeholder="Inserte medio"
-                  onChange={(e) => setMedioPago(e.target.value)}
+                  onChange={(e) => setNombre(e.target.value)}
                   autoFocus
                 />
               </div>
@@ -49,7 +95,6 @@ const Almacen = () => {
                 </select>
               </div>
             </div>
-
             <hr />
             <div className="table-responsive table-borderless table-hover">
               <div className="container">
@@ -68,30 +113,39 @@ const Almacen = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          {pagoSelected !== null ? (
-                            pagoSelected.map((medio, i) => {
-                              if(medio === ""){
-                                return;
+                          {
+                            pagos.map((medio, i) => {
+                              if(medio.nombre === ""){
+                                return
+                              }
+                              let valor = "";
+                              let clase =""
+                              if(medio.estado){
+                                valor ="Activo"
+                                clase ="btn btn-outline-success"
+                              }
+                              else{
+                                valor= "Inactivo"
+                                clase= "btn btn-outline-info"
                               }
                               return (
-                                <tr key={medio}>
-                                  <td>{medio}</td>
+                                <tr key={medio._id}>
+                                  <td>{medio.nombre}</td>
                                   <td>
-                                    <button className="btn btn-outline-success">
-                                      Activo
+                                    <button className={clase}>
+                                      {valor}
                                     </button>
                                   </td>
                                   <td>
-                                    <button className="btn btn-outline-danger">
+                                    <button className="btn btn-outline-danger"
+                                    onClick={(e) => eliminar (e, medio._id)}>
                                       Eliminar
                                     </button>
                                   </td>
                                 </tr>
                               );
                             })
-                          ) : (
-                             null
-                          )}
+                         }
                         </tbody>
                       </table>
                     </div>
@@ -99,14 +153,11 @@ const Almacen = () => {
                 </div>
               </div>
             </div>
-
             <hr />
-
             <SeccionBoton>
               <button className="btn btn-outline-success">Guardar</button>
             </SeccionBoton>
           </form>
-        
       </Contenedorapp>
     </div>
   );
@@ -134,7 +185,6 @@ const Menu = styled.nav`
     padding-bottom: 3px;
   }
 `;
-
 const Contenedorapp = styled.div`
   max-width: 1400px;
   padding: 20px;
@@ -150,12 +200,6 @@ const Contenedorapp = styled.div`
 const SeccionBoton = styled.div`
   width: 50%;
 `;
-// const Tabla = styled.section`
-//   background: #fff;
-//   text-align: center;
-//   font-family: "Open Sans", sans-serif;
-// `;
-
 const Titulo = styled.h6`
   color: #fff;
   text-align: center;

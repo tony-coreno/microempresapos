@@ -32,7 +32,6 @@ const Empleados = () => {
       headers: { autorizacion: token },
     });
     setEmpleados(respuesta.data);
-    console.log(respuesta.data.nombre);
   };
   const buscar = async (e) => {
     if (e.target.value === "") {

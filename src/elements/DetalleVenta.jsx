@@ -1,9 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { ContextEstado } from "../context/ContextEstado";
+import Axios from "axios";
 const DetalleVenta = () => {
-
-  const {metodopago, setMetodoPago,pagoSelected, setPagoSelected} = useContext(ContextEstado)
+  const { metodopago, setMetodoPago } = useContext(ContextEstado);
   // const {
   //   metodopago,
   //   setMetodoPago,
@@ -11,9 +11,23 @@ const DetalleVenta = () => {
   //   setMetodoPagoSelected,
   // } = useState([]);
 
+  // useEffect(() => {
+  //   setPagoSelected(["","Efectivo", "Tarjeta", "Vale despensa"]);
+  // }, []);
+  const [pagos, setPagos] = useState([]);
+
   useEffect(() => {
-    setPagoSelected(["","Efectivo", "Tarjeta", "Vale despensa"]);
+    obtenerPagos();
   }, []);
+
+  const obtenerPagos = async () => {
+    const id = sessionStorage.getItem("idusuario");
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.get("/pagos/pagoadmin/" + id, {
+      headers: { autorizacion: token },
+    });
+    setPagos(respuesta.data);
+  };
   const codigo = (e) => {
     e.preventDefault();
     alert("Me llegó");
@@ -28,9 +42,11 @@ const DetalleVenta = () => {
           value={metodopago}
           className="form-control mt-"
         >
-          {pagoSelected.map((pago) => (
-            <option key={pago}>{pago}</option>
-          ))}
+          {
+            pagos.map((pago) => (
+              <option key={pago._id}>{pago.nombre}</option>
+          ))
+          }
         </select>
         <form onSubmit={codigo}>
           <label>Código Promocional</label>
@@ -53,26 +69,6 @@ const DetalleVenta = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {/* {ventaProducto.map((producto, i) => {
-                      
-                        return (
-                          <tr key={producto._id}>
-                            <td>{i + 1}</td>
-                            <td>{producto.sku}</td>
-                            <td>{producto.producto}</td>
-                            <td>{producto.precioventa}</td>
-                            <td>{producto.unidad}</td>
-                            <td>
-                              <button
-                                className="bn btn-outline-dark mr-2"
-                                
-                              >
-                                <FontAwesomeIcon icon={faTrash} />
-                              </button>
-                          </td>
-                          </tr>
-                        );
-                      })} */}
                       </tbody>
                     </table>
                   </div>
