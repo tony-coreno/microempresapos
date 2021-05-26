@@ -20,6 +20,7 @@ import "bootstrap/dist/css/bootstrap.css";
 
 const Empleados = () => {
   const [modal, setModal] = useState(false);
+  const [info, setInfo] = useState([])
   const { empleados, setEmpleados } = useContext(ContextEstado);
   useEffect(() => {
     obtenerEmpleados();
@@ -61,6 +62,16 @@ const Empleados = () => {
     });
     obtenerEmpleados();
   };
+
+  const buscarEmpleadoID = async (e, emp) => {
+    e.preventDefault();
+    const id = emp;
+    const respuesta = await Axios.get("/empleados/buscar/" + id);
+    setInfo(respuesta.data);
+    setModal(true)
+    console.log(info)
+  };
+
   return (
     <>
       {/* <Barra /> */}
@@ -123,7 +134,7 @@ const Empleados = () => {
             </div>
           </div>
         ) : (
-          <div></div>
+          null
         )}
       </Navbar>
       <div className="table-responsive table-borderless table-hover">
@@ -168,7 +179,7 @@ const Empleados = () => {
                             <td>
                               <button
                                 className="bn btn-outline-info mr-2"
-                                onClick={() => setModal(true)}
+                                onClick={ (e)=> buscarEmpleadoID(e, empleado._id)}
                               >
                                 <FontAwesomeIcon icon={faUserEdit} />
                               </button>
@@ -189,7 +200,7 @@ const Empleados = () => {
             </div>
           </div>
         </Tabla>
-        <ActualizarEmpleados setModal={setModal} modal={modal} />
+        <ActualizarEmpleados setModal={setModal} modal={modal} info={info} />
       </div>
     </>
   );

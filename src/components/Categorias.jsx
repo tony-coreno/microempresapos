@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Switch, NavLink, Route } from "react-router-dom";
 import Productos from "./Productos";
+import CategoriasProductos from '../products/CategoriasProductos';
 import { Button, Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -84,52 +85,47 @@ const Categorias = () => {
             </div>
           </div>
         ) : (
-          <div></div>
+          null
         )}
       </Navbar>
       <Contenedorapp>
-        <Contenedor>
+        <Contenedor2>
           <h4>Categorias de admin</h4>
-        </Contenedor>
+          <CategoriasProductos />
+        </Contenedor2>
         <aside>
           <Contenedor2>
             <h3>Productos</h3>
-            {/* {proveedores.map((provider) => {
-              return (
-                <div
-                  className="card ms-1 animate__animated animate__fadeIn"
-                  style={{ maxWidth: 240 }}
-                  key={provider._id}
-                >
-                  <div className="row no-gutters">
-                    <div className="col-md-4">
-                      <img
-                        src="https://img.icons8.com/color/96/000000/salesman.png"
-                        className="card-img"
-                        alt="POS"
-                      />
-                    </div>
-                    <div className="col-md-8">
-                      <div className="card-body">
-                        <h5 className="card-title">{provider.nombre}</h5>
-                        <h6 className="card-text">
-                          Marca: {provider.marcaproveedor}
-                        </h6>
-
-                        <p className="card-text">
-                          <small className="text-muted">
-                            Tel: {provider.telefono}
-                            <button className="btn btn-outline-info">
-                              <FontAwesomeIcon icon={faQuestion} />
-                            </button>
-                          </small>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })} */}
+            <table className="table">
+        <thead className="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Categoría</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Opción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
           </Contenedor2>
         </aside>
       </Contenedorapp>
@@ -143,7 +139,7 @@ const Contenedorapp = styled.div`
   width: 100%;
   display: grid;
   gap: 20px;
-  grid-template-columns: 2fr 1fr;
+  //grid-template-columns: 2fr 1fr;
   background: #fff;
   margin: 5px 0;
   border-radius: 10px;
@@ -171,7 +167,7 @@ const Contenedor2 = styled.div`
   width: 100%;
   display: grid;
   gap: 10px;
-  grid-template-columns: 2fr 2fr;
+  grid-template-columns: 2fr 4fr;
   //background: #eef3f5;
   background: #fff;
   margin: 10px 0;

@@ -2,33 +2,38 @@ import React, { useEffect, useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import styled from "styled-components";
-const ActualizarEmpleados = ({ modal, setModal }) => {
-  // const obtenerEmpleado = async () => {
-  //   const id = sessionStorage.getItem("idusuario");
-  //   const token = sessionStorage.getItem("token");
-  //   const respuesta = await Axios.get("/empleados/listarporadmin/" + id, {
-  //     headers: { autorizacion: token },
-  //   });
-  //   setEmpleados(respuesta.data);
-  //   console.log(respuesta.data.nombre);
-  // };
+const ActualizarEmpleados = ({ modal, setModal, info }) => {
 
-// const [info, setInfo] = useState([]);
+  const [nombre, setNombre] = useState("");
+  const [apellidopaterno, setApellidoPaterno] = useState("");
+  const [apellidomaterno, setApellidoMaterno] = useState("");
+  const [numeroempleado, setNumeroEmpleado] = useState("");
+  const [usuario, setUsuario] = useState("");
+  const [contrasena, setContrasena] = useState("");
+  const [perfilSelected, setPerfilSelected] = useState([]);
+  // const { perfil, setPerfil } = useContext(ContextEstado);
+  const [estado, setEstado] = useState("");
+  const [estadoSelected, setEstadoSelected] = useState([]);
 
-// const nuevaData = () => {
-//   setInfo(empleados)
-//   alert(nuevaData)
-// }
+  useEffect(() => {
+    nuevosValores()
+    // setTcontratos(["fijo", "Temporal", "Practicante"]);
+  }, []);
+  const nuevosValores = () => {
+    setNombre(info.nombre)
+    setApellidoMaterno(info.apellidomaterno)
+    setApellidoPaterno(info.apellidopaterno)
+    setNumeroEmpleado(info.numeroempleado)
+    setUsuario(info.usuario)
+    setContrasena(info.contrasena)
+  }
 
-// useEffect(()=>{
-//   nuevaData()
-// },[])
 
   return (
     <>
       <Modal isOpen={modal}>
         <ModalHeader>
-          <h5>Actualizar empleado</h5>
+          <h4>Actualizar empleado</h4>
         </ModalHeader>
         <ModalBody>
           <Contenedor>
@@ -40,7 +45,7 @@ const ActualizarEmpleados = ({ modal, setModal }) => {
                 autoFocus={true}
               ></input>
               <label className="mt-1">Nombre</label>
-              <input type="text" className="form-control"></input>
+              <input type="text" className="form-control" value={nombre}></input>
 
               <label className="mt-1">Apellido paterno</label>
               <input type="text" className="form-control"></input>

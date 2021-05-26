@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import Swal from "sweetalert2";
 import { ContextEstado } from "../context/ContextEstado";
-const Actualizar = (props) => {
+const Actualizar = ({info}) => {
+
   const [nombre, setNombre] = useState("");
   const [apellidopaterno, setApellidoPaterno] = useState("");
   const [apellidomaterno, setApellidoMaterno] = useState("");
@@ -14,10 +15,21 @@ const Actualizar = (props) => {
   const [estado, setEstado] = useState("");
   const [estadoSelected, setEstadoSelected] = useState([]);
 
+
+  const nuevosValores = () => {
+    setNombre(info.nombre)
+    setApellidoMaterno(info.apellidomaterno)
+    setApellidoPaterno(info.apellidopaterno)
+    setNumeroEmpleado(info.numeroempleado)
+    setUsuario(info.usuario)
+    setContrasena(info.contrasena)
+  }
+
   useEffect(() => {
-    obtenerEmpleado();
+    nuevosValores()
     setTcontratos(["fijo", "Temporal", "Practicante"]);
   }, []);
+
 
   const actualizar = async (e) => {
     e.preventDefault();
@@ -46,7 +58,6 @@ const Actualizar = (props) => {
       window.location.href = "/index";
     }, 1500);
   };
-
   return (
     <div className="container col-md-6 mt-4">
       <div className="card">
@@ -71,7 +82,6 @@ const Actualizar = (props) => {
                   className="form-control"
                   required
                   onChange={(e) => setApellidos(e.target.value)}
-                  value={apellidos}
                 />
               </div>
               <div className="form-group">
@@ -81,7 +91,6 @@ const Actualizar = (props) => {
                   className="form-control"
                   required
                   onChange={(e) => setPuesto(e.target.value)}
-                  value={puesto}
                 />
               </div>
               <div className="form-group">
@@ -91,7 +100,6 @@ const Actualizar = (props) => {
                   className="form-control"
                   required
                   onChange={(e) => setIdentificacion(e.target.value)}
-                  value={identificacion}
                 />
               </div>
               <div className="form-group">
