@@ -40,7 +40,7 @@ const Clientes = () => {
         </Contenedor>
         <aside>
           <Contenedor2>
-            {clientes.map((cliente,i) => {
+            {clientes.map((cliente) => {
               return (
                 <Fragment key={cliente._id}>
                 <div

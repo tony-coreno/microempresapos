@@ -35,6 +35,21 @@ const NuevoProducto = () => {
     setEstadoSelected(["", "Activo", "Inactivo", "Agotado"]);
   }, []);
 
+  const limpiar = () => {
+    setSku("");
+    setProducto("");
+    setExistencia("");
+    setPrecioventa("");
+    setMarca("");
+    setCategoriaSelected([""]);
+    setCategoria("");
+    setUnidadSelected([""]);
+    setUnidad("");
+    setEstadoSelected([]);
+    setEstado("");
+    setTalla("");
+  };
+
   const guardar = async (e) => {
     e.preventDefault();
     const stock = {
@@ -58,10 +73,12 @@ const NuevoProducto = () => {
       icon: "success",
       title: mensaje,
       showConfirmButton: false,
+      timer: 500,
     });
-    setTimeout(() => {
-      window.location.href = "/productos";
-    }, 1500);
+       setTimeout(() => {
+         window.location.href = "/agregar-producto";
+       }, 1000);
+    // limpiar();
   };
   return (
     <>
@@ -73,15 +90,15 @@ const NuevoProducto = () => {
             </Button>
           </NavLink>
 
-            <Button
-              className="btn btn-warning"
-              data-toggle="tooltip"
-              data-placement="right"
-              title="Agregar unidad"
-              onClick={() => setModalUnidad(true)}
-            >
-              <FontAwesomeIcon icon={faLayerGroup} />
-            </Button>
+          <Button
+            className="btn btn-warning"
+            data-toggle="tooltip"
+            data-placement="right"
+            title="Agregar unidad"
+            onClick={() => setModalUnidad(true)}
+          >
+            <FontAwesomeIcon icon={faLayerGroup} />
+          </Button>
 
           <Titulo>Agregar Producto</Titulo>
         </div>
@@ -206,7 +223,12 @@ const NuevoProducto = () => {
           </button>
         </form>
       </main>
-      <ModalUnidadProducto modalUnidad={modalUnidad} setModalUnidad={setModalUnidad} unidadSelected={unidadSelected} setUnidadSelected={setUnidadSelected} />
+      <ModalUnidadProducto
+        modalUnidad={modalUnidad}
+        setModalUnidad={setModalUnidad}
+        unidadSelected={unidadSelected}
+        setUnidadSelected={setUnidadSelected}
+      />
     </>
   );
 };

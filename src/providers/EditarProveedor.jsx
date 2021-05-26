@@ -53,7 +53,7 @@ const EditarProveedor = ({ prov, setInfo }) => {
     })
     setTimeout(()=>{
         window.location.href='/proveedores'
-    },500)
+    },1500)
 }
   return (
     <>

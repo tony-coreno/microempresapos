@@ -13,7 +13,6 @@ const TablaCarrito = () => {
   // },[ventaProducto.precioventa])
   let pagar = 0;
 
-
   const eliminar = (e, id) => {
     e.preventDefault();
     let nuevoCarrito = ventaProducto.filter(venta =>{
@@ -49,13 +48,7 @@ const TablaCarrito = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {ventaProducto.map((producto, i) => {
-                      // const eliminarCarrito = ((e)=>{
-                      //   e.preventDefault();
-                      //    carritoActual = carritoActual.filter(producto =>producto._id !== producto._id)
-                      //   setVentaProducto([...carritoActual])
-                      // })
-                      
+                    {ventaProducto.map((producto) => {                      
                       const { precioventa } = producto;
                       // const { sku } = producto;
                       pagar = pagar + precioventa;

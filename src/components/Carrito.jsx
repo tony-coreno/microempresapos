@@ -66,12 +66,12 @@ const Carrito = () => {
           <BarraTotal />
         </Contenedor>
 
-        <button className="btn btn-outline-danger" onClick={cancelar}>
+        <button className="btn btn-outline-danger mr-2" onClick={cancelar}>
           {" "}
           <FontAwesomeIcon icon={faBan} /> Cancelar
         </button>
         {"           "}
-        <button className="btn btn-outline-info">
+        <button className="btn btn-outline-info mr-2">
           {" "}
           <FontAwesomeIcon icon={faCreditCard} /> Corte de caja
         </button>

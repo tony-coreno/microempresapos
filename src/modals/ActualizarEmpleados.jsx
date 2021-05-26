@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import styled from "styled-components";
-const ActualizarEmpleados = ({ modal, setModal, empleados }) => {
+const ActualizarEmpleados = ({ modal, setModal }) => {
   // const obtenerEmpleado = async () => {
   //   const id = sessionStorage.getItem("idusuario");
   //   const token = sessionStorage.getItem("token");
@@ -23,8 +23,6 @@ const ActualizarEmpleados = ({ modal, setModal, empleados }) => {
 // useEffect(()=>{
 //   nuevaData()
 // },[])
-
-alert(empleados)
 
   return (
     <>

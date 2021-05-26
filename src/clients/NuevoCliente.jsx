@@ -45,7 +45,7 @@ const NuevoCliente = () => {
     });
     setTimeout(() => {
       window.location.href = "/clientes";
-    }, 1500);
+    }, 1000);
   };
   return (
     <>

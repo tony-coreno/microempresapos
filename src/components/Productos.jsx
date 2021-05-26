@@ -37,11 +37,6 @@ const Productos = () => {
       headers: { autorizacion: token },
     });
     setProductos(respuesta.data);
-    console.log(productos);
-    // let totalProductos = productos.reduce((totales, prod) => {
-    //   return totales + parseInt(prod.precioventa);
-    // }, 0);
-    // await setTotalProd(totalProductos);
   };
    const obtenerProductosEmpleados = async () => {
      const token = sessionStorage.getItem("token");

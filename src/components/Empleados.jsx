@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import Axios from "axios";
-import "bootstrap/dist/css/bootstrap.css";
 import styled from "styled-components";
 import { Button, Navbar } from "reactstrap";
 import Swal from "sweetalert2";
@@ -16,6 +15,7 @@ import {
 import { NavLink } from "react-router-dom";
 import { ContextEstado } from "../context/ContextEstado";
 import ActualizarEmpleados from "../modals/ActualizarEmpleados";
+import "bootstrap/dist/css/bootstrap.css";
 // import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 const Empleados = () => {
@@ -189,7 +189,7 @@ const Empleados = () => {
             </div>
           </div>
         </Tabla>
-        <ActualizarEmpleados empleados={empleados} setModal={setModal} modal={modal} />
+        <ActualizarEmpleados setModal={setModal} modal={modal} />
       </div>
     </>
   );

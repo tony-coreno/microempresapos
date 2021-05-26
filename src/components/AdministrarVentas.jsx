@@ -25,6 +25,15 @@ const Almacen = () => {
 
   const guardar = async (e) => {
     e.preventDefault();
+    if(nombre === ""){
+      Swal.fire({
+        icon: "error",
+        title: "Agrega pago válido",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
+    }
     const pago = {
       jefe: sessionStorage.getItem("idusuario"),
       nombre: nombre
@@ -40,6 +49,7 @@ const Almacen = () => {
       showConfirmButton: false,
       timer: 1500,
     });
+    setNombre("");
     obtenerPagos();
   };
 
