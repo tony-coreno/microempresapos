@@ -57,7 +57,7 @@ const EditarProveedor = ({ prov, setInfo }) => {
 }
   return (
     <>
-      <form className="container">
+      <form className="container" key={ide}>
         <label>Editar Nombre</label>
         <input className="form-control" value={nombre} onChange={(e)=>setNombre(e.target.value)} />
         <label className="mt-2">Editar Marca</label>

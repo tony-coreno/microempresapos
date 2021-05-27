@@ -16,12 +16,26 @@ const ProveedorState = ({ children }) => {
   const [proveedores, setProveedores] = useState([""]);
   const [metodopago, setMetodoPago] = useState("");
   const [pagoSelected, setPagoSelected] = useState([]);
-  const [tituloPos, setTituloPOS] = useState("Sistema Pos");
+  const [tituloPos, setTituloPOS] = useState("");
 
   const handleInputChange = (e) => {
     setListaProducto(e.target.value);
   };
 
+  useEffect(() => {
+    obtenerTitulo();
+  }, []);
+
+  const obtenerTitulo = async () => {
+    const id = sessionStorage.getItem("idusuario");
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.get("/sistema/obtener/" + id, {
+      headers: { autorizacion: token },
+    });
+    const [name]= respuesta.data
+    const {nombre} = name;
+    setTituloPOS(nombre)
+  };
 
 
   const handleSubmit = (e) => {

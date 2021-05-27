@@ -5,7 +5,7 @@ const ProveedorInfo = ({ info ,setInfo }) => {
   return (
     <>
       {info.map((prov) => {
-        return <EditarProveedor prov={prov} setInfo={setInfo} />;
+        return <EditarProveedor key={prov._id} prov={prov} setInfo={setInfo} />;
       })}
     </>
   );

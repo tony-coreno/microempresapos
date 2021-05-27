@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
     Button,
     Modal,
@@ -6,42 +6,40 @@ import {
     ModalBody,
     ModalFooter
   } from "reactstrap";
-  import Axios from 'axios';
+  // import Axios from 'axios';
   import 'bootstrap/dist/css/bootstrap.css';
   import styled from 'styled-components';
 const ModalPerfil = ({modal, setModal}) => {
-  const [data, setData] = useState([]);
-  const [venta, setVenta] = useState(0);
+  // const [data, setData] = useState([]);
+  // const [venta, setVenta] = useState(0);
   const cuenta = sessionStorage.getItem("perfil");
 
-  const obtenerVentas = async () => {
-    const id = sessionStorage.getItem("idusuario");
-    const token = sessionStorage.getItem("token");
-    const respuesta = await Axios.get("/ventas/ventasdia/" + id, {
-      headers: { autorizacion: token },
-    });
-    console.log(respuesta.data);
-    // console.log(ventas)
-    await setData(respuesta.data)
-    await total()
-  };
+  // const obtenerVentas = async () => {
+  //   const id = sessionStorage.getItem("idusuario");
+  //   const token = sessionStorage.getItem("token");
+  //   const respuesta = await Axios.get("/ventas/ventasdia/" + id, {
+  //     headers: { autorizacion: token },
+  //   });
+  //   console.log(respuesta.data);
+  //   // console.log(ventas)
+  //   await setData(respuesta.data)
+  //   await total()
+  // };
 
 
 
-  useEffect(async()=> {
-    await obtenerVentas();
-  },[])
+  // useEffect(async()=> {
+  //   await obtenerVentas();
+  // },[])
 
-  let total = async() => {
-    let resultado =  await data.reduce((totales, producto)=>{
-      return totales + producto.total
-    },0)
-   await setVenta(resultado);
-    console.log(resultado)
-  }
+  // let total = async() => {
+  //   let resultado =  await data.reduce((totales, producto)=>{
+  //     return totales + producto.total
+  //   },0)
+  //  await setVenta(resultado);
+  //   console.log(resultado)
+  // }
 
-
-  
     return (
       <>
       <Modal isOpen={modal}>
@@ -51,7 +49,7 @@ const ModalPerfil = ({modal, setModal}) => {
       <ModalBody>
       <div>
       <Ventas>Ventas realizadas</Ventas>
-      <Ventas>{`$ ${venta} `}</Ventas>
+      <Ventas>{`$ ${400} `}</Ventas>
 
       <img src="https://img.icons8.com/officel/80/000000/person-male.png" alt="POS"/>
       <hr />

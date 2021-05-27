@@ -115,7 +115,7 @@ const NuevoProducto = () => {
                 autoFocus
               />
             </div>
-            <div class="col">
+            <div className="col">
               <input
                 type="text"
                 className="form-control"

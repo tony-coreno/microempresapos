@@ -16,22 +16,6 @@ const Settings = () => {
   // //     pass.type = "text";
   // //   }
   // // };
-  const obtenerTitulo = async () => {
-    const id = sessionStorage.getItem("idusuario");
-    const token = sessionStorage.getItem("token");
-    const respuesta = await Axios.get("/sistema/obtener/" + id, {
-      headers: { autorizacion: token },
-    });
-    console.log(respuesta.data)
-    // setTituloPOS(respuesta.data.nombre)
-  }; 
-  
-  
-  useEffect(()=>{
-    obtenerTitulo()
-    
-  },[])
-
 
   const {setTituloPOS} = useContext(ContextEstado);
   const [empresa, setEmpresa] = useState('');

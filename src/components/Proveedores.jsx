@@ -4,15 +4,14 @@ import Axios from "axios";
 import ProveedorInfo from "../providers/ProveedorInfo";
 import { Button, Navbar } from "reactstrap";
 import styled from "styled-components";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEdit,
   faTrash,
   faUserFriends,
 } from "@fortawesome/free-solid-svg-icons";
-
-
+import { Fragment } from "react";
 
 const Proveedores = () => {
   const [proveedores, setProveedores] = useState([""]);
@@ -90,54 +89,61 @@ const Proveedores = () => {
               alt="POS"
             />
           ) : (
-            <ProveedorInfo setInfo={setInfo} info={info} />
+            <ProveedorInfo
+              setInfo={setInfo}
+              info={info}
+              key={proveedores._id}
+            />
           )}
         </Contenedor>
         <aside>
           <Contenedor2>
             {proveedores.map((provider) => {
               return (
-                <div
-                  className="card ms-1 animate__animated animate__fadeIn"
-                  style={{ maxWidth: 240 }}
-                  key={provider._id}
-                >
-                  <div className="row no-gutters">
-                    <div className="col-md-4">
-                      <img
-                        src="https://img.icons8.com/color/96/000000/salesman.png"
-                        className="card-img"
-                        alt="POS"
-                      />
-                    </div>
-                    <div className="col-md-8">
-                      <div className="card-body">
-                        <h5 className="card-title">{provider.nombre}</h5>
-                        <h6 className="card-text">
-                          Marca: {provider.marcaproveedor}
-                        </h6>
+                <Fragment key={provider._id}>
+                  <div
+                    className="card ms-1 animate__animated animate__fadeIn"
+                    style={{ maxWidth: 240 }}
+                  >
+                    <div className="row no-gutters">
+                      <div className="col-md-4">
+                        <img
+                          src="https://img.icons8.com/color/96/000000/salesman.png"
+                          className="card-img"
+                          alt="POS"
+                        />
+                      </div>
+                      <div className="col-md-8">
+                        <div className="card-body">
+                          <h5 className="card-title">{provider.nombre}</h5>
+                          <h6 className="card-text">
+                            Marca: {provider.marcaproveedor}
+                          </h6>
 
-                        <p className="card-text">
-                          <small className="text-muted">
-                            Tel: {provider.telefono}
-                            <button
-                              className="btn btn-outline-info mr-1"
-                              onClick={(e) => buscarProveedor(e, provider._id)}
-                            >
-                              <FontAwesomeIcon icon={faEdit} />
-                            </button>
-                            <button
-                              className="btn btn-outline-danger"
-                              onClick={() => eliminar(provider._id)}
-                            >
-                              <FontAwesomeIcon icon={faTrash} />
-                            </button>
-                          </small>
-                        </p>
+                          <p className="card-text">
+                            <small className="text-muted">
+                              Tel: {provider.telefono}
+                              <button
+                                className="btn btn-outline-info mr-1"
+                                onClick={(e) =>
+                                  buscarProveedor(e, provider._id)
+                                }
+                              >
+                                <FontAwesomeIcon icon={faEdit} />
+                              </button>
+                              <button
+                                className="btn btn-outline-danger"
+                                onClick={() => eliminar(provider._id)}
+                              >
+                                <FontAwesomeIcon icon={faTrash} />
+                              </button>
+                            </small>
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </Fragment>
               );
             })}
           </Contenedor2>
