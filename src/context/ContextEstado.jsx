@@ -9,7 +9,6 @@ const ProveedorState = ({ children }) => {
   const [total, setTotal] = useState(0);
   const [totalProd, setTotalProd] = useState(0);
   const [perfil, setPerfil] = useState("");
-  const [empleados, setEmpleados] = useState([]);
   const [pagar, setPagar] = useState("");
   const [articulos, setArticulos] = useState(0);
   const [clientes, setClientes] = useState([""]);
@@ -31,7 +30,7 @@ const ProveedorState = ({ children }) => {
       setTituloPOS("sistema");
       return;
     }
-    if( sessionStorage.getItem("perfil") === "Vendedor"){
+    if( sessionStorage.getItem("perfil") === ("Vendedor" || "Cajero")){
       const id = sessionStorage.getItem("jefe");
       const token = sessionStorage.getItem("token");
       const respuesta = await Axios.get("/sistema/obtener/" + id, {
@@ -92,8 +91,6 @@ const ProveedorState = ({ children }) => {
         setVentaProducto,
         handleInputChange,
         handleSubmit,
-        empleados,
-        setEmpleados,
         perfil,
         setPerfil,
         setTituloPOS,

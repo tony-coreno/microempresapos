@@ -31,6 +31,8 @@ import Kardex from './Kardex';
 import VentasDia from '../reports/VentasDia';
 import VentasMes from '../reports/VentasMes';
 import FiltrarVentas from '../reports/FiltrarVentas';
+import EditarEmpleado from '../users/EditarEmpleado';
+import EmpleadosGeneral from '../users/EmpleadosGeneral';
 import "bootstrap/dist/css/bootstrap.css";
 const App = () => {
   return (
@@ -62,6 +64,8 @@ const App = () => {
                 <Route path="/reportes" component={Reportes} />
                 <Route path="/proveedores" component={Proveedores} />
                 <Route path="/notas" component={Notas} />
+                <Route path ="/editar-empleado" component={EditarEmpleado} />
+                <Route path ="/empleado" component={EmpleadosGeneral} />
                 <Route
                   path="/administrar-venta"
                   component={AdministrarVentas}

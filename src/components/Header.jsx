@@ -32,7 +32,7 @@ const Header = () => {
                   <NavLink to="/" exact={true}>
                     Dashboard{" "}
                   </NavLink>
-                  <NavLink to="/empleados">Empleados </NavLink>
+                  <NavLink to="/empleado">Empleados </NavLink>
                   <NavLink to="/almacen">Almacén </NavLink>
                   <NavLink to="/clientes">Clientes </NavLink>
                   <NavLink to="/ventas">Ventas </NavLink>

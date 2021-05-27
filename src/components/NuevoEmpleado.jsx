@@ -74,7 +74,7 @@ const NuevoEmpleado = () => {
     <>
       <main className="caja-contenido col-12">
         <div>
-          <NavLink to="/empleados">
+          <NavLink to="/empleado">
             <Button className="btn btn-info">
               <FontAwesomeIcon icon={faArrowLeft} />
             </Button>

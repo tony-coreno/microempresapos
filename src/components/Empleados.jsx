@@ -1,27 +1,20 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 import { Button, Navbar } from "reactstrap";
-import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faArrowLeft,
   faFileExcel,
   faFilePdf,
   faSearch,
-  faTrashAlt,
-  faUserEdit,
-  faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import { NavLink } from "react-router-dom";
-import { ContextEstado } from "../context/ContextEstado";
-import ActualizarEmpleados from "../modals/ActualizarEmpleados";
-import "bootstrap/dist/css/bootstrap.css";
+import styled from "styled-components";
+// import "bootstrap/dist/css/bootstrap.css";
 // import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 const Empleados = () => {
-  const [modal, setModal] = useState(false);
-  const [info, setInfo] = useState([])
-  const { empleados, setEmpleados } = useContext(ContextEstado);
+  const [empleados, setEmpleados] = useState([]);
   useEffect(() => {
     obtenerEmpleados();
   }, []);
@@ -48,30 +41,6 @@ const Empleados = () => {
     );
     setEmpleados(respuesta.data);
   };
-  const eliminar = async (id) => {
-    const token = sessionStorage.getItem("token");
-    const respuesta = await Axios.delete("/empleados/eliminar/" + id, {
-      headers: { autorizacion: token },
-    });
-    const mensaje = respuesta.data.mensaje;
-    Swal.fire({
-      icon: "success",
-      title: mensaje,
-      showConfirmButton: false,
-      timer: 1500,
-    });
-    obtenerEmpleados();
-  };
-
-  const buscarEmpleadoID = async (e, emp) => {
-    e.preventDefault();
-    const id = emp;
-    const respuesta = await Axios.get("/empleados/buscar/" + id);
-    setInfo(respuesta.data);
-    setModal(true)
-    console.log(info)
-  };
-
   return (
     <>
       {/* <Barra /> */}
@@ -87,17 +56,16 @@ const Empleados = () => {
     </div> */}
       <Navbar>
         <Herramientas className="">
-          <NavLink to="/agregar-empleado">
+          <NavLink to="/empleado">
             <Boton
               className="btn btn-info d-flex d-flex justify-content-between align-items-center pr-2"
               data-toggle="tooltip"
               data-placement="right"
-              title="Agregar Empleado"
+              title="Regresar"
             >
-              <FontAwesomeIcon icon={faUserPlus} />
+              <FontAwesomeIcon icon={faArrowLeft} />
             </Boton>
           </NavLink>
-
           <NavLink to="/agregar-empleado">
             <Boton
               className="btn btn-danger d-flex d-flex justify-content-between align-items-center pr-2"
@@ -133,9 +101,7 @@ const Empleados = () => {
               <FontAwesomeIcon icon={faSearch} />
             </div>
           </div>
-        ) : (
-          null
-        )}
+        ) : null}
       </Navbar>
       <div className="table-responsive table-borderless table-hover">
         <Tabla>
@@ -162,11 +128,15 @@ const Empleados = () => {
                         <th>Usuario</th>
                         <th>Perfil</th>
                         <th>Estado</th>
-                        <th>Opciones</th>
                       </tr>
                     </thead>
                     <tbody>
                       {empleados.map((empleado, i) => {
+                        let clase = "alert alert-success";
+
+                        if(empleado.estado === "Inactivo"){
+                          clase = "alert alert-danger"
+                        }
                         return (
                           <tr key={empleado._id}>
                             <td>{i + 1}</td>
@@ -175,21 +145,7 @@ const Empleados = () => {
                             <td>{empleado.apellidopaterno}</td>
                             <td>{empleado.usuario}</td>
                             <td>{empleado.perfil}</td>
-                            <td>{empleado.estado}</td>
-                            <td>
-                              <button
-                                className="bn btn-outline-info mr-2"
-                                onClick={ (e)=> buscarEmpleadoID(e, empleado._id)}
-                              >
-                                <FontAwesomeIcon icon={faUserEdit} />
-                              </button>
-                              <button
-                                className="bn btn-outline-dark"
-                                onClick={() => eliminar(empleado._id)}
-                              >
-                                <FontAwesomeIcon icon={faTrashAlt} />
-                              </button>
-                            </td>
+                            <td className={clase}>{empleado.estado}</td>
                           </tr>
                         );
                       })}
@@ -200,7 +156,6 @@ const Empleados = () => {
             </div>
           </div>
         </Tabla>
-        <ActualizarEmpleados setModal={setModal} modal={modal} info={info} />
       </div>
     </>
   );
