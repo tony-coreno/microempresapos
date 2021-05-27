@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import "bootstrap/dist/css/bootstrap.css";
 import styled from 'styled-components'
+import { ContextEstado } from "../context/ContextEstado";
 // import ReactHTMLTableToExcel from "react-html-table-to-excel";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import {
@@ -13,11 +14,12 @@ import styled from 'styled-components'
 //   faUserPlus,
 // } from "@fortawesome/free-solid-svg-icons";
 const Barra = () => {
+  const {tituloPos} = useContext(ContextEstado);
   return (
     <Contenedor>
     <nav>
       <div>
-        <h3 className="mt-1 text-center">SISTEMA POS</h3>
+        <Titulo className="mt-1 text-center">{tituloPos}</Titulo>
       
         {/* <ReactHTMLTableToExcel
 
@@ -75,5 +77,12 @@ border-radius: 10px;
 box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
 
 `;
+
+const Titulo = styled.h1`
+  margin-bottom: 10px;
+  font-size: 26px;
+  text-transform: uppercase;
+`;
+
 
 export default Barra;
