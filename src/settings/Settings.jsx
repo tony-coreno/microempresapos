@@ -1,10 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.css";
+import Axios from 'axios';
 import { faArrowLeft, faSave} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from 'styled-components';
 import { ContextEstado } from "../context/ContextEstado";
+import "bootstrap/dist/css/bootstrap.css";
 
 const Settings = () => {
   // const boton = document.getElementById("boton");
@@ -15,6 +16,22 @@ const Settings = () => {
   // //     pass.type = "text";
   // //   }
   // // };
+  const obtenerTitulo = async () => {
+    const id = sessionStorage.getItem("idusuario");
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.get("/sistema/obtener/" + id, {
+      headers: { autorizacion: token },
+    });
+    console.log(respuesta.data)
+    // setTituloPOS(respuesta.data.nombre)
+  }; 
+  
+  
+  useEffect(()=>{
+    obtenerTitulo()
+    
+  },[])
+
 
   const {setTituloPOS} = useContext(ContextEstado);
   const [empresa, setEmpresa] = useState('');

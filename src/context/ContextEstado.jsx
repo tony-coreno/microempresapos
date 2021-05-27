@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import Swal from 'sweetalert2'
 const ContextEstado = React.createContext();
@@ -16,11 +16,13 @@ const ProveedorState = ({ children }) => {
   const [proveedores, setProveedores] = useState([""]);
   const [metodopago, setMetodoPago] = useState("");
   const [pagoSelected, setPagoSelected] = useState([]);
+  const [tituloPos, setTituloPOS] = useState("Sistema Pos");
+
   const handleInputChange = (e) => {
     setListaProducto(e.target.value);
   };
 
-  const [tituloPos, setTituloPOS] = useState("Sistema Pos");
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
