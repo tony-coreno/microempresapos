@@ -44,14 +44,14 @@ const NuevoCliente = () => {
       showConfirmButton: false,
     });
     setTimeout(() => {
-      window.location.href = "/clientes";
+      window.location.href = "/cliente";
     }, 1000);
   };
   return (
     <>
       <main className="caja-contenido col-12">
         <div>
-          <NavLink to="/clientes">
+          <NavLink to="/cliente">
             <Button className="btn btn-info">
               <FontAwesomeIcon icon={faArrowLeft} />
             </Button>

@@ -7,7 +7,6 @@ import Ventas from "./Ventas";
 import NuevoProducto from "./../products/NuevoProducto";
 import Empleados from "./Empleados";
 import VistaProductoCard from '../products/VistaProductoCard'
-import Clientes from "./Clientes";
 import Ayuda from "./Ayuda";
 import NuevoCliente from "./../clients/NuevoCliente";
 import NuevoProveedor from '../providers/NuevoProveedor';
@@ -34,6 +33,7 @@ import FiltrarVentas from '../reports/FiltrarVentas';
 import EditarEmpleado from '../users/EditarEmpleado';
 import EmpleadosGeneral from '../users/EmpleadosGeneral';
 import "bootstrap/dist/css/bootstrap.css";
+import ClientesGeneral from "../clients/ClientesGeneral";
 const App = () => {
   return (
     <>
@@ -53,7 +53,6 @@ const App = () => {
                 <Route path="/empleados" component={Empleados} />
                 <Route path="/almacen" component={Almacen} />
                 <Route path="/ventas" component={Ventas} />
-                <Route path="/clientes" component={Clientes} />
                 <Route path="/ayuda" component={Ayuda} />
                 <Route path="/kardex" component={Kardex} />
                 <Route path="/productos" component={Productos} />
@@ -83,6 +82,7 @@ const App = () => {
                 <Route path="/ventas-dia" component={VentasDia} />
                 <Route path="/ventas-mes" component={VentasMes} />
                 <Route path="/filtrar-ventas" component={FiltrarVentas} />
+                <Route path="/cliente" component={ClientesGeneral} />
                 <Route component={Error} />
               </Switch>
             </Main>

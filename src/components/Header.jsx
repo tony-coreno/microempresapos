@@ -34,7 +34,7 @@ const Header = () => {
                   </NavLink>
                   <NavLink to="/empleado">Empleados </NavLink>
                   <NavLink to="/almacen">Almacén </NavLink>
-                  <NavLink to="/clientes">Clientes </NavLink>
+                  <NavLink to="/cliente">Clientes </NavLink>
                   <NavLink to="/ventas">Ventas </NavLink>
                   <NavLink to="/ayuda">Ayuda </NavLink>
                 </MenuNav>

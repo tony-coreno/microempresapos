@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { ContextEstado } from "../context/ContextEstado";
 import { faArrowLeft, faSave} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from 'styled-components';
-import { ContextEstado } from "../context/ContextEstado";
-import "bootstrap/dist/css/bootstrap.css";
+
 
 const Settings = () => {
   // const boton = document.getElementById("boton");
@@ -23,7 +23,6 @@ const Settings = () => {
     setTituloPOS(empresa);
   }  
   return (
-
     <>
       <main className="caja-contenido col-12">
         <div>
@@ -36,11 +35,8 @@ const Settings = () => {
         </div>
         <form onSubmit={onSubmit}>
           <hr />
-
-
           <div className="row">
             <div className="col">
-       
             <h6>Nombre</h6>
               <input type="text" className="form-control mt-2"
               placeholder="Nombre del Negocio"
@@ -55,7 +51,6 @@ const Settings = () => {
             </select>
             </div>
           </div>
-
           <hr />
           <div className="form-group col-mt-4">
             <h5>Fuente</h5>
@@ -63,9 +58,7 @@ const Settings = () => {
             <hr />
             <button className="btn btn-outline-dark mt-2" >Disminuir</button>
           </div>
-
           <hr />
-
           <SeccionBoton>
             <button className="btn btn-outline-success"><FontAwesomeIcon icon={faSave} /> Guardar</button>
           </SeccionBoton>
@@ -77,13 +70,9 @@ const Settings = () => {
 
 export default Settings;
 
-
 const SeccionBoton = styled.div`
-
     width: 50%;
 `;
-
 const Titulo = styled.h5`
-
     text-align: center;
 `;
