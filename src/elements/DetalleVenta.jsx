@@ -43,9 +43,14 @@ const DetalleVenta = () => {
           className="form-control mt-"
         >
           {
-            pagos.map((pago) => (
-              <option key={pago._id}>{pago.nombre}</option>
-          ))
+            pagos.map((pago) =>{
+              if(!pago.estado){
+                return;
+              }
+              return(
+                <option key={pago._id}>{pago.nombre}</option>
+              )
+            })
           }
         </select>
         <form onSubmit={codigo}>

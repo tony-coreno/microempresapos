@@ -10,6 +10,7 @@ import {
   faEdit,
   faTrash,
   faUserFriends,
+  faSearch
 } from "@fortawesome/free-solid-svg-icons";
 import { Fragment } from "react";
 
@@ -50,6 +51,20 @@ const Proveedores = () => {
     });
     obtenerProveedores();
   };
+  const buscar = async (e) => {
+    if (e.target.value === "") {
+      return obtenerProveedores();
+    }
+    const buscar = e.target.value;
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.get(
+      `/proveedores/buscar/${buscar}/${sessionStorage.getItem("idusuario")}`,
+      {
+        headers: { autorizacion: token },
+      }
+    );
+    setProveedores(respuesta.data);
+  }
 
   return (
     <div>
@@ -69,25 +84,33 @@ const Proveedores = () => {
             </NavLink>
             <h5>Proveedores</h5>
           </Navbar>
-          {/* <Buscar
-            className="form-control sm-col-1"
-            type="search"
-            placeholder="Buscar proveedor..."
-            aria-label="Search"
-            autoFocus
-          ></Buscar> */}
         </Contenedor3>
       ) : (
-        <></>
+        null
       )}
       <Contenedorapp>
         <Contenedor>
           {info.length === 0 ? (
-            <img
-              className="img-thumbnail"
-              src="https://img.icons8.com/plasticine/100/000000/total-sales.png"
-              alt="POS"
-            />
+            <>
+              <img
+                className="img-thumbnail"
+                src="https://img.icons8.com/plasticine/100/000000/total-sales.png"
+                alt="POS"
+              />
+              <div className="">
+                <div className="input-group">
+                  <Buscar
+                    className="form-control mr-sm-4"
+                    type="search"
+                    placeholder="Buscar por nombre..."
+                    aria-label="Search"
+                    autoFocus
+                    onChange={buscar}
+                  ></Buscar>
+                  <FontAwesomeIcon icon={faSearch} />
+                </div>
+              </div>
+            </>
           ) : (
             <ProveedorInfo
               setInfo={setInfo}
@@ -207,7 +230,9 @@ const Contenedor3 = styled.div`
   border-radius: 20px;
   box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
 `;
-// const Buscar = styled.input`
-//   border-radius: 10px;
-// `;
+
+const Buscar = styled.input`
+  border-radius: 10px;
+`;
+
 export default Proveedores;

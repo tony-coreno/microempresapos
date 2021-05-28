@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import Axios from 'axios';
+import Axios from "axios";
 import styled from "styled-components";
 import { Switch, NavLink, Route } from "react-router-dom";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 import Reportes from "./Reportes";
 import CrearVenta from "./CrearVenta";
 const Almacen = () => {
-
   const [pagos, setPagos] = useState([]);
   const [nombre, setNombre] = useState("");
+  // const [nuevoEstado, setNuevoEstado] = useState("");
 
   useEffect(() => {
     obtenerPagos();
@@ -20,12 +20,12 @@ const Almacen = () => {
     const respuesta = await Axios.get("/pagos/pagoadmin/" + id, {
       headers: { autorizacion: token },
     });
-    setPagos(respuesta.data)
-  };  
+    setPagos(respuesta.data);
+  };
 
   const guardar = async (e) => {
     e.preventDefault();
-    if(nombre === ""){
+    if (nombre === "") {
       Swal.fire({
         icon: "error",
         title: "Agrega pago válido",
@@ -36,7 +36,7 @@ const Almacen = () => {
     }
     const pago = {
       jefe: sessionStorage.getItem("idusuario"),
-      nombre: nombre
+      nombre: nombre,
     };
     const token = sessionStorage.getItem("token");
     const respuesta = await Axios.post("/pagos/crear", pago, {
@@ -68,6 +68,25 @@ const Almacen = () => {
     });
     obtenerPagos();
   };
+  const actualizar = async (e, medio) => {
+    e.preventDefault();
+    const id = medio._id;
+    const token = sessionStorage.getItem("token");
+    const pago = {
+      estado: `${!medio.estado}`,
+    };
+    const respuesta = await Axios.put("/pagos/actualizar/" + id, pago, {
+      headers: { autorizacion: token },
+    });
+    const mensaje = respuesta.data.mensaje;
+    Swal.fire({
+      icon: "success",
+      title: mensaje,
+      showConfirmButton: false,
+      timer: 1000,
+    });
+    obtenerPagos();
+  };
   return (
     <div>
       <Contenedorapp>
@@ -82,92 +101,96 @@ const Almacen = () => {
             <Route path="/reportes" component={Reportes} />
           </Switch>
         </main>
-          <h3>Administrar</h3>
-          <form onSubmit={guardar}>
-            <hr />
-            <p></p>
-            <div className="row">
-              <div className="col">
-                <h6>Agregar medio de pago</h6>
-                <input
-                  type="text"
-                  className="form-control mt-2"
-                  placeholder="Inserte medio"
-                  onChange={(e) => setNombre(e.target.value)}
-                  autoFocus
-                />
-              </div>
-              <div className="col">
-                <h6>IVA (16%)</h6>
-                <select id="inputState" className="form-control mt-2">
-                  <option>Activo</option>
-                  <option>Inactivo</option>
-                </select>
-              </div>
+        <h3>Administrar</h3>
+        <form onSubmit={guardar}>
+          <hr />
+          <p></p>
+          <div className="row">
+            <div className="col">
+              <h6>Agregar medio de pago</h6>
+              <input
+                type="text"
+                className="form-control mt-2"
+                placeholder="Inserte medio"
+                onChange={(e) => setNombre(e.target.value)}
+                autoFocus
+              />
             </div>
-            <hr />
-            <div className="table-responsive table-borderless table-hover">
-              <div className="container">
-                <div className="row">
-                  <div className="col-12">
-                    <div className="card">
-                      <div className="bg-light card-header py-1">
-                        <Titulo>Detalle de venta</Titulo>
-                      </div>
-                      <table className="table table-responsive-sm ">
-                        <thead className="light">
-                          <tr>
-                            <th>Medio de pago</th>
-                            <th>Estado</th>
-                            <th>Eliminar</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {
-                            pagos.map((medio, i) => {
-                              if(medio.nombre === ""){
-                                return
-                              }
-                              let valor = "";
-                              let clase =""
-                              if(medio.estado){
-                                valor ="Activo"
-                                clase ="btn btn-outline-success"
-                              }
-                              else{
-                                valor= "Inactivo"
-                                clase= "btn btn-outline-info"
-                              }
-                              return (
-                                <tr key={medio._id}>
-                                  <td>{medio.nombre}</td>
-                                  <td>
-                                    <button className={clase}>
-                                      {valor}
-                                    </button>
-                                  </td>
-                                  <td>
-                                    <button className="btn btn-outline-danger"
-                                    onClick={(e) => eliminar (e, medio._id)}>
-                                      Eliminar
-                                    </button>
-                                  </td>
-                                </tr>
-                              );
-                            })
-                         }
-                        </tbody>
-                      </table>
+            <div className="col">
+              <h6>IVA (16%)</h6>
+              <select id="inputState" className="form-control mt-2">
+                <option>Activo</option>
+                <option>Inactivo</option>
+              </select>
+            </div>
+          </div>
+        </form>
+        <hr />
+        <form>
+          <div className="table-responsive table-borderless table-hover">
+            <div className="container">
+              <div className="row">
+                <div className="col-12">
+                  <div className="card">
+                    <div className="bg-light card-header py-1">
+                      <Titulo>Detalle de venta</Titulo>
                     </div>
+                    <table className="table table-responsive-sm ">
+                      <thead className="light">
+                        <tr>
+                          <th>Medio de pago</th>
+                          <th>Estado</th>
+                          <th>Eliminar</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {pagos.map((medio, i) => {
+                          if (medio.nombre === "") {
+                            return;
+                          }
+                          let valor = "";
+                          let clase = "";
+                          if (medio.estado) {
+                            valor = "Activo";
+                            clase = "btn btn-outline-success";
+                          } else {
+                            valor = "Inactivo";
+                            clase = "btn btn-outline-info";
+                          }
+                          return (
+                            <tr key={medio._id}>
+                              <td>{medio.nombre}</td>
+                              <td>
+                                <button
+                                  className={clase}
+                                  onClick={(e) => actualizar(e, medio)}
+                                >
+                                  {valor}
+                                </button>
+                              </td>
+                              <td>
+                                <button
+                                  className="btn btn-outline-danger"
+                                  onClick={(e) => eliminar(e, medio._id)}
+                                >
+                                  Eliminar
+                                </button>
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
             </div>
-            <hr />
-            <SeccionBoton>
-              <button className="btn btn-outline-success">Guardar</button>
-            </SeccionBoton>
-          </form>
+          </div>
+          <hr />
+          <SeccionBoton>
+            <button className="btn btn-outline-success">Guardar</button>
+          </SeccionBoton>
+        </form>
       </Contenedorapp>
     </div>
   );

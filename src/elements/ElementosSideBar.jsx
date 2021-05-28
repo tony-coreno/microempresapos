@@ -107,7 +107,7 @@ const ElementosSideBar = () => {
         <FontAwesomeIcon icon={faTruck} />
       </Link>
       <Link
-        to="clientes"
+        to="cliente"
         className="list-group-item list-group-item-action bg-light"
         data-toggle="tooltip"
         data-placement="right"
@@ -149,7 +149,7 @@ const ElementosSideBar = () => {
           </Link>
         </>
       ) : (
-        <></>
+        null
       )}
       <Button
         color="light"
