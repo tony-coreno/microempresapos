@@ -32,6 +32,7 @@ import VentasMes from '../reports/VentasMes';
 import FiltrarVentas from '../reports/FiltrarVentas';
 import EditarEmpleado from '../users/EditarEmpleado';
 import EmpleadosGeneral from '../users/EmpleadosGeneral';
+import ClientesTabla from './ClientesTabla';
 import "bootstrap/dist/css/bootstrap.css";
 import ClientesGeneral from "../clients/ClientesGeneral";
 const App = () => {
@@ -60,6 +61,7 @@ const App = () => {
                 <Route path="/categorias" component={Categorias} />
                 <Route path="/devoluciones" component={Devoluciones} />
                 <Route path="/crear-venta" component={CrearVenta} />
+                <Route path="/clientes-tabla" component={ClientesTabla} />
                 <Route path="/reportes" component={Reportes} />
                 <Route path="/proveedores" component={Proveedores} />
                 <Route path="/notas" component={Notas} />

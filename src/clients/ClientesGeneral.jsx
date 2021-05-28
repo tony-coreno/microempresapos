@@ -7,8 +7,10 @@ import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEdit,
+  faTools,
   faTrash,
   faUserFriends,
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import { Fragment } from "react";
 import ClienteInfo from "./ClienteInfo";
@@ -51,7 +53,20 @@ const ClientesGeneral = () => {
     });
     obtenerClientes();
   };
-
+  const buscar = async (e) => {
+    if (e.target.value === "") {
+      return obtenerClientes();
+    }
+    const buscar = e.target.value;
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.get(
+      `/clientes/buscar/${buscar}/${sessionStorage.getItem("idusuario")}`,
+      {
+        headers: { autorizacion: token },
+      }
+    );
+    setclientes(respuesta.data);
+  };
   return (
     <div>
       {sessionStorage.getItem("token") &&
@@ -63,38 +78,50 @@ const ClientesGeneral = () => {
                 className="btn btn-info d-flex d-flex justify-content-between align-items-center"
                 data-toggle="tooltip"
                 data-placement="right"
-                title="Agregar proveedor"
+                title="Agregar cliente"
               >
                 <FontAwesomeIcon icon={faUserFriends} />
               </Button>
             </NavLink>
+            <NavLink to="/clientes-tabla">
+              <Button
+                className="btn btn-info d-flex d-flex justify-content-between align-items-center"
+                data-toggle="tooltip"
+                data-placement="right"
+                title="Clientes tabla"
+              >
+                <FontAwesomeIcon icon={faTools} />
+              </Button>
+            </NavLink>
             <h5>Clientes General</h5>
           </Navbar>
-          {/* <Buscar
-            className="form-control sm-col-1"
-            type="search"
-            placeholder="Buscar proveedor..."
-            aria-label="Search"
-            autoFocus
-          ></Buscar> */}
         </Contenedor3>
-      ) : (
-        null
-      )}
+      ) : null}
       <Contenedorapp>
         <Contenedor>
           {info.length === 0 ? (
-            <img
-              className="img-thumbnail"
-              src="https://img.icons8.com/plasticine/100/000000/total-sales.png"
-              alt="POS"
-            />
+            <>
+              <img
+                className="img-thumbnail"
+                src="https://img.icons8.com/plasticine/100/000000/total-sales.png"
+                alt="POS"
+              />
+              <div className="">
+                <div className="input-group">
+                  <Buscar
+                    className="form-control mr-sm-4"
+                    type="search"
+                    placeholder="Buscar por nombre..."
+                    aria-label="Search"
+                    autoFocus
+                    onChange={buscar}
+                  ></Buscar>
+                  <FontAwesomeIcon icon={faSearch} />
+                </div>
+              </div>
+            </>
           ) : (
-            <ClienteInfo
-              setInfo={setInfo}
-              info={info}
-              key={clientes._id}
-            />
+            <ClienteInfo setInfo={setInfo} info={info} key={clientes._id} />
           )}
         </Contenedor>
         <aside>
@@ -109,7 +136,7 @@ const ClientesGeneral = () => {
                     <div className="row no-gutters">
                       <div className="col-md-4">
                         <img
-                          src="https://img.icons8.com/color/96/000000/salesman.png"
+                          src="https://img.icons8.com/color/96/000000/permanent-job.png"
                           className="card-img"
                           alt="POS"
                         />
@@ -125,10 +152,8 @@ const ClientesGeneral = () => {
                             <small className="text-muted">
                               Tel: {cliente.telefono}
                               <button
-                                className="btn btn-outline-info mr-1"
-                                onClick={(e) =>
-                                  buscarCliente(e, cliente._id)
-                                }
+                                className="btn btn-outline-primary mr-1"
+                                onClick={(e) => buscarCliente(e, cliente._id)}
                               >
                                 <FontAwesomeIcon icon={faEdit} />
                               </button>
@@ -208,7 +233,8 @@ const Contenedor3 = styled.div`
   border-radius: 20px;
   box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
 `;
-// const Buscar = styled.input`
-//   border-radius: 10px;
-// `;
+const Buscar = styled.input`
+  border-radius: 10px;
+`;
+
 export default ClientesGeneral;

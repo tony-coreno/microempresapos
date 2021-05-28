@@ -13,33 +13,33 @@ import styled from "styled-components";
 // import "bootstrap/dist/css/bootstrap.css";
 // import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
-const Empleados = () => {
-  const [empleados, setEmpleados] = useState([]);
+const ClientesTabla = () => {
+  const [clientes, setClientes] = useState([]);
   useEffect(() => {
-    obtenerEmpleados();
+    obtenerClientes();
   }, []);
   //obtener empleados del admin
-  const obtenerEmpleados = async () => {
+  const obtenerClientes = async () => {
     const id = sessionStorage.getItem("idusuario");
     const token = sessionStorage.getItem("token");
-    const respuesta = await Axios.get("/empleados/listarporadmin/" + id, {
+    const respuesta = await Axios.get("/clientes/listarporadmin/" + id, {
       headers: { autorizacion: token },
     });
-    setEmpleados(respuesta.data);
+    setClientes(respuesta.data);
   };
   const buscar = async (e) => {
     if (e.target.value === "") {
-      return obtenerEmpleados();
+      return obtenerClientes();
     }
     const buscar = e.target.value;
     const token = sessionStorage.getItem("token");
     const respuesta = await Axios.get(
-      `/empleados/buscar/${buscar}/${sessionStorage.getItem("idusuario")}`,
+      `/clientes/buscar/${buscar}/${sessionStorage.getItem("idusuario")}`,
       {
         headers: { autorizacion: token },
       }
     );
-    setEmpleados(respuesta.data);
+    setClientes(respuesta.data);
   };
   return (
     <>
@@ -56,9 +56,9 @@ const Empleados = () => {
     </div> */}
       <Navbar>
         <Herramientas className="">
-          <NavLink to="/empleado">
+          <NavLink to="/cliente">
             <Boton
-              className="btn btn-primary d-flex d-flex justify-content-between align-items-center pr-2"
+              className="btn btn-info d-flex d-flex justify-content-between align-items-center pr-2"
               data-toggle="tooltip"
               data-placement="right"
               title="Regresar"
@@ -66,12 +66,12 @@ const Empleados = () => {
               <FontAwesomeIcon icon={faArrowLeft} />
             </Boton>
           </NavLink>
-          <NavLink to="/agregar-empleado">
+          <NavLink to="/agregar-cliente">
             <Boton
               className="btn btn-danger d-flex d-flex justify-content-between align-items-center pr-2"
               data-toggle="tooltip"
               data-placement="right"
-              title="Imprimir empleados"
+              title="Imprimir Clientes"
             >
               <FontAwesomeIcon icon={faFilePdf} />
             </Boton>
@@ -81,7 +81,7 @@ const Empleados = () => {
               className="btn btn-success d-flex d-flex justify-content-between align-items-center pr-2"
               data-toggle="tooltip"
               data-placement="right"
-              title="Exportar empleados"
+              title="Exportar clientes"
             >
               <FontAwesomeIcon icon={faFileExcel} />
             </Button>
@@ -111,7 +111,7 @@ const Empleados = () => {
                 <div className="card">
                   <div className="bg-light card-header py-2">
                     <Titulo>
-                      Empleados de{" "}
+                      Clientes de{" "}
                       {sessionStorage.getItem("nombre") || "Invitado"}
                     </Titulo>
                   </div>
@@ -122,30 +122,28 @@ const Empleados = () => {
                     <thead className="light">
                       <tr>
                         <th>#</th>
-                        <th># Empleado</th>
                         <th>Nombre</th>
-                        <th>Apellido Paterno</th>
-                        <th>Usuario</th>
-                        <th>Perfil</th>
-                        <th>Estado</th>
+                        <th>Apellido</th>
+                        <th>Teléfono</th>
+                        <th>Código Prom.</th>
+                        <th>Cliente</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {empleados.map((empleado, i) => {
+                      {clientes.map((cliente, i) => {
                         let clase = "alert alert-success";
 
-                        if(empleado.estado === "Inactivo"){
-                          clase = "alert alert-danger"
+                        if(cliente.tipocliente === "Minorista"){
+                          clase = "alert alert-warning"
                         }
                         return (
-                          <tr key={empleado._id}>
+                          <tr key={cliente._id}>
                             <td>{i + 1}</td>
-                            <td>{empleado.numeroempleado}</td>
-                            <td>{empleado.nombre}</td>
-                            <td>{empleado.apellidopaterno}</td>
-                            <td>{empleado.usuario}</td>
-                            <td>{empleado.perfil}</td>
-                            <td className={clase}>{empleado.estado}</td>
+                            <td>{cliente.nombre}</td>
+                            <td>{cliente.apellido}</td>
+                            <td>{cliente.telefono}</td>
+                            <td>{cliente.codigopromocional}</td>
+                            <td className={clase}>{cliente.tipocliente}</td>
                           </tr>
                         );
                       })}
@@ -189,4 +187,4 @@ const Boton = styled.button`
 const Buscar = styled.input`
   border-radius: 10px;
 `;
-export default Empleados;
+export default ClientesTabla;
