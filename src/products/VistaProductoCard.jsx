@@ -8,7 +8,6 @@ import styled from "styled-components";
 
 const VistaProductoCard = () => {
   const [productos, setProductos] = useState([""]);
-  const [total, setTotal] = useState(0);
   useEffect(() => {
     obtenerProductos();
   }, []);
@@ -33,12 +32,7 @@ const VistaProductoCard = () => {
       }
     );
     setProductos(respuesta.data);
-    alert(productos)
-
   };
-
-
-
   return (
     <div>
       <Navbar>
@@ -96,10 +90,6 @@ const VistaProductoCard = () => {
               <li className="list-group-item d-flex justify-content-between align-items-center">
                 Existencia
                 <span className="badge badge-danger badge-pill">1</span>
-              </li>
-              <li className="list-group-item d-flex justify-content-between align-items-center">
-                {`Total en productos: $ ${total}`}
-                <span className="badge badge-success badge-pill">1</span>
               </li>
             </ul>
           </div>

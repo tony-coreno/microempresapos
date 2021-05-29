@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Switch, NavLink, Route } from "react-router-dom";
 import Productos from "./Productos";
-import CategoriasProductos from '../products/CategoriasProductos';
+import CategoriasProductos from "../products/CategoriasProductos";
 import { Button, Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -16,16 +16,16 @@ import {
 const Categorias = () => {
   return (
     <div>
-        <Menu>
-          <NavLink to="/productos">Productos</NavLink>
-          <NavLink to="/categorias">Categorías</NavLink>
-          <NavLink to="/devoluciones">Devoluciones</NavLink>
-        </Menu>
-        <main>
-          <Switch>
-            <Route path="/productos" component={Productos} />
-          </Switch>
-        </main>
+      <Menu>
+        <NavLink to="/productos">Productos</NavLink>
+        <NavLink to="/categorias">Categorías</NavLink>
+        <NavLink to="/devoluciones">Devoluciones</NavLink>
+      </Menu>
+      <main>
+        <Switch>
+          <Route path="/productos" component={Productos} />
+        </Switch>
+      </main>
       <Navbar>
         <Herramientas className="">
           <NavLink to="/agregar-producto">
@@ -84,9 +84,7 @@ const Categorias = () => {
               <FontAwesomeIcon icon={faSearch} />
             </div>
           </div>
-        ) : (
-          null
-        )}
+        ) : null}
       </Navbar>
       <Contenedorapp>
         <Contenedor2>
@@ -97,35 +95,35 @@ const Categorias = () => {
           <Contenedor2>
             <h3>Productos</h3>
             <table className="table">
-        <thead className="thead-light">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Categoría</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Opción</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
+              <thead className="thead-light">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Categoría</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Opción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
           </Contenedor2>
         </aside>
       </Contenedorapp>
