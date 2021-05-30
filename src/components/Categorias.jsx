@@ -14,6 +14,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Categorias = () => {
+
+  // const obtenerCategorias = async () => {
+  //   const id = sessionStorage.getItem("idusuario");
+  //   const token = sessionStorage.getItem("token");
+  //   const respuesta = await Axios.get("/productos/listarporadmin/" + id, {
+  //     headers: { autorizacion: token },
+  //   });
+  //   setProductos(respuesta.data);
+  // };
+
+
+
   return (
     <div>
       <Menu>
