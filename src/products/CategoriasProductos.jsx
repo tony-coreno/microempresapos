@@ -54,16 +54,18 @@ const CategoriasProductos = ({ categorias, obtenerCategorias }) => {
         </thead>
         <tbody className="text-center">
           {categorias.map((categoria, i) => {
+            if(categoria.nombre === ""){
+              return;
+            }
             let estado = "Activo";
             let clase = "btn btn-outline-success";
             if (!categoria.estado) {
               estado = "Inactivo";
               clase = "btn btn-outline-info";
             }
-
             return (
               <tr key={categoria._id}>
-                <th scope="row">{i + 1}</th>
+                <th scope="row">{i}</th>
                 <td>{categoria.nombre}</td>
                 <td>
                   <button

@@ -97,9 +97,7 @@ const App = () => {
         </Route>
         <Login />
         </>
-
       )}
-
     </>
   );
 };

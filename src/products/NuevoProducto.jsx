@@ -3,14 +3,13 @@ import { NavLink } from "react-router-dom";
 import Axios from "axios";
 import { Button } from "reactstrap";
 import {
+  faArchive,
   faArrowLeft,
   faLayerGroup,
   faSave,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Swal from "sweetalert2";
-import "bootstrap/dist/css/bootstrap.css";
-
 import styled from "styled-components";
 import ModalUnidadProducto from "../modals/ModalUnidadProducto";
 
@@ -21,7 +20,7 @@ const NuevoProducto = () => {
   const [existencia, setExistencia] = useState("");
   const [precioventa, setPrecioventa] = useState("");
   const [marca, setMarca] = useState("");
-  const [categoriaSelected, setCategoriaSelected] = useState([""]);
+  const [categoriaSelected, setCategoriaSelected] = useState([]);
   const [categoria, setCategoria] = useState("");
   const [unidadSelected, setUnidadSelected] = useState([""]);
   const [unidad, setUnidad] = useState("");
@@ -30,25 +29,10 @@ const NuevoProducto = () => {
   const [talla, setTalla] = useState("");
 
   useEffect(() => {
-    setCategoriaSelected(["", "Bebidas", "Abarrotes", "Frituras", "Lácteos"]);
+    obtenerCategorias();
     setUnidadSelected(["", "ml", "grs", "lts", "Unidades"]);
     setEstadoSelected(["", "Activo", "Inactivo", "Agotado"]);
   }, []);
-
-  const limpiar = () => {
-    setSku("");
-    setProducto("");
-    setExistencia("");
-    setPrecioventa("");
-    setMarca("");
-    setCategoriaSelected([""]);
-    setCategoria("");
-    setUnidadSelected([""]);
-    setUnidad("");
-    setEstadoSelected([]);
-    setEstado("");
-    setTalla("");
-  };
 
   const guardar = async (e) => {
     e.preventDefault();
@@ -75,31 +59,46 @@ const NuevoProducto = () => {
       showConfirmButton: false,
       timer: 500,
     });
-       setTimeout(() => {
-         window.location.href = "/agregar-producto";
-       }, 1000);
-    // limpiar();
+    setTimeout(() => {
+      window.location.href = "/agregar-producto";
+    }, 1000);
+  };
+  const obtenerCategorias = async () => {
+    const id = sessionStorage.getItem("idusuario");
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.get("/categorias/obtener/" + id, {
+      headers: { autorizacion: token },
+    });
+    setCategoriaSelected(respuesta.data);
   };
   return (
     <>
       <main className="caja-contenido col-12">
         <div>
           <NavLink to="/productos">
-            <Button className="btn btn-success mr-3">
+            <Button
+              className="btn btn-success mr-3"
+              data-toggle="tooltip"
+              data-placement="right"
+              title="Regresar"
+            >
               <FontAwesomeIcon icon={faArrowLeft} />
             </Button>
           </NavLink>
-
           <Button
-            className="btn btn-warning"
+            className="btn btn-info mr-3"
             data-toggle="tooltip"
             data-placement="right"
             title="Agregar unidad"
             onClick={() => setModalUnidad(true)}
           >
-            <FontAwesomeIcon icon={faLayerGroup} />
+            <FontAwesomeIcon icon={faLayerGroup} /> Unidades
           </Button>
-
+          <NavLink to="/categorias">
+            <Button className="btn btn-info mr-3">
+              <FontAwesomeIcon icon={faArchive} /> Categorias
+            </Button>
+          </NavLink>
           <Titulo>Agregar Producto</Titulo>
         </div>
         <form onSubmit={guardar}>
@@ -124,7 +123,7 @@ const NuevoProducto = () => {
                 required
               />
             </div>
-            <div class="col">
+            <div className="col">
               <input
                 type="text"
                 className="form-control"
@@ -132,7 +131,6 @@ const NuevoProducto = () => {
                 onChange={(e) => setMarca(e.target.value)}
               />
             </div>
-
             {sessionStorage.getItem("negocio") === "Ropa" ? (
               <>
                 <div class="col">
@@ -151,11 +149,8 @@ const NuevoProducto = () => {
                   />
                 </div>
               </>
-            ) : (
-              <></>
-            )}
+            ) : null}
           </div>
-
           <div className="row mt-4">
             <div className="col">
               <input
@@ -174,9 +169,7 @@ const NuevoProducto = () => {
               />
             </div>
           </div>
-
           <hr />
-
           <div>
             <Titulo>Categoría</Titulo>
             <div className="form-group col-mt-4">
@@ -185,9 +178,14 @@ const NuevoProducto = () => {
                 onChange={(e) => setCategoria(e.target.value)}
                 value={categoria}
               >
-                {categoriaSelected.map((categorias) => (
-                  <option key={categorias}>{categorias}</option>
-                ))}
+                {categoriaSelected.map((categorias) => {
+                  if (!categorias.estado) {
+                    return;
+                  }
+                  return (
+                    <option key={categorias._id}>{categorias.nombre}</option>
+                  );
+                })}
               </select>
             </div>
             <div className="form-group col-mt-4">
@@ -217,7 +215,6 @@ const NuevoProducto = () => {
             </div>
           </div>
           <hr />
-
           <button className="btn btn-outline-success">
             <FontAwesomeIcon icon={faSave} /> Guardar
           </button>
