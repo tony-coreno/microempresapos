@@ -137,7 +137,7 @@ const EmpleadosGeneral = () => {
                     <div className="row no-gutters">
                       <div className="col-md-4">
                         <img
-                          src="https://img.icons8.com/color/96/000000/salesman.png"
+                          src="https://img.icons8.com/color/96/000000/businessman.png"
                           className="card-img"
                           alt="POS"
                         />

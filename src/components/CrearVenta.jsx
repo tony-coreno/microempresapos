@@ -10,7 +10,6 @@ import { Switch, NavLink, Route } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBarcode, faCashRegister } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
-import "bootstrap/dist/css/bootstrap.css";
 
 const CrearVenta = () => {
 

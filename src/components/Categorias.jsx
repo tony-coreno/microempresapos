@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Switch, NavLink, Route } from "react-router-dom";
+import Axios from "axios";
 import Productos from "./Productos";
 import CategoriasProductos from "../products/CategoriasProductos";
 import { Button, Navbar } from "reactstrap";
@@ -11,20 +12,27 @@ import {
   faFilter,
   faSearch,
   faShoppingBag,
+  faShoppingBasket,
 } from "@fortawesome/free-solid-svg-icons";
+import AgregarCategoria from "./AgregarCategoria";
 
 const Categorias = () => {
+  useEffect(() => {
+    obtenerCategorias();
+  }, []);
 
-  // const obtenerCategorias = async () => {
-  //   const id = sessionStorage.getItem("idusuario");
-  //   const token = sessionStorage.getItem("token");
-  //   const respuesta = await Axios.get("/productos/listarporadmin/" + id, {
-  //     headers: { autorizacion: token },
-  //   });
-  //   setProductos(respuesta.data);
-  // };
+  const [categorias, setCategorias] = useState([]);
+  const [categoria, setCategoria] = useState(true);
 
-
+  const obtenerCategorias = async () => {
+    const id = sessionStorage.getItem("idusuario");
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.get("/categorias/obtener/" + id, {
+      headers: { autorizacion: token },
+    });
+    setCategorias(respuesta.data);
+    console.log(categorias);
+  };
 
   return (
     <div>
@@ -98,14 +106,39 @@ const Categorias = () => {
           </div>
         ) : null}
       </Navbar>
+
       <Contenedorapp>
         <Contenedor2>
-          <h4>Categorias de admin</h4>
-          <CategoriasProductos />
+          {
+            <div className="container-small">
+              {categoria ? (
+                <Contenedorapp>
+                  <h4>Categorias de {sessionStorage.getItem("nombre")}</h4>
+                  <p></p>
+                  <hr />
+                  <button
+                    className="btn btn-outline-primary mt-3"
+                    onClick={() => setCategoria(false)}
+                  >
+                    <FontAwesomeIcon icon={faShoppingBasket} /> Agregar
+                    Categoría
+                  </button>
+                </Contenedorapp>
+              ) : (
+                <AgregarCategoria
+                  setCategoria={setCategoria}
+                  obtenerCategorias={obtenerCategorias}
+                />
+              )}
+            </div>
+          }
+
+          <CategoriasProductos categorias={categorias} />
         </Contenedor2>
         <aside>
           <Contenedor2>
             <h3>Productos</h3>
+            <hr />
             <table className="table">
               <thead className="thead-light">
                 <tr>
@@ -117,22 +150,10 @@ const Categorias = () => {
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
+                  <th scope="row"></th>
+                  <td>opc</td>
+                  <td></td>
+                  <td></td>
                 </tr>
               </tbody>
             </table>

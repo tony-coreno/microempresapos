@@ -27,7 +27,6 @@ const Productos = () => {
     } else {
       obtenerProductosEmpleados();
     }
-
   }, []);
 
   const obtenerProductos = async () => {
@@ -38,14 +37,14 @@ const Productos = () => {
     });
     setProductos(respuesta.data);
   };
-   const obtenerProductosEmpleados = async () => {
-     const token = sessionStorage.getItem("token");
-     const jefe = sessionStorage.getItem("jefe");
-     const respuesta = await Axios.get("/productos/listarporadmin/" + jefe, {
-       headers: { autorizacion: token },
-     });
-     setProductos(respuesta.data);
-   };
+  const obtenerProductosEmpleados = async () => {
+    const token = sessionStorage.getItem("token");
+    const jefe = sessionStorage.getItem("jefe");
+    const respuesta = await Axios.get("/productos/listarporadmin/" + jefe, {
+      headers: { autorizacion: token },
+    });
+    setProductos(respuesta.data);
+  };
   const buscar = async (e) => {
     if (e.target.value === "") {
       return obtenerProductos();
@@ -180,25 +179,26 @@ const Productos = () => {
                           <th>Opciones</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        {productos.map((producto, i) => {
-                          let {existencia} = producto;
 
-                          if (existencia < 50){
-                            surtir=`alert alert-danger text-center`
-                          }
-                          else{
-                            surtir = `alert alert-success text-center`
-                          }
-                          return (
+                      {productos.map((producto, i) => {
+                        let { existencia } = producto;
 
-                            <tr key={producto._id}>
+                        if (existencia < 50) {
+                          surtir = `alert alert-danger text-center`;
+                        } else {
+                          surtir = `alert alert-success text-center`;
+                        }
+                        return (
+                          <tbody key={producto._id}>
+                            <tr>
                               <td>{i + 1}</td>
                               <td>{producto.sku}</td>
                               <td>{producto.marca}</td>
                               <td>{producto.producto}</td>
                               <td className={surtir}>{producto.existencia}</td>
-                              <td className="text-center">{producto.precioventa}</td>
+                              <td className="text-center">
+                                {producto.precioventa}
+                              </td>
                               <td>{producto.categoria}</td>
                               <td>{producto.unidad}</td>
                               <td>{producto.estado}</td>
@@ -217,9 +217,9 @@ const Productos = () => {
                                 </button>
                               </td>
                             </tr>
-                          );
-                        })}
-                      </tbody>
+                          </tbody>
+                        );
+                      })}
                     </table>
                   </div>
                 </div>
