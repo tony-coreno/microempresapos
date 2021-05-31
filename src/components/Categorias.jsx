@@ -17,12 +17,12 @@ import {
 import AgregarCategoria from "./AgregarCategoria";
 
 const Categorias = () => {
+  const [categorias, setCategorias] = useState([]);
+  const [categoria, setCategoria] = useState(true);
+
   useEffect(() => {
     obtenerCategorias();
   }, []);
-
-  const [categorias, setCategorias] = useState([]);
-  const [categoria, setCategoria] = useState(true);
 
   const obtenerCategorias = async () => {
     const id = sessionStorage.getItem("idusuario");
@@ -33,7 +33,6 @@ const Categorias = () => {
     setCategorias(respuesta.data);
     console.log(categorias);
   };
-
   return (
     <div>
       <Menu>
@@ -133,7 +132,7 @@ const Categorias = () => {
             </div>
           }
 
-          <CategoriasProductos categorias={categorias} />
+          <CategoriasProductos categorias={categorias} obtenerCategorias={obtenerCategorias} />
         </Contenedor2>
         <aside>
           <Contenedor2>
