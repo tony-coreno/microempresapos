@@ -8,13 +8,13 @@ const Almacen = () => {
         <div>
             <Contenedorapp>
 			<Menu>
-				<NavLink to="/productos">Productos</NavLink>
+				<NavLink to="/producto">Productos</NavLink>
 				<NavLink to="/categorias">Categorías</NavLink>
                 <NavLink to="/empleados">Devoluciones</NavLink>
 			</Menu>
 			<main>
 				<Switch>
-					<Route path="/productos"  component={Productos}/>
+					<Route path="/producto"  component={Productos}/>
 					<Route path="/categorias" component={Categorias}/>
 				</Switch>
 			</main>

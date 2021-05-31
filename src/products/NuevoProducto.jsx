@@ -60,7 +60,7 @@ const NuevoProducto = () => {
       timer: 500,
     });
     setTimeout(() => {
-      window.location.href = "/agregar-producto";
+      window.location.href = "/producto";
     }, 1000);
   };
   const obtenerCategorias = async () => {
@@ -75,7 +75,7 @@ const NuevoProducto = () => {
     <>
       <main className="caja-contenido col-12">
         <div>
-          <NavLink to="/productos">
+          <NavLink to="/producto">
             <Button
               className="btn btn-success mr-3"
               data-toggle="tooltip"

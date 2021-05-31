@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Switch, NavLink, Route } from "react-router-dom";
+import {  NavLink  } from "react-router-dom";
 import Axios from "axios";
-import Productos from "./Productos";
 import CategoriasProductos from "../products/CategoriasProductos";
 import { Button, Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,6 +14,7 @@ import {
   faShoppingBasket,
 } from "@fortawesome/free-solid-svg-icons";
 import AgregarCategoria from "./AgregarCategoria";
+import BarraProductos from "../products/BarraProductos";
 
 const Categorias = () => {
   const [categorias, setCategorias] = useState([]);
@@ -35,16 +35,7 @@ const Categorias = () => {
   };
   return (
     <div>
-      <Menu>
-        <NavLink to="/productos">Productos</NavLink>
-        <NavLink to="/categorias">Categorías</NavLink>
-        <NavLink to="/devoluciones">Devoluciones</NavLink>
-      </Menu>
-      <main>
-        <Switch>
-          <Route path="/productos" component={Productos} />
-        </Switch>
-      </main>
+      <BarraProductos />
       <Navbar>
         <Herramientas className="">
           <NavLink to="/agregar-producto">
@@ -130,7 +121,10 @@ const Categorias = () => {
               )}
             </div>
           }
-          <CategoriasProductos categorias={categorias} obtenerCategorias={obtenerCategorias} />
+          <CategoriasProductos
+            categorias={categorias}
+            obtenerCategorias={obtenerCategorias}
+          />
         </Contenedor2>
         <aside>
           <Contenedor2>

@@ -69,7 +69,7 @@ const ElementosSideBar = () => {
         <span className="badge badge-success">{articulos}</span>
       </Link>
       <Link
-        to="/productos"
+        to="/producto"
         className="list-group-item list-group-item-action bg-light"
         data-toggle="tooltip"
         data-placement="right"

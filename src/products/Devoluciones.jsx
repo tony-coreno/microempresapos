@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Switch, NavLink, Route } from "react-router-dom";
-import Productos from "../components/Productos";
+import {  NavLink } from "react-router-dom";
 import { Button, Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,20 +10,12 @@ import {
   faSearch,
   faShoppingBag,
 } from "@fortawesome/free-solid-svg-icons";
+import BarraProductos from "./BarraProductos";
 
 const Devoluciones = () => {
   return (
     <div>
-        <Menu>
-          <NavLink to="/productos">Productos</NavLink>
-          <NavLink to="/categorias">Categorías</NavLink>
-          <NavLink to="/devoluciones">Devoluciones</NavLink>
-        </Menu>
-        <main>
-          <Switch>
-            <Route path="/productos" component={Productos} />
-          </Switch>
-        </main>
+      <BarraProductos />
       <Navbar>
         <Herramientas className="">
           <NavLink to="/agregar-producto">
@@ -149,11 +140,6 @@ const Contenedorapp = styled.div`
   border-radius: 10px;
   box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
 `;
-
-// const Titulo = styled.h6`
-//   color: #fff;
-//   text-align: center;
-// `;
 const Contenedor = styled.div`
   padding: 25px;
   width: 100%;

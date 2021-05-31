@@ -35,6 +35,7 @@ import EmpleadosGeneral from '../users/EmpleadosGeneral';
 import ClientesTabla from './ClientesTabla';
 import "bootstrap/dist/css/bootstrap.css";
 import ClientesGeneral from "../clients/ClientesGeneral";
+import ProductosGeneral from '../products/ProductosGeneral';
 const App = () => {
   return (
     <>
@@ -57,6 +58,7 @@ const App = () => {
                 <Route path="/ayuda" component={Ayuda} />
                 <Route path="/kardex" component={Kardex} />
                 <Route path="/productos" component={Productos} />
+                <Route path="/producto" component={ProductosGeneral} />
                 <Route path="/productos-cards" component={VistaProductoCard} />
                 <Route path="/categorias" component={Categorias} />
                 <Route path="/devoluciones" component={Devoluciones} />
