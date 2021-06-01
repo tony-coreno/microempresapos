@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Switch, NavLink, Route } from "react-router-dom";
-import Productos from "../components/Productos";
+import {  NavLink } from "react-router-dom";
 import { Button, Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,20 +10,12 @@ import {
   faSearch,
   faShoppingBag,
 } from "@fortawesome/free-solid-svg-icons";
+import ConsultaKardex from "../kardex/ConsultaKardex";
+import TablaKardex from "../kardex/TablaKardex";
 
 const Kardex = () => {
   return (
     <div>
-      <Menu>
-        <NavLink to="/productos">Productos</NavLink>
-        <NavLink to="/categorias">Categorías</NavLink>
-        <NavLink to="/devoluciones">Devoluciones</NavLink>
-      </Menu>
-      <main>
-        <Switch>
-          <Route path="/productos" component={Productos} />
-        </Switch>
-      </main>
       <Navbar>
         <Herramientas className="">
           <NavLink to="/agregar-producto">
@@ -76,7 +67,7 @@ const Kardex = () => {
               <Buscar
                 className="form-control mr-sm-4"
                 type="search"
-                placeholder="Buscar por producto..."
+                placeholder="Buscar por SKU..."
                 aria-label="Search"
                 autoFocus
               ></Buscar>
@@ -84,16 +75,17 @@ const Kardex = () => {
             </div>
           </div>
         ) : (
-          <div></div>
+          null
         )}
       </Navbar>
       <Contenedorapp>
         <Contenedor>
-          <h4>Kardex</h4>
+          <ConsultaKardex />
         </Contenedor>
         <aside>
           <Contenedor2>
             <h3>Productos</h3>
+            <TablaKardex />
           </Contenedor2>
         </aside>
       </Contenedorapp>
@@ -107,17 +99,13 @@ const Contenedorapp = styled.div`
   width: 100%;
   display: grid;
   gap: 20px;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2fr 4fr;
   background: #fff;
   margin: 5px 0;
   border-radius: 10px;
   box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
 `;
 
-// const Titulo = styled.h6`
-//   color: #fff;
-//   text-align: center;
-// `;
 const Contenedor = styled.div`
   padding: 25px;
   width: 100%;
@@ -135,7 +123,7 @@ const Contenedor2 = styled.div`
   width: 100%;
   display: grid;
   gap: 10px;
-  grid-template-columns: 2fr 2fr;
+  //grid-template-columns: 2fr 2fr;
   //background: #eef3f5;
   background: #fff;
   margin: 10px 0;
@@ -143,28 +131,6 @@ const Contenedor2 = styled.div`
   box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
 `;
 
-const Menu = styled.nav`
-  width: 100%;
-  text-align: center;
-  background: #147551;
-  grid-column: span 2;
-  border-radius: 10px;
-
-  a {
-    color: #fff;
-    display: inline-block;
-    padding: 15px 20px;
-  }
-
-  a:hover {
-    background: #147571;
-    text-decoration: none;
-  }
-  a.active {
-    border-bottom: 2px solid #f2f2f2;
-    padding-bottom: 3px;
-  }
-`;
 const Boton = styled.button`
   display: inline-flex;
   justify-content: space-between;
@@ -172,9 +138,6 @@ const Boton = styled.button`
   outline: none;
 `;
 
-// const Titulo = styled.h4`
-//   color: #000;
-// `;
 
 const Herramientas = styled.div`
   display: flex;

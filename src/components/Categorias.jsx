@@ -128,7 +128,7 @@ const Categorias = () => {
         </Contenedor2>
         <aside>
           <Contenedor2>
-            <h3>Productos</h3>
+            <h3>Unidades</h3>
             <hr />
             <table className="table">
               <thead className="thead-light">
