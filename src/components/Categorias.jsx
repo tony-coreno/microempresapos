@@ -16,11 +16,13 @@ import {
 import AgregarCategoria from "./AgregarCategoria";
 import BarraProductos from "../products/BarraProductos";
 import Unidades from "../products/Unidades";
+import AgregarUnidad from "./AgregarUnidad";
 
 const Categorias = () => {
   const [categorias, setCategorias] = useState([]);
   const [categoria, setCategoria] = useState(true);
   const [unidades, setUnidades] = useState([]);
+  const [unidad, setUnidad] = useState(true);
 
   useEffect(() => {
     obtenerCategorias();
@@ -165,13 +167,33 @@ const Categorias = () => {
         </Contenedor2>
         <aside>
           <Contenedor2>
-            <h4>
-              Unidades de{" "}
-              <span className="badge badge-success">
-                {sessionStorage.getItem("nombre")}
-              </span>
-            </h4>
-            <Unidades unidades={unidades} />
+          <div className="container-small">
+              {unidad ? (
+                <Contenedorapp>
+                  <h4>
+                    Unidades de{" "}
+                    <span className="badge badge-success">
+                      {sessionStorage.getItem("nombre")}
+                    </span>
+                  </h4>
+                  <p></p>
+                  <hr />
+                  <button
+                    className="btn btn-outline-info mt-3"
+                    onClick={() => setUnidad(false)}
+                  >
+                    <FontAwesomeIcon icon={faShoppingBasket} /> Agregar
+                    Unidad
+                  </button>
+                </Contenedorapp>
+              ) : (
+                <AgregarUnidad
+                  setUnidad={setUnidad}
+                  obtenerUnidades={obtenerUnidades}
+                />
+              )}
+            </div>
+            <Unidades unidades={unidades} obtenerUnidades={obtenerUnidades} />
           </Contenedor2>
         </aside>
       </Contenedorapp>

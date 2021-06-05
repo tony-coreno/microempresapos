@@ -1,20 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
 import Axios from "axios";
-import { Button } from "reactstrap";
-import {
-  faArchive,
-  faArrowLeft,
-  faLayerGroup,
-  faSave,
-} from "@fortawesome/free-solid-svg-icons";
+import { faSave } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Swal from "sweetalert2";
 import styled from "styled-components";
-import ModalUnidadProducto from "../modals/ModalUnidadProducto";
+import HerramientasNuevoProducto from "./HerramientasNuevoProducto";
 
 const NuevoProducto = () => {
-  const [modalUnidad, setModalUnidad] = useState(false);
   const [sku, setSku] = useState("");
   const [producto, setProducto] = useState("");
   const [existencia, setExistencia] = useState("");
@@ -24,15 +16,11 @@ const NuevoProducto = () => {
   const [categoria, setCategoria] = useState("");
   const [unidadSelected, setUnidadSelected] = useState([""]);
   const [unidad, setUnidad] = useState("");
-  const [estadoSelected, setEstadoSelected] = useState([]);
-  const [estado, setEstado] = useState("");
   const [talla, setTalla] = useState("");
 
   useEffect(() => {
     obtenerCategorias();
     obtenerUnidades();
-    // setUnidadSelected(["", "ml", "grs", "lts", "Unidades"]);
-    // setEstadoSelected(["", "Activo", "Inactivo", "Agotado"]);
   }, []);
 
   const guardar = async (e) => {
@@ -45,7 +33,6 @@ const NuevoProducto = () => {
       marca,
       categoria: categoria,
       unidad,
-      estado: estado,
       talla,
       jefe: sessionStorage.getItem("idusuario"),
     };
@@ -83,33 +70,7 @@ const NuevoProducto = () => {
   return (
     <>
       <main className="caja-contenido col-12">
-        <div>
-          <NavLink to="/producto">
-            <Button
-              className="btn btn-success mr-3"
-              data-toggle="tooltip"
-              data-placement="right"
-              title="Regresar"
-            >
-              <FontAwesomeIcon icon={faArrowLeft} />
-            </Button>
-          </NavLink>
-          <Button
-            className="btn btn-info mr-3"
-            data-toggle="tooltip"
-            data-placement="right"
-            title="Agregar unidad"
-            onClick={() => setModalUnidad(true)}
-          >
-            <FontAwesomeIcon icon={faLayerGroup} /> Unidades
-          </Button>
-          <NavLink to="/categorias">
-            <Button className="btn btn-info mr-3">
-              <FontAwesomeIcon icon={faArchive} /> Categorias
-            </Button>
-          </NavLink>
-          <Titulo>Agregar Producto</Titulo>
-        </div>
+        <HerramientasNuevoProducto />
         <form onSubmit={guardar}>
           <hr />
           <div className="row">
@@ -204,9 +165,12 @@ const NuevoProducto = () => {
                 onChange={(e) => setUnidad(e.target.value)}
                 value={unidad}
               >
-                {unidadSelected.map((unidad) => (
-                  <option key={unidad._id}>{unidad.nombre}</option>
-                ))}
+                {unidadSelected.map((unidad) => {
+                  if (!unidad.estado) {
+                    return null;
+                  }
+                  return <option key={unidad._id}>{unidad.nombre}</option>;
+                })}
               </select>
             </div>
           </div>
@@ -216,12 +180,6 @@ const NuevoProducto = () => {
           </button>
         </form>
       </main>
-      <ModalUnidadProducto
-        modalUnidad={modalUnidad}
-        setModalUnidad={setModalUnidad}
-        unidadSelected={unidadSelected}
-        setUnidadSelected={setUnidadSelected}
-      />
     </>
   );
 };
