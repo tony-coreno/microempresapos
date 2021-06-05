@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
+import Swal from "sweetalert2";
 import { faSave } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Swal from "sweetalert2";
-import styled from "styled-components";
 import HerramientasNuevoProducto from "./HerramientasNuevoProducto";
+import styled from "styled-components";
 
 const NuevoProducto = () => {
   const [sku, setSku] = useState("");

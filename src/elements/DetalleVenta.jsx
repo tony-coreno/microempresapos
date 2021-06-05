@@ -45,7 +45,7 @@ const DetalleVenta = () => {
           {
             pagos.map((pago) =>{
               if(!pago.estado){
-                return;
+                return null;
               }
               return(
                 <option key={pago._id}>{pago.nombre}</option>

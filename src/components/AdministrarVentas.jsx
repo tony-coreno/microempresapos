@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import styled from "styled-components";
-import { Switch, NavLink, Route } from "react-router-dom";
 import Swal from "sweetalert2";
-import Reportes from "./Reportes";
-import CrearVenta from "./CrearVenta";
+import TablaPagosVentas from "../reports/TablaPagosVentas";
+import BarraVentas from "../reports/BarraVentas";
 const Almacen = () => {
   const [pagos, setPagos] = useState([]);
   const [nombre, setNombre] = useState("");
-  // const [nuevoEstado, setNuevoEstado] = useState("");
 
   useEffect(() => {
     obtenerPagos();
@@ -90,17 +88,7 @@ const Almacen = () => {
   return (
     <div>
       <Contenedorapp>
-        <Menu>
-          <NavLink to="/crear-venta">Crear Venta</NavLink>
-          <NavLink to="/administrar-venta">Administrar</NavLink>
-          <NavLink to="/reportes">Reportes</NavLink>
-        </Menu>
-        <main>
-          <Switch>
-            <Route path="/crear-venta" component={CrearVenta} />
-            <Route path="/reportes" component={Reportes} />
-          </Switch>
-        </main>
+       <BarraVentas />
         <h3>Administrar</h3>
         <form onSubmit={guardar}>
           <hr />
@@ -126,98 +114,13 @@ const Almacen = () => {
           </div>
         </form>
         <hr />
-        <form>
-          <div className="table-responsive table-borderless table-hover">
-            <div className="container">
-              <div className="row">
-                <div className="col-12">
-                  <div className="card">
-                    <div className="bg-light card-header py-1">
-                      <Titulo>Detalle de venta</Titulo>
-                    </div>
-                    <table className="table table-responsive-sm ">
-                      <thead className="light">
-                        <tr>
-                          <th>Medio de pago</th>
-                          <th>Estado</th>
-                          <th>Eliminar</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {pagos.map((medio, i) => {
-                          if (medio.nombre === "") {
-                            return;
-                          }
-                          let valor = "";
-                          let clase = "";
-                          if (medio.estado) {
-                            valor = "Activo";
-                            clase = "btn btn-outline-success";
-                          } else {
-                            valor = "Inactivo";
-                            clase = "btn btn-outline-info";
-                          }
-                          return (
-                            <tr key={medio._id}>
-                              <td>{medio.nombre}</td>
-                              <td>
-                                <button
-                                  className={clase}
-                                  onClick={(e) => actualizar(e, medio)}
-                                >
-                                  {valor}
-                                </button>
-                              </td>
-                              <td>
-                                <button
-                                  className="btn btn-outline-danger"
-                                  onClick={(e) => eliminar(e, medio._id)}
-                                >
-                                  Eliminar
-                                </button>
-                              </td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <hr />
-          <SeccionBoton>
-            <button className="btn btn-outline-success">Guardar</button>
-          </SeccionBoton>
-        </form>
+        <TablaPagosVentas pagos={pagos} eliminar={eliminar} actualizar={actualizar} />
       </Contenedorapp>
     </div>
   );
 };
 
-const Menu = styled.nav`
-  width: 100%;
-  text-align: center;
-  background: #147551;
-  //grid-column: span 2;
-  border-radius: 10px;
 
-  a {
-    color: #fff;
-    display: inline-block;
-    padding: 15px 20px;
-  }
-
-  a:hover {
-    background: #147571;
-    text-decoration: none;
-  }
-  a.active {
-    border-bottom: 2px solid #f2f2f2;
-    padding-bottom: 3px;
-  }
-`;
 const Contenedorapp = styled.div`
   max-width: 1400px;
   padding: 20px;
@@ -229,13 +132,6 @@ const Contenedorapp = styled.div`
   margin: 5px 0;
   border-radius: 20px;
   box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
-`;
-const SeccionBoton = styled.div`
-  width: 50%;
-`;
-const Titulo = styled.h6`
-  color: #fff;
-  text-align: center;
 `;
 
 export default Almacen;

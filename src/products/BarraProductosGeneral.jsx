@@ -1,27 +1,39 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faArrowLeft,
+  faTools,
+  faSearch,
   faFileExcel,
+  faShoppingBag,
   faFilePdf,
   faFilter,
-  faShoppingBag,
 } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
-import { Button } from "reactstrap";
-const HerramientasProductos = () => {
+
+const BarraProductosGeneral = ({ buscar }) => {
   return (
-    <Herramientas className="">
-      <NavLink to="/producto">
-        <Boton
-          className="btn btn-success d-flex d-flex justify-content-between align-items-center pr-2"
+    <>
+      <NavLink to="/agregar-producto">
+        <Button
+          className="btn btn-success d-flex d-flex justify-content-between align-items-center"
           data-toggle="tooltip"
           data-placement="right"
-          title="Regresar"
+          title="Agregar producto"
         >
-          <FontAwesomeIcon icon={faArrowLeft} />
-        </Boton>
+          <FontAwesomeIcon icon={faShoppingBag} />
+        </Button>
+      </NavLink>
+      <NavLink to="/productos">
+        <Button
+          className="btn btn-info d-flex d-flex justify-content-between align-items-center"
+          data-toggle="tooltip"
+          data-placement="right"
+          title="Productos tabla"
+        >
+          <FontAwesomeIcon icon={faTools} />
+        </Button>
       </NavLink>
       <NavLink to="/agregar-producto">
         <Boton
@@ -65,16 +77,25 @@ const HerramientasProductos = () => {
           <FontAwesomeIcon icon={faFilter} />
         </Button>
       </NavLink>
-    </Herramientas>
+      <div className="">
+        <div className="input-group">
+          <Buscar
+            className="form-control mr-sm-4"
+            type="search"
+            placeholder="Buscar por nombre..."
+            aria-label="Search"
+            autoFocus
+            onChange={buscar}
+          ></Buscar>
+          <FontAwesomeIcon icon={faSearch} />
+        </div>
+      </div>
+    </>
   );
 };
 
-const Herramientas = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin: 4px;
-  padding: 10px;
-  gap: 20px;
+const Buscar = styled.input`
+  border-radius: 10px;
 `;
 const Boton = styled.button`
   display: inline-flex;
@@ -82,4 +103,5 @@ const Boton = styled.button`
   align-items: center;
   outline: none;
 `;
-export default HerramientasProductos;
+
+export default BarraProductosGeneral;

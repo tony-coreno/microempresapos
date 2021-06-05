@@ -165,28 +165,6 @@ const Contenedor2 = styled.div`
   box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
 `;
 
-const Menu = styled.nav`
-  width: 100%;
-  text-align: center;
-  background: #147551;
-  grid-column: span 2;
-  border-radius: 10px;
-
-  a {
-    color: #fff;
-    display: inline-block;
-    padding: 15px 20px;
-  }
-
-  a:hover {
-    background: #147571;
-    text-decoration: none;
-  }
-  a.active {
-    border-bottom: 2px solid #f2f2f2;
-    padding-bottom: 3px;
-  }
-`;
 const Boton = styled.button`
   display: inline-flex;
   justify-content: space-between;

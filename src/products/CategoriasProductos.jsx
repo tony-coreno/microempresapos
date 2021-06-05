@@ -54,8 +54,8 @@ const CategoriasProductos = ({ categorias, obtenerCategorias }) => {
         </thead>
         <tbody className="text-center">
           {categorias.map((categoria, i) => {
-            if(categoria.nombre === ""){
-              return;
+            if (categoria.nombre === "") {
+              return null;
             }
             let estado = "Activo";
             let clase = "btn btn-outline-success";

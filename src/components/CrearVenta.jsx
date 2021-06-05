@@ -60,8 +60,6 @@ const CrearVenta = () => {
               </i>{" "}
               Ingresar producto manual
             </button>
-            {/* <button className="btn btn-outline-primary">
-             <FontAwesomeIcon icon={faCashRegister} />  Ingresar producto manual</button> */}
             {articulos > 0 ? <DetalleVenta /> : null}
           </Contenedor>
         </main>
