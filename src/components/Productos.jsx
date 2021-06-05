@@ -1,15 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Axios from "axios";
-import {  Navbar } from "reactstrap";
+import { Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { ContextEstado } from "../context/ContextEstado";
 import HerramientasProductos from "../products/HerramientasProductos";
 
 const Productos = () => {
-  const [productos, setProductos] = useState([""]);
-  const { totalProd } = useContext(ContextEstado);
+  const [productos, setProductos] = useState([]);
   let perfil = sessionStorage.getItem("perfil");
   let surtir = "";
 
@@ -100,22 +98,21 @@ const Productos = () => {
                           <th>Estado</th>
                         </tr>
                       </thead>
-
-                      {productos.map((producto, i) => {
-                        let { existencia } = producto;
-                        let { estado } = producto;
-                        let clase = "";
-                        if (existencia < 50) {
-                          surtir = `alert alert-danger text-center`;
-                        } else {
-                          surtir = `alert alert-success text-center`;
-                        }
-                        if (estado === "Agotado") {
-                          clase = "alert alert-danger";
-                        }
-                        return (
-                          <tbody key={producto._id}>
-                            <tr>
+                      <tbody>
+                        {productos.map((producto, i) => {
+                          let { existencia } = producto;
+                          let { estado } = producto;
+                          let clase = "";
+                          if (existencia < 50) {
+                            surtir = `alert alert-danger text-center`;
+                          } else {
+                            surtir = `alert alert-success text-center`;
+                          }
+                          if (estado === "Agotado") {
+                            clase = "alert alert-danger";
+                          }
+                          return (
+                            <tr key={producto._id}>
                               <td>{i + 1}</td>
                               <td>{producto.sku}</td>
                               <td>{producto.marca}</td>
@@ -128,9 +125,9 @@ const Productos = () => {
                               <td>{producto.unidad}</td>
                               <td className={clase}>{producto.estado}</td>
                             </tr>
-                          </tbody>
-                        );
-                      })}
+                          );
+                        })}
+                      </tbody>
                     </table>
                   </div>
                 </div>

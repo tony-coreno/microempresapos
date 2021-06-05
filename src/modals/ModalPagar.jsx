@@ -4,11 +4,11 @@ import { ContextEstado } from "../context/ContextEstado";
 import styled from "styled-components";
 import Axios from "axios";
 import Swal from "sweetalert2";
-import "bootstrap/dist/css/bootstrap.css";
 
 const ModalVenta = ({ modal, setModal }) => {
   const { total, metodopago, ventaProducto } = useContext(ContextEstado);
   const [cambio, setCambio] = useState(0);
+  let restante = 0;
   let f = new Date();
 
   /* ==== Fecha
@@ -58,8 +58,7 @@ const ModalVenta = ({ modal, setModal }) => {
   };
 
   const darCambio = () => {
-    let restante = cambio - total;
-    alert(restante);
+    restante = cambio - total;
   };
   return (
     <>
@@ -101,8 +100,8 @@ const ModalVenta = ({ modal, setModal }) => {
                     type="text"
                     className="form-control"
                     placeholder="$0.00"
-                    value={0}
-                    onChange={()=>darCambio()}
+                    value={restante}
+                    onChange={darCambio()}
                     readOnly
                   />
                 </Ventas>
