@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import {  NavLink  } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Axios from "axios";
 import CategoriasProductos from "../products/CategoriasProductos";
 import { Button, Navbar } from "reactstrap";
@@ -15,13 +15,19 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import AgregarCategoria from "./AgregarCategoria";
 import BarraProductos from "../products/BarraProductos";
+import Unidades from "../products/Unidades";
 
 const Categorias = () => {
   const [categorias, setCategorias] = useState([]);
   const [categoria, setCategoria] = useState(true);
+  const [unidades, setUnidades] = useState([]);
 
   useEffect(() => {
     obtenerCategorias();
+  }, []);
+
+  useEffect(() => {
+    obtenerUnidades();
   }, []);
 
   const obtenerCategorias = async () => {
@@ -32,6 +38,31 @@ const Categorias = () => {
     });
     setCategorias(respuesta.data);
     console.log(categorias);
+  };
+
+  const obtenerUnidades = async () => {
+    const id = sessionStorage.getItem("idusuario");
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.get("/unidades/obtener/" + id, {
+      headers: { autorizacion: token },
+    });
+    setUnidades(respuesta.data);
+    console.log(unidades);
+  };
+
+  const buscar = async (e) => {
+    if (e.target.value === "") {
+      return obtenerCategorias();
+    }
+    const categoria = e.target.value;
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.get(
+      `/categorias/buscar/${categoria}/${sessionStorage.getItem("idusuario")}`,
+      {
+        headers: { autorizacion: token },
+      }
+    );
+    setCategorias(respuesta.data);
   };
   return (
     <div>
@@ -87,9 +118,10 @@ const Categorias = () => {
               <Buscar
                 className="form-control mr-sm-4"
                 type="search"
-                placeholder="Buscar por producto..."
+                placeholder="Buscar categoría..."
                 aria-label="Search"
                 autoFocus
+                onChange={buscar}
               ></Buscar>
               <FontAwesomeIcon icon={faSearch} />
             </div>
@@ -102,7 +134,12 @@ const Categorias = () => {
             <div className="container-small">
               {categoria ? (
                 <Contenedorapp>
-                  <h4>Categorias de {sessionStorage.getItem("nombre")}</h4>
+                  <h4>
+                    Categorías de{" "}
+                    <span className="badge badge-success">
+                      {sessionStorage.getItem("nombre")}
+                    </span>
+                  </h4>
                   <p></p>
                   <hr />
                   <button
@@ -128,26 +165,13 @@ const Categorias = () => {
         </Contenedor2>
         <aside>
           <Contenedor2>
-            <h3>Unidades</h3>
-            <hr />
-            <table className="table">
-              <thead className="thead-light">
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Categoría</th>
-                  <th scope="col">Estado</th>
-                  <th scope="col">Opción</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row"></th>
-                  <td>opc</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
+            <h4>
+              Unidades de{" "}
+              <span className="badge badge-success">
+                {sessionStorage.getItem("nombre")}
+              </span>
+            </h4>
+            <Unidades unidades={unidades} />
           </Contenedor2>
         </aside>
       </Contenedorapp>
@@ -182,28 +206,6 @@ const Contenedor2 = styled.div`
   box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
 `;
 
-const Menu = styled.nav`
-  width: 100%;
-  text-align: center;
-  background: #147551;
-  grid-column: span 2;
-  border-radius: 10px;
-
-  a {
-    color: #fff;
-    display: inline-block;
-    padding: 15px 20px;
-  }
-
-  a:hover {
-    background: #147571;
-    text-decoration: none;
-  }
-  a.active {
-    border-bottom: 2px solid #f2f2f2;
-    padding-bottom: 3px;
-  }
-`;
 const Boton = styled.button`
   display: inline-flex;
   justify-content: space-between;

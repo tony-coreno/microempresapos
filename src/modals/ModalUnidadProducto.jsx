@@ -25,7 +25,7 @@ const ModalUnidadProducto = ({modalUnidad, setModalUnidad, unidadSelected, setUn
           <Contenedor>
             <h3>Unidades disponibles</h3>
             {
-                unidadSelected.map((unidad=> <p key={unidad}>{unidad}</p>))
+                unidadSelected.map((unidad=> <p key={unidad._id}>{unidad.nombre}</p>))
                 
             }
 

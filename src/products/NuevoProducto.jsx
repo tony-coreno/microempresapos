@@ -30,8 +30,9 @@ const NuevoProducto = () => {
 
   useEffect(() => {
     obtenerCategorias();
-    setUnidadSelected(["", "ml", "grs", "lts", "Unidades"]);
-    setEstadoSelected(["", "Activo", "Inactivo", "Agotado"]);
+    obtenerUnidades();
+    // setUnidadSelected(["", "ml", "grs", "lts", "Unidades"]);
+    // setEstadoSelected(["", "Activo", "Inactivo", "Agotado"]);
   }, []);
 
   const guardar = async (e) => {
@@ -70,6 +71,14 @@ const NuevoProducto = () => {
       headers: { autorizacion: token },
     });
     setCategoriaSelected(respuesta.data);
+  };
+  const obtenerUnidades = async () => {
+    const id = sessionStorage.getItem("idusuario");
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.get("/unidades/obtener/" + id, {
+      headers: { autorizacion: token },
+    });
+    setUnidadSelected(respuesta.data);
   };
   return (
     <>
@@ -180,7 +189,7 @@ const NuevoProducto = () => {
               >
                 {categoriaSelected.map((categorias) => {
                   if (!categorias.estado) {
-                    return;
+                    return null;
                   }
                   return (
                     <option key={categorias._id}>{categorias.nombre}</option>
@@ -196,22 +205,9 @@ const NuevoProducto = () => {
                 value={unidad}
               >
                 {unidadSelected.map((unidad) => (
-                  <option key={unidad}>{unidad}</option>
+                  <option key={unidad._id}>{unidad.nombre}</option>
                 ))}
               </select>
-              <div className="form-group col-mt-4">
-                <br />
-                <Titulo>Estado</Titulo>
-                <select
-                  onChange={(e) => setEstado(e.target.value)}
-                  value={estado}
-                  className="form-control mt-"
-                >
-                  {estadoSelected.map((estado) => (
-                    <option key={estado}>{estado}</option>
-                  ))}
-                </select>
-              </div>
             </div>
           </div>
           <hr />

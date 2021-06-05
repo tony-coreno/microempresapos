@@ -53,8 +53,9 @@ const ModalPerfil = ({modal, setModal}) => {
 
       <img src="https://img.icons8.com/officel/80/000000/person-male.png" alt="POS"/>
       <hr />
-      <Ventas>Tipo de cuenta: {cuenta || 'Empleado'}</Ventas>
+      <Ventas>Tipo de cuenta: <span className="badge badge-primary">{cuenta || 'Empleado'}</span></Ventas>
       </div>
+      
       <hr />
       <div>
         <h3>{sessionStorage.getItem('nombre') || 'Invitado'}</h3>

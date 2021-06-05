@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import Axios from "axios";
-import Swal from "sweetalert2";
 import {  Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -51,21 +50,6 @@ const Productos = () => {
     );
     setProductos(respuesta.data);
   };
-  const eliminar = async (id) => {
-    const token = sessionStorage.getItem("token");
-    const respuesta = await Axios.delete("/productos/eliminar/" + id, {
-      headers: { autorizacion: token },
-    });
-    const mensaje = respuesta.data.mensaje;
-    Swal.fire({
-      icon: "success",
-      title: mensaje,
-      showConfirmButton: false,
-      timer: 1500,
-    });
-    obtenerProductos();
-  };
-
   return (
     <div>
       <Contenedorapp>
