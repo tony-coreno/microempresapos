@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import getUnixTime from 'date-fns/fromUnixTime';
 import { ContextEstado } from "../context/ContextEstado";
 import styled from "styled-components";
 import Axios from "axios";
@@ -9,7 +10,9 @@ const ModalVenta = ({ modal, setModal }) => {
   const { total, metodopago, ventaProducto } = useContext(ContextEstado);
   const [cambio, setCambio] = useState(0);
   let restante = 0;
-  let f = new Date();
+  let f = Date();
+  // let fechas = getUnixTime(f);
+  // console.log(fechas)
 
   /* ==== Fecha
   // console.log(f)
@@ -30,6 +33,7 @@ const ModalVenta = ({ modal, setModal }) => {
       total: total,
       metodopago: metodopago,
       fechaventa: f,
+      fecha: Date.now(),
       articulos: ventaProducto
     };
     const token = sessionStorage.getItem("token");
@@ -41,7 +45,6 @@ const ModalVenta = ({ modal, setModal }) => {
       headers: { autorizacion: token },
     });
     const mensaje = respuesta.data.mensaje;
-
     Swal.fire({
       icon: "success",
       title: mensaje,

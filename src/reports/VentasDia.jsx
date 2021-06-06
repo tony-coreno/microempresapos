@@ -21,6 +21,7 @@ import {
   Legend,
 } from "recharts";
 import styled from "styled-components";
+import CalendarVentasDia from "./CalendarVentasDia";
 const VentasDia = () => {
   const [ventas, setVentas] = useState([""]);
   const [tarjeta, setTarjeta] = useState([""]);
@@ -45,7 +46,7 @@ const VentasDia = () => {
     setTarjeta(dia);
     console.log(dia);
     let total = 0;
-     total = await tarjeta.reduce((tarjetaTotal, tarj) => {
+     total = tarjeta.reduce((tarjetaTotal, tarj) => {
       return tarjetaTotal + tarj.total;
     }, 0);
     console.log(total);
@@ -174,7 +175,7 @@ const VentasDia = () => {
 
         <aside>
           <Contenedor2>
-            <input className="form-control" type="date" />
+            <CalendarVentasDia />
             {/* {ventas.map((venta) => {
               return (
                 <div
