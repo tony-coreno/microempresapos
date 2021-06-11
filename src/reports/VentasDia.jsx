@@ -38,7 +38,7 @@ const VentasDia = () => {
       headers: { autorizacion: token },
     });
     setVentas(respuesta.data);
-    // console.log(ventas)
+     console.log(ventas)
     const dia = await ventas.filter((venta) => {
       return venta.metodopago === "Tarjeta";
     });
@@ -52,7 +52,7 @@ const VentasDia = () => {
     console.log(total);
     setPago(total);
   };
-
+ 
   const data = [
     {
       name: "Pagos con tarjeta",
