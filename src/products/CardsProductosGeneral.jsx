@@ -1,15 +1,16 @@
-import React, {Fragment} from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
 const CardsProductosGeneral = ({productos, eliminar, buscarProducto}) => {
+
   return (
     <>
       <Contenedor2>
-        {productos.map((producto) => {
+        {productos.map((producto, index) => {
           return (
-            <Fragment key={producto._id}>
+            <div key={index}>
               <div
                 className="card ms-1 animate__animated animate__fadeIn"
                 style={{ maxWidth: 240 }}
@@ -47,7 +48,7 @@ const CardsProductosGeneral = ({productos, eliminar, buscarProducto}) => {
                   </div>
                 </div>
               </div>
-            </Fragment>
+            </div>
           );
         })}
       </Contenedor2>

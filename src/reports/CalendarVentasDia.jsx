@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import { DateUtils } from "react-day-picker";
-import getUnixTime from 'date-fns/fromUnixTime';
+// import getUnixTime from 'date-fns/fromUnixTime';
 import "react-day-picker/lib/style.css";
 
 import dateFnsFormat from "date-fns/format";
 import dateFnsParse from "date-fns/parse";
 import { es } from "date-fns/locale";
-import { fromUnixTime } from "date-fns/esm";
+// import { fromUnixTime } from "date-fns/esm";
 
 const meses = [
   "Enero",
@@ -39,11 +39,11 @@ function formatDate(date, format) {
 }
 // var result = getUnixTime( Date(2012, 1, 29, 11, 45, 5))
 // console.log(result)
-var timestamp = Date.now()
-console.log(timestamp)
+// var timestamp = Date.now()
+// console.log(timestamp)
 
-var date = new Date(timestamp);
-console.log(date)
+// var date = new Date(timestamp);
+// console.log(date)
 
 
 
@@ -72,6 +72,8 @@ const CalendarVentasDia = () => {
             weekdaysShort: dias_semana_cortos,
           }}
         />
+        <hr />
+        <button className="btn btn-dark">Calcular</button>
       </ContenedorInput>
 
     </>

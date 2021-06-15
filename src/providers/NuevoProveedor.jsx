@@ -71,7 +71,7 @@ const NuevoProveedor = () => {
                 onChange={(e) => setNombre(e.target.value)}
               />
             </div>
-            <div class="col">
+            <div className="col">
               <input
                 type="text"
                 className="form-control"

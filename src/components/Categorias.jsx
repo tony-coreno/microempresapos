@@ -18,10 +18,12 @@ const Categorias = () => {
 
   useEffect(() => {
     obtenerCategorias();
+        // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     obtenerUnidades();
+        // eslint-disable-next-line
   }, []);
 
   const obtenerCategorias = async () => {
@@ -31,7 +33,6 @@ const Categorias = () => {
       headers: { autorizacion: token },
     });
     setCategorias(respuesta.data);
-    console.log(categorias);
   };
 
   const obtenerUnidades = async () => {
@@ -41,7 +42,6 @@ const Categorias = () => {
       headers: { autorizacion: token },
     });
     setUnidades(respuesta.data);
-    console.log(unidades);
   };
 
   const buscar = async (e) => {

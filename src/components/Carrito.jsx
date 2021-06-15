@@ -27,6 +27,7 @@ const Carrito = () => {
 
   useEffect(() => {
     limpiar();
+    // eslint-disable-next-line
   }, [ventaProducto]);
 
   const limpiar = () => {

@@ -6,9 +6,9 @@ const CardsProveedores = ({ proveedores, buscarProveedor, eliminar }) => {
   return (
     <>
       <Contenedor2>
-        {proveedores.map((provider) => {
+        {proveedores.map((provider, index) => {
           return (
-            <Fragment key={provider._id}>
+            <Fragment key={index}>
               <div
                 className="card ms-1 animate__animated animate__fadeIn"
                 style={{ maxWidth: 240 }}

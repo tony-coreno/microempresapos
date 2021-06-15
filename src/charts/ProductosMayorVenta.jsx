@@ -7,6 +7,7 @@ const ProductosMayorVenta = () => {
 
   useEffect(() => {
     obtenerVentas();
+    // eslint-disable-next-line
   }, []);
 
   const obtenerVentas = async () => {
@@ -40,17 +41,11 @@ const ProductosMayorVenta = () => {
             </div>
             <div className="col-md-8">
               <div className="card-body">
-                {/* <h5 className="card-title"></h5>
-                <h6 className="card-text"></h6> */}
                 <p className="card-text">
                   <small className="text-muted">
                     <br />
                   </small>
                 </p>
-                {/* 
-                        <Link to={ `./hero/${ id }` }>
-                            Más...
-                        </Link> */}
               </div>
             </div>
           </div>

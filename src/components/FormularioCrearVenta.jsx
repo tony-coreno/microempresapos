@@ -7,6 +7,7 @@ import { ContextEstado } from '../context/ContextEstado';
 
         useEffect(()=>{
             limpiar()
+                // eslint-disable-next-line
         },[])
 
         const limpiar = () =>{

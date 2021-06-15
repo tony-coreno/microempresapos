@@ -25,6 +25,7 @@ const EditarProductos = ({ prod , setInfo }) => {
 
   useEffect(() => {
     nuevosValores();
+        // eslint-disable-next-line
   }, []);
 
   const actualizar = async (e) => {

@@ -17,6 +17,7 @@ const Productos = () => {
     } else {
       obtenerProductosEmpleados();
     }
+        // eslint-disable-next-line
   }, []);
   const obtenerProductos = async () => {
     const id = sessionStorage.getItem("idusuario");

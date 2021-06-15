@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import getUnixTime from 'date-fns/fromUnixTime';
+// import getUnixTime from 'date-fns/fromUnixTime';
 import { ContextEstado } from "../context/ContextEstado";
 import styled from "styled-components";
 import Axios from "axios";

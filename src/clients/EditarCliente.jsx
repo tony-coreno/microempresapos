@@ -30,6 +30,7 @@ const EditarProveedor = ({ cli, setInfo }) => {
 
   useEffect(() => {
     nuevosValores();
+        // eslint-disable-next-line
   }, []);
 
   const actualizar = async (e) => {

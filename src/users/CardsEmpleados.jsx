@@ -6,9 +6,9 @@ const CardsEmpleados = ({empleados,  eliminar, buscarEmpleadoID}) => {
   return (
     <>
       <Contenedor2>
-        {empleados.map((empleado) => {
+        {empleados.map((empleado, index) => {
           return (
-            <Fragment key={empleado._id}>
+            <Fragment key={index}>
               <div
                 className="card ms-1 animate__animated animate__fadeIn"
                 style={{ maxWidth: 240 }}

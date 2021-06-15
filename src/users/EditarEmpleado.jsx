@@ -13,6 +13,7 @@ const EditarEmpleado = ({ info, setInfo }) => {
 
   useEffect(()=>{
     nuevosValores()
+        // eslint-disable-next-line
   },[])
 
 

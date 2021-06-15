@@ -29,6 +29,7 @@ const EditarProveedor = ({ prov, setInfo }) => {
 
   useEffect(()=>{
     nuevosValores()
+        // eslint-disable-next-line
   },[])
   
 

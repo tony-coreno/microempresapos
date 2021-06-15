@@ -8,9 +8,9 @@ const CardsClientes = ({clientes, eliminar, buscarCliente}) => {
   return (
     <>
       <Contenedor2>
-        {clientes.map((cliente) => {
+        {clientes.map((cliente, index) => {
           return (
-            <Fragment key={cliente._id}>
+            <Fragment key={index}>
               <div
                 className="card ms-1 animate__animated animate__fadeIn"
                 style={{ maxWidth: 240 }}

@@ -82,7 +82,7 @@ const ProductosGeneral = () => {
               />
             </>
           ) : (
-            <ProductosInfo setInfo={setInfo} info={info} key={productos._id} />
+            <ProductosInfo setInfo={setInfo} info={info} />
           )}
         </Contenedor>
         <aside>

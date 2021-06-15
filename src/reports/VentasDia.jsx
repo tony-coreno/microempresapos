@@ -28,6 +28,7 @@ const VentasDia = () => {
   const [pago, setPago] = useState(0);
   useEffect(() => {
     obtenerVentas();
+        // eslint-disable-next-line
   }, []);
 
 
