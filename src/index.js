@@ -5,9 +5,10 @@ import { BrowserRouter } from "react-router-dom";
 import Axios from "axios";
 import App from "./components/App";
 import "./index.css";
+// require('dotenv').config();
 // import Login from "./components/Login";
 
-Axios.defaults.baseURL = "http://localhost:4000";
+Axios.defaults.baseURL = "https://sistemaposutc.herokuapp.com/";
 
 if(navigator.serviceWorker){
   navigator.serviceWorker.register('.././sw.js')

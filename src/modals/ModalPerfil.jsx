@@ -49,7 +49,7 @@ const ModalPerfil = ({modal, setModal}) => {
       <ModalBody>
       <div>
       <Ventas>Ventas realizadas</Ventas>
-      <Ventas>{`$ ${400} `}</Ventas>
+      <Ventas>{`$ ${0} `}</Ventas>
 
       <img src="https://img.icons8.com/officel/80/000000/person-male.png" alt="POS"/>
       <hr />
