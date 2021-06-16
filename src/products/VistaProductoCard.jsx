@@ -96,10 +96,10 @@ const VistaProductoCard = () => {
         </Contenedor>
         <aside>
           <Contenedor2>
-            {productos.map((producto) => {
+            {productos.map((producto, index) => {
               return (
                 <div
-                  key={producto._id}
+                  key={index}
                   className="card ms-1 animate__animated animate__fadeIn"
                   style={{ maxWidth: 240 }}
                 >

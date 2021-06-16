@@ -12,7 +12,8 @@ const CardsClientes = ({clientes, eliminar, buscarCliente}) => {
           return (
             <Fragment key={index}>
               <div
-                className="card ms-1 animate__animated animate__fadeIn"
+                //className="card ms-1 animate__animated animate__fadeIn"
+                className="img-thumbnail animate__animated animate__bounceIn"
                 style={{ maxWidth: 240 }}
               >
                 <div className="row no-gutters">

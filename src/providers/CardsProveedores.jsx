@@ -10,7 +10,8 @@ const CardsProveedores = ({ proveedores, buscarProveedor, eliminar }) => {
           return (
             <Fragment key={index}>
               <div
-                className="card ms-1 animate__animated animate__fadeIn"
+              className="img-thumbnail animate__animated animate__bounceIn"
+                //className="card ms-1 animate__animated animate__fadeIn"
                 style={{ maxWidth: 240 }}
               >
                 <div className="row no-gutters">

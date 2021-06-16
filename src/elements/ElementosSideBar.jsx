@@ -92,7 +92,7 @@ const ElementosSideBar = () => {
         className="list-group-item list-group-item-action bg-light"
         data-toggle="tooltip"
         data-placement="right"
-        title="Agenda"
+        title="Calendario"
       >
         <FontAwesomeIcon icon={faCalendarAlt} />
         <span className="badge badge-warning">0</span>

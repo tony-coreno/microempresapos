@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { ContextEstado } from "../context/ContextEstado";
 import ModalPagar from "../modals/ModalPagar";
 import TablaCarrito from "./../elements/TablaCarrito";
+import ModalCorteDeCaja from "../modals/ModalCorteDeCaja";
 import BarraTotal from "./BarraTotal";
 import styled from "styled-components";
 import {
@@ -10,10 +11,12 @@ import {
   faMoneyBill,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "bootstrap/dist/css/bootstrap.css";
+
 
 const Carrito = () => {
   const [modal, setModal] = useState(false);
+  const [corte, setCorte] = useState(false);
+  
   const {
     ventaProducto,
     setVentaProducto,
@@ -72,7 +75,7 @@ const Carrito = () => {
           <FontAwesomeIcon icon={faBan} /> Cancelar
         </button>
         {"           "}
-        <button className="btn btn-outline-info mr-2">
+        <button className="btn btn-outline-info mr-2" onClick={() => setCorte(true)}>
           {" "}
           <FontAwesomeIcon icon={faCreditCard} /> Corte de caja
         </button>
@@ -85,6 +88,7 @@ const Carrito = () => {
         </button>
       </div>
       <ModalPagar modal={modal} setModal={setModal} />
+      <ModalCorteDeCaja corte={corte} setCorte={setCorte} />    
     </>
   );
 };

@@ -2,7 +2,6 @@ import React, {useState, useContext} from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { ContextEstado } from "../context/ContextEstado";
 import styled from "styled-components";
-import "bootstrap/dist/css/bootstrap.css";
 const ModalVentaManual = ({ modalManual, setModalManual }) => {
   
 const {setVentaProducto, ventaProducto,  setArticulos, articulos} = useContext(ContextEstado)
