@@ -18,7 +18,7 @@ const CardsProductosGeneral = ({productos, eliminar, buscarProducto}) => {
                 <div className="row no-gutters">
                   <div className="col-md-4">
                     <img
-                      src="https://img.icons8.com/color/96/000000/permanent-job.png"
+                        src="https://img.icons8.com/cute-clipart/64/000000/shopping-cart-loaded.png"
                       className="card-img"
                       alt="POS"
                     />

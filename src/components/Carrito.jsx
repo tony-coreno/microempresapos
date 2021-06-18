@@ -62,7 +62,7 @@ const Carrito = () => {
       <hr />
 
       <Contenedor>
-        <TituloCarrito>Carrito de compras </TituloCarrito>
+        <TituloCarrito>Artículos </TituloCarrito>
         <TablaCarrito />
       </Contenedor>
       <div>

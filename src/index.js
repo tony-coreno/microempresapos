@@ -8,7 +8,7 @@ import "./index.css";
 // require('dotenv').config();
 // import Login from "./components/Login";
 
-Axios.defaults.baseURL = "https://sistemaposutc.herokuapp.com/";
+Axios.defaults.baseURL = "http://localhost:4000";
 
 if(navigator.serviceWorker){
   navigator.serviceWorker.register('.././sw.js')

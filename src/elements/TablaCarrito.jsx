@@ -39,15 +39,14 @@ const TablaCarrito = () => {
                 <table className="table table-responsive-lg text-center ">
                   <thead className="light">
                     <tr>
-                      <th># Artículos</th>
-                      <th>SKU</th>
-                      <th>Producto</th>
-                      <th>Precio</th>
-                      <th>Cantidad</th>
-                      <th>Eliminar</th>
+                      <th>CANT</th>
+                      <th>COD</th>
+                      <th>PRODUCTO</th>
+                      <th>PRECIO</th>
+                      <th>ELIMINAR</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <Tabla>
                     {ventaProducto.map((producto) => {                      
                       const { precioventa } = producto;
                       // const { sku } = producto;
@@ -64,12 +63,11 @@ const TablaCarrito = () => {
                         <tr key={producto._id}>
                           <td>{1}</td>
                           <td>{producto.sku}</td>
-                          <td>{producto.producto}</td>
+                          <td>{producto.producto.toUpperCase()}</td>
                           <td>{precioventa}</td>
-                          <td>{producto.unidad}</td>
                           <td>
                             <button
-                              className="bn btn-outline-danger mr-2"
+                              className="bn btn-dark mr-2"
                               onClick={(e)=>eliminar(e, producto._id)}
                             >
                               <FontAwesomeIcon icon={faTimes} />
@@ -78,7 +76,7 @@ const TablaCarrito = () => {
                         </tr>
                       );
                     })}
-                  </tbody>
+                  </Tabla>
                 </table>
               </div>
             </div>
@@ -89,9 +87,13 @@ const TablaCarrito = () => {
   );
 };
 
-const Titulo = styled.h6`
+const Titulo = styled.h5`
   color: #fff;
   text-align: center;
 `;
+
+const Tabla = styled.tbody`
+font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+`;      
 
 export default TablaCarrito;
