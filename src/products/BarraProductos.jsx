@@ -7,7 +7,7 @@ const BarraProductos = () => {
   return (
     <>
       <Menu>
-        <NavLink to="/producto">Productos</NavLink>
+        <NavLink to="/productos">Productos</NavLink>
         <NavLink to="/categorias">Categorías</NavLink>
         <NavLink to="/devoluciones">Devoluciones</NavLink>
       </Menu>

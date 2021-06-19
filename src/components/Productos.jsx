@@ -5,6 +5,7 @@ import { Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import HerramientasProductos from "../products/HerramientasProductos";
+import BarraProductos from "../products/BarraProductos";
 
 const Productos = () => {
   const [productos, setProductos] = useState([]);
@@ -17,7 +18,7 @@ const Productos = () => {
     } else {
       obtenerProductosEmpleados();
     }
-        // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
   const obtenerProductos = async () => {
     const id = sessionStorage.getItem("idusuario");
@@ -51,10 +52,13 @@ const Productos = () => {
   };
   return (
     <div>
+      <BarraProductos />
       <Contenedorapp>
         <Navbar>
-          <HerramientasProductos />
-          {sessionStorage.getItem("token") ? (
+          {
+            sessionStorage.getItem("perfil") === "Administrador" ? <HerramientasProductos /> : null
+          }
+
             <div className="col-md-4 ml-auto">
               <div className="input-group fa-2x">
                 <Buscar
@@ -68,7 +72,6 @@ const Productos = () => {
                 <FontAwesomeIcon icon={faSearch} />
               </div>
             </div>
-          ) : null}
         </Navbar>
         <div className="table-responsive table-borderless table-hover">
           <div>
@@ -144,9 +147,12 @@ const Contenedorapp = styled.div`
   max-width: 1400px;
   padding: 5px;
   width: 100%;
+  display: grid;
+  gap: 20px;
+  //grid-template-columns: 2fr 1fr;
   background: #fff;
   margin: 5px 0;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
 `;
 const Titulo = styled.h4`

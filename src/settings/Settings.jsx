@@ -1,10 +1,8 @@
 import React, { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
 import { ContextEstado } from "../context/ContextEstado";
-import { faArrowLeft, faSave} from "@fortawesome/free-solid-svg-icons";
+import { faSave } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styled from 'styled-components';
-
+import styled from "styled-components";
 
 const Settings = () => {
   // const boton = document.getElementById("boton");
@@ -16,39 +14,36 @@ const Settings = () => {
   // //   }
   // // };
 
-  const {setTituloPOS} = useContext(ContextEstado);
-  const [empresa, setEmpresa] = useState('');
-  const onSubmit= (e) => {
+  const { setTituloPOS } = useContext(ContextEstado);
+  const [empresa, setEmpresa] = useState("");
+  const onSubmit = (e) => {
     e.preventDefault();
     setTituloPOS(empresa);
-  }  
+  };
   return (
     <>
       <main className="caja-contenido col-12">
         <div>
-          <NavLink to="/">
-            <button className="btn btn-warning">
-              <FontAwesomeIcon icon={faArrowLeft} />
-            </button>
-          </NavLink>
           <Titulo>Ajustes</Titulo>
         </div>
         <form onSubmit={onSubmit}>
           <hr />
           <div className="row">
             <div className="col">
-            <h6>Nombre</h6>
-              <input type="text" className="form-control mt-2"
-              placeholder="Nombre del Negocio"
-              onChange={(e)=>setEmpresa(e.target.value)}
+              <h6>Nombre</h6>
+              <input
+                type="text"
+                className="form-control mt-2"
+                placeholder="Nombre del Negocio"
+                onChange={(e) => setEmpresa(e.target.value)}
               />
             </div>
             <div className="col">
-            <h6>Tema</h6>
-            <select id="inputState" className="form-control mt-2">
-              <option>Claro</option>
-              <option>Dark</option>
-            </select>
+              <h6>Tema</h6>
+              <select id="inputState" className="form-control mt-2">
+                <option>Claro</option>
+                <option>Dark</option>
+              </select>
             </div>
           </div>
           <hr />
@@ -56,11 +51,13 @@ const Settings = () => {
             <h5>Fuente</h5>
             <button className="btn btn-outline-primary mt-2">Aumentar</button>
             <hr />
-            <button className="btn btn-outline-dark mt-2" >Disminuir</button>
+            <button className="btn btn-outline-dark mt-2">Disminuir</button>
           </div>
           <hr />
           <SeccionBoton>
-            <button className="btn btn-outline-success"><FontAwesomeIcon icon={faSave} /> Guardar</button>
+            <button className="btn btn-outline-success">
+              <FontAwesomeIcon icon={faSave} /> Guardar
+            </button>
           </SeccionBoton>
         </form>
       </main>
@@ -71,8 +68,8 @@ const Settings = () => {
 export default Settings;
 
 const SeccionBoton = styled.div`
-    width: 50%;
+  width: 50%;
 `;
-const Titulo = styled.h5`
-    text-align: center;
+const Titulo = styled.h3`
+  text-align: center;
 `;

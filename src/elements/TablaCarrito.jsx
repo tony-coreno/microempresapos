@@ -63,11 +63,11 @@ const TablaCarrito = () => {
                         <tr key={producto._id}>
                           <td>{1}</td>
                           <td>{producto.sku}</td>
-                          <td>{producto.producto.toUpperCase()}</td>
+                          <td>{`${producto.producto.toUpperCase()} ${producto.marca.toUpperCase()}`}</td>
                           <td>{precioventa}</td>
                           <td>
                             <button
-                              className="bn btn-dark mr-2"
+                              className="bn btn-outline-dark mr-2"
                               onClick={(e)=>eliminar(e, producto._id)}
                             >
                               <FontAwesomeIcon icon={faTimes} />

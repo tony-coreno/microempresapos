@@ -4,7 +4,6 @@ import { Navbar } from "reactstrap";
 import styled from "styled-components";
 import Swal from "sweetalert2";
 import ProductosInfo from "./ProductosInfo";
-import BarraProductos from "./BarraProductos";
 import BarraProductosGeneral from "./BarraProductosGeneral";
 import CardsProductosGeneral from "./CardsProductosGeneral";
 
@@ -62,7 +61,6 @@ const ProductosGeneral = () => {
   };
   return (
     <div>
-      <BarraProductos />
       {sessionStorage.getItem("token") &&
       sessionStorage.getItem("perfil") === "Administrador" ? (
         <Contenedor3>

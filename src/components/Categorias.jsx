@@ -15,15 +15,16 @@ const Categorias = () => {
   const [categoria, setCategoria] = useState(true);
   const [unidades, setUnidades] = useState([]);
   const [unidad, setUnidad] = useState(true);
+  const validacion = sessionStorage.getItem("perfil");
 
   useEffect(() => {
     obtenerCategorias();
-        // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     obtenerUnidades();
-        // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   const obtenerCategorias = async () => {
@@ -61,37 +62,46 @@ const Categorias = () => {
   return (
     <div>
       <BarraProductos />
-      <CategoriasHerramientas buscar={buscar} />
+      {validacion === "Administrador" ? (
+        <CategoriasHerramientas buscar={buscar} />
+      ) : null}
       <Contenedorapp>
         <Contenedor2>
-          {
-            <div className="container-small">
-              {categoria ? (
-                <Contenedorapp>
-                  <h4>
-                    Categorías de{" "}
-                    <span className="badge badge-success">
-                      {sessionStorage.getItem("nombre")}
-                    </span>
-                  </h4>
-                  <p></p>
-                  <hr />
+          <div className="container-small">
+            {categoria ? (
+              <Contenedorapp>
+                <h4>
+                  Categorías de{" "}
+                  <span className="badge badge-dark">
+                    {sessionStorage.getItem("nombre")}
+                  </span>
+                </h4>
+                <p></p>
+                <hr />
+                {validacion === "Administrador" ? (
                   <button
-                    className="btn btn-outline-primary mt-3"
+                    className="btn btn-outline-dark mt-3"
                     onClick={() => setCategoria(false)}
                   >
                     <FontAwesomeIcon icon={faShoppingBasket} /> Agregar
                     Categoría
                   </button>
-                </Contenedorapp>
-              ) : (
-                <AgregarCategoria
-                  setCategoria={setCategoria}
-                  obtenerCategorias={obtenerCategorias}
-                />
-              )}
-            </div>
-          }
+                ) : (
+                  <img
+                    src="https://img.icons8.com/plasticine/100/000000/total-sales.png"
+                    title="POS"
+                    alt="POS"
+                    className="text-center"
+                  />
+                )}
+              </Contenedorapp>
+            ) : (
+              <AgregarCategoria
+                setCategoria={setCategoria}
+                obtenerCategorias={obtenerCategorias}
+              />
+            )}
+          </div>
           <CategoriasProductos
             categorias={categorias}
             obtenerCategorias={obtenerCategorias}
@@ -104,18 +114,27 @@ const Categorias = () => {
                 <Contenedorapp>
                   <h4>
                     Unidades de{" "}
-                    <span className="badge badge-success">
+                    <span className="badge badge-dark">
                       {sessionStorage.getItem("nombre")}
                     </span>
                   </h4>
                   <p></p>
                   <hr />
-                  <button
-                    className="btn btn-outline-info mt-3"
-                    onClick={() => setUnidad(false)}
-                  >
-                    <FontAwesomeIcon icon={faShoppingBasket} /> Agregar Unidad
-                  </button>
+                  {validacion === "Administrador" ? (
+                    <button
+                      className="btn btn-outline-dark mt-3"
+                      onClick={() => setUnidad(false)}
+                    >
+                      <FontAwesomeIcon icon={faShoppingBasket} /> Agregar Unidad
+                    </button>
+                  ) : (
+                    <img
+                      src="https://img.icons8.com/plasticine/100/000000/total-sales.png"
+                      title="POS"
+                      alt="POS"
+                      className="text-center"
+                    />
+                  )}
                 </Contenedorapp>
               ) : (
                 <AgregarUnidad

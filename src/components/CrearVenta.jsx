@@ -1,41 +1,33 @@
 import React, { useContext, useState } from "react";
 import { ContextEstado } from "../context/ContextEstado";
-import AdministrarVentas from "./AdministrarVentas";
 import DetalleVenta from "../elements/DetalleVenta";
 import ModalVentaManual from "../modals/ModalVentaManual";
-import Reportes from "./Reportes";
 import Carrito from "./Carrito";
 import FormularioCrearVenta from "./FormularioCrearVenta";
-import { Switch, NavLink, Route } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBarcode, faCashRegister } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
 const CrearVenta = () => {
-
-
   const { articulos } = useContext(ContextEstado);
   const [modalManual, setModalManual] = useState(false);
   let f = new Date();
   return (
     <div>
-      <Contenedorapp>
-        <Menu>
-          {sessionStorage.getItem("perfil") === "Administrador" ? (
-            <>
-              <NavLink to="/crear-venta">Crear Venta</NavLink>
-              <NavLink to="/administrar-venta">Administrar</NavLink>
-              <NavLink to="/reportes">Reportes</NavLink>
-            </>
-          ) : (
+      <Menu>
+        {sessionStorage.getItem("perfil") === "Administrador" ? (
+          <>
             <NavLink to="/crear-venta">Crear Venta</NavLink>
-          )}
-        </Menu>
+            <NavLink to="/administrar-venta">Administrar</NavLink>
+            <NavLink to="/reportes">Reportes</NavLink>
+          </>
+        ) : (
+          <NavLink to="/crear-venta">Crear Venta</NavLink>
+        )}
+      </Menu>
+      <Contenedorapp>
         <main>
-          <Switch>
-            <Route path="/reportes" component={Reportes} />
-            <Route path="/administrar-venta" component={AdministrarVentas} />
-          </Switch>
           <TituloEmpleado>
             Vendedor : {sessionStorage.getItem("nombre")} | Fecha:{" "}
             {f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear()}

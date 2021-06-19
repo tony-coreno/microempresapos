@@ -6,8 +6,8 @@ import BarraVentas from "../reports/BarraVentas";
 const Almacen = () => {
   return (
     <div>
+      <BarraVentas />
       <Contenedorapp>
-          <BarraVentas />
         <CardReportes />
       </Contenedorapp>
     </div>
