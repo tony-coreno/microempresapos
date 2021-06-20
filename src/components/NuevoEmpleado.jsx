@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Axios from "axios";
-import "bootstrap/dist/css/bootstrap.css";
 import {
   faArrowLeft,
   faEye,
@@ -42,6 +41,22 @@ const NuevoEmpleado = () => {
       estado: estado,
       jefe: sessionStorage.getItem("idusuario"),
     };
+    if((estado === "") || (perfil ==="") ){
+      return Swal.fire({
+        icon: "error",
+        title: "Complete todos los campos",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    if (numeroempleado < 0 ){
+      return Swal.fire({
+        icon: "error",
+        title: "Núm. Empleado tiene que ser positivo",
+        showConfirmButton: false,
+        timer: 1700,
+      });
+    }
     const token = sessionStorage.getItem("token");
     const respuesta = await Axios.post("/empleados/crear", empleado, {
       headers: { autorizacion: token },
@@ -90,6 +105,7 @@ const NuevoEmpleado = () => {
                 onChange={(e) => setNombre(e.target.value)}
                 className="form-control"
                 placeholder="Nombre"
+                required
               />
             </div>
             <div class="col">
@@ -98,6 +114,7 @@ const NuevoEmpleado = () => {
                 onChange={(e) => setApellidoPaterno(e.target.value)}
                 className="form-control"
                 placeholder="Apellido Paterno"
+                required
               />
             </div>
           </div>
@@ -108,6 +125,7 @@ const NuevoEmpleado = () => {
                 onChange={(e) => setApellidoMaterno(e.target.value)}
                 className="form-control"
                 placeholder="Apellido Materno"
+                required
               />
             </div>
             <div className="col">
@@ -116,6 +134,7 @@ const NuevoEmpleado = () => {
                 onChange={(e) => setNumeroEmpleado(e.target.value)}
                 className="form-control"
                 placeholder="Numero de empleado"
+                required
               />
             </div>
           </div>
@@ -127,6 +146,7 @@ const NuevoEmpleado = () => {
                 onChange={(e) => setUsuario(e.target.value)}
                 className="form-control"
                 placeholder="Usuario para ingresar al sistema "
+                required
               />
             </div>
             <div class="col">
@@ -135,6 +155,7 @@ const NuevoEmpleado = () => {
                 onChange={(e) => setContrasena(e.target.value)}
                 className="form-control"
                 placeholder="Contraseña"
+                required
               />
             </div>
             <div class="col">
@@ -143,6 +164,7 @@ const NuevoEmpleado = () => {
                 onChange={(e) => setContrasena(e.target.value)}
                 className="form-control"
                 placeholder="Confirmar contraseña"
+                required
               />
               <button className="btn-sm btn-primary mt-2">
                 <i>

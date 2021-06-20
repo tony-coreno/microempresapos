@@ -99,6 +99,7 @@ const NuevoProducto = () => {
                 className="form-control"
                 placeholder="Marca"
                 onChange={(e) => setMarca(e.target.value)}
+                required
               />
             </div>
             {sessionStorage.getItem("negocio") === "Ropa" ? (
@@ -128,6 +129,7 @@ const NuevoProducto = () => {
                 className="form-control"
                 placeholder="Existencia"
                 onChange={(e) => setExistencia(e.target.value)}
+                required
               />
             </div>
             <div className="col">
@@ -136,6 +138,7 @@ const NuevoProducto = () => {
                 className="form-control"
                 placeholder="Precio de venta"
                 onChange={(e) => setPrecioventa(e.target.value)}
+                required
               />
             </div>
           </div>

@@ -6,7 +6,6 @@ import { faArrowLeft, faUserTag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 import Swal from 'sweetalert2';
-import "bootstrap/dist/css/bootstrap.css";
 
 const NuevoCliente = () => {
 
@@ -33,6 +32,31 @@ const NuevoCliente = () => {
       correo,
       jefe: sessionStorage.getItem("idusuario"),
     };
+    if(tipocliente === ""){
+      return Swal.fire({
+        icon: "error",
+        title: "Seleccione tipo de cliente",
+        showConfirmButton: false,
+        timer: 1200,
+      });
+    }
+    if(codigopromocional < 0) {
+      return Swal.fire({
+        icon: "error",
+        title: "Código Prom. no puede ser negativo",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+
+    if ((telefono < 0) || (telefono.length !== 10)){
+      return Swal.fire({
+        icon: "error",
+        title: "Ingrese Tel a 10 dígitos",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
     const token = sessionStorage.getItem("token");
     const respuesta = await Axios.post("/clientes/crear", cliente, {
       headers: { autorizacion: token },
@@ -67,6 +91,7 @@ const NuevoCliente = () => {
                 className="form-control"
                 placeholder="Nombre"
                 autoFocus
+                required
                 onChange={(e) => setNombre(e.target.value)}
               />
             </div>
@@ -75,6 +100,7 @@ const NuevoCliente = () => {
                 type="text"
                 className="form-control"
                 placeholder="Apellido"
+                required
                 onChange={(e) => setApellido(e.target.value)}
               />
             </div>
@@ -95,6 +121,7 @@ const NuevoCliente = () => {
                 className="form-control"
                 placeholder="Telefono"
                 onChange={(e) => setTelefono(e.target.value)}
+                required
               />
             </div>
             <div className="col">

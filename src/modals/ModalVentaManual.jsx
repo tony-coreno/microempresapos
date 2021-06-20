@@ -1,6 +1,7 @@
 import React, {useState, useContext} from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { ContextEstado } from "../context/ContextEstado";
+import Swal from "sweetalert2";
 import styled from "styled-components";
 const ModalVentaManual = ({ modalManual, setModalManual }) => {
   
@@ -9,16 +10,26 @@ const [producto, setProducto] = useState('');
 const [precioventa, setPrecioVenta] = useState('');
 const [cantidad, setCantidad] = useState(0);
 const [unidad, setUnidad] = useState('');
+const [marca, setMarca] = useState('');
 
 const manual ={
   producto: producto,
   precioventa: parseInt(precioventa),
   cantidad: parseInt(cantidad),
-  unidad: unidad
+  unidad: unidad,
+  marca: marca
 }
 
 const enviar = (e) => {
   e.preventDefault();
+  if(marca === ''){
+    return Swal.fire({
+      icon: "error",
+      title: "Complete todos los campos",
+      showConfirmButton: false,
+      timer: 1200,
+    });
+  }
   setVentaProducto([...ventaProducto, manual])
   console.log(ventaProducto)
   setArticulos(articulos + 1);
@@ -46,7 +57,9 @@ const enviar = (e) => {
               <label>Cantidad</label>
               <input type="number" className="form-control" onChange={(e)=>setCantidad(e.target.value)} />
               <label>Unidad</label>
-              <input className="form-control" onChange={(e)=>setUnidad(e.target.value)} />
+              <input className="form-control" onChange={(e)=>setUnidad(e.target.value)} required/>
+              <label>Marca</label>
+              <input className="form-control" onChange={(e)=>setMarca(e.target.value)} required />
             </div>
           </Contenedor>
           <hr />

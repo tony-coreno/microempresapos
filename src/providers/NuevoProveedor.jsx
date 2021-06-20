@@ -6,7 +6,6 @@ import { faArrowLeft, faUserTag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 import Swal from "sweetalert2";
-import "bootstrap/dist/css/bootstrap.css";
 
 const NuevoProveedor = () => {
   const [nombre, setNombre] = useState("");
@@ -34,6 +33,25 @@ const NuevoProveedor = () => {
       correo,
       jefe: sessionStorage.getItem("idusuario"),
     };
+
+    if (categoriaproveedor === "" || categoriaproveedor === "Categoria") {
+      return Swal.fire({
+        icon: "error",
+        title: "Seleccione una categoría",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+
+    if (telefono < 0 || telefono.length !== 10) {
+      return Swal.fire({
+        icon: "error",
+        title: "Ingrese Tel a 10 dígitos",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+
     const token = sessionStorage.getItem("token");
     const respuesta = await Axios.post("/proveedores/crear", proveedor, {
       headers: { autorizacion: token },
@@ -68,6 +86,7 @@ const NuevoProveedor = () => {
                 className="form-control"
                 placeholder="Nombre"
                 autoFocus
+                required
                 onChange={(e) => setNombre(e.target.value)}
               />
             </div>
@@ -76,6 +95,7 @@ const NuevoProveedor = () => {
                 type="text"
                 className="form-control"
                 placeholder="Apellido"
+                required
                 onChange={(e) => setApellido(e.target.value)}
               />
             </div>
@@ -98,6 +118,7 @@ const NuevoProveedor = () => {
                 type="text"
                 className="form-control"
                 placeholder="Marca"
+                required
                 onChange={(e) => setMarcaProveedor(e.target.value)}
               />
             </div>
@@ -114,6 +135,7 @@ const NuevoProveedor = () => {
                 type="number"
                 className="form-control"
                 placeholder="Teléfono"
+                required
                 onChange={(e) => setTelefono(e.target.value)}
               />
             </div>
@@ -125,11 +147,8 @@ const NuevoProveedor = () => {
                 onChange={(e) => setCorreo(e.target.value)}
               />
             </div>
-
           </div>
-
           <hr />
-
           <button className="btn btn-outline-info">
             <FontAwesomeIcon icon={faUserTag} /> Registrar
           </button>
