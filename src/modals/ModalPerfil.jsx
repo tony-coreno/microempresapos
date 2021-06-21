@@ -7,7 +7,6 @@ import {
     ModalFooter
   } from "reactstrap";
   // import Axios from 'axios';
-  import 'bootstrap/dist/css/bootstrap.css';
   import styled from 'styled-components';
 const ModalPerfil = ({modal, setModal}) => {
   // const [data, setData] = useState([]);

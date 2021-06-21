@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import ProveedorInfo from "../providers/ProveedorInfo";
-import styled from "styled-components";
+import { Contenedorapp, Contenedor, Buscar } from "../providers/style/ProveedorStyle";
 import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -108,33 +108,5 @@ const Proveedores = () => {
     </div>
   );
 };
-const Contenedorapp = styled.div`
-  max-width: 1400px;
-  padding: 5px;
-  width: 100%;
-  display: grid;
-  gap: 20px;
-  grid-template-columns: 2fr 4fr;
-  background: #fff;
-  margin: 5px 0;
-  border-radius: 20px;
-  box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
-`;
-
-const Contenedor = styled.div`
-  padding: 25px;
-  width: 100%;
-  display: grid;
-  gap: 20px;
-  //background: #eef3f5;
-  background: #fff;
-  margin: 10px 0;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
-`;
-
-const Buscar = styled.input`
-  border-radius: 10px;
-`;
 
 export default Proveedores;

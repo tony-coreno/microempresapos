@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Axios from "axios";
-import { Button, Navbar } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faSearch } from "@fortawesome/free-solid-svg-icons";
-import styled from "styled-components";
+import HerramientaVistaProducto from "./HerramientaVistaProducto";
+import {Contenedorapp, Contenedor, Contenedor2} from './styled/VistaProductoStyled'
 
 const VistaProductoCard = () => {
   const [productos, setProductos] = useState([""]);
+  let cantidad = 0;
   useEffect(() => {
     obtenerProductos();
   }, []);
@@ -35,31 +34,7 @@ const VistaProductoCard = () => {
   };
   return (
     <div>
-      <Navbar>
-        <NavLink to="/productos">
-          <Button
-            className="btn btn-success d-flex d-flex justify-content-between align-items-center"
-            data-toggle="tooltip"
-            data-placement="right"
-            title="Regresar"
-          >
-            <FontAwesomeIcon icon={faArrowLeft} />
-          </Button>
-        </NavLink>
-        <div className="col-md-4 ml-auto">
-          <div className="input-group fa-2x">
-            <Buscar
-              className="form-control mr-sm-4"
-              type="search"
-              placeholder="Buscar por producto..."
-              aria-label="Search"
-              onChange={buscar}
-              autoFocus
-            ></Buscar>
-            <FontAwesomeIcon icon={faSearch} />
-          </div>
-        </div>
-      </Navbar>
+      <HerramientaVistaProducto buscar={buscar} />
       <Contenedorapp>
         <Contenedor>
           <div className="list-group bg">
@@ -77,7 +52,9 @@ const VistaProductoCard = () => {
                 className="list-group-item d-flex justify-content-between align-items-center"
               >
                 Marca
-                <span className="badge badge-success badge-pill">14</span>
+                <span className="badge badge-success badge-pill">
+                  {cantidad}
+                </span>
               </Link>
               <li className="list-group-item d-flex justify-content-between align-items-center">
                 Mayor stock
@@ -97,6 +74,7 @@ const VistaProductoCard = () => {
         <aside>
           <Contenedor2>
             {productos.map((producto, index) => {
+              cantidad = cantidad + producto.marca;
               return (
                 <div
                   key={index}
@@ -114,20 +92,12 @@ const VistaProductoCard = () => {
                     <div className="col-md-8">
                       <div className="card-body">
                         <h5 className="card-title">{producto.marca}</h5>
-                        <h6 className="card-text">
-                          {/* Stock: {producto.existencia} */}
-                        </h6>
-
+                        <h6 className="card-text">Existencia: {producto.existencia}</h6>
                         <p className="card-text">
                           <small className="text-muted">
-                            {/* Cat: {producto.categoria} */}
                             <br />
                           </small>
                         </p>
-                        {/* 
-                        <Link to={ `./hero/${ id }` }>
-                            Más...
-                        </Link> */}
                       </div>
                     </div>
                   </div>
@@ -140,45 +110,5 @@ const VistaProductoCard = () => {
     </div>
   );
 };
-
-const Contenedorapp = styled.div`
-  max-width: 1400px;
-  padding: 5px;
-  width: 100%;
-  display: grid;
-  gap: 20px;
-  grid-template-columns: 2fr 4fr;
-  background: #fff;
-  margin: 5px 0;
-  border-radius: 20px;
-  box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
-`;
-const Buscar = styled.input`
-  border-radius: 10px;
-`;
-const Contenedor = styled.div`
-  padding: 25px;
-  width: 100%;
-  display: grid;
-  gap: 20px;
-  //background: #eef3f5;
-  background: #fff;
-  margin: 10px 0;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
-`;
-const Contenedor2 = styled.div`
-  display: flex;
-  padding: 20px;
-  width: 100%;
-  display: grid;
-  gap: 10px;
-  grid-template-columns: 2fr 2fr;
-  //background: #eef3f5;
-  background: #fff;
-  margin: 10px 0;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
-`;
 
 export default VistaProductoCard;

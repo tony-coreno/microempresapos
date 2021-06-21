@@ -9,10 +9,8 @@ import {
   faFilePdf,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-import styled from "styled-components";
-// import "bootstrap/dist/css/bootstrap.css";
-// import ReactHTMLTableToExcel from 'react-html-table-to-excel';
-
+import { Herramientas, Boton, Buscar, Tabla } from "../users/style/EmpleadoStyle";
+import EmpleadosMap from "../users/EmpleadosMap";
 const Empleados = () => {
   const [empleados, setEmpleados] = useState([]);
   useEffect(() => {
@@ -43,17 +41,6 @@ const Empleados = () => {
   };
   return (
     <>
-      {/* <Barra /> */}
-      {/* <div>
-      <ReactHTMLTableToExcel
-        id="botonExportarExcel"
-        className="btn btn-outline-success"
-        table="tablaEmpleados"
-        filename={`Empleados-${f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear()}}`}
-        sheet="13-04"
-        buttonText={<FontAwesomeIcon icon={faFileExcel} />}
-      />
-    </div> */}
       <Navbar>
         <Herramientas className="">
           <NavLink to="/empleado">
@@ -105,88 +92,11 @@ const Empleados = () => {
       </Navbar>
       <div className="table-responsive table-borderless table-hover">
         <Tabla>
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12">
-                <div className="card">
-                  <div className="bg-light card-header py-2">
-                    <Titulo>
-                      Empleados de{" "}
-                      {sessionStorage.getItem("nombre") || "Invitado"}
-                    </Titulo>
-                  </div>
-                  <table
-                    className="table table-responsive-lg "
-                    id="tablaEmpleados"
-                  >
-                    <thead className="light">
-                      <tr>
-                        <th>#</th>
-                        <th># Empleado</th>
-                        <th>Nombre</th>
-                        <th>Apellido Paterno</th>
-                        <th>Usuario</th>
-                        <th>Perfil</th>
-                        <th>Estado</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {empleados.map((empleado, i) => {
-                        let clase = "alert alert-success";
-
-                        if(empleado.estado === "Inactivo"){
-                          clase = "alert alert-danger"
-                        }
-                        return (
-                          <tr key={empleado._id}>
-                            <td>{i + 1}</td>
-                            <td>{empleado.numeroempleado}</td>
-                            <td>{empleado.nombre}</td>
-                            <td>{empleado.apellidopaterno}</td>
-                            <td>{empleado.usuario}</td>
-                            <td>{empleado.perfil}</td>
-                            <td className={clase}>{empleado.estado}</td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
+         <EmpleadosMap empleados={empleados} />
         </Tabla>
       </div>
     </>
   );
 };
 
-const Tabla = styled.section`
-  background: #fff;
-  text-align: center;
-  font-family: "Open Sans", sans-serif;
-`;
-
-const Titulo = styled.h4`
-  color: #000;
-`;
-
-const Herramientas = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin: 4px;
-  padding: 10px;
-  gap: 20px;
-`;
-
-const Boton = styled.button`
-  display: inline-flex;
-  justify-content: space-between;
-  align-items: center;
-  outline: none;
-`;
-
-const Buscar = styled.input`
-  border-radius: 10px;
-`;
 export default Empleados;

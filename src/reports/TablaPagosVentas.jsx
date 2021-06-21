@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import { SeccionBoton, Titulo } from "./Style/ReporteStyle";
 
 const TablaPagosVentas = ({pagos, eliminar, actualizar}) => {
   return (
@@ -73,12 +73,5 @@ const TablaPagosVentas = ({pagos, eliminar, actualizar}) => {
   );
 };
 
-const SeccionBoton = styled.div`
-  width: 50%;
-`;
-const Titulo = styled.h6`
-  color: #fff;
-  text-align: center;
-`;
 
 export default TablaPagosVentas;

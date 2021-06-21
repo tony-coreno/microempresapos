@@ -1,8 +1,8 @@
-import React, {Fragment} from "react";
+import React, { Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-import styled from "styled-components";
-const CardsEmpleados = ({empleados,  eliminar, buscarEmpleadoID}) => {
+import { Contenedor2 } from "./style/EmpleadoStyle";
+const CardsEmpleados = ({ empleados, eliminar, buscarEmpleadoID }) => {
   return (
     <>
       <Contenedor2>
@@ -55,17 +55,4 @@ const CardsEmpleados = ({empleados,  eliminar, buscarEmpleadoID}) => {
   );
 };
 
-const Contenedor2 = styled.div`
-  display: flex;
-  padding: 20px;
-  width: 100%;
-  display: grid;
-  gap: 10px;
-  grid-template-columns: 2fr 2fr;
-  //background: #eef3f5;
-  background: #fff;
-  margin: 10px 0;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
-`;
 export default CardsEmpleados;

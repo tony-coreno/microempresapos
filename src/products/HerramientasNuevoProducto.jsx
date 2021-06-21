@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { faArchive, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styled from "styled-components";
+import { Titulo } from "./styled/HerramientasProductoStyle";
 const HerramientasNuevoProducto = () => {
   return (
     <>
@@ -28,7 +28,5 @@ const HerramientasNuevoProducto = () => {
   );
 };
 
-const Titulo = styled.h5`
-  text-align: center;
-`;
+
 export default HerramientasNuevoProducto;

@@ -4,7 +4,7 @@ import Axios from "axios";
 import { Button } from "reactstrap";
 import { faArrowLeft, faUserTag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styled from "styled-components";
+import { Titulo } from "./style/ProveedorStyle";
 import Swal from "sweetalert2";
 
 const NuevoProveedor = () => {
@@ -158,8 +158,6 @@ const NuevoProveedor = () => {
   );
 };
 
-const Titulo = styled.h5`
-  text-align: center;
-`;
+
 
 export default NuevoProveedor;

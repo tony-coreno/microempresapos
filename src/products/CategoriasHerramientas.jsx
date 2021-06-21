@@ -8,7 +8,11 @@ import {
   faSearch,
   faShoppingBag,
 } from "@fortawesome/free-solid-svg-icons";
-import styled from "styled-components";
+import {
+  Boton,
+  Herramientas,
+  Buscar,
+} from "./styled/HerramientasProductoStyle";
 
 const CategoriasHerramientas = ({ buscar }) => {
   return (
@@ -43,7 +47,7 @@ const CategoriasHerramientas = ({ buscar }) => {
               data-placement="right"
               title="Exportar productos"
             >
-              <FontAwesomeIcon icon={faFileExcel} /> {" "}Exportar Excel
+              <FontAwesomeIcon icon={faFileExcel} /> Exportar Excel
             </Button>
           </NavLink>
         </Herramientas>
@@ -66,24 +70,5 @@ const CategoriasHerramientas = ({ buscar }) => {
     </>
   );
 };
-
-const Boton = styled.button`
-  display: inline-flex;
-  justify-content: space-between;
-  align-items: center;
-  outline: none;
-`;
-
-const Herramientas = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin: 4px;
-  padding: 10px;
-  gap: 20px;
-`;
-
-const Buscar = styled.input`
-  border-radius: 10px;
-`;
 
 export default CategoriasHerramientas;

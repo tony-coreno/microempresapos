@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import Axios from "axios";
 import CategoriasProductos from "../products/CategoriasProductos";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,6 +8,7 @@ import BarraProductos from "../products/BarraProductos";
 import Unidades from "../products/Unidades";
 import AgregarUnidad from "./AgregarUnidad";
 import CategoriasHerramientas from "../products/CategoriasHerramientas";
+import { Contenedorapp, Contenedor2 } from "../products/styled/CategoriaStyle";
 
 const Categorias = () => {
   const [categorias, setCategorias] = useState([]);
@@ -150,32 +150,5 @@ const Categorias = () => {
     </div>
   );
 };
-
-const Contenedorapp = styled.div`
-  max-width: 1400px;
-  padding: 5px;
-  width: 100%;
-  display: grid;
-  gap: 20px;
-  //grid-template-columns: 2fr 1fr;
-  background: #fff;
-  margin: 5px 0;
-  border-radius: 10px;
-  box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
-`;
-
-const Contenedor2 = styled.div`
-  display: flex;
-  padding: 20px;
-  width: 100%;
-  display: grid;
-  gap: 10px;
-  grid-template-columns: 2fr 4fr;
-  //background: #eef3f5;
-  background: #fff;
-  margin: 10px 0;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
-`;
 
 export default Categorias;

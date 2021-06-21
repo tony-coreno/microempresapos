@@ -9,7 +9,7 @@ import {
   Legend,
 } from "recharts";
 import styled from "styled-components";
-import ProductosMayorVenta from "../charts/ProductosMayorVenta";
+// import ProductosMayorVenta from "../charts/ProductosMayorVenta";
 const ChartVentasPago = () => {
   const data = [
     {

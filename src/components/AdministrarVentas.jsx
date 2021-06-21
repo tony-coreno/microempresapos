@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import styled from "styled-components";
+import { ContenedorappAdmin } from "../reports/Style/ReporteStyle";
 import Swal from "sweetalert2";
 import TablaPagosVentas from "../reports/TablaPagosVentas";
 import BarraVentas from "../reports/BarraVentas";
@@ -88,7 +88,7 @@ const Almacen = () => {
   return (
     <div>
       <BarraVentas />
-      <Contenedorapp>
+      <ContenedorappAdmin>
         <h3>Administrar Pagos</h3>
         <form onSubmit={guardar}>
           <hr />
@@ -119,22 +119,10 @@ const Almacen = () => {
           eliminar={eliminar}
           actualizar={actualizar}
         />
-      </Contenedorapp>
+      </ContenedorappAdmin>
     </div>
   );
 };
 
-const Contenedorapp = styled.div`
-  max-width: 1400px;
-  padding: 20px;
-  width: 100%;
-  display: grid;
-  gap: 5px;
-  //grid-template-columns: 2fr 1fr;
-  background: #fff;
-  margin: 5px 0;
-  border-radius: 20px;
-  box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
-`;
 
 export default Almacen;

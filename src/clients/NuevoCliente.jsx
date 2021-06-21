@@ -4,7 +4,7 @@ import Axios from 'axios';
 import { Button } from "reactstrap";
 import { faArrowLeft, faUserTag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styled from "styled-components";
+import { Titulo } from "./style/ClienteStyle";
 import Swal from 'sweetalert2';
 
 const NuevoCliente = () => {
@@ -156,8 +156,5 @@ const NuevoCliente = () => {
   );
 };
 
-const Titulo = styled.h5`
-  text-align: center;
-`;
 
 export default NuevoCliente;

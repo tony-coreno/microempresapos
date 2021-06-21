@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import { ContenedorInput } from "./Style/ReporteStyle";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import { DateUtils } from "react-day-picker";
 // import getUnixTime from 'date-fns/fromUnixTime';
@@ -80,30 +80,6 @@ const CalendarVentasDia = () => {
   );
 };
 
-const ContenedorInput = styled.div`
-  input {
-    font-family: "Work Sans", sans-serif;
-    box-sizing: border-box;
-    background: #f2f2f2;
-    border: none;
-    cursor: pointer;
-    border-radius: 0.625rem; /* 10px */
-    height: 5rem; /* 80px */
-    width: 100%;
-    padding: 0 1.25rem; /* 20px */
-    font-size: 1.5rem; /* 24px */
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 
-  @media (max-width: 60rem) {
-    /* 950px */
-    & > * {
-      width: 100%;
-    }
-  }
-`;
 
 export default CalendarVentasDia;
