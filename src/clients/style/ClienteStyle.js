@@ -61,3 +61,28 @@ export const Titulo = styled.h5`
 text-align: center;
 `;
 
+export const Tabla = styled.section`
+  background: #fff;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+`;
+
+export const TituloColor = styled.h4`
+  color: #000;
+`;
+
+export const Herramientas = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 4px;
+  padding: 10px;
+  gap: 20px;
+`;
+
+export const Boton = styled.button`
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  outline: none;
+`;
+

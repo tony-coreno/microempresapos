@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import "bootstrap/dist/css/bootstrap.css";
 import ModalPerfil from "../modals/ModalPerfil";
 import ModalSesion from "../modals/ModalSesion";
 import ModalNotificacion from '../modals/ModalNotificacion';

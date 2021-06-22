@@ -1,4 +1,5 @@
 import React from "react";
+import { ContenedorPrincipal, Main } from "./style/SystemStyle";
 import { Route, Switch } from "react-router-dom";
 import Header from "./Header";
 import Inicio from "./Inicio";
@@ -10,7 +11,6 @@ import VistaProductoCard from '../products/VistaProductoCard'
 import Ayuda from "./Ayuda";
 import NuevoCliente from "./../clients/NuevoCliente";
 import NuevoProveedor from '../providers/NuevoProveedor';
-import styled from "styled-components";
 import Sidebar from "./Sidebar";
 import Error from "./Error";
 import Productos from "./Productos";
@@ -33,7 +33,7 @@ import FiltrarVentas from '../reports/FiltrarVentas';
 import EditarEmpleado from '../users/EditarEmpleado';
 import EmpleadosGeneral from '../users/EmpleadosGeneral';
 import ClientesTabla from './ClientesTabla';
-import "bootstrap/dist/css/bootstrap.css";
+//import "bootstrap/dist/css/bootstrap.css";
 import ClientesGeneral from "../clients/ClientesGeneral";
 import ProductosGeneral from '../products/ProductosGeneral';
 const App = () => {
@@ -104,18 +104,6 @@ const App = () => {
   );
 };
 
-const ContenedorPrincipal = styled.div`
-  padding: 10px;
-  margin-top: 0px;
-  width: 90%;
-  max-width: 1400px;
-`;
 
-const Main = styled.main`
-  background: #fff;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
-`;
 
 export default App;

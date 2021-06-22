@@ -4,28 +4,22 @@ import { ContextEstado } from "../context/ContextEstado";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 const TablaCarrito = () => {
-  const { ventaProducto, setTotal, setVentaProducto, setArticulos, articulos } = useContext(ContextEstado);
-  // const [cantidad, setCantidad] = useState(0);
-  // let carritoActual = []
-  // let cant = 0;
-  // useMemo(()=> {
-  //   setTotal([...total + ventaProducto.precioventa])
-  // },[ventaProducto.precioventa])
+  const { ventaProducto, setTotal, setVentaProducto, setArticulos, articulos } =
+    useContext(ContextEstado);
   let pagar = 0;
 
   const eliminar = (e, id) => {
     e.preventDefault();
-    let nuevoCarrito = ventaProducto.filter(venta =>{
-      return venta._id !== id
-    })
-    setVentaProducto(nuevoCarrito)
-    setArticulos(articulos -1)
+    let nuevoCarrito = ventaProducto.filter((venta) => {
+      return venta._id !== id;
+    });
+    setVentaProducto(nuevoCarrito);
+    setArticulos(articulos - 1);
 
-     if(articulos === 1){
-       setTotal(0)
-     }
-
-  }
+    if (articulos === 1) {
+      setTotal(0);
+    }
+  };
   return (
     <>
       <div className="table-responsive table-borderless table-hover">
@@ -47,7 +41,7 @@ const TablaCarrito = () => {
                     </tr>
                   </thead>
                   <Tabla>
-                    {ventaProducto.map((producto) => {                      
+                    {ventaProducto.map((producto) => {
                       const { precioventa } = producto;
                       // const { sku } = producto;
                       pagar = pagar + precioventa;
@@ -57,7 +51,7 @@ const TablaCarrito = () => {
                       // });
                       // console.log(existe);
                       if (articulos === 0) {
-                        pagar = 0
+                        pagar = 0;
                       }
                       return (
                         <tr key={producto._id}>
@@ -68,7 +62,7 @@ const TablaCarrito = () => {
                           <td>
                             <button
                               className="bn btn-outline-dark mr-2"
-                              onClick={(e)=>eliminar(e, producto._id)}
+                              onClick={(e) => eliminar(e, producto._id)}
                             >
                               <FontAwesomeIcon icon={faTimes} />
                             </button>
@@ -93,7 +87,7 @@ const Titulo = styled.h5`
 `;
 
 const Tabla = styled.tbody`
-font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-`;      
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+`;
 
 export default TablaCarrito;

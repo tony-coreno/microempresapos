@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.css";
-import styled from "styled-components";
+import { Cuadros } from "./style/CardReportes";
 const CardReportes = () => {
   return (
     <>
@@ -49,9 +48,6 @@ const CardReportes = () => {
   );
 };
 
-const Cuadros = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
+
 
 export default CardReportes;
