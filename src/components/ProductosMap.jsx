@@ -26,10 +26,11 @@ const ProductosMap = ({productos}) => {
                         <th>SKU</th>
                         <th>Marca</th>
                         <th>Producto</th>
-                        <th>Existencia</th>
-                        <th>Precio de venta</th>
-                        <th>Categoría</th>
+                        <th>Cont. Neto</th> 
                         <th>Unidad</th>
+                        <th>Existencia</th>
+                        <th>Precio</th>
+                        <th>Categoría</th>
                         <th>Estado</th>
                       </tr>
                     </thead>
@@ -52,12 +53,13 @@ const ProductosMap = ({productos}) => {
                             <td>{producto.sku}</td>
                             <td>{producto.marca}</td>
                             <td>{producto.producto}</td>
+                            <td>{producto.cantidad}</td>
+                            <td>{producto.unidad}</td>
                             <td className={surtir}>{producto.existencia}</td>
                             <td className="text-center">
                               {producto.precioventa}
                             </td>
                             <td>{producto.categoria}</td>
-                            <td>{producto.unidad}</td>
                             <td className={clase}>{producto.estado}</td>
                           </tr>
                         );

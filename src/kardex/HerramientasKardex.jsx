@@ -7,7 +7,7 @@ import {
   faFilePdf,
   faFilter,
 } from "@fortawesome/free-solid-svg-icons";
-import styled from "styled-components";
+import { Boton, Herramientas } from "./style/KardexStyle";
 const HerramientasKardex = () => {
   return (
     <>
@@ -48,19 +48,6 @@ const HerramientasKardex = () => {
   );
 };
 
-const Boton = styled.button`
-  display: inline-flex;
-  justify-content: space-between;
-  align-items: center;
-  outline: none;
-`;
 
-const Herramientas = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin: 4px;
-  padding: 10px;
-  gap: 20px;
-`;
 
 export default HerramientasKardex;

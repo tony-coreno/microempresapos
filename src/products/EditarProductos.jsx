@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import Swal from "sweetalert2";
 
-const EditarProductos = ({ prod , setInfo }) => {
+const EditarProductos = ({ prod, setInfo }) => {
   const [producto, setProducto] = useState("");
   const [marca, setMarca] = useState("");
   const [existencia, setExistencia] = useState(0);
   const [precioventa, setPrecioVenta] = useState(0);
   const [estado, setEstado] = useState("");
+  const [cantidad, setCantidad] = useState(1);
   const [ide, setIde] = useState("");
   const cancelar = (e) => {
     e.preventDefault();
@@ -21,11 +22,12 @@ const EditarProductos = ({ prod , setInfo }) => {
     setPrecioVenta(parseInt(prod.precioventa));
     setIde(prod._id);
     setEstado(prod.estado);
+    setCantidad(prod.cantidad)
   };
 
   useEffect(() => {
     nuevosValores();
-        // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   const actualizar = async (e) => {
@@ -38,6 +40,7 @@ const EditarProductos = ({ prod , setInfo }) => {
       existencia,
       precioventa,
       estado,
+      cantidad,
     };
     const respuesta = await Axios.put("/productos/actualizar/" + id, prod, {
       headers: { autorizacion: token },
@@ -72,6 +75,12 @@ const EditarProductos = ({ prod , setInfo }) => {
           className="form-control mt-1"
           value={existencia}
           onChange={(e) => setExistencia(e.target.value)}
+        />
+        <label className="mt-2">Cont. Neto</label>
+        <input
+          className="form-control mt-1"
+          value={cantidad}
+          onChange={(e) => setCantidad(e.target.value)}
         />
         <label className="mt-2">Editar Precio Venta</label>
         <input

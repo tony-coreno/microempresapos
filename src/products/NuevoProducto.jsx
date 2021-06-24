@@ -16,7 +16,7 @@ const NuevoProducto = () => {
   const [categoria, setCategoria] = useState("");
   const [unidadSelected, setUnidadSelected] = useState([""]);
   const [unidad, setUnidad] = useState("");
-  const [talla, setTalla] = useState("");
+  const [cantidad, setCantidad] = useState(1);
 
   useEffect(() => {
     obtenerCategorias();
@@ -28,12 +28,12 @@ const NuevoProducto = () => {
     const stock = {
       sku,
       producto,
+      cantidad,
       existencia,
       precioventa,
       marca,
       categoria: categoria,
       unidad,
-      talla,
       jefe: sessionStorage.getItem("idusuario"),
     };
     const token = sessionStorage.getItem("token");
@@ -102,25 +102,6 @@ const NuevoProducto = () => {
                 required
               />
             </div>
-            {sessionStorage.getItem("negocio") === "Ropa" ? (
-              <>
-                <div class="col">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Ropa"
-                  />
-                </div>
-                <div class="col">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Talla"
-                    onChange={(e) => setTalla(e.target.value)}
-                  />
-                </div>
-              </>
-            ) : null}
           </div>
           <div className="row mt-4">
             <div className="col">
@@ -141,9 +122,33 @@ const NuevoProducto = () => {
                 required
               />
             </div>
+            <div className="col">
+              <input
+                type="number"
+                className="form-control"
+                placeholder="Cantidad producto"
+                onChange={(e) => setCantidad(e.target.value)}
+                required
+              />
+            </div>
           </div>
           <hr />
           <div>
+            <div className="form-group col-mt-4">
+              <Titulo>Unidad</Titulo>
+              <select
+                className="form-control mt-2"
+                onChange={(e) => setUnidad(e.target.value)}
+                value={unidad}
+              >
+                {unidadSelected.map((unidad) => {
+                  if (!unidad.estado) {
+                    return null;
+                  }
+                  return <option key={unidad._id}>{unidad.nombre}</option>;
+                })}
+              </select>
+            </div>
             <Titulo>Categoría</Titulo>
             <div className="form-group col-mt-4">
               <select
@@ -158,21 +163,6 @@ const NuevoProducto = () => {
                   return (
                     <option key={categorias._id}>{categorias.nombre}</option>
                   );
-                })}
-              </select>
-            </div>
-            <div className="form-group col-mt-4">
-              <Titulo>Unidad</Titulo>
-              <select
-                className="form-control mt-2"
-                onChange={(e) => setUnidad(e.target.value)}
-                value={unidad}
-              >
-                {unidadSelected.map((unidad) => {
-                  if (!unidad.estado) {
-                    return null;
-                  }
-                  return <option key={unidad._id}>{unidad.nombre}</option>;
                 })}
               </select>
             </div>

@@ -36,11 +36,12 @@ const TablaCarrito = () => {
                       <th>CANT</th>
                       <th>COD</th>
                       <th>PRODUCTO</th>
+                      <th>CONT. NETO</th>
                       <th>PRECIO</th>
                       <th>ELIMINAR</th>
                     </tr>
                   </thead>
-                  <Tabla>
+                  <Tabla className="text-center">
                     {ventaProducto.map((producto) => {
                       const { precioventa } = producto;
                       // const { sku } = producto;
@@ -58,6 +59,7 @@ const TablaCarrito = () => {
                           <td>{1}</td>
                           <td>{producto.sku}</td>
                           <td>{`${producto.producto.toUpperCase()} ${producto.marca.toUpperCase()}`}</td>
+                          <td>{`${producto.cantidad} ${producto.unidad.toUpperCase()}`}</td>
                           <td>{precioventa}</td>
                           <td>
                             <button
