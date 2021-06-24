@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import Axios from "axios";
+import React, { useEffect } from "react";
+import { CategoriasHook } from "../hooks/CategoriasHook";
 import CategoriasProductos from "../products/CategoriasProductos";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
@@ -11,10 +11,17 @@ import CategoriasHerramientas from "../products/CategoriasHerramientas";
 import { Contenedorapp, Contenedor2 } from "../products/styled/CategoriaStyle";
 
 const Categorias = () => {
-  const [categorias, setCategorias] = useState([]);
-  const [categoria, setCategoria] = useState(true);
-  const [unidades, setUnidades] = useState([]);
-  const [unidad, setUnidad] = useState(true);
+  const {
+    categorias,
+    categoria,
+    unidades,
+    unidad,
+    setUnidad,
+    setCategoria,
+    obtenerCategorias,
+    obtenerUnidades,
+    buscar,
+  } = CategoriasHook();
   const validacion = sessionStorage.getItem("perfil");
 
   useEffect(() => {
@@ -27,38 +34,6 @@ const Categorias = () => {
     // eslint-disable-next-line
   }, []);
 
-  const obtenerCategorias = async () => {
-    const id = sessionStorage.getItem("idusuario");
-    const token = sessionStorage.getItem("token");
-    const respuesta = await Axios.get("/categorias/obtener/" + id, {
-      headers: { autorizacion: token },
-    });
-    setCategorias(respuesta.data);
-  };
-
-  const obtenerUnidades = async () => {
-    const id = sessionStorage.getItem("idusuario");
-    const token = sessionStorage.getItem("token");
-    const respuesta = await Axios.get("/unidades/obtener/" + id, {
-      headers: { autorizacion: token },
-    });
-    setUnidades(respuesta.data);
-  };
-
-  const buscar = async (e) => {
-    if (e.target.value === "") {
-      return obtenerCategorias();
-    }
-    const categoria = e.target.value;
-    const token = sessionStorage.getItem("token");
-    const respuesta = await Axios.get(
-      `/categorias/buscar/${categoria}/${sessionStorage.getItem("idusuario")}`,
-      {
-        headers: { autorizacion: token },
-      }
-    );
-    setCategorias(respuesta.data);
-  };
   return (
     <div>
       <BarraProductos />
