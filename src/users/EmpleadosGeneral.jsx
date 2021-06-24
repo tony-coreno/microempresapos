@@ -4,9 +4,9 @@ import { Contenedorapp, Contenedor, Buscar } from "./style/EmpleadoStyle";
 import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import EditarEmpleado from "./EditarEmpleado";
 import BarraEmpleadosGeneral from "./BarraEmpleadosGeneral";
 import CardsEmpleados from "./CardsEmpleados";
+import EmpleadoInfo from "./EmpleadoInfo";
 
 const EmpleadosGeneral = () => {
   const [empleados, setEmpleados] = useState([""]);
@@ -90,7 +90,7 @@ const EmpleadosGeneral = () => {
               </div>
             </>
           ) : (
-            <EditarEmpleado setInfo={setInfo} info={info} key={empleados._id} />
+            <EmpleadoInfo setInfo={setInfo} info={info} key={empleados._id} />
           )}
         </Contenedor>
         <aside>

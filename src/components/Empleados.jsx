@@ -5,14 +5,12 @@ import { Tabla } from "../users/style/EmpleadoStyle";
 import EmpleadosMap from "../users/EmpleadosMap";
 import HerramientasEmpleados from "../users/HerramientasEmpleados";
 const Empleados = () => {
-  
-  const {empleados, buscar, obtenerEmpleados} = EmpleadosHook();
+  const { empleados, buscar, obtenerEmpleados } = EmpleadosHook();
 
   useEffect(() => {
     obtenerEmpleados();
-        // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
-  //obtener empleados del admin
 
   return (
     <>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import Swal from "sweetalert2";
 
-const EditarEmpleado = ({ info, setInfo }) => {
+const EditarEmpleado = ({ emp, setInfo }) => {
 
   const [nombre, setNombre] = useState("");
   const [numeroempleado, setNumeroEmpleado] = useState(0);
@@ -28,12 +28,11 @@ const EditarEmpleado = ({ info, setInfo }) => {
   };
 
   const nuevosValores = () => {
-    const [name] = info
-    setNombre(name.nombre)
-    setNumeroEmpleado(name.numeroempleado)
-    setUsuario(name.usuario)
-    setEstado(name.estado)
-    setIde(name._id)
+    setNombre(emp.nombre)
+    setNumeroEmpleado(emp.numeroempleado)
+    setUsuario(emp.usuario)
+    setEstado(emp.estado)
+    setIde(emp._id)
     console.log(nombre)
   }
 

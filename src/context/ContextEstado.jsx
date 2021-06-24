@@ -8,11 +8,7 @@ const ProveedorState = ({ children }) => {
   const [listaProducto, setListaProducto] = useState([]);
   const [total, setTotal] = useState(0);
   const [totalProd, setTotalProd] = useState(0);
-  const [perfil, setPerfil] = useState("");
-  const [pagar, setPagar] = useState("");
   const [articulos, setArticulos] = useState(0);
-  const [clientes, setClientes] = useState([""]);
-  const [proveedores, setProveedores] = useState([""]);
   const [metodopago, setMetodoPago] = useState("");
   const [pagoSelected, setPagoSelected] = useState([]);
   const [tituloPos, setTituloPOS] = useState("");
@@ -85,20 +81,12 @@ const ProveedorState = ({ children }) => {
         setArticulos,
         ventaProducto,
         listaProducto,
-        pagar,
-        setPagar,
         setListaProducto,
         setVentaProducto,
         handleInputChange,
         handleSubmit,
-        perfil,
-        setPerfil,
         setTituloPOS,
         tituloPos,
-        clientes,
-        setClientes,
-        proveedores,
-        setProveedores,
         metodopago,
         setMetodoPago,
         pagoSelected,
