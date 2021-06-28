@@ -1,16 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
+import { PagarHook } from "../hooks/PagarHook";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 // import getUnixTime from 'date-fns/fromUnixTime';
 import { ContextEstado } from "../context/ContextEstado";
 import styled from "styled-components";
-import Axios from "axios";
-import Swal from "sweetalert2";
 
 const ModalVenta = ({ modal, setModal }) => {
-  const { total, metodopago, ventaProducto } = useContext(ContextEstado);
-  const [cambio, setCambio] = useState(0);
-  let restante = 0;
-  let f = Date();
+  const { total, metodopago } = useContext(ContextEstado);
+
+  const { guardar, setCambio, restante, darCambio } = PagarHook();
+
   // let fechas = getUnixTime(f);
   // console.log(fechas)
 
@@ -25,44 +24,6 @@ const ModalVenta = ({ modal, setModal }) => {
 
   */
 
-  const guardar = async (e) => {
-    e.preventDefault();
-    const venta = {
-      idusuario: sessionStorage.getItem("idusuario"),
-      jefe: sessionStorage.getItem("idusuario"),
-      total: total,
-      metodopago: metodopago,
-      fechaventa: f,
-      fecha: Date.now(),
-      articulos: ventaProducto
-    };
-    const token = sessionStorage.getItem("token");
-    darCambio();
-
-    if(cambio >= 0 ){
-    
-    const respuesta = await Axios.post("/ventas/crearventa", venta, {
-      headers: { autorizacion: token },
-    });
-    const mensaje = respuesta.data.mensaje;
-    Swal.fire({
-      icon: "success",
-      title: mensaje,
-      showConfirmButton: false,
-    });
-     setTimeout(() => {
-       window.location.href = "/crear-venta";
-     }, 1500);
-     return cambio;
-    }
-    else{
-      alert('Mayor')
-    }
-  };
-
-  const darCambio = () => {
-    restante = cambio - total;
-  };
   return (
     <>
       <Modal isOpen={modal}>
@@ -74,7 +35,7 @@ const ModalVenta = ({ modal, setModal }) => {
         </ModalHeader>
         <ModalBody>
           <Contenedor>
-            {total !== 0  ? (
+            {total !== 0 ? (
               <>
                 <Ventas>Metodo de pago</Ventas>
                 <Cifra>{metodopago}</Cifra>
@@ -84,6 +45,10 @@ const ModalVenta = ({ modal, setModal }) => {
             ) : (
               <>
                 <Cifra>Sin compras</Cifra>
+                <hr />
+                <p className="text-center alert alert-danger">
+                  Escanee o dígite algún producto
+                </p>
               </>
             )}
             <hr />
@@ -119,9 +84,7 @@ const ModalVenta = ({ modal, setModal }) => {
               </p>
               <input className="form-control" autoFocus type="password" /> */}
             </div>
-          ) : (
-            null
-          )}
+          ) : null}
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={() => setModal(false)}>
@@ -131,9 +94,7 @@ const ModalVenta = ({ modal, setModal }) => {
             <Button color="success" onClick={(e) => guardar(e)}>
               Confirmar venta
             </Button>
-          ) : (
-            null
-          )}
+          ) : null}
         </ModalFooter>
       </Modal>
     </>

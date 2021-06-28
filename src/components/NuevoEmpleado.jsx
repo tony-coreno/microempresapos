@@ -108,7 +108,7 @@ const NuevoEmpleado = () => {
                 required
               />
             </div>
-            <div class="col">
+            <div className="col">
               <input
                 type="text"
                 onChange={(e) => setApellidoPaterno(e.target.value)}
@@ -149,7 +149,7 @@ const NuevoEmpleado = () => {
                 required
               />
             </div>
-            <div class="col">
+            <div className="col">
               <input
                 type="password"
                 onChange={(e) => setContrasena(e.target.value)}
@@ -158,7 +158,7 @@ const NuevoEmpleado = () => {
                 required
               />
             </div>
-            <div class="col">
+            <div className="col">
               <input
                 type="password"
                 onChange={(e) => setContrasena(e.target.value)}

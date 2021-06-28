@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
+import { subirImagen
+ } from "../hooks/SubirImgHook";
 import Swal from "sweetalert2";
 import { faSave } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,6 +9,7 @@ import HerramientasNuevoProducto from "./HerramientasNuevoProducto";
 import styled from "styled-components";
 
 const NuevoProducto = () => {
+  let inputFile;
   const [sku, setSku] = useState("");
   const [producto, setProducto] = useState("");
   const [existencia, setExistencia] = useState("");
@@ -17,10 +20,13 @@ const NuevoProducto = () => {
   const [unidadSelected, setUnidadSelected] = useState([""]);
   const [unidad, setUnidad] = useState("");
   const [cantidad, setCantidad] = useState(1);
+  const [imagen, setImagen] = useState("");
 
   useEffect(() => {
     obtenerCategorias();
     obtenerUnidades();
+    eventos()
+    // eslint-disable-next-line
   }, []);
 
   const guardar = async (e) => {
@@ -35,6 +41,7 @@ const NuevoProducto = () => {
       categoria: categoria,
       unidad,
       jefe: sessionStorage.getItem("idusuario"),
+      imagen: imagen
     };
     const token = sessionStorage.getItem("token");
     const respuesta = await Axios.post("/productos/agregar", stock, {
@@ -48,7 +55,7 @@ const NuevoProducto = () => {
       timer: 500,
     });
     setTimeout(() => {
-      window.location.href = "/producto";
+      window.location.href = "/productos-cards";
     }, 1000);
   };
   const obtenerCategorias = async () => {
@@ -66,6 +73,21 @@ const NuevoProducto = () => {
       headers: { autorizacion: token },
     });
     setUnidadSelected(respuesta.data);
+  };
+
+  const eventos = () => {
+    inputFile = document.querySelector('#foto')
+    inputFile.addEventListener("change", (event) => {
+      console.log(event);
+      const file = event.target.files[0];
+      subirImagen(file).then(url => {
+        setImagen(url)
+          
+
+      })
+    });
+
+
   };
   return (
     <>
@@ -129,6 +151,13 @@ const NuevoProducto = () => {
                 placeholder="Cantidad producto"
                 onChange={(e) => setCantidad(e.target.value)}
                 required
+              />
+            </div>
+            <div className="col">
+              <input
+                type="file"
+                id="foto"
+                accept="image/png,image/jpeg"
               />
             </div>
           </div>

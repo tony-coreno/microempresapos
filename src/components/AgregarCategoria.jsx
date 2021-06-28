@@ -39,25 +39,25 @@ const AgregarCategoria = ({ setCategoria, obtenerCategorias }) => {
   };
   return (
     <div className="container-sm">
-        <form onSubmit={guardar}>
-          <legend>Ingrese Categoría</legend>
-          <hr />
-          <label>Nombre</label>
-          <input
-            className="form-control mt-2"
-            autoFocus
-            onChange={(e) => setNombre(e.target.value)}
-          />
-          <button
-            className="btn btn-primary mt-4 mr-2"
-            onClick={(e) => handleInput(e)}
-          >
-            Cancelar
-          </button>
-          <button type="submit" className="btn btn-info mt-4">
-            Enviar
-          </button>
-        </form>
+      <form onSubmit={guardar}>
+        <legend>Ingrese Categoría</legend>
+        <hr />
+        <label>Nombre</label>
+        <input
+          className="form-control mt-2"
+          autoFocus
+          onChange={(e) => setNombre(e.target.value)}
+        />
+        <button
+          className="btn btn-primary mt-4 mr-2"
+          onClick={(e) => handleInput(e)}
+        >
+          Cancelar
+        </button>
+        <button type="submit" className="btn btn-info mt-4">
+          Enviar
+        </button>
+      </form>
     </div>
   );
 };

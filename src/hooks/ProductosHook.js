@@ -25,7 +25,7 @@ export const ProductosHook = () => {
         if (e.target.value === "") {
           return obtenerProductos();
         }
-        const buscar = e.target.value;
+        const buscar = e.target.value.toLowerCase();
         const token = sessionStorage.getItem("token");
         const respuesta = await Axios.get(
           `/productos/buscar/${buscar}/${sessionStorage.getItem("idusuario")}`,

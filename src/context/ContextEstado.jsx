@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 const ContextEstado = React.createContext();
 
 const ProveedorState = ({ children }) => {
@@ -13,9 +13,9 @@ const ProveedorState = ({ children }) => {
   const [pagoSelected, setPagoSelected] = useState([]);
   const [tituloPos, setTituloPOS] = useState("");
 
-  const handleInputChange = (e) => {
-    setListaProducto(e.target.value);
-  };
+  // const handleInputChange = (e) => {
+  //   setListaProducto(e.target.value);
+  // };
 
   useEffect(() => {
     obtenerTitulo();
@@ -49,27 +49,27 @@ const ProveedorState = ({ children }) => {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (listaProducto.trim().length > 5) {
-      const obtenerProducto = async () => {
-        const sku = listaProducto;
-        const respuesta = await Axios.get(`/productos/carrito/${sku}`);
-        if (respuesta.data.length > 0) {
-          setVentaProducto([...ventaProducto, ...respuesta.data]);
-          setArticulos(articulos + 1);
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "Producto Inválido",
-            showConfirmButton: false,
-            timer: 1000,
-          });
-        }
-      };
-      obtenerProducto();
-    }
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (listaProducto.trim().length > 5) {
+  //     const obtenerProducto = async () => {
+  //       const sku = listaProducto;
+  //       const respuesta = await Axios.get(`/productos/carrito/${sku}`);
+  //       if (respuesta.data.length > 0) {
+  //         setVentaProducto([...ventaProducto, ...respuesta.data]);
+  //         setArticulos(articulos + 1);
+  //       } else {
+  //         Swal.fire({
+  //           icon: "error",
+  //           title: "Producto Inválido",
+  //           showConfirmButton: false,
+  //           timer: 1000,
+  //         });
+  //       }
+  //     };
+  //     obtenerProducto();
+  //   }
+  // };
   return (
     <ContextEstado.Provider
       value={{
@@ -83,8 +83,8 @@ const ProveedorState = ({ children }) => {
         listaProducto,
         setListaProducto,
         setVentaProducto,
-        handleInputChange,
-        handleSubmit,
+        //handleInputChange,
+        //handleSubmit,
         setTituloPOS,
         tituloPos,
         metodopago,

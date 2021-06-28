@@ -7,6 +7,7 @@ const TablaCarrito = () => {
   const { ventaProducto, setTotal, setVentaProducto, setArticulos, articulos } =
     useContext(ContextEstado);
   let pagar = 0;
+  let i = 1;
 
   const eliminar = (e, id) => {
     e.preventDefault();
@@ -20,6 +21,9 @@ const TablaCarrito = () => {
       setTotal(0);
     }
   };
+  // const compras = () => {
+  //   i = i + 1;
+  // };
   return (
     <>
       <div className="table-responsive table-borderless table-hover">
@@ -33,6 +37,7 @@ const TablaCarrito = () => {
                 <table className="table table-responsive-lg text-center ">
                   <thead className="light">
                     <tr>
+                      <th>IMG</th>
                       <th>CANT</th>
                       <th>COD</th>
                       <th>PRODUCTO</th>
@@ -44,26 +49,38 @@ const TablaCarrito = () => {
                   <Tabla className="text-center">
                     {ventaProducto.map((producto) => {
                       const { precioventa } = producto;
-                      // const { sku } = producto;
+                      //const { sku } = producto;
                       pagar = pagar + precioventa;
                       setTotal(pagar);
                       // let existe = ventaProducto.some((item) => {
                       //   return item.sku === sku;
                       // });
-                      // console.log(existe);
+                      // if (existe) {
+                      //   compras();
+                      // }
+
                       if (articulos === 0) {
                         pagar = 0;
                       }
                       return (
                         <tr key={producto._id}>
-                          <td>{1}</td>
+                          <td>
+                            <img
+                              className="img-thumbnail"
+                              src={producto.imagen}
+                              alt={producto.producto}
+                            />
+                          </td>
+                          <td>{i}</td>
                           <td>{producto.sku}</td>
                           <td>{`${producto.producto.toUpperCase()} ${producto.marca.toUpperCase()}`}</td>
-                          <td>{`${producto.cantidad} ${producto.unidad.toUpperCase()}`}</td>
+                          <td>{`${
+                            producto.cantidad
+                          } ${producto.unidad.toUpperCase()}`}</td>
                           <td>{precioventa}</td>
                           <td>
                             <button
-                              className="bn btn-outline-dark mr-2"
+                              className="bn btn-outline-danger mr-2"
                               onClick={(e) => eliminar(e, producto._id)}
                             >
                               <FontAwesomeIcon icon={faTimes} />

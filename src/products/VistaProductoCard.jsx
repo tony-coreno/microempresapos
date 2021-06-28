@@ -84,14 +84,15 @@ const VistaProductoCard = () => {
                   <div className="row no-gutters">
                     <div className="col-md-4">
                       <img
-                        src="https://img.icons8.com/cute-clipart/64/000000/shopping-cart-loaded.png"
+                        src={`${producto.imagen}`}
                         className="card-img animate__animated animate__pulse"
                         alt="POS"
                       />
                     </div>
                     <div className="col-md-8">
                       <div className="card-body">
-                        <h5 className="card-title">{producto.marca}</h5>
+                        <h5 className="card-title">{producto.producto}</h5>
+                        <small>Marca: {producto.marca}</small>
                         <h6 className="card-text">Existencia: {producto.existencia}</h6>
                         <p className="card-text">
                           <small className="text-muted">
