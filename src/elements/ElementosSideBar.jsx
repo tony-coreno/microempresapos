@@ -16,6 +16,7 @@ import {
   faQuestion,
   faIdCard,
   faDollyFlatbed,
+  faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from "reactstrap";
@@ -75,6 +76,15 @@ const ElementosSideBar = () => {
         title="Buscar producto"
       >
         <FontAwesomeIcon icon={faSearch} />
+      </Link>
+      <Link
+        to="/ventas-dia"
+        className="list-group-item list-group-item-action bg-light"
+        data-toggle="tooltip"
+        data-placement="right"
+        title="Ventas día"
+      >
+        <FontAwesomeIcon icon={faChartLine} />
       </Link>
       <Link
         to="/kardex"

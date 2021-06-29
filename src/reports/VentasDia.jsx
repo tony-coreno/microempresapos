@@ -2,9 +2,6 @@ import React, { useEffect } from "react";
 import { Switch, NavLink, Route } from "react-router-dom";
 import Productos from "../components/Productos";
 import { VentasDiahook } from "../hooks/VentasDiaHook";
-import { Navbar } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import {
   BarChart,
   Bar,
@@ -19,7 +16,6 @@ import {
   Contenedor,
   Contenedor2,
   Menu,
-  Buscar,
 } from "./Style/VentasDiaStyle";
 import CalendarVentasDia from "./CalendarVentasDia";
 const VentasDia = () => {
@@ -31,15 +27,15 @@ const VentasDia = () => {
 
   const data = [
     {
-      name: "Pagos con tarjeta",
-      Tarjeta: `${pago}`,
-      Perdidas: 400,
+      name: "MXN",
+      Total: `${pago}`,
+      //Perdidas: 10,
     },
-    {
-      name: "Marzo",
-      Tarjeta: 4841,
-      Perdidas: 2100,
-    },
+    // {
+    //   name: "Marzo",
+    //   Tarjeta: 250,
+    //   Perdidas: 15,
+    // },
   ];
 
   return (
@@ -54,27 +50,9 @@ const VentasDia = () => {
           <Route path="/productos" component={Productos} />
         </Switch>
       </main>
-      <Navbar>
-        {sessionStorage.getItem("token") ? (
-          <div className="col-md-4 ml-auto">
-            <div className="input-group fa-2x">
-              <Buscar
-                className="form-control mr-sm-4"
-                type="search"
-                placeholder="Buscar por producto..."
-                aria-label="Search"
-                autoFocus
-              ></Buscar>
-              <FontAwesomeIcon icon={faSearch} />
-            </div>
-          </div>
-        ) : (
-          <div></div>
-        )}
-      </Navbar>
       <Contenedorapp>
         <Contenedor>
-          <h4>Ventas del Día</h4>
+          <h4>Ventas del Día: <strong className="badge badge-success">${pago}.00</strong></h4>
           <>
             {/* <Principal>Ventas Mayo</Principal> */}
             <hr />
@@ -96,8 +74,7 @@ const VentasDia = () => {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="Tarjeta" stackId="a" fill="#212E36" />
-                  <Bar dataKey="Perdidas" stackId="a" fill="#052C48" />
+                  <Bar dataKey="Total" stackId="a" fill="#212E36" />
                   {/*fill="#82ca9d" */}
                 </BarChart>
               </div>
