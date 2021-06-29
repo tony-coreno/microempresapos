@@ -16,7 +16,7 @@ const CardsEmpleados = ({ empleados, eliminar, buscarEmpleadoID }) => {
                 <div className="row no-gutters">
                   <div className="col-md-4">
                     <img
-                      src="https://img.icons8.com/color/96/000000/businessman.png"
+                      src={empleado.imagen}
                       className="card-img"
                       alt="POS"
                     />
@@ -28,7 +28,7 @@ const CardsEmpleados = ({ empleados, eliminar, buscarEmpleadoID }) => {
 
                       <p className="card-text">
                         <small className="text-muted">
-                          Estado: {empleado.estado}
+                          Usuario: {empleado.usuario}
                           <button
                             className="btn btn-outline-primary mr-1"
                             onClick={(e) => buscarEmpleadoID(e, empleado._id)}

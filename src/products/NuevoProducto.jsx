@@ -100,7 +100,7 @@ const NuevoProducto = () => {
               <input
                 type="number"
                 className="form-control"
-                placeholder="SKU"
+                placeholder="Código de barras..."
                 onChange={(e) => setSku(e.target.value)}
                 required
                 autoFocus

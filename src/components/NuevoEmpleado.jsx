@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
+import { subirImagen } from "../hooks/SubirImgHook"; 
 import { NavLink } from "react-router-dom";
 import Axios from "axios";
 import {
@@ -10,8 +11,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from "reactstrap";
 import styled from "styled-components";
 import Swal from "sweetalert2";
-import { ContextEstado } from "../context/ContextEstado";
+// import { ContextEstado } from "../context/ContextEstado";
 const NuevoEmpleado = () => {
+  let inputFile;
   const [nombre, setNombre] = useState("");
   const [apellidopaterno, setApellidoPaterno] = useState("");
   const [apellidomaterno, setApellidoMaterno] = useState("");
@@ -19,13 +21,14 @@ const NuevoEmpleado = () => {
   const [usuario, setUsuario] = useState("");
   const [contrasena, setContrasena] = useState("");
   const [perfilSelected, setPerfilSelected] = useState([""]);
-  const { perfil, setPerfil } = useContext(ContextEstado);
-  const [estado, setEstado] = useState("");
-  const [estadoSelected, setEstadoSelected] = useState([""]);
+  const [imagen, setImagen] = useState("");
+  const [perfil, setPerfil] = useState("")
+  // const { perfil, setPerfil } = useContext(ContextEstado);
 
   useEffect(() => {
     setPerfilSelected(["", "Encargado", "Vendedor", "Cajero"]);
-    setEstadoSelected(["", "Activo", "Inactivo"]);
+    eventos();
+    // eslint-disable-next-line
   }, []);
 
   const guardar = async (e) => {
@@ -38,10 +41,11 @@ const NuevoEmpleado = () => {
       usuario,
       contrasena,
       perfil,
-      estado: estado,
+      fecharegistro: Date.now(),
       jefe: sessionStorage.getItem("idusuario"),
+      imagen: imagen,
     };
-    if((estado === "") || (perfil ==="") ){
+    if (perfil === "") {
       return Swal.fire({
         icon: "error",
         title: "Complete todos los campos",
@@ -49,7 +53,7 @@ const NuevoEmpleado = () => {
         timer: 1500,
       });
     }
-    if (numeroempleado < 0 ){
+    if (numeroempleado < 0) {
       return Swal.fire({
         icon: "error",
         title: "Núm. Empleado tiene que ser positivo",
@@ -70,21 +74,23 @@ const NuevoEmpleado = () => {
       timer: 2000,
     });
 
-    // }
-    // if(estado === 'Por favor asigne un estado'){
-    //   Swal.fire({
-    //     icon: "warning",
-    //     title: mensaje,
-    //     showConfirmButton: false,
-    //     timer:2000
-    //   });
-
-    // }
     setTimeout(() => {
       window.location.href = "/empleados";
     }, 1500);
   };
+  const eventos = () => {
+    inputFile = document.querySelector('#foto')
+    inputFile.addEventListener("change", (event) => {
+      console.log(event);
+      const file = event.target.files[0];
+      subirImagen(file).then(url => {
+        setImagen(url)
+        
+      })
+    });
 
+
+  };
   return (
     <>
       <main className="caja-contenido col-12">
@@ -157,15 +163,6 @@ const NuevoEmpleado = () => {
                 placeholder="Contraseña"
                 required
               />
-            </div>
-            <div className="col">
-              <input
-                type="password"
-                onChange={(e) => setContrasena(e.target.value)}
-                className="form-control"
-                placeholder="Confirmar contraseña"
-                required
-              />
               <button className="btn-sm btn-primary mt-2">
                 <i>
                   Mostrar <FontAwesomeIcon icon={faEye} />
@@ -187,20 +184,22 @@ const NuevoEmpleado = () => {
               ))}
             </select>
           </div>
-
           <hr />
           <div className="form-group col-mt-4">
-            <Titulo>Estado</Titulo>
-            <select
-              className="form-control mt-2"
-              onChange={(e) => setEstado(e.target.value)}
-              value={estado}
-            >
-              {estadoSelected.map((estados) => (
-                <option key={estados}>{estados}</option>
-              ))}
-            </select>
+            <Titulo>Seleccione Imagen</Titulo>
+            <Imagen>
+              <div className="col">
+                <input
+                  className="text-center"
+                  type="file"
+                  id="foto"
+                  accept="img/png,img/jpeg"
+                />
+              </div>
+            </Imagen>
           </div>
+
+          <hr />
           <div>
             <button className="btn btn-outline-info">
               <FontAwesomeIcon icon={faPlusCircle} /> Registrar
@@ -214,6 +213,11 @@ const NuevoEmpleado = () => {
 
 const Titulo = styled.h5`
   text-align: center;
+`;
+
+const Imagen = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 export default NuevoEmpleado;
