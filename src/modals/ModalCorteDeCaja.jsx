@@ -1,7 +1,9 @@
 import React from "react";
+import { CorteCajaHook } from "../hooks/CorteCaja.Hook";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import styled from "styled-components";
+import { Contenedor } from "./style/CorteStyle";
 const ModalCorteDeCaja = ({ setCorte, corte }) => {
+  const { setCantidad, guardar } = CorteCajaHook();
   let f = new Date();
   return (
     <>
@@ -23,11 +25,20 @@ const ModalCorteDeCaja = ({ setCorte, corte }) => {
               </span>
             </p>
             <div>
-                <p className="text-center">Ingrese la cantidad que va retirar de la caja</p>
-                <input className="form-control" placeholder="$ 0.00 MXN" />
+              <p className="text-center">
+                Ingrese la cantidad que va retirar de la caja
+              </p>
+              <input
+                className="form-control"
+                placeholder="$ 0.00 MXN"
+                onChange={(e) => setCantidad(e.target.value)}
+              />
             </div>
             <hr />
-            <small className="badge badge-info">Fecha: {f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear()}</small>
+            <small className="badge badge-info">
+              Fecha:{" "}
+              {f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear()}
+            </small>
           </Contenedor>
           <hr />
         </ModalBody>
@@ -35,24 +46,14 @@ const ModalCorteDeCaja = ({ setCorte, corte }) => {
           <Button color="info" onClick={() => setCorte(false)}>
             Cancelar
           </Button>
-          <Button color="success">Agregar</Button>
+          <Button color="success" onClick={(e) => guardar(e)}>
+            Agregar
+          </Button>
         </ModalFooter>
       </Modal>
     </>
   );
 };
 
-const Contenedor = styled.div`
-  padding: 15px;
-  width: 100%;
-  height: 40%;
-  display: grid;
-  gap: 20px;
-  //background: #eef3f5;
-  background: #f2f4e5;
-  //background: #212E36;
-  margin: 10px 0;
-  border-radius: 20px;
-  box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
-`;
+
 export default ModalCorteDeCaja;
