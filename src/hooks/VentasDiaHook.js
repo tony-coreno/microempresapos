@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Axios from "axios";
+import { ContextEstado } from "../context/ContextEstado";
 
 export const VentasDiahook = () => {
-  // const [ventas, setVentas] = useState([""]);
-  // const [tarjeta, setTarjeta] = useState([""]);
   const [pago, setPago] = useState(0);
+  const {setAcumulado} = useContext(ContextEstado)
 
   const obtenerVentas = async () => {
     let total = 0;
-    let mes = 0;
-    let sales;
+    // let mes = 0;
+    // let sales;
     const id = sessionStorage.getItem("idusuario");
     const token = sessionStorage.getItem("token");
     const respuesta = await Axios.get("/ventas/ventasdia/" + id, {
@@ -23,26 +23,28 @@ export const VentasDiahook = () => {
 
     },0);
      setPago(total)
+     setAcumulado(total)
 
-    mes = data.map((month)=> {
-      mes = month.fecha
-      return mes
+     //====Obtener MES=======
+    // mes = data.map((month)=> {
+    //   mes = month.fecha
+    //   return mes
 
-    })
-    console.log(mes)
+    // })
+    // console.log(mes)
 
-    mes.forEach(element => {
-      console.log(new Date(element))
+    // mes.forEach(element => {
+    //   console.log(new Date(element))
 
-    });
+    // });
 
-    sales = data.map((venta)=>{
-      sales = [venta.total,venta.fecha]
-      return sales
+    // sales = data.map((venta)=>{
+    //   sales = [venta.total,venta.fecha]
+    //   return sales
 
-    })
+    // })
 
-    console.log(sales)
+    // console.log(sales)
 
     // setVentas(respuesta.data);
     // const dia = await ventas.filter((venta) => {

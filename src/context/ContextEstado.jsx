@@ -12,10 +12,7 @@ const ProveedorState = ({ children }) => {
   const [metodopago, setMetodoPago] = useState("");
   const [pagoSelected, setPagoSelected] = useState([]);
   const [tituloPos, setTituloPOS] = useState("");
-
-  // const handleInputChange = (e) => {
-  //   setListaProducto(e.target.value);
-  // };
+  const [acumulado, setAcumulado] = useState(0);
 
   useEffect(() => {
     obtenerTitulo();
@@ -49,27 +46,6 @@ const ProveedorState = ({ children }) => {
     }
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (listaProducto.trim().length > 5) {
-  //     const obtenerProducto = async () => {
-  //       const sku = listaProducto;
-  //       const respuesta = await Axios.get(`/productos/carrito/${sku}`);
-  //       if (respuesta.data.length > 0) {
-  //         setVentaProducto([...ventaProducto, ...respuesta.data]);
-  //         setArticulos(articulos + 1);
-  //       } else {
-  //         Swal.fire({
-  //           icon: "error",
-  //           title: "Producto Inválido",
-  //           showConfirmButton: false,
-  //           timer: 1000,
-  //         });
-  //       }
-  //     };
-  //     obtenerProducto();
-  //   }
-  // };
   return (
     <ContextEstado.Provider
       value={{
@@ -83,14 +59,14 @@ const ProveedorState = ({ children }) => {
         listaProducto,
         setListaProducto,
         setVentaProducto,
-        //handleInputChange,
-        //handleSubmit,
         setTituloPOS,
         tituloPos,
         metodopago,
         setMetodoPago,
         pagoSelected,
         setPagoSelected,
+        acumulado,
+        setAcumulado
       }}
     >
       {children}

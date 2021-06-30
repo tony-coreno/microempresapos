@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { subirImagen } from "../hooks/SubirImgHook";
 import Axios from "axios";
-import { Button } from "reactstrap";
 import { faArrowLeft, faUserTag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Titulo } from "./style/ProveedorStyle";
 import Swal from "sweetalert2";
 
 const NuevoProveedor = () => {
+  let inputFile;
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [categoriaproveedor, setCategoriaProveedor] = useState("");
@@ -16,9 +17,12 @@ const NuevoProveedor = () => {
   const [codigoproveedor, setCodigoproveedor] = useState("");
   const [telefono, setTelefono] = useState("");
   const [correo, setCorreo] = useState("");
+  const [imagen, setImagen] = useState("");
 
   useEffect(() => {
     setCategoriaSelected(["Categoria", "Bebidas", "Lacteos", "Abarrotes"]);
+    eventos();
+    // eslint-disable-next-line
   }, []);
 
   const guardar = async (e) => {
@@ -32,6 +36,7 @@ const NuevoProveedor = () => {
       telefono,
       correo,
       jefe: sessionStorage.getItem("idusuario"),
+      imagen: imagen,
     };
 
     if (categoriaproveedor === "" || categoriaproveedor === "Categoria") {
@@ -66,14 +71,27 @@ const NuevoProveedor = () => {
       window.location.href = "/proveedores";
     }, 1500);
   };
+  const eventos = () => {
+    inputFile = document.querySelector('#foto')
+    inputFile.addEventListener("change", (event) => {
+      console.log(event);
+      const file = event.target.files[0];
+      subirImagen(file).then(url => {
+        setImagen(url)
+        
+      })
+    });
+
+
+  };
   return (
     <>
       <main className="caja-contenido col-12">
         <div>
           <NavLink to="/proveedores">
-            <Button className="btn btn-info">
+            <button className="btn btn-info">
               <FontAwesomeIcon icon={faArrowLeft} />
-            </Button>
+            </button>
           </NavLink>
           <Titulo>Registrar proveedor</Titulo>
         </div>
@@ -149,6 +167,10 @@ const NuevoProveedor = () => {
             </div>
           </div>
           <hr />
+          <div>
+          <Titulo>Insertar imagen</Titulo>
+          <input type="file" id="foto" className="form-group" accept="img/png,img/jpeg" />
+          </div>
           <button className="btn btn-outline-info">
             <FontAwesomeIcon icon={faUserTag} /> Registrar
           </button>

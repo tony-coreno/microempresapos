@@ -17,7 +17,7 @@ const CardsProveedores = ({ proveedores, buscarProveedor, eliminar }) => {
                 <div className="row no-gutters">
                   <div className="col-md-4">
                     <img
-                      src="https://img.icons8.com/color/96/000000/salesman.png"
+                      src={provider.imagen}
                       className="card-img"
                       alt="POS"
                     />

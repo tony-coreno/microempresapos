@@ -44,7 +44,7 @@ const CrearVenta = () => {
               to="/"
               className="btn btn-outline-primary"
               data-toggle="modal"
-              data-target="#addEmpleado"
+              data-target="#0c2525edmpleado"
               onClick={() => setModalManual(true)}
             >
               <i>

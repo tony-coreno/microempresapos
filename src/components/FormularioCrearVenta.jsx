@@ -59,9 +59,9 @@ const FormularioCrearVenta = () => {
 };
 
 const InputFormulario = styled.input`
-  border-radius: 5px;
+  border-radius: 20px;
   overflow: hidden;
-  width: 50%;
+  width: 80%;
 `;
 
 export default FormularioCrearVenta;

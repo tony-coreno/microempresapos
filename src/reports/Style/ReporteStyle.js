@@ -72,6 +72,7 @@ export const Contenedorapp = styled.div`
 `;
 
 export const TituloEmpleado = styled.h6`
+
   font-family: Open-sans;
 `;
 

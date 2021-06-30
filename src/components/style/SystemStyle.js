@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const ContenedorPrincipal = styled.div`
 padding: 10px;
 margin-top: 0px;
-width: 90%;
+width: 93%;
 max-width: 1400px;
 `;
 
@@ -37,7 +37,7 @@ export const MenuNav = styled.nav`
     text-decoration: none;
     //color: #165168;
     color: #ffffff;
-    margin: 0 10px;
+    margin: 0 12px;
     padding: 7px;
   }
   a:hover {

@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const Contenedor = styled.div`
+  margin-top: 5px;
   padding: 25px;
   width: 100%;
   display: grid;
-  gap: 20px;
+  gap: 10px;
   //background: #eef3f5;
   background: #fff;
   margin: 10px 0;
