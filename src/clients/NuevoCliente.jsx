@@ -1,38 +1,43 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import Axios from 'axios';
+import { subirImagen } from "../hooks/SubirImgHook";
+import Axios from "axios";
 import { Button } from "reactstrap";
 import { faArrowLeft, faUserTag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Titulo } from "./style/ClienteStyle";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 const NuevoCliente = () => {
-
-  const [nombre, setNombre] = useState('');
-  const [apellido, setApellido] = useState('');
-  const [tipocliente, setTipoCliente] = useState('');
-  const [tipoclienteSelected, setTipoClienteSelected] = useState(['']);
-  const [codigopromocional, setCodigoPromocional] = useState('');
-  const [telefono, setTelefono] = useState('');
-  const [correo, setCorreo] = useState('');
+  let inputFile;
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
+  const [tipocliente, setTipoCliente] = useState("");
+  const [tipoclienteSelected, setTipoClienteSelected] = useState([""]);
+  const [codigopromocional, setCodigoPromocional] = useState("");
+  const [telefono, setTelefono] = useState("");
+  const [correo, setCorreo] = useState("");
+  const [imagen, setImagen] = useState("");
 
   useEffect(() => {
-    setTipoClienteSelected(['','Mayorista', 'Minorista'])
-  },[])
+    setTipoClienteSelected(["", "Mayorista", "Minorista"]);
+    eventos();
+    // eslint-disable-next-line
+  }, []);
 
   const guardar = async (e) => {
     e.preventDefault();
     const cliente = {
       nombre,
       apellido,
-      tipocliente,
+      tipocliente: tipocliente,
       codigopromocional,
       telefono,
       correo,
       jefe: sessionStorage.getItem("idusuario"),
+      imagen,
     };
-    if(tipocliente === ""){
+    if (tipocliente === "") {
       return Swal.fire({
         icon: "error",
         title: "Seleccione tipo de cliente",
@@ -40,7 +45,7 @@ const NuevoCliente = () => {
         timer: 1200,
       });
     }
-    if(codigopromocional < 0) {
+    if (codigopromocional < 0) {
       return Swal.fire({
         icon: "error",
         title: "Código Prom. no puede ser negativo",
@@ -49,7 +54,7 @@ const NuevoCliente = () => {
       });
     }
 
-    if ((telefono < 0) || (telefono.length !== 10)){
+    if (telefono < 0 || telefono.length !== 10) {
       return Swal.fire({
         icon: "error",
         title: "Ingrese Tel a 10 dígitos",
@@ -70,6 +75,16 @@ const NuevoCliente = () => {
     setTimeout(() => {
       window.location.href = "/cliente";
     }, 1000);
+  };
+  const eventos = () => {
+    inputFile = document.querySelector("#foto");
+    inputFile.addEventListener("change", (event) => {
+      console.log(event);
+      const file = event.target.files[0];
+      subirImagen(file).then((url) => {
+        setImagen(url);
+      });
+    });
   };
   return (
     <>
@@ -144,9 +159,17 @@ const NuevoCliente = () => {
               </select>
             </div>
           </div>
-
+          <div>
+            <hr />
+            <Titulo>Insertar imagen</Titulo>
+            <input
+              type="file"
+              id="foto"
+              className="form-group"
+              accept="img/png,img/jpeg"
+            />
+          </div>
           <hr />
-
           <button className="btn btn-outline-info">
             <FontAwesomeIcon icon={faUserTag} /> Agregar
           </button>
@@ -155,6 +178,5 @@ const NuevoCliente = () => {
     </>
   );
 };
-
 
 export default NuevoCliente;

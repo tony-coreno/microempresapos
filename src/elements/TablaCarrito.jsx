@@ -65,8 +65,8 @@ const TablaCarrito = () => {
                       return (
                         <tr key={producto._id}>
                           <td>
-                            <img
-                              className="img-thumbnail"
+                            <Image
+                              // className="img-thumbnail"
                               src={producto.imagen}
                               alt={producto.producto}
                             />
@@ -102,11 +102,16 @@ const TablaCarrito = () => {
 
 const Titulo = styled.h5`
   color: #fff;
+  margin-top: 2px;
   text-align: center;
 `;
 
 const Tabla = styled.tbody`
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+`;
+
+const Image = styled.img`
+  max-width: 60px;
 `;
 
 export default TablaCarrito;

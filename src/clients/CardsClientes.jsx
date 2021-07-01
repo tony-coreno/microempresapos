@@ -18,7 +18,7 @@ const CardsClientes = ({ clientes, eliminar, buscarCliente }) => {
                 <div className="row no-gutters">
                   <div className="col-md-4">
                     <img
-                      src="https://img.icons8.com/color/96/000000/permanent-job.png"
+                      src={cliente.imagen}
                       className="card-img"
                       alt="POS"
                     />

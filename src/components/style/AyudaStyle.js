@@ -6,7 +6,7 @@ padding: 5px;
 width: 100%;
 display: grid;
 gap: 20px;
-grid-template-columns: 4fr 2fr;
+//grid-template-columns: 4fr 2fr;
 background: #fff;
 margin: 5px 0;
 border-radius: 20px;
@@ -45,4 +45,17 @@ a.active {
   border-bottom: 2px solid #f2f2f2;
   padding-bottom: 3px;
 }
+`;
+
+export const ContenedorAyuda = styled.div`
+max-width: 1400px;
+padding: 5px;
+width: 100%;
+display: grid;
+gap: 20px;
+grid-template-columns: 4fr 2fr;
+background: #fff;
+margin: 5px 0;
+border-radius: 20px;
+box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
 `;

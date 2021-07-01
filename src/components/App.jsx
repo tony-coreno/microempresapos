@@ -33,7 +33,7 @@ import FiltrarVentas from '../reports/FiltrarVentas';
 import EditarEmpleado from '../users/EditarEmpleado';
 import EmpleadosGeneral from '../users/EmpleadosGeneral';
 import ClientesTabla from './ClientesTabla';
-//import "bootstrap/dist/css/bootstrap.css";
+import AcercaDe from "../settings/AcercaDe";
 import ClientesGeneral from "../clients/ClientesGeneral";
 import ProductosGeneral from '../products/ProductosGeneral';
 const App = () => {
@@ -69,6 +69,7 @@ const App = () => {
                 <Route path="/notas" component={Notas} />
                 <Route path ="/editar-empleado" component={EditarEmpleado} />
                 <Route path ="/empleado" component={EmpleadosGeneral} />
+                <Route path ="/acerca-de" component={AcercaDe} />
                 <Route
                   path="/administrar-venta"
                   component={AdministrarVentas}
