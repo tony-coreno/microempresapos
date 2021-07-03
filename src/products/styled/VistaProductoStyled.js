@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 export const Contenedorapp = styled.div`
-max-width: 1400px;
+max-width: 1200px;
 padding: 5px;
 width: 100%;
 display: grid;
 gap: 20px;
-grid-template-columns: 2fr 4fr;
+grid-template-columns: 2fr 2fr;
 background: #fff;
+justify-content: center;
 margin: 5px 0;
 border-radius: 20px;
 box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
@@ -24,12 +25,12 @@ border-radius: 10px;
 box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
 `;
 export const Contenedor2 = styled.div`
-display: flex;
-padding: 20px;
+display: grid;
+padding: 10px;
 width: 100%;
 display: grid;
-gap: 10px;
-grid-template-columns: 2fr 2fr;
+gap: 5px;
+grid-template-columns: 3fr 3fr 3fr;
 //background: #eef3f5;
 background: #fff;
 margin: 10px 0;

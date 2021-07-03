@@ -61,7 +61,7 @@ const HerramientasProductos = () => {
           data-placement="right"
           title="Filtrar stock"
         >
-          <FontAwesomeIcon icon={faFilter} /> Filtro
+          <FontAwesomeIcon icon={faFilter} /> Vista
         </button>
       </NavLink>
     </Herramientas>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Axios from "axios";
 
+
 export const CategoriasHook = () => {
   const [categorias, setCategorias] = useState([]);
   const [categoria, setCategoria] = useState(true);
@@ -51,3 +52,7 @@ export const CategoriasHook = () => {
     buscar,
   };
 };
+
+export const CategoriasProductosHook = () => {
+  
+}

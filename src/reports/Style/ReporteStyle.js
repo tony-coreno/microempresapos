@@ -54,7 +54,7 @@ export const SeccionBoton = styled.div`
   width: 50%;
 `;
 export const Titulo = styled.h6`
-  color: #fff;
+  color: #000;
   text-align: center;
 `;
 

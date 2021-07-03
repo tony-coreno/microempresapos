@@ -1,8 +1,8 @@
 import React from "react";
-import Axios from "axios";
 import Swal from "sweetalert2";
-
+import Axios from "axios";
 const CategoriasProductos = ({ categorias, obtenerCategorias }) => {
+
   const actualizar = async (e, actualizar) => {
     e.preventDefault();
     const id = actualizar._id;

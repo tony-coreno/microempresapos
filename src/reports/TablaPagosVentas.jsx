@@ -1,5 +1,5 @@
 import React from "react";
-import { SeccionBoton, Titulo } from "./Style/ReporteStyle";
+import { SeccionBoton } from "./Style/ReporteStyle";
 
 const TablaPagosVentas = ({pagos, eliminar, actualizar}) => {
   return (
@@ -10,9 +10,6 @@ const TablaPagosVentas = ({pagos, eliminar, actualizar}) => {
             <div className="row">
               <div className="col-12">
                 <div className="card">
-                  <div className="bg-light card-header py-1">
-                    <Titulo>Detalle de venta</Titulo>
-                  </div>
                   <table className="table table-responsive-sm ">
                     <thead className="light">
                       <tr>

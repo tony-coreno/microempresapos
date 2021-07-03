@@ -109,7 +109,7 @@ const Almacen = () => {
           <p></p>
           <div className="row">
             <div className="col">
-              <h6>Agregar medio de pago</h6>
+              <h6 className="text-center">Agregar medio de pago</h6>
               <input
                 type="text"
                 className="form-control mt-2"
@@ -119,11 +119,12 @@ const Almacen = () => {
               />
             </div>
             <div className="col">
-              <h6>IVA (16%)</h6>
-              <select id="inputState" className="form-control mt-2">
+              <h6 className="text-center">IVA (16%)</h6>
+              <button className="btn btn-outline-success btn-block">Activo</button>
+              {/* <select id="inputState" className="form-control mt-2">
                 <option>Activo</option>
                 <option>Inactivo</option>
-              </select>
+              </select> */}
             </div>
           </div>
         </form>
