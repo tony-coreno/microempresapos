@@ -6,7 +6,7 @@ export const VentasDiahook = () => {
   const [pago, setPago] = useState(0);
   const {setAcumulado} = useContext(ContextEstado)
 
-  const obtenerVentas = async () => {
+  const obtenerVentas = (async () => {
     let total = 0;
     // let mes = 0;
     // let sales;
@@ -58,9 +58,31 @@ export const VentasDiahook = () => {
     // }, 0);
     // console.log(total);
     // setPago(total);
-  };
+    // eslint-disable-next-line
+  });
+  const obtenerVentasEmpleado = (async () => {
+    let total = 0;
+    // let mes = 0;
+    // let sales;
+    const id = sessionStorage.getItem("idusuario");
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.get("/ventas/empleado/" + id, {
+      headers: { autorizacion: token },
+    });
+    console.log(respuesta.data)
+    const {data} = respuesta
+    
+    total = data.reduce((totalventas, all)=>{
+      return totalventas + all.total
+
+    },0);
+     setPago(total)
+     setAcumulado(total)
+  });
+  
   return{
       pago,
       obtenerVentas,
+      obtenerVentasEmpleado
   }
 };

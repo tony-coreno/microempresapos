@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React,{ useContext } from "react";
 import { NavLink, Route } from "react-router-dom";
 import {
   ContenedorHeader,
@@ -57,4 +57,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default React.memo(Header);

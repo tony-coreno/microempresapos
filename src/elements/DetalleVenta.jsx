@@ -15,15 +15,28 @@ const DetalleVenta = () => {
   //   setPagoSelected(["","Efectivo", "Tarjeta", "Vale despensa"]);
   // }, []);
   const [pagos, setPagos] = useState([]);
+  let perfil = sessionStorage.getItem("perfil");
 
   useEffect(() => {
-    obtenerPagos();
+    if (perfil === "Administrador") {
+      obtenerPagos();
+    } else {
+      obtenerPagosEmpleados();
+    }
+    // eslint-disable-next-line
   }, []);
-
   const obtenerPagos = async () => {
     const id = sessionStorage.getItem("idusuario");
     const token = sessionStorage.getItem("token");
     const respuesta = await Axios.get("/pagos/pagoadmin/" + id, {
+      headers: { autorizacion: token },
+    });
+    setPagos(respuesta.data);
+  };
+  const obtenerPagosEmpleados = async () => {
+    const jefe = sessionStorage.getItem("jefe");
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.get("/pagos/pagoadmin/" + jefe, {
       headers: { autorizacion: token },
     });
     setPagos(respuesta.data);

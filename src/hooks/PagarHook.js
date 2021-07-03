@@ -3,17 +3,22 @@ import { ContextEstado } from "../context/ContextEstado";
 import Axios from "axios";
 import Swal from "sweetalert2";
 
-
 export const PagarHook = () => {
-    const [cambio, setCambio] = useState(0);
-    let restante = 0;
-    const { total, metodopago, ventaProducto } = useContext(ContextEstado);
-    let f = Date();
+  const [cambio, setCambio] = useState(0);
+  let restante = 0;
+  const { total, metodopago, ventaProducto } = useContext(ContextEstado);
+  let f = Date();
+  let autoriza;
+  if(!sessionStorage.getItem("jefe")){
+    autoriza = sessionStorage.getItem("idusuario")
+  }else{
+    autoriza = sessionStorage.getItem("jefe")
+  }
   const guardar = async (e) => {
     e.preventDefault();
     const venta = {
       idusuario: sessionStorage.getItem("idusuario"),
-      jefe: sessionStorage.getItem("idusuario"),
+      jefe: autoriza,
       total: total,
       metodopago: metodopago,
       fechaventa: f,
@@ -44,11 +49,11 @@ export const PagarHook = () => {
   const darCambio = () => {
     restante = cambio - total;
   };
-  return{
-      guardar,
-      setCambio,
-      cambio,
-      restante,
-      darCambio
-  }
+  return {
+    guardar,
+    setCambio,
+    cambio,
+    restante,
+    darCambio,
+  };
 };

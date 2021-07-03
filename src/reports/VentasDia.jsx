@@ -19,9 +19,15 @@ import {
 } from "./Style/VentasDiaStyle";
 import CalendarVentasDia from "./CalendarVentasDia";
 const VentasDia = () => {
-  const { obtenerVentas, pago } = VentasDiahook();
+  const { obtenerVentas, pago, obtenerVentasEmpleado } = VentasDiahook();
+  let perfil = sessionStorage.getItem("perfil");
+
   useEffect(() => {
-    obtenerVentas();
+    if (perfil === "Administrador") {
+      obtenerVentas();
+    } else {
+      obtenerVentasEmpleado();
+    }
     // eslint-disable-next-line
   }, []);
 
@@ -42,7 +48,7 @@ const VentasDia = () => {
     <div>
       <Menu>
         <NavLink to="/reportes">Reportes</NavLink>
-        <NavLink to="/reportes-dia">Reportes del día</NavLink>
+        <NavLink to="/ventas-dia">Ventas del día</NavLink>
         <NavLink to="/devoluciones">Reportes del mes</NavLink>
       </Menu>
       <main>
@@ -52,7 +58,10 @@ const VentasDia = () => {
       </main>
       <Contenedorapp>
         <Contenedor>
-          <h4>Ventas del Día: <strong className="badge badge-success">${pago}.00</strong></h4>
+          <h4>
+            Ventas del Día:{" "}
+            <strong className="badge badge-success">${pago}.00</strong>
+          </h4>
           <>
             {/* <Principal>Ventas Mayo</Principal> */}
             <hr />

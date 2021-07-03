@@ -177,4 +177,4 @@ const ElementosSideBar = () => {
   );
 };
 
-export default ElementosSideBar;
+export default React.memo(ElementosSideBar);
