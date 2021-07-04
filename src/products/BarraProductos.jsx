@@ -4,12 +4,17 @@ import { Navbar } from "reactstrap";
 import { Menu } from "./styled/VistaProductoStyled";
 
 const BarraProductos = () => {
+  const validacion = sessionStorage.getItem("perfil");
   return (
     <>
       <Menu>
         <NavLink to="/productos">Productos</NavLink>
-        <NavLink to="/categorias">Categorías</NavLink>
-        <NavLink to="/devoluciones">Devoluciones</NavLink>
+        {validacion === "Administrador" ? (
+          <>
+            <NavLink to="/categorias">Categorías</NavLink>
+            <NavLink to="/devoluciones">Devoluciones</NavLink>
+          </>
+        ) : null}
       </Menu>
       <Navbar></Navbar>
     </>

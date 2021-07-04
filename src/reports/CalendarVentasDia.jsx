@@ -73,7 +73,7 @@ const CalendarVentasDia = () => {
           }}
         />
         <hr />
-        <button className="btn btn-dark">Calcular</button>
+        {/* <button className="btn btn-dark">Calcular</button> */}
       </ContenedorInput>
 
     </>

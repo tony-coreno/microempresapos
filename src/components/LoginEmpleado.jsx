@@ -31,11 +31,13 @@ const Login = () => {
       const idusuario = respuesta.data.id;
       const perfil = respuesta.data.perfil;
       const jefe = respuesta.data.jefe;
+      const imagen = respuesta.data.imagen;
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("nombre", nombre);
       sessionStorage.setItem("idusuario", idusuario);
       sessionStorage.setItem("perfil", perfil);
       sessionStorage.setItem("jefe", jefe);
+      sessionStorage.setItem("imagen", imagen);
       window.location.href = "/crear-venta";
     }
   };

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import ModalPerfil from "../modals/ModalPerfil";
 import ModalSesion from "../modals/ModalSesion";
-import ModalNotificacion from '../modals/ModalNotificacion';
+import ModalNotificacion from "../modals/ModalNotificacion";
 import { Link } from "react-router-dom";
 import {
   faUserAlt,
@@ -133,17 +133,17 @@ const ElementosSideBar = () => {
       >
         <FontAwesomeIcon icon={faClipboard} />
       </Link>
-
-      <Link
-        to="settings"
-        className="list-group-item list-group-item-action bg-light"
-        data-toggle="tooltip"
-        data-placement="right"
-        title="Ajustes"
-      >
-        <FontAwesomeIcon icon={faCog} />
-      </Link>
-
+      {sessionStorage.getItem("perfil") === "Administrador" ? (
+        <Link
+          to="settings"
+          className="list-group-item list-group-item-action bg-light"
+          data-toggle="tooltip"
+          data-placement="right"
+          title="Ajustes"
+        >
+          <FontAwesomeIcon icon={faCog} />
+        </Link>
+      ) : null}
       {sessionStorage.getItem("token") &&
       sessionStorage.getItem("perfil") !== "Administrador" ? (
         <>
@@ -157,9 +157,7 @@ const ElementosSideBar = () => {
             <FontAwesomeIcon icon={faQuestion} />
           </Link>
         </>
-      ) : (
-        null
-      )}
+      ) : null}
       <Button
         color="light"
         className="list-group-item list-group-item-action bg-light"
@@ -172,7 +170,10 @@ const ElementosSideBar = () => {
       </Button>
       <ModalPerfil modal={modal} setModal={setModal} />
       <ModalSesion modalSesion={modalSesion} setModalSesion={setModalSesion} />
-      <ModalNotificacion modalNotificacion={modalNotificacion} setModalNotificacion={setModalNotificacion} />
+      <ModalNotificacion
+        modalNotificacion={modalNotificacion}
+        setModalNotificacion={setModalNotificacion}
+      />
     </>
   );
 };

@@ -49,7 +49,7 @@ const VentasDia = () => {
       <Menu>
         <NavLink to="/reportes">Reportes</NavLink>
         <NavLink to="/ventas-dia">Ventas del día</NavLink>
-        <NavLink to="/devoluciones">Reportes del mes</NavLink>
+        <NavLink to="/devoluciones">Ventas del mes</NavLink>
       </Menu>
       <main>
         <Switch>

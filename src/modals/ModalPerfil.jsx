@@ -15,8 +15,10 @@ const ModalPerfil = ({ modal, setModal }) => {
             <Ventas>Ventas realizadas</Ventas>
             <Cifra>{`$ ${acumulado} `}</Cifra>
 
-            <img
-              src="https://img.icons8.com/officel/80/000000/person-male.png"
+            <Imagen
+              className="card ms-1 animate__animated animate__fadeIn"
+              style={{ maxWidth: 120 }}
+              src={sessionStorage.getItem("imagen")}
               alt="POS"
             />
             <hr />
@@ -34,9 +36,9 @@ const ModalPerfil = ({ modal, setModal }) => {
           </div>
         </ModalBody>
         <ModalFooter>
-          <Button color="dark" onClick={() => setModal(false)}>
+          {/* <Button color="dark" onClick={() => setModal(false)}>
             Cambiar foto
-          </Button>
+          </Button> */}
           <Button color="warning" onClick={() => setModal(false)}>
             Cerrar
           </Button>
@@ -53,6 +55,10 @@ const Ventas = styled.h5`
 const Cifra = styled.h6`
   text-align: right;
   color: #198236;
+`;
+
+const Imagen = styled.img`
+  border-radius: 50%;
 `;
 
 export default ModalPerfil;

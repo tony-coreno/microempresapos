@@ -38,15 +38,21 @@ const ProductosMap = ({productos}) => {
                       {productos.map((producto, i) => {
                         let { existencia } = producto;
                         let { estado } = producto;
+                        let actividad = "";
                         let clase = "";
                         if (existencia < 50) {
                           surtir = `alert alert-danger text-center`;
                         } else {
                           surtir = `alert alert-success text-center`;
                         }
-                        if (estado === "Agotado") {
+                        if (estado === "Agotado" || estado === false) {
                           clase = "alert alert-danger";
+                          actividad = "Inactivo"
                         }
+                          else{
+                            actividad="Activo"
+                          }
+                        
                         return (
                           <tr key={producto._id}>
                             <td>{i + 1}</td>
@@ -60,7 +66,7 @@ const ProductosMap = ({productos}) => {
                               {producto.precioventa}
                             </td>
                             <td>{producto.categoria}</td>
-                            <td className={clase}>{producto.estado}</td>
+                            <td className={clase}>{actividad}</td>
                           </tr>
                         );
                       })}

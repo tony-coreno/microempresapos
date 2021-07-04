@@ -27,6 +27,11 @@ const AcercaDe = () => {
               </a>
             </p>
             <a href="https://icons8.com/icon/12599/github">Iconos 8</a>
+            <p>
+              <a href="https://icons8.com/icon/3vf8VrOhkfVi/supplier">
+                Dependecias
+              </a>
+            </p>
           </div>
         </Contenedor>
         <aside>
