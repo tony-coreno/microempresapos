@@ -7,7 +7,7 @@ export const Contenedor = styled.div`
   display: grid;
   gap: 10px;
   //background: #eef3f5;
-  background: #fff;
+  background: #161B22;
   margin: 10px 0;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);

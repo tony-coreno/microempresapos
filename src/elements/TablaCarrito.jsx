@@ -34,7 +34,7 @@ const TablaCarrito = () => {
                 <div className="bg-dark card-header py-1">
                   <Titulo>Detalle de venta</Titulo>
                 </div>
-                <table className="table table-responsive-lg text-center ">
+                <table className="table-dark table-responsive-lg text-center ">
                   <thead className="light">
                     <tr>
                       <th>IMG</th>

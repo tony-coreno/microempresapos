@@ -107,7 +107,7 @@ const Contenedorapp = styled.div`
   display: grid;
   gap: 20px;
   //grid-template-columns: 2fr 2fr;
-  background: #fff;
+  background: #24292F;
   margin: 5px 0;
   border-radius: 20px;
   box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);

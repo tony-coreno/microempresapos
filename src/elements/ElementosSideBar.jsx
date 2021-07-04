@@ -36,8 +36,9 @@ const ElementosSideBar = () => {
         alt="POS"
       />
       <Button
+        style={{ background: "#24292F", color: "#A0A7AC" }}
         color="blue"
-        className="list-group-item list-group-item-action bg-light"
+        className="list-group-item list-group-item-action"
         onClick={() => setModalNotificacion(true)}
         data-toggle="tooltip"
         data-placement="right"
@@ -49,7 +50,8 @@ const ElementosSideBar = () => {
 
       <Button
         color="light"
-        className="list-group-item list-group-item-action bg-light"
+        style={{ background: "#24292F", color: "#A0A7AC" }}
+        className="list-group-item"
         onClick={() => setModal(true)}
         data-toggle="tooltip"
         data-placement="right"
@@ -59,8 +61,9 @@ const ElementosSideBar = () => {
       </Button>
 
       <Link
+      style={{ background: "#24292F", color: "#A0A7AC" }}
         to="/crear-venta"
-        className="list-group-item list-group-item-action bg-light"
+        className="list-group-item"
         data-toggle="tooltip"
         data-placement="right"
         title="Compras"
@@ -69,8 +72,9 @@ const ElementosSideBar = () => {
         <span className="badge badge-success">{articulos}</span>
       </Link>
       <Link
+      style={{ background: "#24292F", color: "#A0A7AC" }}
         to="/productos"
-        className="list-group-item list-group-item-action bg-light"
+        className="list-group-item list-group-item-action"
         data-toggle="tooltip"
         data-placement="right"
         title="Buscar producto"
@@ -78,8 +82,9 @@ const ElementosSideBar = () => {
         <FontAwesomeIcon icon={faSearch} />
       </Link>
       <Link
+      style={{ background: "#24292F", color: "#A0A7AC" }}
         to="/ventas-dia"
-        className="list-group-item list-group-item-action bg-light"
+        className="list-group-item list-group-item-action"
         data-toggle="tooltip"
         data-placement="right"
         title="Ventas día"
@@ -87,8 +92,9 @@ const ElementosSideBar = () => {
         <FontAwesomeIcon icon={faChartLine} />
       </Link>
       <Link
+      style={{ background: "#24292F", color: "#A0A7AC" }}
         to="/kardex"
-        className="list-group-item list-group-item-action bg-light"
+        className="list-group-item list-group-item-action"
         data-toggle="tooltip"
         data-placement="right"
         title="Kardex"
@@ -97,8 +103,9 @@ const ElementosSideBar = () => {
       </Link>
 
       <Link
+      style={{ background: "#24292F", color: "#A0A7AC" }}
         to="/calendar"
-        className="list-group-item list-group-item-action bg-light"
+        className="list-group-item list-group-item-action"
         data-toggle="tooltip"
         data-placement="right"
         title="Calendario"
@@ -107,8 +114,9 @@ const ElementosSideBar = () => {
         <span className="badge badge-warning">0</span>
       </Link>
       <Link
+      style={{ background: "#24292F", color: "#A0A7AC" }}
         to="/proveedores"
-        className="list-group-item list-group-item-action bg-light"
+        className="list-group-item list-group-item-action "
         data-toggle="tooltip"
         data-placement="right"
         title="Proveedores"
@@ -116,8 +124,9 @@ const ElementosSideBar = () => {
         <FontAwesomeIcon icon={faTruck} />
       </Link>
       <Link
+      style={{ background: "#24292F", color: "#A0A7AC" }}
         to="cliente"
-        className="list-group-item list-group-item-action bg-light"
+        className="list-group-item list-group-item-action "
         data-toggle="tooltip"
         data-placement="right"
         title="Clientes"
@@ -125,8 +134,9 @@ const ElementosSideBar = () => {
         <FontAwesomeIcon icon={faIdCard} />
       </Link>
       <Link
+      style={{ background: "#24292F", color: "#A0A7AC" }}
         to="/notas"
-        className="list-group-item list-group-item-action bg-light"
+        className="list-group-item list-group-item-action "
         data-toggle="tooltip"
         data-placement="right"
         title="Notas"
@@ -135,8 +145,9 @@ const ElementosSideBar = () => {
       </Link>
       {sessionStorage.getItem("perfil") === "Administrador" ? (
         <Link
+        style={{ background: "#24292F", color: "#A0A7AC" }}
           to="settings"
-          className="list-group-item list-group-item-action bg-light"
+          className="list-group-item list-group-item-action "
           data-toggle="tooltip"
           data-placement="right"
           title="Ajustes"
@@ -148,8 +159,9 @@ const ElementosSideBar = () => {
       sessionStorage.getItem("perfil") !== "Administrador" ? (
         <>
           <Link
+          style={{ background: "#24292F", color: "#A0A7AC" }}
             to="ayuda"
-            className="list-group-item list-group-item-action bg-light"
+            className="list-group-item list-group-item-action"
             data-toggle="tooltip"
             data-placement="right"
             title="Ayuda"
@@ -159,8 +171,9 @@ const ElementosSideBar = () => {
         </>
       ) : null}
       <Button
+      style={{ background: "#24292F", color: "#A0A7AC" }}
         color="light"
-        className="list-group-item list-group-item-action bg-light"
+        className="list-group-item list-group-item-action"
         onClick={() => setModalSesion(true)}
         ata-toggle="tooltip"
         data-placement="right"

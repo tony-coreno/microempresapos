@@ -23,6 +23,7 @@
 }
 
 #sidebar-wrapper .list-group {
+  background: #24292F;
   width: 75px; 
   /* width: 145px;  */
   display: flex;
@@ -30,7 +31,7 @@
 }
 
 #page-content-wrapper {
-  
+  background: #24292F;
   min-width: 100vw;
 }
 

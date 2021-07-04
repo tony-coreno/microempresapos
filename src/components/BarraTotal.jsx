@@ -5,7 +5,7 @@ import { ContextEstado } from '../context/ContextEstado';
 
 
 const BarraTotalEfectivo = styled.div`
-    background: #147551;
+    background: #052C48;
     font-size: 1.25rem; /* 20px */
     letter-spacing: 1px;
     font-weight: 500;

@@ -9,7 +9,7 @@ max-width: 1400px;
 `;
 
 export const Main = styled.main`
-background: #fff;
+background: #24292F;
 padding: 10px;
 border-radius: 10px;
 box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
@@ -28,6 +28,7 @@ export const ContenedorHeader = styled.header`
 `;
 export const Titulo = styled.h1`
   margin-bottom: 10px;
+  color: #FFF;
   font-size: 26px;
   text-transform: uppercase;
 `;
@@ -53,7 +54,7 @@ export const MenuNav = styled.nav`
 `;
 
 export const Contenedor = styled.div`
-  background: #147551;
+  background: #052C48;
   opacity: 0.8;
   //background: #FFF;
   padding: 20px;

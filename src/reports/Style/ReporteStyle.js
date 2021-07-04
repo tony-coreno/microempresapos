@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Menu = styled.nav`
   width: 100%;
   text-align: center;
-  background: #147551;
+  background: #052C48;
   //grid-column: span 2;
   border-radius: 10px;
 
@@ -27,7 +27,7 @@ export const ContenedorInput = styled.div`
 input {
   font-family: "Work Sans", sans-serif;
   box-sizing: border-box;
-  background: #f2f2f2;
+  background: #161B22;
   border: none;
   cursor: pointer;
   border-radius: 0.625rem; /* 10px */
@@ -65,7 +65,8 @@ export const Contenedorapp = styled.div`
   display: grid;
   gap: 20px;
   grid-template-columns: 2fr 4fr;
-  background: #fff;
+  background: #24292F;
+  color: #FFF ;
   margin: 5px 0;
   border-radius: 20px;
   box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
@@ -82,7 +83,7 @@ export const Contenedor = styled.div`
   display: grid;
   gap: 20px;
   //background: #eef3f5;
-  background: #fff;
+  background: #24292F;
   margin: 10px 0;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
@@ -96,7 +97,7 @@ width: 100%;
 display: grid;
 gap: 5px;
 //grid-template-columns: 2fr 1fr;
-background: #fff;
+background: #24292F;
 margin: 5px 0;
 border-radius: 20px;
 box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);

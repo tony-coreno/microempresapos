@@ -5,14 +5,20 @@ import Axios from "axios";
 import Swal from "sweetalert2";
 
 const FormularioCrearVenta = () => {
-  const { listaProducto, setListaProducto, setVentaProducto, setArticulos, articulos, ventaProducto } =
-    useContext(ContextEstado);
+  const {
+    listaProducto,
+    setListaProducto,
+    setVentaProducto,
+    setArticulos,
+    articulos,
+    ventaProducto,
+  } = useContext(ContextEstado);
 
   const handleInputChange = (e) => {
     setListaProducto(e.target.value);
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (listaProducto.trim().length > 5) {
       const obtenerProducto = async () => {
@@ -60,6 +66,7 @@ const FormularioCrearVenta = () => {
 
 const InputFormulario = styled.input`
   border-radius: 20px;
+  background: #161b22;
   overflow: hidden;
   width: 80%;
 `;
