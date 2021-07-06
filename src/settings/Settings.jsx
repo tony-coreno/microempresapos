@@ -12,7 +12,7 @@ const Settings = () => {
   let inputFile;
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
-  const [tipocliente, setTipoCliente] = useState("");
+  const [tipocliente] = useState("");
   const [codigopromocional, setCodigoPromocional] = useState("");
   const [telefono, setTelefono] = useState("");
   const [correo, setCorreo] = useState("");

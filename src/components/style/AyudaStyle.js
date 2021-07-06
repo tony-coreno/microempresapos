@@ -54,7 +54,7 @@ width: 100%;
 display: grid;
 gap: 20px;
 grid-template-columns: 4fr 2fr;
-background: #fff;
+background: #f9f9f9;
 margin: 5px 0;
 border-radius: 20px;
 box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);

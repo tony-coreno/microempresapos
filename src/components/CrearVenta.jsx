@@ -7,7 +7,12 @@ import FormularioCrearVenta from "./FormularioCrearVenta";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBarcode, faCashRegister } from "@fortawesome/free-solid-svg-icons";
-import { Menu, Contenedorapp, TituloEmpleado, Contenedor } from "../reports/Style/ReporteStyle";
+import {
+  Menu,
+  Contenedorapp,
+  TituloEmpleado,
+  Contenedor,
+} from "../reports/Style/ReporteStyle";
 
 const CrearVenta = () => {
   const { articulos } = useContext(ContextEstado);

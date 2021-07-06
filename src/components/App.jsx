@@ -36,6 +36,7 @@ import ClientesTabla from './ClientesTabla';
 import AcercaDe from "../settings/AcercaDe";
 import ClientesGeneral from "../clients/ClientesGeneral";
 import ProductosGeneral from '../products/ProductosGeneral';
+import ReportarProblema from "../settings/ReportarProblema";
 const App = () => {
   return (
     <>
@@ -87,6 +88,7 @@ const App = () => {
                 <Route path="/ventas-dia" component={VentasDia} />
                 <Route path="/ventas-mes" component={VentasMes} />
                 <Route path="/filtrar-ventas" component={FiltrarVentas} />
+                <Route path="/reportar" component={ReportarProblema} />
                 <Route path="/cliente" component={ClientesGeneral} />
                 <Route component={Error} />
               </Switch>

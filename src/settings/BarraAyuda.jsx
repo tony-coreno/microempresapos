@@ -8,10 +8,9 @@ const BarraAyuda = () => {
         <Menu>
           <NavLink to="/crear-venta">Manuales de usuario</NavLink>
           <NavLink to="/acerca-de">Acerca De</NavLink>
-          <NavLink to="/error">Reportar un problema</NavLink>
+          <NavLink to="/reportar">Reportar un problema</NavLink>
         </Menu>
-        <main>
-        </main>
+        <main></main>
       </Contenedor>
     </>
   );
