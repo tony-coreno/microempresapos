@@ -19,7 +19,7 @@ const TablaPagosVentas = ({pagos, eliminar, actualizar}) => {
                       </tr>
                     </thead>
                     <tbody>
-                      {pagos.map((medio) => {
+                      {pagos.map((medio, i) => {
                         if (medio.nombre === "") {
                           return null;
                         }
@@ -33,7 +33,7 @@ const TablaPagosVentas = ({pagos, eliminar, actualizar}) => {
                           clase = "btn btn-outline-info";
                         }
                         return (
-                          <tr key={medio._id}>
+                          <tr key={i}>
                             <td>{medio.nombre}</td>
                             <td>
                               <button

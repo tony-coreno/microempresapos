@@ -6,7 +6,7 @@ const BarraAyuda = () => {
     <>
       <Contenedor>
         <Menu>
-          <NavLink to="/crear-venta">Manuales de usuario</NavLink>
+          <NavLink to="/manuales">Manuales de usuario</NavLink>
           <NavLink to="/acerca-de">Acerca De</NavLink>
           <NavLink to="/reportar">Reportar un problema</NavLink>
         </Menu>

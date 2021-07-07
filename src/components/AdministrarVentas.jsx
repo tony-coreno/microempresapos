@@ -5,13 +5,15 @@ import Swal from "sweetalert2";
 import TablaPagosVentas from "../reports/TablaPagosVentas";
 import BarraVentas from "../reports/BarraVentas";
 const Almacen = () => {
-  const [pagos, setPagos] = useState([]);
+  const [pagos, setPagos] = useState([""]);
   const [nombre, setNombre] = useState("");
+  const [iva, setIva] = useState([""]);
   let perfil = sessionStorage.getItem("perfil");
 
   useEffect(() => {
     if (perfil === "Administrador") {
       obtenerPagos();
+      obtenerIva();
     } else {
       obtenerPagosEmpleados();
     }
@@ -99,6 +101,15 @@ const Almacen = () => {
     });
     obtenerPagos();
   };
+
+  const obtenerIva = async () => {
+    const id = sessionStorage.getItem("idusuario");
+    const token = sessionStorage.getItem("token");
+    const respuesta = await Axios.get("/iva/encontrar/" + id, {
+      headers: { autorizacion: token },
+    });
+    setIva(respuesta.data);
+  };
   return (
     <div>
       <BarraVentas />
@@ -120,7 +131,22 @@ const Almacen = () => {
             </div>
             <div className="col">
               <h6 className="text-center">IVA (16%)</h6>
-              <button className="btn btn-outline-success btn-block">Activo</button>
+              {iva.map((impuesto,i) => {
+                let {estado} = impuesto
+                let status = ""
+                if(estado){
+                  status = "Activo"
+                }else{
+                  status = "Inactivo"
+                }
+                return (
+                  <div key={i}>
+                  <button className="btn btn-outline-success btn-block" onClick>
+                    {status}
+                  </button>
+                  </div>
+                );
+              })}
               {/* <select id="inputState" className="form-control mt-2">
                 <option>Activo</option>
                 <option>Inactivo</option>
@@ -138,6 +164,5 @@ const Almacen = () => {
     </div>
   );
 };
-
 
 export default Almacen;
