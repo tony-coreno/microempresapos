@@ -101,6 +101,22 @@ const Almacen = () => {
     });
     obtenerPagos();
   };
+  const actualizarIva = async (e, impuesto) => {
+    e.preventDefault();
+    const id = impuesto._id;
+    const ivanegocio = {
+      estado: `${!impuesto.estado}`,
+    };
+    const respuesta = await Axios.put("/iva/actualizar/" + id, ivanegocio);
+    const mensaje = respuesta.data.mensaje;
+    Swal.fire({
+      icon: "success",
+      title: mensaje,
+      showConfirmButton: false,
+      timer: 1000,
+    });
+    obtenerIva();
+  };
 
   const obtenerIva = async () => {
     const id = sessionStorage.getItem("idusuario");
@@ -131,19 +147,23 @@ const Almacen = () => {
             </div>
             <div className="col">
               <h6 className="text-center">IVA (16%)</h6>
-              {iva.map((impuesto,i) => {
-                let {estado} = impuesto
-                let status = ""
-                if(estado){
-                  status = "Activo"
-                }else{
-                  status = "Inactivo"
+              {iva.map((impuesto, i) => {
+                let { estado } = impuesto;
+                let status = "";
+                if (estado) {
+                  status = "Activo";
+                } else {
+                  status = "Inactivo";
                 }
                 return (
                   <div key={i}>
-                  <button className="btn btn-outline-success btn-block" onClick>
-                    {status}
-                  </button>
+                    <button
+                      type="button"
+                      className="btn btn-outline-success btn-block"
+                      onClick={(e) => actualizarIva(e, impuesto)}
+                    >
+                      {status}
+                    </button>
                   </div>
                 );
               })}
