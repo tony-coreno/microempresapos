@@ -1,12 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Button } from "reactstrap";
+// import { Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Herramientas, Boton, Buscar } from "../users/style/EmpleadoStyle";
 import {
   faArrowLeft,
-  faFileExcel,
-  faFilePdf,
+  // faFileExcel,
+  // faFilePdf,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -24,7 +24,7 @@ const HerramientasEmpleados = ({ buscar }) => {
             <FontAwesomeIcon icon={faArrowLeft} />
           </Boton>
         </NavLink>
-        <NavLink to="/agregar-empleado">
+        {/* <NavLink to="/agregar-empleado">
           <Boton
             className="btn btn-danger d-flex d-flex justify-content-between align-items-center pr-2"
             data-toggle="tooltip"
@@ -43,7 +43,7 @@ const HerramientasEmpleados = ({ buscar }) => {
           >
             <FontAwesomeIcon icon={faFileExcel} />
           </Button>
-        </NavLink>
+        </NavLink> */}
       </Herramientas>
       {sessionStorage.getItem("token") ? (
         <div className="col-md-4 ml-auto">

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { NavLink } from "react-router-dom";
-import { subirImagen } from "../hooks/SubirImgHook";
+// import { subirImagen } from "../hooks/SubirImgHook";
 import Axios from "axios";
 import { Button } from "reactstrap";
 import { faArrowLeft, faUserTag } from "@fortawesome/free-solid-svg-icons";
@@ -9,19 +9,19 @@ import { Titulo } from "../clients/style/ClienteStyle";
 import Swal from "sweetalert2";
 
 const Settings = () => {
-  let inputFile;
+  // let inputFile;
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [tipocliente] = useState("");
   const [codigopromocional, setCodigoPromocional] = useState("");
   const [telefono, setTelefono] = useState("");
   const [correo, setCorreo] = useState("");
-  const [imagen, setImagen] = useState("");
+  const [imagen] = useState("");
 
-  useEffect(() => {
-    eventos();
-    // eslint-disable-next-line
-  }, []);
+  // useEffect(() => {
+  //   eventos();
+  //   // eslint-disable-next-line
+  // }, []);
 
   const guardar = async (e) => {
     e.preventDefault();
@@ -37,8 +37,8 @@ const Settings = () => {
     };
     if (tipocliente === "") {
       return Swal.fire({
-        icon: "error",
-        title: "Seleccione tipo de cliente",
+        icon: "success",
+        title: "actualizado",
         showConfirmButton: false,
         timer: 1200,
       });
@@ -74,16 +74,16 @@ const Settings = () => {
       window.location.href = "/cliente";
     }, 1000);
   };
-  const eventos = () => {
-    inputFile = document.querySelector("#foto");
-    inputFile.addEventListener("change", (event) => {
-      console.log(event);
-      const file = event.target.files[0];
-      subirImagen(file).then((url) => {
-        setImagen(url);
-      });
-    });
-  };
+  // const eventos = () => {
+  //   inputFile = document.querySelector("#foto");
+  //   inputFile.addEventListener("change", (event) => {
+  //     console.log(event);
+  //     const file = event.target.files[0];
+  //     subirImagen(file).then((url) => {
+  //       setImagen(url);
+  //     });
+  //   });
+  // };
   return (
     <>
       <main className="caja-contenido col-12">

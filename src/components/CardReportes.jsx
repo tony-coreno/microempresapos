@@ -28,7 +28,7 @@ const CardReportes = () => {
                 alt="Reportes"
               />
               <div className="card-body">
-                <Link className="btn btn-outline-success" to="/ventas-dia">
+                <Link className="btn btn-outline-success" to="/ventas-mes">
                   Ventas del mes
                 </Link>
               </div>

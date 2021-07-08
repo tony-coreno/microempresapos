@@ -78,11 +78,11 @@ const ElementosSideBar = () => {
         <FontAwesomeIcon icon={faSearch} />
       </Link>
       <Link
-        to="/ventas-dia"
+        to="/ventas-mes"
         className="list-group-item list-group-item-action bg-light"
         data-toggle="tooltip"
         data-placement="right"
-        title="Ventas día"
+        title="Ventas mes"
       >
         <FontAwesomeIcon icon={faChartLine} />
       </Link>

@@ -19,7 +19,7 @@ import {
 } from "./Style/VentasDiaStyle";
 import CalendarVentasDia from "./CalendarVentasDia";
 const VentasDia = () => {
-  const { obtenerVentas, pago, obtenerVentasEmpleado } = VentasDiahook();
+  const { obtenerVentas, obtenerVentasEmpleado } = VentasDiahook();
   let perfil = sessionStorage.getItem("perfil");
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const VentasDia = () => {
   const data = [
     {
       name: "MXN",
-      Total: `${pago}`,
+      Total: `${66}`,
       //Perdidas: 10,
     },
     // {
@@ -49,7 +49,7 @@ const VentasDia = () => {
       <Menu>
         <NavLink to="/reportes">Reportes</NavLink>
         <NavLink to="/ventas-dia">Ventas del día</NavLink>
-        <NavLink to="/devoluciones">Ventas del mes</NavLink>
+        <NavLink to="/ventas-mes">Ventas del mes</NavLink>
       </Menu>
       <main>
         <Switch>
@@ -60,7 +60,7 @@ const VentasDia = () => {
         <Contenedor>
           <h4>
             Ventas del Día:{" "}
-            <strong className="badge badge-success">${pago}.00</strong>
+            <strong className="badge badge-success">${66}.00</strong>
           </h4>
           <>
             {/* <Principal>Ventas Mayo</Principal> */}

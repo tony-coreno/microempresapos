@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCog,
-  faFileExcel,
-  faFilePdf,
+  //faFileExcel,
+  //faFilePdf,
   faFilter,
   faShoppingBag,
 } from "@fortawesome/free-solid-svg-icons";
@@ -33,7 +33,7 @@ const HerramientasProductos = () => {
         </Boton>
       </NavLink>
 
-      <NavLink to="/agregar-empleado">
+      {/* <NavLink to="/agregar-empleado">
         <button
           className="btn btn-light d-flex d-flex justify-content-between align-items-center pr-2"
           data-toggle="tooltip"
@@ -52,7 +52,7 @@ const HerramientasProductos = () => {
         >
           <FontAwesomeIcon icon={faFileExcel} /> Exportar Excel
         </button>
-      </NavLink>
+      </NavLink> */}
 
       <NavLink to="/productos-cards">
         <button

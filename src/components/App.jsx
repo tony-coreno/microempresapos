@@ -37,6 +37,7 @@ import AcercaDe from "../settings/AcercaDe";
 import ClientesGeneral from "../clients/ClientesGeneral";
 import ProductosGeneral from '../products/ProductosGeneral';
 import Manuales from "../settings/Manuales";
+import AgregarMercancia from "../kardex/AgregarMercancia";
 import ReportarProblema from "../settings/ReportarProblema";
 const App = () => {
   return (
@@ -73,6 +74,8 @@ const App = () => {
                 <Route path ="/empleado" component={EmpleadosGeneral} />
                 <Route path ="/acerca-de" component={AcercaDe} />
                 <Route path ="/manuales" component={Manuales} />
+                <Route path ="/agregar-mercancia" component={AgregarMercancia} />
+
                 <Route
                   path="/administrar-venta"
                   component={AdministrarVentas}

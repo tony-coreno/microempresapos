@@ -1,7 +1,8 @@
 import React from "react";
 import { Titulo } from "../products/styled/CategoriaStyle";
-const ProductosMap = ({productos}) => {
-    let surtir = "";
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
+const ProductosMap = ({ productos }) => {
+  let surtir = "";
   return (
     <>
       <div className="table-responsive table-borderless table-hover">
@@ -14,6 +15,15 @@ const ProductosMap = ({productos}) => {
                     <Titulo>
                       Productos de{" "}
                       {sessionStorage.getItem("nombre") || "Invitado"}
+                      { " "}
+                      <ReactHTMLTableToExcel
+                        id="botonExportarExcel"
+                        className="btn btn-success"
+                        table="tablaProductos"
+                        filename="empleados"
+                        sheet="Empleado"
+                        buttonText="Exportar a Excel"
+                      />
                     </Titulo>
                   </div>
                   <table
@@ -26,7 +36,7 @@ const ProductosMap = ({productos}) => {
                         <th>SKU</th>
                         <th>Marca</th>
                         <th>Producto</th>
-                        <th>Cont. Neto</th> 
+                        <th>Cont. Neto</th>
                         <th>Unidad</th>
                         <th>Existencia</th>
                         <th>Precio</th>
@@ -47,12 +57,11 @@ const ProductosMap = ({productos}) => {
                         }
                         if (estado === "Agotado" || estado === false) {
                           clase = "alert alert-danger";
-                          actividad = "Inactivo"
+                          actividad = "Inactivo";
+                        } else {
+                          actividad = "Activo";
                         }
-                          else{
-                            actividad="Activo"
-                          }
-                        
+
                         return (
                           <tr key={producto._id}>
                             <td>{i + 1}</td>

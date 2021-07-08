@@ -1,18 +1,27 @@
 import React from "react";
 import { TituloColor } from "../clients/style/ClienteStyle";
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 const ClientesMap = ({ clientes }) => {
   return (
     <>
-      <div className="container">
+      <div className="container mt-2">
         <div className="row">
           <div className="col-md-12">
             <div className="card">
               <div className="bg-light card-header py-2">
                 <TituloColor>
-                  Clientes de {sessionStorage.getItem("nombre") || "Invitado"}
+                  Clientes de {sessionStorage.getItem("nombre") || "Invitado"}{" "}
+                  <ReactHTMLTableToExcel
+                    id="botonExportarExcel"
+                    className="btn btn-success"
+                    table="tablaClientes"
+                    filename="empleados"
+                    sheet="Empleado"
+                    buttonText="Exportar a Excel"
+                  />
                 </TituloColor>
               </div>
-              <table className="table table-responsive-lg " id="tablaEmpleados">
+              <table className="table table-responsive-lg " id="tablaClientes">
                 <thead className="light">
                   <tr>
                     <th>#</th>

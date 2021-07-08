@@ -18,23 +18,17 @@ import {
 import ProductosMayorVenta from "../charts/ProductosMayorVenta";
 import { ContextEstado } from "../context/ContextEstado";
 const Inicio = () => {
-  const { articulos } = useContext(ContextEstado);
+  const {  acumulado } = useContext(ContextEstado);
   const data = [
     {
-      name: "Ventas del día",
-      Ganancia: articulos,
-      Perdidas: 400,
-    },
-    {
-      name: "Marzo",
-      Ganancia: 4841,
-      Perdidas: 2100,
+      name: "Ventas del mes",
+      Ganancia: acumulado,
     },
   ];
 
   return (
     <>
-      <Principal>Ventas Mayo</Principal>
+      <Principal><span className="badge badge-success">Ventas Julio</span></Principal>
       <hr />
       <Contenedor2>
         <Divisor>
@@ -55,7 +49,7 @@ const Inicio = () => {
             <Tooltip />
             <Legend />
             <Bar dataKey="Ganancia" stackId="a" fill="#193545" />
-            <Bar dataKey="Perdidas" stackId="a" fill="#e2d409ea" />
+            <Bar dataKey="Empleados" stackId="a" fill="#198236" />
             {/*fill="#82ca9d" */}
           </BarChart>
           <Titulo></Titulo>

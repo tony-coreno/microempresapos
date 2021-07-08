@@ -9,8 +9,8 @@ import BarraProductos from "../products/BarraProductos";
 import ProductosMap from "./ProductosMap";
 
 const Productos = () => {
-
-  const {productos, obtenerProductos, obtenerProductosEmpleados, buscar} = ProductosHook()
+  const { productos, obtenerProductos, obtenerProductosEmpleados, buscar } =
+    ProductosHook();
   let perfil = sessionStorage.getItem("perfil");
 
   useEffect(() => {
@@ -30,6 +30,7 @@ const Productos = () => {
           {sessionStorage.getItem("perfil") === "Administrador" ? (
             <HerramientasProductos />
           ) : null}
+
           <div className="col-md-4 ml-auto">
             <div className="input-group fa-2x">
               <Buscar
