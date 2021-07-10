@@ -6,7 +6,7 @@ export const Contenedorapp = styled.div`
   width: 100%;
   display: grid;
   gap: 20px;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 2fr;
   background: #fff;
   margin: 5px 0;
   border-radius: 10px;
@@ -29,7 +29,7 @@ export const Contenedor2 = styled.div`
   width: 100%;
   display: grid;
   gap: 10px;
-  grid-template-columns: 2fr 2fr;
+  //grid-template-columns: 2fr 2fr;
   //background: #eef3f5;
   background: #fff;
   margin: 10px 0;

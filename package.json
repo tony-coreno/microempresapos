@@ -15,6 +15,7 @@
     "date-fns": "^2.22.1",
     "dotenv": "^10.0.0",
     "moment": "^2.29.1",
+    "nodejs-unique-numeric-id-generator": "^1.0.1",
     "react": "^17.0.1",
     "react-big-calendar": "^0.33.2",
     "react-data-table-component": "^6.11.7",

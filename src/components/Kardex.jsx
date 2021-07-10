@@ -15,7 +15,6 @@ import TablaKardex from "../kardex/TablaKardex";
 // import HerramientasKardex from "../kardex/HerramientasKardex";
 
 const Kardex = () => {
-
   const [producto, setProducto] = useState("");
   const [mercancia, setMercancia] = useState(false);
   const [kardexItem, setKardexItem] = useState([]);
@@ -23,7 +22,6 @@ const Kardex = () => {
   // const [codigo, setCodigo] = useState("");
   const [existencia, setExistencia] = useState("");
   let f = new Date();
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +32,7 @@ const Kardex = () => {
         setKardexItem(respuesta.data);
       };
       obtenerProducto();
-      console.log(existencia)
+      console.log(existencia);
     }
   };
 
@@ -147,7 +145,7 @@ const Kardex = () => {
                   type="number"
                   className="form-control mt-4"
                   placeholder="Cantidad de productos a ingresar ..."
-                  onChange={ (e) => setExistencia(e.target.value)}
+                  onChange={(e) => setExistencia(e.target.value)}
                 />
                 <button
                   className="btn btn-dark mt-3 mr-2"
@@ -155,7 +153,12 @@ const Kardex = () => {
                 >
                   Cancelar
                 </button>
-                <button className="btn btn-success mt-3">Registrar</button>
+                <button
+                  className="btn btn-success mt-3"
+                  onClick={() => setMercancia(false)}
+                >
+                  Registrar
+                </button>
               </form>
             </Contenedor>
           ) : null}

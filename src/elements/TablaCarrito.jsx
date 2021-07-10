@@ -80,7 +80,7 @@ const TablaCarrito = () => {
                           <td>{precioventa}</td>
                           <td>
                             <button
-                              className="bn btn-outline-danger mr-2"
+                              className="bn btn-danger mr-2"
                               onClick={(e) => eliminar(e, producto._id)}
                             >
                               <FontAwesomeIcon icon={faTimes} />

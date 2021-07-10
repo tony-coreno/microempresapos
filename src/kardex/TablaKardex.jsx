@@ -10,6 +10,7 @@ const TablaKardex = ({ kardexItem }) => {
             <th scope="col">Categoria</th>
             <th scope="col">Proveedor</th>
             <th scope="col">Existencia</th>
+            <th scope="col">Precio</th>
             <th scope="col">Fecha registrada</th>
           </tr>
         </thead>
@@ -22,6 +23,7 @@ const TablaKardex = ({ kardexItem }) => {
                 <td>{item.categoria}</td>
                 <td>{item.marca}</td>
                 <td>{item.existencia}</td>
+                <td>{item.precioventa}</td>
                 <td>{item.fecharegistro}</td>
               </tr>
             );
