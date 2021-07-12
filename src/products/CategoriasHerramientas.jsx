@@ -1,10 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Button, Navbar } from "reactstrap";
+import { Navbar } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+//import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import {
-  faFileExcel,
-  faFilePdf,
+  //faFileExcel,
+  //faFilePdf,
   faSearch,
   faShoppingBag,
 } from "@fortawesome/free-solid-svg-icons";
@@ -24,13 +25,13 @@ const CategoriasHerramientas = ({ buscar }) => {
               className="btn btn-light d-flex d-flex justify-content-between align-items-center pr-2"
               data-toggle="tooltip"
               data-placement="right"
-              title="Agregar Producto"
+              title="Ir a agregar Producto"
             >
-              <FontAwesomeIcon icon={faShoppingBag} /> Agregar Producto
+              <FontAwesomeIcon icon={faShoppingBag} /> Ir a Agregar Producto
             </Boton>
           </NavLink>
 
-          <NavLink to="/agregar-empleado">
+          {/*<NavLink to="/agregar-empleado">
             <Boton
               className="btn btn-light d-flex d-flex justify-content-between align-items-center pr-2"
               data-toggle="tooltip"
@@ -49,7 +50,7 @@ const CategoriasHerramientas = ({ buscar }) => {
             >
               <FontAwesomeIcon icon={faFileExcel} /> Exportar Excel
             </Button>
-          </NavLink>
+          </NavLink> */}
         </Herramientas>
         {sessionStorage.getItem("token") ? (
           <div className="col-md-4 ml-auto">

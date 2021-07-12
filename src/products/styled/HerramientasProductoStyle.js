@@ -17,7 +17,8 @@ export const Boton = styled.button`
 
 export const Herramientas = styled.div`
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  //flex-direction: row;
   margin: 4px;
   padding: 10px;
   gap: 20px;

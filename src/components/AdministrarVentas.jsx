@@ -43,7 +43,7 @@ const Almacen = () => {
               <input
                 type="text"
                 className="form-control mt-2"
-                placeholder="Inserte medio presione enter o guardar..."
+                placeholder="Escriba medio de pago, presione enter para almacenarlo..."
                 onChange={(e) => setNombre(e.target.value)}
                 autoFocus
               />

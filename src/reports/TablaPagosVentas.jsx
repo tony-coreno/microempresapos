@@ -1,5 +1,5 @@
 import React from "react";
-import { SeccionBoton } from "./Style/ReporteStyle";
+// import { SeccionBoton } from "./Style/ReporteStyle";
 
 const TablaPagosVentas = ({pagos, eliminar, actualizar}) => {
   return (
@@ -62,9 +62,9 @@ const TablaPagosVentas = ({pagos, eliminar, actualizar}) => {
           </div>
         </div>
         <hr />
-        <SeccionBoton>
+        {/* <SeccionBoton>
           <button className="btn btn-outline-success">Guardar</button>
-        </SeccionBoton>
+        </SeccionBoton> */}
       </form>
     </>
   );
