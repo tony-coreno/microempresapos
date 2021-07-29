@@ -1,5 +1,5 @@
 const cloudPreset = "ml_default";
-const cloudUrl = "	https://api.cloudinary.com/v1_1/duf68yakp/uploa";
+const cloudUrl = "	https://api.cloudinary.com/v1_1/duf68yakp/upload";
 
 export const subirImagen = async (archivoSubir) => {
     const formData = new FormData();

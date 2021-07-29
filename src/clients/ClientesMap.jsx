@@ -15,8 +15,8 @@ const ClientesMap = ({ clientes }) => {
                     id="botonExportarExcel"
                     className="btn btn-success"
                     table="tablaClientes"
-                    filename="empleados"
-                    sheet="Empleado"
+                    filename="clientes"
+                    sheet="Clientes POS"
                     buttonText="Exportar a Excel"
                   />
                 </TituloColor>

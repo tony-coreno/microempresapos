@@ -13,7 +13,8 @@ const ModalPerfil = ({ modal, setModal }) => {
         <ModalBody>
           <div>
             <Ventas>Ventas realizadas</Ventas>
-            <Cifra>{`$ ${acumulado} `}</Cifra>
+            <Cifra><span className="badge badge-success">{`$ ${acumulado} `}</span></Cifra>
+
 
             <Imagen
               className="card ms-1 animate__animated animate__fadeIn"

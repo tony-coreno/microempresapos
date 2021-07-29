@@ -3,6 +3,7 @@ import { Titulo } from "../products/styled/CategoriaStyle";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 const ProductosMap = ({ productos }) => {
   let surtir = "";
+  let f = new Date();
   return (
     <>
       <div className="table-responsive table-borderless table-hover">
@@ -14,13 +15,18 @@ const ProductosMap = ({ productos }) => {
                   <div className="bg-light card-header">
                     <Titulo>
                       Productos de{" "}
-                      {sessionStorage.getItem("nombre") || "Invitado"}
-                      { " "}
+                      {sessionStorage.getItem("nombre") || "Invitado"}{" "}
                       <ReactHTMLTableToExcel
                         id="botonExportarExcel"
                         className="btn btn-success"
                         table="tablaProductos"
-                        filename="empleados"
+                        filename={`productos-${
+                          f.getDate() +
+                          "/" +
+                          (f.getMonth() + 1) +
+                          "/" +
+                          f.getFullYear()
+                        }`}
                         sheet="Empleado"
                         buttonText="Exportar a Excel"
                       />
