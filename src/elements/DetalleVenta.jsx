@@ -41,10 +41,10 @@ const DetalleVenta = () => {
     });
     setPagos(respuesta.data);
   };
-  const codigo = (e) => {
-    e.preventDefault();
-    alert("Me llegó");
-  };
+  // const codigo = (e) => {
+  //   e.preventDefault();
+  //   alert("Me llegó");
+  // };
   return (
     <>
       <Contenedorapp>
@@ -66,7 +66,7 @@ const DetalleVenta = () => {
             })
           }
         </select>
-        <form onSubmit={codigo}>
+        {/* <form onSubmit={codigo}>
           <label>Código Promocional</label>
           <input className="form-control" />
           <div className="table-responsive table-borderless table-hover mt-2">
@@ -94,7 +94,7 @@ const DetalleVenta = () => {
               </div>
             </div>
           </div>
-        </form>
+        </form> */}
       </Contenedorapp>
     </>
   );
@@ -122,10 +122,10 @@ const Contenedorapp = styled.div`
 //   margin: 10px 0;
 //   border-radius: 10px;
 //   box-shadow: 0px 0px 10px rgba(129, 129, 129, 0.7);
+// // `;
+// const Titulo = styled.h6`
+//   color: #fff;
+//   text-align: center;
 // `;
-const Titulo = styled.h6`
-  color: #fff;
-  text-align: center;
-`;
 
 export default DetalleVenta;

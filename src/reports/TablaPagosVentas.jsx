@@ -20,7 +20,7 @@ const TablaPagosVentas = ({pagos, eliminar, actualizar}) => {
                     </thead>
                     <tbody>
                       {pagos.map((medio, i) => {
-                        if (medio.nombre === "") {
+                        if (medio.nombre === "" || medio.nombre==="Efectivo") {
                           return null;
                         }
                         let valor = "";

@@ -33,7 +33,7 @@ export const PagarHook = () => {
       });
       setTimeout(() => {
         window.location.href = "/crear-venta";
-      }, 1500);
+      }, 1200);
       return cambio;
     } else {
       alert("Mayor");
@@ -47,7 +47,7 @@ export const PagarHook = () => {
   const guardar = async (e) => {
     e.preventDefault();
     change = (await total) - cambio;
-    if (change > 0) {
+    if (change > 0 && metodopago === "Efectivo") {
       Swal.fire({
         icon: "error",
         title: "Cantidad insuficiente",
@@ -56,13 +56,16 @@ export const PagarHook = () => {
       });
       return null;
     }
-    await Swal.fire({
-      title: "Cambio",
-      text: `${Math.abs(change)}`,
-      icon: "success",
-      confirmButtonText: "De acuerdo",
-      cancelButtonText: "Cancel",
-    });
+    if (metodopago === "Efectivo") {
+      await Swal.fire({
+        title: "Cambio",
+        text: `${Math.abs(change)}`,
+        icon: "success",
+        confirmButtonText: "De acuerdo",
+        cancelButtonText: "Cancel",
+      });
+    }
+
     await final();
   };
 

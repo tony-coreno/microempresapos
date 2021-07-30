@@ -8,7 +8,7 @@ const ModalVenta = ({ modal, setModal }) => {
   const { total, metodopago } = useContext(ContextEstado);
 
   // const { guardar, setCambio, restante, darCambio, cambio } = PagarHook();
-  const { guardar, setCambio, restante } = PagarHook();
+  const { guardar, setCambio } = PagarHook();
 
   // let fechas = getUnixTime(f);
   // console.log(fechas)
@@ -62,7 +62,7 @@ const ModalVenta = ({ modal, setModal }) => {
                     onChange={(e) => setCambio(e.target.value)}
                   />
                 </Ventas>
-                <Ventas>
+                {/* <Ventas>
                   <label>Cambio</label>
                   <input
                     type="text"
@@ -72,7 +72,7 @@ const ModalVenta = ({ modal, setModal }) => {
                     // onChange={darCambio()}
                     readOnly
                   />
-                </Ventas>
+                </Ventas> */}
               </>
             ) : null}
           </Contenedor>

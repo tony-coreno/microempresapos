@@ -55,7 +55,7 @@ const CrearVenta = () => {
               <i>
                 <FontAwesomeIcon icon={faCashRegister} />
               </i>{" "}
-              Ingresar producto manual
+              Ingresar producto sin código de barra
             </button>
             {articulos > 0 ? <DetalleVenta /> : null}
           </Contenedor>
