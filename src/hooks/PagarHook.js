@@ -9,13 +9,8 @@ export const PagarHook = () => {
   const { total, metodopago, ventaProducto } = useContext(ContextEstado);
   let f = Date();
   let autoriza;
-  if(!sessionStorage.getItem("jefe")){
-    autoriza = sessionStorage.getItem("idusuario")
-  }else{
-    autoriza = sessionStorage.getItem("jefe")
-  }
-  const guardar = async (e) => {
-    e.preventDefault();
+  let change = 0;
+  const final = async () => {
     const venta = {
       idusuario: sessionStorage.getItem("idusuario"),
       jefe: autoriza,
@@ -26,8 +21,6 @@ export const PagarHook = () => {
       articulos: ventaProducto,
     };
     const token = sessionStorage.getItem("token");
-    darCambio();
-
     if (cambio >= 0) {
       const respuesta = await Axios.post("/ventas/crearventa", venta, {
         headers: { autorizacion: token },
@@ -46,14 +39,37 @@ export const PagarHook = () => {
       alert("Mayor");
     }
   };
-  const darCambio = () => {
-    restante = cambio - total;
+  if (!sessionStorage.getItem("jefe")) {
+    autoriza = sessionStorage.getItem("idusuario");
+  } else {
+    autoriza = sessionStorage.getItem("jefe");
+  }
+  const guardar = async (e) => {
+    e.preventDefault();
+    change = (await total) - cambio;
+    if (change > 0) {
+      Swal.fire({
+        icon: "error",
+        title: "Cantidad insuficiente",
+        showConfirmButton: false,
+        timer: 1000,
+      });
+      return null;
+    }
+    await Swal.fire({
+      title: "Cambio",
+      text: `${Math.abs(change)}`,
+      icon: "success",
+      confirmButtonText: "De acuerdo",
+      cancelButtonText: "Cancel",
+    });
+    await final();
   };
+
   return {
     guardar,
     setCambio,
     cambio,
     restante,
-    darCambio,
   };
 };

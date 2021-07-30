@@ -4,11 +4,11 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 // import getUnixTime from 'date-fns/fromUnixTime';
 import { ContextEstado } from "../context/ContextEstado";
 import styled from "styled-components";
-
 const ModalVenta = ({ modal, setModal }) => {
   const { total, metodopago } = useContext(ContextEstado);
 
-  const { guardar, setCambio, restante, darCambio } = PagarHook();
+  // const { guardar, setCambio, restante, darCambio, cambio } = PagarHook();
+  const { guardar, setCambio, restante } = PagarHook();
 
   // let fechas = getUnixTime(f);
   // console.log(fechas)
@@ -69,7 +69,7 @@ const ModalVenta = ({ modal, setModal }) => {
                     className="form-control"
                     placeholder="$0.00"
                     value={restante}
-                    onChange={darCambio()}
+                    // onChange={darCambio()}
                     readOnly
                   />
                 </Ventas>
