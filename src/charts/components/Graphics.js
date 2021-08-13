@@ -6,7 +6,7 @@ import '../assets/css/Graphics.css';
 function Graphics() {
     const {acumulado} = useContext(ContextEstado)
     const data={
-        labels:["Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"],
+        labels:["Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto"],
         datasets:[
             {
             label:"Total de ventas por Mes",
@@ -20,7 +20,7 @@ function Graphics() {
             pointHoverBorderColor:'rgba(73,155,234,1)',
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [2450, 2075, 2169, 2575, 2150, `${acumulado}`]
+            data: [2450, 2075, 2169, 2575, 2150,3050, `${acumulado}`]
             }
         ]
     }

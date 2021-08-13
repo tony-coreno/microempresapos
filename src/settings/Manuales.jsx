@@ -5,6 +5,8 @@ import {
   Menu,
 } from "../components/style/AyudaStyle";
 import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCloudDownloadAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Manuales = () => {
   return (
@@ -19,6 +21,16 @@ const Manuales = () => {
           <div className="container">
             <hr />
             <h2>Manuales de usuario</h2>
+            <p>Enlace con manual</p>
+            <hr />
+            <FontAwesomeIcon icon={faCloudDownloadAlt} />
+            <a
+              href="https://drive.google.com/file/d/1dhO9EmmjCZn1vqmjMWbmM-BdQBg-pJF5/view?usp=sharing"
+              target="_parent"
+            >
+              Aquí 
+            </a>
+
             <hr />
           </div>
           <main>
