@@ -34,7 +34,7 @@ const VistaProductoCard = () => {
                   <div className="card-body">
                     <h5 className="card-title">{producto.producto}</h5>
                     <small>Marca: {producto.marca}</small>
-                    <h6 className="card-text">
+                    <h6 className="card-text badge badge-dark">
                       Existencia: {producto.existencia}
                     </h6>
                     <p className="card-text">

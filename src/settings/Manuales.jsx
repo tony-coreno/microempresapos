@@ -21,7 +21,7 @@ const Manuales = () => {
           <div className="container">
             <hr />
             <h2>Manuales de usuario</h2>
-            <p>Enlace con manual</p>
+            <p>Enlace con manual Sistema POS.</p>
             <hr />
             <FontAwesomeIcon icon={faCloudDownloadAlt} />
             <a
@@ -42,14 +42,6 @@ const Manuales = () => {
           <Contenedor>
             <h3>Contacto</h3>
             <a href="https://www.github.com/tony-coreno" target="_parent">
-              <img
-                className="card ms-1 animate__animated animate__fadeIn"
-                src="https://img.icons8.com/ios-filled/50/000000/github.png"
-                alt="Github"
-              />
-            </a>
-            GitHub
-            <a href="https://github.com/ALEXISS12" target="_parent">
               <img
                 className="card ms-1 animate__animated animate__fadeIn"
                 src="https://img.icons8.com/ios-filled/50/000000/github.png"

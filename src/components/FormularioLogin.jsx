@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+//import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const FormularioLogin = ({ login, setUsuario, setContrasena }) => {
@@ -21,7 +21,7 @@ const FormularioLogin = ({ login, setUsuario, setContrasena }) => {
               <br />
               <Contenedorapp>
                 <Menu>
-                  <NavLink to="/sesion">Empleado</NavLink>
+                  {/* <NavLink to="/sesion">Empleado</NavLink> */}
                 </Menu>
               </Contenedorapp>
               <br />
@@ -70,7 +70,8 @@ const Fondo = styled.div`
     radial-gradient(circle closest-side, #ffffff 53%, rgba(255, 255, 255, 0) 0)
       0 0,
     radial-gradient(circle closest-side, #ffffff 50%, rgba(255, 255, 255, 0) 0)
-      55px 0 #48b;
+      55px 0 #147551;
+      opacity: 0.8;
   background-size: 110px 200px;
   background-repeat: repeat-x;
   border-radius: 10px;

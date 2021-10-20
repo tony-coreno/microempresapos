@@ -76,19 +76,12 @@ const ReportarProblema = () => {
             Fecha:{" "}
             {f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear()}
           </main>
+          <button className="btn btn-outline-info">Consultar reporte</button>
         </Contenedor>
         <aside>
           <Contenedor>
             <h3>Contacto</h3>
             <a href="https://www.github.com/tony-coreno" target="_parent">
-              <img
-                className="card ms-1 animate__animated animate__fadeIn"
-                src="https://img.icons8.com/ios-filled/50/000000/github.png"
-                alt="Github"
-              />
-            </a>
-            GitHub
-            <a href="https://github.com/ALEXISS12" target="_parent">
               <img
                 className="card ms-1 animate__animated animate__fadeIn"
                 src="https://img.icons8.com/ios-filled/50/000000/github.png"

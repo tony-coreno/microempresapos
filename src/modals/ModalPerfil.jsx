@@ -12,7 +12,7 @@ const ModalPerfil = ({ modal, setModal }) => {
         <ModalHeader>Perfil</ModalHeader>
         <ModalBody>
           <div>
-            <Ventas>Ventas realizadas</Ventas>
+            <Ventas>Ventas acumuladas</Ventas>
             <Cifra><span className="badge badge-success">{`$ ${acumulado} `}</span></Cifra>
 
 

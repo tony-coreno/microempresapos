@@ -3,6 +3,25 @@ import Axios from "axios";
 import Swal from "sweetalert2";
 import styled from "styled-components";
 import FormularioLogin from "./FormularioLogin";
+import { Card, Typography, CardContent } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(() => ({
+  root: {
+    textAlign: "center",
+    backgroundColor: "#147551",
+  },
+  texto: {
+    fontSize: 18,
+    color: "white",
+  },
+  titulo: {
+    fontWeight: "bold",
+    fontSize: 20,
+    color: "white",
+  },
+}));
+
 const Login = () => {
   const [usuario, setUsuario] = useState("");
   const [contrasena, setContrasena] = useState("");
@@ -43,17 +62,41 @@ const Login = () => {
     }
   };
 
+  const classes = useStyles();
+
   return (
-    <Contenedor className="container mt-4">
-      <FormularioLogin login={login} setUsuario={setUsuario} setContrasena={setContrasena} />
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill="#0099ff"
-          fillOpacity="1"
-          d="M0,256L34.3,240C68.6,224,137,192,206,165.3C274.3,139,343,117,411,122.7C480,128,549,160,617,181.3C685.7,203,754,213,823,218.7C891.4,224,960,224,1029,202.7C1097.1,181,1166,139,1234,122.7C1302.9,107,1371,117,1406,122.7L1440,128L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"
-        ></path>
-      </svg>
-    </Contenedor>
+    <>
+      <Card className={classes.root}>
+        <CardContent className={classes.root}>
+          <img
+            src="https://img.icons8.com/plasticine/100/000000/total-sales.png"
+            title="POS"
+            alt="POS"
+          />
+          <Typography className={classes.titulo}>Sistema POS</Typography>
+        </CardContent>
+        <hr />
+        <CardContent>
+          <Typography className={classes.titulo}>Usuario: tony</Typography>
+
+          <Typography className={classes.texto}>Password: 8502</Typography>
+        </CardContent>
+      </Card>
+      <Contenedor className="container mt-4">
+        <FormularioLogin
+          login={login}
+          setUsuario={setUsuario}
+          setContrasena={setContrasena}
+        />
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path
+            fill="#147551"
+            fillOpacity="1"
+            d="M0,256L34.3,240C68.6,224,137,192,206,165.3C274.3,139,343,117,411,122.7C480,128,549,160,617,181.3C685.7,203,754,213,823,218.7C891.4,224,960,224,1029,202.7C1097.1,181,1166,139,1234,122.7C1302.9,107,1371,117,1406,122.7L1440,128L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"
+          ></path>
+        </svg>
+      </Contenedor>
+    </>
   );
 };
 
